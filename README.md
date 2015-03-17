@@ -1,1 +1,2 @@
 # cakephp-crematory
+## Setup
