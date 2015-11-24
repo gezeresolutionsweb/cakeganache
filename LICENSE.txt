@@ -1,6 +1,6 @@
 The MIT License
 
-cakephp-ganache (https://github.com/gezeresolutionsweb/cakephp-ganache)
+cakephp-ganache (https://github.com/gezeresolutionsweb/cakeganache)
 Copyright (c) 2015 Sylvain Lévesque
 
 Permission is hereby granted, free of charge, to any person obtaining a
@@ -22,4 +22,4 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 Sylvain Lévesque <slevesque@gezere.com>
-https://github.com/gezeresolutionsweb/cakephp-ganache
+https://github.com/gezeresolutionsweb/cakeganache

@@ -1,6 +1,6 @@
-# cakephp-ganache 1.0.0-alpha
+# cakeganache 1.0.0-alpha
 
-What about a good ganache with your cakephp app ?
+What about a good cake ganache ?
 
 This is a CakePHP 2.x plugin that implements a lot of goodies for your project.
 
