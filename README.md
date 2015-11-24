@@ -1,4 +1,4 @@
-# cakephp-ganache
+# cakephp-ganache 1.0.0-alpha
 
 What about a good ganache with your cakephp app ?
 
