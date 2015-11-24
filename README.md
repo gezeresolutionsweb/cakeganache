@@ -6,16 +6,16 @@ What about a good cake ganache ?
 This is a CakePHP 2.x plugin that overload core helpers to support Twitter Bootstrap 2.x + extras
 
 * Bootstrap 2.x Helpers
-  * BootstrapHtmlHelper
-  * BootstrapFormHelper
-  * BootstrapNavbarHelper
-  * BootstrapPaginationHelper
-  * BootstrapCalendarHelper
-  * BootstrapTablenavbarHelper
+  * GanacheHtmlHelper
+  * GanacheFormHelper
+  * GanacheNavbarHelper
+  * GanachePaginationHelper
+  * GanacheCalendarHelper
+  * GanacheTablenavbarHelper
 * FontAwesome 4.x Helpers
 * Javascript goddies
-  * BootstrapTablenavbar.js
-  * BootstrapChained.js
+  * ganache-tablenavbar.js
+  * ganache-chained.js
 
 Installation
 ------------
