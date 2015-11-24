@@ -1,13 +1,15 @@
-cakeganache 1.0.0-alpha
-=======================
+CakeGanache 0.0.1
+=================
 
-Copyright (c) Sylvain Lévesque (slevesque@gezere.com)
+CakeGanache : (https://github.com/gezeresolutionsweb/cakeganache)
+Copyright (c) Sylvain Lévesque (http://www.gezere.com)
 
 Licensed under The MIT License
+For full copyright and license information, please see the LICENSE.txt
 Redistributions of files must retain the above copyright notice.
 
-@copyright     Copyright (c) Sylvain Lévesque <slevesque@gezere.com)
-@link          https://github.com/gezeresolutionsweb/cakeganache
-@package       cakeganache
-@since         cakeganache v 1.0.0-alpha
+@copyright     Copyright (c) Sylvain Lévesque (http://www.gezere.com)
+@link          http://www.gezere.com
+@package       CakeGanache
+@since         CakeGanache v 0.0.1
 @license       http://www.opensource.org/licenses/mit-license.php MIT License
