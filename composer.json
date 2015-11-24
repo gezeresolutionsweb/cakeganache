@@ -1,5 +1,9 @@
 {
     "name": "gezeresolutionsweb/cakephp-ganache",
+    "description": "This is a CakePHP 2.x plugin that implements helpers around Bootstrap 2.",
+    "author": "Sylvain Lévesque"
+    "homepage": "https://github.com/gezeresolutionsweb/cakephp-ganache"
+    "licence": "MIT Licence",
     "require": {
         "php": ">=5.3.0",
         "ext-mcrypt": "*",
