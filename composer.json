@@ -1,17 +1,19 @@
 {
     "name": "gezeresolutionsweb/cakephp-ganache",
-    "description": "This is a CakePHP 2.x plugin that implements helpers around Bootstrap 2.",
+    "type": "cakephp-plugin",
+    "description": "CakePHP 2.x plugin the replace basic Html and Form helpers for Bootstrap 2.x and more goddies",
     "author": "Sylvain Lévesque",
     "homepage": "https://github.com/gezeresolutionsweb/cakephp-ganache",
-    "licence": "MIT Licence",
-    "type": "library",
-    "keywords": ["framework","cakephp","helpers","bootstrap"],
+    "licence": "MIT",
+    "keywords": ["framework","cakephp","helpers","bootstrap","plugin","twitter"],
     "require": {
-        "cakephp/cakephp": "2.7.*"
+        "php": ">=5.3.0",
+        "composer/installer": "1.*"
     },
     "dev": {
         "phpunit/phpunit": "3.7.*",
-        "cakephp/debug_kit": "^2.2.0",
-        "cakephp/cakephp_codesniffer": "^1.0.0"
+    },
+    "extra": {
+        "installer-name": "CakephpGanache"
     }
 }
