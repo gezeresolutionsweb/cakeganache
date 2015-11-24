@@ -16,4 +16,4 @@ This is a CakePHP 2.x plugin that implements a lot of goodies for your project.
   * BootstrapTablenavbar.js
   * BootstrapChained.js
 
-## Setup
+## Install
