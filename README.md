@@ -23,7 +23,7 @@ Installation
 ### Composer
 
 ```bash
-composer require gezeresolutionsweb/cakeganache:*@dev
+composer require gezeresolutionsweb/cakeganache:*
 ```
 
 ### Manual
@@ -43,12 +43,12 @@ Helpers are developpe with respect of core helper in mind. So load the helpers i
 
 ```php
 public $helpers = array(
-    'Html' => 'CakeganacheBoostrapHtml', 
-    'Form' => 'BootstrapForm', 
-    'Paginator' => 'BoostrapPaginator',
-    'Navbar' => 'BootstrapNavbar'
-    'TableNavbar' => 'BootstrapTableNavbar'
-    'Calendar' => 'BootstrapCalendar'
+    'Html' => 'Cakeganache.GanacheHtml', 
+    'Form' => 'Cakeganache.GanacheForm', 
+    'Paginator' => 'Cakeganache.GanachePaginator',
+    'Navbar' => 'Cakeganacge.GanacheNavbar'
+    'TableNavbar' => 'Cakeganache.GanacheTableNavbar'
+    'Calendar' => 'Cakeganache.GanacheCalendar'
 ) ;
 ```
 
