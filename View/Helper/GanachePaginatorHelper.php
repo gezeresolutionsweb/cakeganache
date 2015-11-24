@@ -10,7 +10,7 @@
  * @copyright     Copyright (c) Sylvain Lévesque (http://www.gezere.com)
  * @link          http://www.gezere.com
  * @package       CakeGanache.View.Helper
- * @since         CakeGanache v 0.0.1
+ * @since         CakeGanache v 0.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 

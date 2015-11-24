@@ -1,5 +1,5 @@
-CakeGanache 0.0.1
-=================
+CakeGanache 0.0.1-alpha
+=======================
 
 CakeGanache : (https://github.com/gezeresolutionsweb/cakeganache)
 Copyright (c) Sylvain Lévesque (http://www.gezere.com)
@@ -11,5 +11,5 @@ Redistributions of files must retain the above copyright notice.
 @copyright     Copyright (c) Sylvain Lévesque (http://www.gezere.com)
 @link          http://www.gezere.com
 @package       CakeGanache
-@since         CakeGanache v 0.0.1
+@since         CakeGanache v 0.0.0
 @license       http://www.opensource.org/licenses/mit-license.php MIT License

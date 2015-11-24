@@ -9,7 +9,7 @@
  * @copyright     Copyright (c) Sylvain Lévesque (http://www.gezere.com)
  * @link          http://www.gezere.com
  * @package       CakeGanache
- * @since         CakeGanache v 0.0.1
+ * @since         CakeGanache v 0.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -26,7 +26,7 @@
         $(document).on('change.chained-data-api', this.options.parent, $.proxy(this.load, this));
     };
 
-    Chained.VERSION = '0.0.1';
+    Chained.VERSION = '2.3.2';
 
     Chained.DEFAULTS = {
     };

@@ -9,7 +9,7 @@
  * @copyright     Copyright (c) Sylvain Lévesque (http://www.gezere.com)
  * @link          http://www.gezere.com
  * @package       CakeGanache
- * @since         CakeGanache v 0.0.1
+ * @since         CakeGanache v 0.0.0
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
@@ -33,7 +33,7 @@
         this.$element.on('click.tablenavbar-data-api.tablenavbar-clear-button', '[data-toggle=tablenavbar-clear-button]', $.proxy(this.clear, this));
     };
 
-    Tablenavbar.VERSION = '0.0.1';
+    Tablenavbar.VERSION = '2.3.2';
 
     Tablenavbar.DEFAULTS = {
         container: '.tablenavbar-dynamic-content'

@@ -1,5 +1,5 @@
-CakeGanache 0.0.1
-=================
+CakeGanache 0.0.1-alpha
+=======================
 
 What about a good cake ganache ?
 
