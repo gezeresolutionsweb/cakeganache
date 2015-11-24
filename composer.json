@@ -4,9 +4,9 @@
     "author": "Sylvain Lévesque",
     "homepage": "https://github.com/gezeresolutionsweb/cakephp-ganache",
     "licence": "MIT Licence",
+    "type": "library",
+    "keywords": ["framework","cakephp","helpers","bootstrap"],
     "require": {
-        "php": ">=5.3.0",
-        "ext-mcrypt": "*",
         "cakephp/cakephp": "2.7.*"
     },
     "dev": {
