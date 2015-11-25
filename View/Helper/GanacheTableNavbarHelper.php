@@ -14,14 +14,14 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-App::import('Cakeganache.Helper', 'GanacheHtml');
-App::import('Cakeganache.Helper', 'GanacheForm');
+App::import('CakeGanache.Helper', 'GanacheHtml');
+App::import('CakeGanache.Helper', 'GanacheForm');
 App::import('Routing', 'Router');
 
 class GanacheTableNavbarHelper extends AppHelper {
     public $helpers = array(
-        'Html' => array( 'className' => 'Cakeganache.GanacheHtml', 'prefix' => 'fa', 'iconPrefix' => ' fa-' ),
-        'Form' => 'Cakeganache.GanacheForm',
+        'Html' => array( 'className' => 'CakeGanache.GanacheHtml', 'prefix' => 'fa', 'iconPrefix' => ' fa-' ),
+        'Form' => 'CakeGanache.GanacheForm',
     );
 
     /**
