@@ -369,7 +369,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      */
     public function container($options = array()) {
         $out = '';
-        $class = BS_CONTAINER;
+        $class = GS_CONTAINER;
         if (isset($options['class'])) {
             $class .= ' ' . $options['class'];
         }
@@ -385,7 +385,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      */
     public function containerFluid($options = array()) {
         $out = '';
-        $class = BS_CONTAINER_FLUID;
+        $class = GS_CONTAINER_FLUID;
         if (isset($options['class'])) {
             $class .= ' ' . $options['class'];
         }
@@ -402,7 +402,7 @@ class GanacheHtmlHelper extends HtmlHelper {
     public function row($options = array())
     {
         $out = '';
-        $class = BS_ROW;
+        $class = GS_ROW;
         if (isset($options['class'])) {
             $class .= ' ' . $options['class'];
         }
@@ -419,7 +419,7 @@ class GanacheHtmlHelper extends HtmlHelper {
     public function rowFluid($options = array())
     {
         $out = '';
-        $class = BS_ROW_FLUID;
+        $class = GS_ROW_FLUID;
         if (isset($options['class'])) {
             $class .= ' ' . $options['class'];
         }
@@ -438,18 +438,18 @@ class GanacheHtmlHelper extends HtmlHelper {
         }
 
         $classes = array(
-            1 => BS_SPAN1,
-            2 => BS_SPAN2,
-            3 => BS_SPAN3,
-            4 => BS_SPAN4,
-            5 => BS_SPAN5,
-            6 => BS_SPAN6,
-            7 => BS_SPAN7,
-            8 => BS_SPAN8,
-            9 => BS_SPAN9,
-            10 => BS_SPAN10,
-            11 => BS_SPAN11,
-            12 => BS_SPAN12
+            1 => GS_SPAN1,
+            2 => GS_SPAN2,
+            3 => GS_SPAN3,
+            4 => GS_SPAN4,
+            5 => GS_SPAN5,
+            6 => GS_SPAN6,
+            7 => GS_SPAN7,
+            8 => GS_SPAN8,
+            9 => GS_SPAN9,
+            10 => GS_SPAN10,
+            11 => GS_SPAN11,
+            12 => GS_SPAN12
         );
 
         $class = $classes[$width];
@@ -643,24 +643,24 @@ class GanacheHtmlHelper extends HtmlHelper {
      *
      * ### Bootstrap options
      *
-     * - `bsType` BS_BTN_DEFAULT|BS_BTN_PRIMARY|BS_BTN_INFO|BS_BTN_SUCCESS|BS_BTN_WARNING|BS_BTN_DANGER|BS_BTN_INVERSE|BS_BTN_LINK
-     * - `bsSize` BS_BTN_MINI|BS_BTN_SMALL|BS_BTN_LARGE|BS_BTN_BLOCK
+     * - `bsType` GS_BTN_DEFAULT|GS_BTN_PRIMARY|GS_BTN_INFO|GS_BTN_SUCCESS|GS_BTN_WARNING|GS_BTN_DANGER|GS_BTN_INVERSE|GS_BTN_LINK
+     * - `bsSize` GS_BTN_MINI|GS_BTN_SMALL|GS_BTN_LARGE|GS_BTN_BLOCK
      * - `bsIcon` BsHtml::icon() icon string result.
      */
     function btn($title, $url = NULL, $options = Array())
     {
-        $class = BS_BTN;
+        $class = GS_BTN;
         if(isset($options['class'])) {
             $class = $options['class'] . ' ' . $class;
         }
 
-        // Button type processing (BS_BTN_SUCCESS, BS_BTN_DANGER, etc.)
+        // Button type processing (GS_BTN_SUCCESS, GS_BTN_DANGER, etc.)
         if(isset($options['bsType'])) {
             $class .= ' ' . $options['bsType'];
             unset($options['bsType']);
         }
 
-        // Button size processing (BS_BTN_LARGE, BS_BTN_SMALL, etc.)
+        // Button size processing (GS_BTN_LARGE, GS_BTN_SMALL, etc.)
         if(isset($options['bsSize'])) {
             $class .= ' ' . $options['bsSize'];
             unset($options['bsSize']);
