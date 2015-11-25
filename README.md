@@ -43,12 +43,12 @@ Helpers are developpe with respect of core helper in mind. So load the helpers i
 
 ```php
 public $helpers = array(
-    'Html' => 'Cakeganache.GanacheHtml', 
-    'Form' => 'Cakeganache.GanacheForm', 
-    'Paginator' => 'Cakeganache.GanachePaginator',
-    'Navbar' => 'Cakeganacge.GanacheNavbar'
-    'TableNavbar' => 'Cakeganache.GanacheTableNavbar'
-    'Calendar' => 'Cakeganache.GanacheCalendar'
+    'Html' => 'CakeGanache.GanacheHtml', 
+    'Form' => 'CakeGanache.GanacheForm', 
+    'Paginator' => 'CakeGanache.GanachePaginator',
+    'Navbar' => 'CakeGanache.GanacheNavbar'
+    'TableNavbar' => 'CakeGanache.GanacheTableNavbar'
+    'Calendar' => 'CakeGanache.GanacheCalendar'
 ) ;
 ```
 
