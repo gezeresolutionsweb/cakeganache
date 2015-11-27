@@ -48,7 +48,7 @@ define('GA_RADIO', 'radio');
 define('GA_FORM_SEARCH', 'form-search');
 define('GA_SEARCH_QUERY', 'search-query');
 define('GA_FORM_INLINE', 'form-inline');
-define('GA_FORM_HORIZONTAL', 'form-inline');
+define('GA_FORM_HORIZONTAL', 'form-horizontal');
 define('GA_CONTROL_GROUP', 'control-group');
 define('GA_CONTROL_LABEL', 'control-label');
 define('GA_CONTROLS', 'controls');
