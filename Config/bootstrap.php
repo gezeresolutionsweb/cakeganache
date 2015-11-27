@@ -169,10 +169,10 @@ define('GA_TABBABLE', 'tabbable');
 define('GA_TAB_CONTENT', 'tab-content');
 define('GA_TAB_PANE', 'tab-pane');
 define('GA_FADE', 'fade');
-define('GA_TAGA_BELOW', 'tabs-below');
-define('GA_TAGA_LEFT', 'tabs-left');
-define('GA_TAGA_RIGHT', 'tabs-right');
-define('GA_TAGA_TOP', 'tabs-top');
+define('GA_TABS_BELOW', 'tabs-below');
+define('GA_TABS_LEFT', 'tabs-left');
+define('GA_TABS_RIGHT', 'tabs-right');
+define('GA_TABS_TOP', 'tabs-top');
 
 
 define('GA_DROPUP', 'dropup');
