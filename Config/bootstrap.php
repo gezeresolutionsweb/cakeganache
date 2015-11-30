@@ -41,7 +41,7 @@ define('GA_SPAN12', GA_SPAN . '12');
  */
 define('GA_BLOCK', 'block');
 define('GA_INLINE', 'inline');
-define('GA_INLINE', 'horizontal');
+define('GA_HORIZONTAL', 'horizontal');
 define('GA_FIXED', 'fixed');
 define('GA_STATIC', 'static');
 define('GA_DYNAMIC', 'dynamic');
