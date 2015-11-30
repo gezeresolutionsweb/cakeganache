@@ -141,7 +141,7 @@ define('GA_INPUT_MEDIUM', GA_INPUT . '-' . GA_MEDIUM);
 define('GA_INPUT_LARGE', GA_INPUT . '-' . GA_LARGE);
 define('GA_INPUT_XLARGE', GA_INPUT . '-' . GA_XLARGE);
 define('GA_INPUT_XXLARGE', GA_INPUT . '-' . GA_XXLARGE);
-defibe('GA_LEVEL', 'level');
+define('GA_LEVEL', 'level');
 define('GA_INPUT_BLOCK_LEVEL', GA_INPUT . '-' . GA_BLOCK . '-' . GA_LEVEL);
 define('GA_UNEDITABLE', 'uneditable');
 define('GA_UNEDITABLE_INPUT', GA_UNEDITABLE . '-' . GA_INPUT);
