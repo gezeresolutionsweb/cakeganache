@@ -167,7 +167,7 @@ define('GA_TOGGLE', 'toggle');
 define('GA_DROPDOWN_TOGGLE', GA_DROPDOWN . '-' . GA_TOGGLE);
 define('GA_MENU', 'menu');
 define('GA_SUBMENU', 'submenu');
-define('GA_DROPDOWN_MENU', GA_DROP_DOWN . '-' . GA_MENU);
+define('GA_DROPDOWN_MENU', GA_DROPDOWN . '-' . GA_MENU);
 define('GA_DROPDOWN_SUBMENU', GA_DROPDOWN . '-' . GA_SUBMENU);
 define('GA_CARET', 'caret');
 
