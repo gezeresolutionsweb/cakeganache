@@ -38,7 +38,7 @@ class GanachePaginatorHelper extends PaginatorHelper {
     **/
     public function first ($title = '<<', $options = array(), $disabledTitle = null, $disabledOptions = array()) {
         $options = array_merge(array('tag' => 'li'), $options) ;
-        $disabledOptions = array_merge(array('tag' => 'li', 'class' => 'disabled', 'disabledTag' => 'a'),
+        $disabledOptions = array_merge(array('tag' => 'li', 'class' => GA_DISABLED, 'disabledTag' => 'a'),
             $disabledOptions) ;
         return parent::first($title, $options, $disabledTitle, $disabledOptions) ;        
     }
@@ -55,7 +55,7 @@ class GanachePaginatorHelper extends PaginatorHelper {
     **/
     public function prev ($title = '<', $options = array(), $disabledTitle = null, $disabledOptions = array()) {
         $options = array_merge(array('tag' => 'li'), $options) ;
-        $disabledOptions = array_merge(array('tag' => 'li', 'class' => 'disabled', 'disabledTag' => 'a'),
+        $disabledOptions = array_merge(array('tag' => 'li', 'class' => GA_DISABLED, 'disabledTag' => 'a'),
             $disabledOptions) ;
         return parent::prev($title, $options, $disabledTitle, $disabledOptions);
     }
@@ -72,7 +72,7 @@ class GanachePaginatorHelper extends PaginatorHelper {
     **/
     public function next ($title = '>', $options = array(), $disabledTitle = null, $disabledOptions = array()) {
         $options = array_merge(array('tag' => 'li'), $options) ;
-        $disabledOptions = array_merge(array('tag' => 'li', 'class' => 'disabled', 'disabledTag' => 'a'),
+        $disabledOptions = array_merge(array('tag' => 'li', 'class' => GA_DISABLED, 'disabledTag' => 'a'),
             $disabledOptions) ;
         return parent::next($title, $options, $disabledTitle, $disabledOptions) ;        
     }
@@ -89,7 +89,7 @@ class GanachePaginatorHelper extends PaginatorHelper {
     **/
     public function last ($title = '>>', $options = array(), $disabledTitle = null, $disabledOptions = array()) {
         $options = array_merge(array('tag' => 'li'), $options) ;
-        $disabledOptions = array_merge(array('tag' => 'li', 'class' => 'disabled', 'disabledTag' => 'a'),
+        $disabledOptions = array_merge(array('tag' => 'li', 'class' => GA_DISABLED, 'disabledTag' => 'a'),
             $disabledOptions) ;
         return parent::last($title, $options, $disabledTitle, $disabledOptions) ;        
     }
@@ -111,7 +111,7 @@ class GanachePaginatorHelper extends PaginatorHelper {
             'tag' => 'li',
             'currentTag' => 'a', 
             'separator' => '', 
-            'currentClass' => 'active', 
+            'currentClass' => GA_ACTIVE, 
             'disabledTag' => 'a',
             'size' => 'normal',
             'alignment' => 'center',
@@ -123,7 +123,7 @@ class GanachePaginatorHelper extends PaginatorHelper {
         $size = $options['size'] ; unset($options['size']) ;
         $alignment = $options['alignment'] ; unset($options['alignment']) ;
         
-        $class = 'pagination' ;
+        $class = GA_PAGINATION;
         
         if ($size !== 'normal') {
             $class .= ' pagination-'.$size ;
@@ -191,7 +191,7 @@ class GanachePaginatorHelper extends PaginatorHelper {
             'nextDisabledOptions' => [],
             'lastTitle' => '>>',
             'lastOptions' => [],
-            'wrapOpen' => '<div class="pagination">',
+            'wrapOpen' => '<div class="' . GA_PAGINATION . '">',
             'wrapClose' => '</div>',
             'type' => 'list', // plain, list
             'format' => '{:wrapOpen} {:counter} {:ulOpen} {:first} {:prev} {:numbers} {:next} {:last} {:ulClose} {:wrapClose}'
