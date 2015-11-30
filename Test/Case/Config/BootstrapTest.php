@@ -804,4 +804,905 @@ class BootstrapTest extends CakeTestCase
     {
         $this->assertTrue(GA_L === 'large');
     }
+
+    public function testGaTextLeftExists()
+    {
+        $this->assertTrue(defined('GA_TEXT_LEFT'));
+    }
+
+    public function testGaTextLeftValue()
+    {
+        $this->assertTrue(GA_TEXT_LEFT === 'text-left');
+    }
+
+    public function testGaTextCenterExists()
+    {
+        $this->assertTrue(defined('GA_TEXT_CENTER'));
+    }
+
+    public function testGaTextCenterValue()
+    {
+        $this->assertTrue(GA_TEXT_CENTER === 'text-center');
+    }
+
+    public function testGaTextRightExists()
+    {
+        $this->assertTrue(defined('GA_TEXT_RIGHT'));
+    }
+
+    public function testGaTextRightValue()
+    {
+        $this->assertTrue(GA_TEXT_RIGHT === 'text-right');
+    }
+
+    public function testGaTextWarningExists()
+    {
+        $this->assertTrue(defined('GA_TEXT_WARNING'));
+    }
+
+    public function testGaTextWarningValue()
+    {
+        $this->assertTrue(GA_TEXT_WARNING === 'text-warning');
+    }
+
+    public function testGaTextErrorExists()
+    {
+        $this->assertTrue(defined('GA_TEXT_ERROR'));
+    }
+
+    public function testGaTextErrorValue()
+    {
+        $this->assertTrue(GA_TEXT_ERROR === 'text-error');
+    }
+
+    public function testGaTextInfoExists()
+    {
+        $this->assertTrue(defined('GA_TEXT_INFO'));
+    }
+
+    public function testGaTextInfoValue()
+    {
+        $this->assertTrue(GA_TEXT_INFO === 'text-info');
+    }
+
+    public function testGaTextSuccessExists()
+    {
+        $this->assertTrue(defined('GA_TEXT_SUCCESS'));
+    }
+
+    public function testGaTextSuccessValue()
+    {
+        $this->assertTrue(GA_TEXT_SUCCESS === 'text-success');
+    }
+
+    public function testGaImgRoundedExists()
+    {
+        $this->assertTrue(defined('GA_IMG_ROUNDED'));
+    }
+
+    public function testGaImgRoundedValue()
+    {
+        $this->assertTrue(GA_IMG_ROUNDED === 'img-rounded');
+    }
+
+    public function testGaImgCircleExists()
+    {
+        $this->assertTrue(defined('GA_IMG_CIRCLE'));
+    }
+
+    public function testGaImgCircleValue()
+    {
+        $this->assertTrue(GA_IMG_CIRCLE === 'img-circle');
+    }
+
+    public function testGaImgPolaroidExists()
+    {
+        $this->assertTrue(defined('GA_IMG_POLAROID'));
+    }
+
+    public function testGaImgPolaroidValue()
+    {
+        $this->assertTrue(GA_IMG_POLAROID === 'img-polaroid');
+    }
+
+    public function testGaNavExists()
+    {
+        $this->assertTrue(defined('GA_NAV'));
+    }
+
+    public function testGaNavValue()
+    {
+        $this->assertTrue(GA_NAV === 'nav');
+    }
+
+    public function testGaNavTabsExists()
+    {
+        $this->assertTrue(defined('GA_NAV_TABS'));
+    }
+
+    public function testGaNavTabsValue()
+    {
+        $this->assertTrue(GA_NAV_TABS === 'nav-tabs');
+    }
+
+    public function testGaNavPillsExists()
+    {
+        $this->assertTrue(defined('GA_NAV_PILLS'));
+    }
+
+    public function testGaNavPillsValue()
+    {
+        $this->assertTrue(GA_NAV_PILLS === 'nav-pills');
+    }
+
+    public function testGaNavListExists()
+    {
+        $this->assertTrue(defined('GA_NAV_LIST'));
+    }
+
+    public function testGaNavListValue()
+    {
+        $this->assertTrue(GA_NAV_LIST === 'nav-list');
+    }
+
+    public function testGaNavStackedExists()
+    {
+        $this->assertTrue(defined('GA_NAV_STACKED'));
+    }
+
+    public function testGaNavStackedValue()
+    {
+        $this->assertTrue(GA_NAV_STACKED === 'nav-stacked');
+    }
+
+    public function testGaNavHeaderExists()
+    {
+        $this->assertTrue(defined('GA_NAV_HEADER'));
+    }
+
+    public function testGaNavHeaderValue()
+    {
+        $this->assertTrue(GA_NAV_HEADER === 'nav-header');
+    }
+
+    public function testGaDividerExists()
+    {
+        $this->assertTrue(defined('GA_DIVIDER'));
+    }
+
+    public function testGaDividerValue()
+    {
+        $this->assertTrue(GA_DIVIDER === 'divider');
+    }
+
+    public function testGaTabbableExists()
+    {
+        $this->assertTrue(defined('GA_TABBABLE'));
+    }
+
+    public function testGaTabbableValue()
+    {
+        $this->assertTrue(GA_TABBABLE === 'tabbable');
+    }
+
+    public function testGaTabContentExists()
+    {
+        $this->assertTrue(defined('GA_TAB_CONTENT'));
+    }
+
+    public function testGaTabContentValue()
+    {
+        $this->assertTrue(GA_TAB_CONTENT === 'tab-content');
+    }
+
+    public function testGaTabPaneExists()
+    {
+        $this->assertTrue(defined('GA_TAB_PANE'));
+    }
+
+    public function testGaTabPaneValue()
+    {
+        $this->assertTrue(GA_TAB_PANE === 'tab-pane');
+    }
+
+    public function testGaFadeExists()
+    {
+        $this->assertTrue(defined('GA_FADE'));
+    }
+
+    public function testGaFadeValue()
+    {
+        $this->assertTrue(GA_FADE === 'fade');
+    }
+
+    public function testGaTabsBelowExists()
+    {
+        $this->assertTrue(defined('GA_TABS_BELOW'));
+    }
+
+    public function testGaTabsBelowValue()
+    {
+        $this->assertTrue(GA_TABS_BELOW === 'tabs-below');
+    }
+
+    public function testGaTabsLeftExists()
+    {
+        $this->assertTrue(defined('GA_TABS_LEFT'));
+    }
+
+    public function testGaTabsLeftValue()
+    {
+        $this->assertTrue(GA_TABS_LEFT === 'tabs-left');
+    }
+
+    public function testGaTabsRightExists()
+    {
+        $this->assertTrue(defined('GA_TABS_RIGHT'));
+    }
+
+    public function testGaTabsRightValue()
+    {
+        $this->assertTrue(GA_TABS_RIGHT === 'tabs-right');
+    }
+
+    public function testGaTabsTopExists()
+    {
+        $this->assertTrue(defined('GA_TABS_TOP'));
+    }
+
+    public function testGaTabsTopValue()
+    {
+        $this->assertTrue(GA_TABS_TOP === 'tabs-top');
+    }
+
+    public function testGaDropupExists()
+    {
+        $this->assertTrue(defined('GA_DROPUP'));
+    }
+
+    public function testGaDropupValue()
+    {
+        $this->assertTrue(GA_DROPUP === 'dropup');
+    }
+
+    public function testGaBtnToolbarExists()
+    {
+        $this->assertTrue(defined('GA_BTN_TOOLBAR'));
+    }
+
+    public function testGaBtnToolbarValue()
+    {
+        $this->assertTrue(GA_BTN_TOOLBAR === 'btn-toolbar');
+    }
+
+    public function testGaNavbarExists()
+    {
+        $this->assertTrue(defined('GA_NAVBAR'));
+    }
+
+    public function testGaNavbarValue()
+    {
+        $this->assertTrue(GA_NAVBAR === 'navbar');
+    }
+
+    public function testGaNavbarInnerExists()
+    {
+        $this->assertTrue(defined('GA_NAVBAR_INNER'));
+    }
+
+    public function testGaNavbarInnerValue()
+    {
+        $this->assertTrue(GA_NAVBAR_INNER === 'navbar-inner');
+    }
+
+    public function testGaBrandExists()
+    {
+        $this->assertTrue(defined('GA_BRAND'));
+    }
+
+    public function testGaBrandValue()
+    {
+        $this->assertTrue(GA_BRAND === 'brand');
+    }
+
+    public function testGaDividerVerticalExists()
+    {
+        $this->assertTrue(defined('GA_DIVIDER_VERTICAL'));
+    }
+
+    public function testGaDividerVerticalValue()
+    {
+        $this->assertTrue(GA_DIVIDER_VERTICAL === 'divider-vertical');
+    }
+
+    public function testGaNavbarFormExists()
+    {
+        $this->assertTrue(defined('GA_NAVBAR_FORM'));
+    }
+
+    public function testGaNavbarFormValue()
+    {
+        $this->assertTrue(GA_NAVBAR_FORM === 'navbar-form');
+    }
+
+    public function testGaNavbarSearchExists()
+    {
+        $this->assertTrue(defined('GA_NAVBAR_SEARCH'));
+    }
+
+    public function testGaNavbarSearchValue()
+    {
+        $this->assertTrue(GA_NAVBAR_SEARCH === 'navbar-search');
+    }
+
+    public function testGaNavbarTextExists()
+    {
+        $this->assertTrue(defined('GA_NAVBAR_TEXT'));
+    }
+
+    public function testGaNavbarTextValue()
+    {
+        $this->assertTrue(GA_NAVBAR_TEXT === 'navbar-text');
+    }
+
+    public function testGaNavbarFixedTopExists()
+    {
+        $this->assertTrue(defined('GA_NAVBAR_FIXED_TOP'));
+    }
+
+    public function testGaNavbarFixedTopValue()
+    {
+        $this->assertTrue(GA_NAVBAR_FIXED_TOP === 'navbar-fixed-top');
+    }
+
+    public function testGaNavbarFixedBottomExists()
+    {
+        $this->assertTrue(defined('GA_NAVBAR_FIXED_BOTTOM'));
+    }
+
+    public function testGaNavbarFixedBottomValue()
+    {
+        $this->assertTrue(GA_NAVBAR_FIXED_BOTTOM === 'navbar-fixed-bottom');
+    }
+
+    public function testGaNavbarStaticTopExists()
+    {
+        $this->assertTrue(defined('GA_NAVBAR_STATIC_TOP'));
+    }
+
+    public function testGaNavbarStaticTopValue()
+    {
+        $this->assertTrue(GA_NAVBAR_STATIC_TOP === 'navbar-static-top');
+    }
+
+    public function testGaNavCollapseExists()
+    {
+        $this->assertTrue(defined('GA_NAV_COLLAPSE'));
+    }
+
+    public function testGaNavCollapseValue()
+    {
+        $this->assertTrue(GA_NAV_COLLAPSE === 'nav-collapse');
+    }
+
+    public function testGaCollapseExists()
+    {
+        $this->assertTrue(defined('GA_COLLAPSE'));
+    }
+
+    public function testGaCollapseValue()
+    {
+        $this->assertTrue(GA_COLLAPSE === 'collapse');
+    }
+
+    public function testGaNavbarInverseExists()
+    {
+        $this->assertTrue(defined('GA_NAVBAR_INVERSE'));
+    }
+
+    public function testGaNavbarInverseValue()
+    {
+        $this->assertTrue(GA_NAVBAR_INVERSE === 'navbar-inverse');
+    }
+
+    public function testGaBreadcrumbExists()
+    {
+        $this->assertTrue(defined('GA_BREADCRUMB'));
+    }
+
+    public function testGaBreadcrumValue()
+    {
+        $this->assertTrue(GA_BREADCRUMB === 'breadcrumb');
+    }
+
+    public function testGaPaginationExists()
+    {
+        $this->assertTrue(defined('GA_PAGINATION'));
+    }
+
+    public function testGaPaginationValue()
+    {
+        $this->assertTrue(GA_PAGINATION === 'pagination');
+    }
+
+    public function testGaPaginationMiniExists()
+    {
+        $this->assertTrue(defined('GA_PAGINATION_MINI'));
+    }
+
+    public function testGaPaginationMiniValue()
+    {
+        $this->assertTrue(GA_PAGINATION_MINI === 'pagination-mini');
+    }
+
+    public function testGaPaginationSmallExists()
+    {
+        $this->assertTrue(defined('GA_PAGINATION_SMALL'));
+    }
+
+    public function testGaPaginationSmallValue()
+    {
+        $this->assertTrue(GA_PAGINATION_SMALL === 'pagination-small');
+    }
+
+    public function testGaPaginationLargeExists()
+    {
+        $this->assertTrue(defined('GA_PAGINATION_LARGE'));
+    }
+
+    public function testGaPaginationLargeValue()
+    {
+        $this->assertTrue(GA_PAGINATION_LARGE === 'pagination-large');
+    }
+
+    public function testGaPaginationCenteredExists()
+    {
+        $this->assertTrue(defined('GA_PAGINATION_CENTERED'));
+    }
+
+    public function testGaPaginationCenteredValue()
+    {
+        $this->assertTrue(GA_PAGINATION_CENTERED === 'pagination-centered');
+    }
+
+    public function testGaPaginationRightExists()
+    {
+        $this->assertTrue(defined('GA_PAGINATION_RIGHT'));
+    }
+
+    public function testGaPaginationRightValue()
+    {
+        $this->assertTrue(GA_PAGINATION_RIGHT === 'pagination-right');
+    }
+
+    public function testGaPagerExists()
+    {
+        $this->assertTrue(defined('GA_PAGER'));
+    }
+
+    public function testGaPagerValue()
+    {
+        $this->assertTrue(GA_PAGER === 'pager');
+    }
+
+    public function testGaPreviousExists()
+    {
+        $this->assertTrue(defined('GA_PREVIOUS'));
+    }
+
+    public function testGaPreviousValue()
+    {
+        $this->assertTrue(GA_PREVIOUS === 'previous');
+    }
+
+    public function testGaNextExists()
+    {
+        $this->assertTrue(defined('GA_NEXT'));
+    }
+
+    public function testGaNextValue()
+    {
+        $this->assertTrue(GA_NEXT === 'next');
+    }
+
+    public function testGaLabelExists()
+    {
+        $this->assertTrue(defined('GA_LABEL'));
+    }
+
+    public function testGaLabelValue()
+    {
+        $this->assertTrue(GA_LABEL === 'label');
+    }
+
+    public function testGaLabelSuccessExists()
+    {
+        $this->assertTrue(defined('GA_LABEL_SUCCESS'));
+    }
+
+    public function testGaLabelSuccessValue()
+    {
+        $this->assertTrue(GA_LABEL_SUCCESS === 'label-success');
+    }
+
+    public function testGaLabelWarningExists()
+    {
+        $this->assertTrue(defined('GA_LABEL_WARNING'));
+    }
+
+    public function testGaLabelWarningValue()
+    {
+        $this->assertTrue(GA_LABEL_WARNING === 'label-warning');
+    }
+
+    public function testGaLabelImportantExists()
+    {
+        $this->assertTrue(defined('GA_LABEL_IMPORTANT'));
+    }
+
+    public function testGaLabelImportantValue()
+    {
+        $this->assertTrue(GA_LABEL_IMPORTANT === 'label-important');
+    }
+
+    public function testGaLabelInfoExists()
+    {
+        $this->assertTrue(defined('GA_LABEL_INFO'));
+    }
+
+    public function testGaLabelInfoValue()
+    {
+        $this->assertTrue(GA_LABEL_INFO === 'label-info');
+    }
+
+    public function testGaLabelInverseExists()
+    {
+        $this->assertTrue(defined('GA_LABEL_INVERSE'));
+    }
+
+    public function testGaLabelInverseValue()
+    {
+        $this->assertTrue(GA_LABEL_INVERSE === 'label-inverse');
+    }
+
+    public function testGaBadgeExists()
+    {
+        $this->assertTrue(defined('GA_BADGE'));
+    }
+
+    public function testGaBadgeValue()
+    {
+        $this->assertTrue(GA_BADGE === 'badge');
+    }
+
+    public function testGaBadgeSuccessExists()
+    {
+        $this->assertTrue(defined('GA_BADGE_SUCCESS'));
+    }
+
+    public function testGaBadgeSuccessValue()
+    {
+        $this->assertTrue(GA_BADGE_SUCCESS === 'badge-success');
+    }
+
+    public function testGaBadgeWarningExists()
+    {
+        $this->assertTrue(defined('GA_BADGE_WARNING'));
+    }
+
+    public function testGaBadgeWarningValue()
+    {
+        $this->assertTrue(GA_BADGE_WARNING === 'badge-warning');
+    }
+
+    public function testGaBadgeImportantExists()
+    {
+        $this->assertTrue(defined('GA_BADGE_IMPORTANT'));
+    }
+
+    public function testGaBadgeImportantValue()
+    {
+        $this->assertTrue(GA_BADGE_IMPORTANT === 'badge-important');
+    }
+
+    public function testGaBadgeInfoExists()
+    {
+        $this->assertTrue(defined('GA_BADGE_INFO'));
+    }
+
+    public function testGaBadgeInfoValue()
+    {
+        $this->assertTrue(GA_BADGE_INFO === 'badge-info');
+    }
+
+    public function testGaBadgeInverseExists()
+    {
+        $this->assertTrue(defined('GA_BADGE_INVERSE'));
+    }
+
+    public function testGaBadgeInverseValue()
+    {
+        $this->assertTrue(GA_BADGE_INVERSE === 'badge-inverse');
+    }
+
+    public function testGaHeroUnitExists()
+    {
+        $this->assertTrue(defined('GA_HERO_UNIT'));
+    }
+
+    public function testGaHeroUnitValue()
+    {
+        $this->assertTrue(GA_HERO_UNIT === 'hero-unit');
+    }
+
+    public function testGaPageHeaderExists()
+    {
+        $this->assertTrue(defined('GA_PAGE_HEADER'));
+    }
+
+    public function testGaPageHeaderValue()
+    {
+        $this->assertTrue(GA_PAGE_HEADER === 'page-header');
+    }
+
+    public function testGaThumbnailsExists()
+    {
+        $this->assertTrue(defined('GA_THUMBNAILS'));
+    }
+
+    public function testGaThumbnailsValue()
+    {
+        $this->assertTrue(GA_THUMBNAILS === 'thumbnails');
+    }
+
+    public function testGaThumbnailExists()
+    {
+        $this->assertTrue(defined('GA_THUMBNAIL'));
+    }
+
+    public function testGaThumbnailValue()
+    {
+        $this->assertTrue(GA_THUMBNAIL === 'thumbnail');
+    }
+
+    public function testGaAlertExists()
+    {
+        $this->assertTrue(defined('GA_ALERT'));
+    }
+
+    public function testGaAlertValue()
+    {
+        $this->assertTrue(GA_ALERT === 'alert');
+    }
+
+    public function testGaCloseExists()
+    {
+        $this->assertTrue(defined('GA_CLOSE'));
+    }
+
+    public function testGaCloseValue()
+    {
+        $this->assertTrue(GA_CLOSE === 'close');
+    }
+
+    public function testGaAlertBlockExists()
+    {
+        $this->assertTrue(defined('GA_ALERT_BLOCK'));
+    }
+
+    public function testGaAlertBlockValue()
+    {
+        $this->assertTrue(GA_ALERT_BLOCK === 'alert-block');
+    }
+
+    public function testGaAlertErrorExists()
+    {
+        $this->assertTrue(defined('GA_ALERT_ERROR'));
+    }
+
+    public function testGaAlertErrorValue()
+    {
+        $this->assertTrue(GA_ALERT_ERROR === 'alert-error');
+    }
+
+    public function testGaAlertSuccessExists()
+    {
+        $this->assertTrue(defined('GA_ALERT_SUCCESS'));
+    }
+
+    public function testGaAlertSuccessValue()
+    {
+        $this->assertTrue(GA_ALERT_SUCCESS === 'alert-success');
+    }
+
+    public function testGaAlertInfoExists()
+    {
+        $this->assertTrue(defined('GA_ALERT_INFO'));
+    }
+
+    public function testGaAlertInfoValue()
+    {
+        $this->assertTrue(GA_ALERT_INFO === 'alert-info');
+    }
+
+    public function testGaProcessExists()
+    {
+        $this->assertTrue(defined('GA_PROGRESS'));
+    }
+
+    public function testGaProgressValue()
+    {
+        $this->assertTrue(GA_PROGRESS === 'progress');
+    }
+
+    public function testGaBarExists()
+    {
+        $this->assertTrue(defined('GA_BAR'));
+    }
+
+    public function testGaBarValue()
+    {
+        $this->assertTrue(GA_BAR === 'bar');
+    }
+
+    public function testGaBarSuccessExists()
+    {
+        $this->assertTrue(defined('GA_BAR_SUCCESS'));
+    }
+
+    public function testGaBarSuccessValue()
+    {
+        $this->assertTrue(GA_BAR_SUCCESS === 'bar-success');
+    }
+
+    public function testGaBarInfoExists()
+    {
+        $this->assertTrue(defined('GA_BAR_INFO'));
+    }
+
+    public function testGaBarInfoValue()
+    {
+        $this->assertTrue(GA_BAR_INFO === 'bar-info');
+    }
+
+    public function testGaBarWarningExists()
+    {
+        $this->assertTrue(defined('GA_BAR_WARNING'));
+    }
+
+    public function testGaBarWarningValue()
+    {
+        $this->assertTrue(GA_BAR_WARNING === 'bar-warning');
+    }
+
+    public function testGaBarDangerExists()
+    {
+        $this->assertTrue(defined('GA_BAR_DANGER'));
+    }
+
+    public function testGaBarDangerValue()
+    {
+        $this->assertTrue(GA_BAR_DANGER === 'bar-danger');
+    }
+
+    public function testGaProgressStripedExists()
+    {
+        $this->assertTrue(defined('GA_BADGE_IMPORTANT'));
+    }
+
+    public function testGaProgressStripedValue()
+    {
+        $this->assertTrue(GA_PROGRESS_STRIPED === 'progress-striped');
+    }
+
+    public function testGaMediaExists()
+    {
+        $this->assertTrue(defined('GA_MEDIA'));
+    }
+
+    public function testGaMediaValue()
+    {
+        $this->assertTrue(GA_MEDIA === 'media');
+    }
+
+    public function testGaMediaObjectExists()
+    {
+        $this->assertTrue(defined('GA_MEDIA_OBJECT'));
+    }
+
+    public function testGaMediaObjectValue()
+    {
+        $this->assertTrue(GA_MEDIA_OBJECT === 'media-object');
+    }
+
+    public function testGaMediaBodyExists()
+    {
+        $this->assertTrue(defined('GA_MEDIA_BODY'));
+    }
+
+    public function testGaMediaBodyValue()
+    {
+        $this->assertTrue(GA_MEDIA_BODY === 'media-body');
+    }
+
+    public function testGaMediaHeadingExists()
+    {
+        $this->assertTrue(defined('GA_MEDIA_HEADING'));
+    }
+
+    public function testGaMediaHeadingValue()
+    {
+        $this->assertTrue(GA_MEDIA_HEADING === 'media-heading');
+    }
+
+    public function testGaMediaListExists()
+    {
+        $this->assertTrue(defined('GA_MEDIA_LIST'));
+    }
+
+    public function testGaMediaListValue()
+    {
+        $this->assertTrue(GA_MEDIA_LIST === 'media-list');
+    }
+
+    public function testGaWellExists()
+    {
+        $this->assertTrue(defined('GA_WELL'));
+    }
+
+    public function testGaWellValue()
+    {
+        $this->assertTrue(GA_WELL === 'well');
+    }
+
+    public function testGaWellLargeExists()
+    {
+        $this->assertTrue(defined('GA_WELL_LARGE'));
+    }
+
+    public function testGaWellLargeValue()
+    {
+        $this->assertTrue(GA_WELL_LARGE === 'well-large');
+    }
+
+    public function testGaTablenavbarExists()
+    {
+        $this->assertTrue(defined('GA_TABLENAVBAR'));
+    }
+
+    public function testGaTablenavbarValue()
+    {
+        $this->assertTrue(GA_TABLENAVBAR === 'tablenavbar');
+    }
+
+    public function testGaTablenavbarDynamicContentExists()
+    {
+        $this->assertTrue(defined('GA_TABLENAVBAR_DYNAMIC_CONTENT'));
+    }
+
+    public function testGaTablenavbarDynamicContentValue()
+    {
+        $this->assertTrue(GA_TABLENAVBAR_DYNAMIC_CONTENT === 'tablenavbar-dynamic-content');
+    }
+
+    public function testGaTablenavbarSearchButtonExists()
+    {
+        $this->assertTrue(defined('GA_TABLENAVBAR_SEARCH_BUTTON'));
+    }
+
+    public function testGaTablenavbarSearchButtonValue()
+    {
+        $this->assertTrue(GA_TABLENAVBAR_SEARCH_BUTTON === 'tablenavbar-search-button');
+    }
+
+    public function testGaTablenavbarClearButtonExists()
+    {
+        $this->assertTrue(defined('GA_TABLENAVBAR_CLEAR_BUTTON'));
+    }
+
+    public function testGaTablenavbarClearButtonValue()
+    {
+        $this->assertTrue(GA_TABLENAVBAR_CLEAR_BUTTON === 'tablenavbar-clear-button');
+    }
 }
+
