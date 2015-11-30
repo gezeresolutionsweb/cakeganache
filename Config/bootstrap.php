@@ -69,6 +69,7 @@ define('GA_FORM_ACTIONS', 'form-actions');
 define('GA_BTN_GROUP', 'btn-group');
 define('GA_DROPDOWN_TOGGLE', 'dropdown-toggle');
 define('GA_DROPDOWN_MENU', 'dropdown-menu');
+define('GA_DROPDOWN_SUBMENU', 'dropdown-submenu');
 define('GA_CARET', 'caret');
 
 /**
@@ -106,6 +107,7 @@ define('GA_BTN_BLOCK', 'btn-block');
 define('GA_DISABLED', 'disabled');
 define('GA_ACTIVE', 'active');
 define('GA_INLINE', 'inline');
+define('GA_ICON_BAR', 'icon-bar');
 
 /**
  * Helper classes
@@ -151,6 +153,7 @@ define('GA_TEXT_SUCCESS', 'text-success');
 /**
  * Constant to define image styles
  */
+define('GA_IMG_RESPONSIVE', 'img-responsive'); // Bs3
 define('GA_IMG_ROUNDED', 'img-rounded');
 define('GA_IMG_CIRCLE', 'img-circle');
 define('GA_IMG_POLAROID', 'img-polaroid');
@@ -194,6 +197,7 @@ define('GA_NAVBAR_STATIC_TOP', 'navbar-static-top');
 define('GA_NAV_COLLAPSE', 'nav-collapse');
 define('GA_COLLAPSE', 'collapse');
 define('GA_NAVBAR_INVERSE', 'navbar-inverse');
+define('GA_BTN_NAVBAR', 'btn-navbar'); // Bs3
 
 /**
  * Breadcrumbs
@@ -232,6 +236,7 @@ define('GA_LABEL_INVERSE', 'label-inverse');
  * Badges
  */
 define('GA_BADGE', 'badge');
+define('GA_BADGE_DEFAULT', 'badge-default'); // Bs3
 define('GA_BADGE_SUCCESS', 'badge-success');
 define('GA_BADGE_WARNING', 'badge-warning');
 define('GA_BADGE_IMPORTANT', 'badge-important');
@@ -299,3 +304,10 @@ define('GA_TABLENAVBAR', 'tablenavbar');
 define('GA_TABLENAVBAR_DYNAMIC_CONTENT', 'tablenavbar-dynamic-content');
 define('GA_TABLENAVBAR_SEARCH_BUTTON', 'tablenavbar-search-button');
 define('GA_TABLENAVBAR_CLEAR_BUTTON', 'tablenavbar-clear-button');
+define('GA_TABLENAVBAR_ACTIONS', 'actions');
+
+/**
+ * Select picker
+ */
+define('GA_SELECTPICKER', 'selectpicker');
+define('GA_SHOW_TICK', 'show-tick');
