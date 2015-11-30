@@ -111,6 +111,20 @@ define('GA_HELP_BLOCK', GA_HELP . '-' . GA_BLOCK);
 define('GA_HELP_INLINE', GA_HELP . '-' . GA_INLINE);
 
 /**
+ * Constant to define a Bootstrap button
+ */
+define('GA_BTN' , 'btn');
+define('GA_BTN_DEFAULT', GA_BTN . '-' . GA_DEFAULT); // BS3
+define('GA_BTN_PRIMARY', GA_BTN . '-' . GA_PRIMARY);
+define('GA_BTN_INFO', GA_BTN . '-' . GA_INFO);
+define('GA_BTN_SUCCESS', GA_BTN . '-' . GA_SUCCESS);
+define('GA_BTN_WARNING', GA_BTN . '-' . GA_WARNING);
+define('GA_BTN_DANGER', GA_BTN . '-' . GA_DANGER);
+define('GA_BTN_INVERSE', GA_BTN . '-' . GA_INVERSE);
+define('GA_BTN_LINK', GA_BTN . '-' . GA_LINK);
+
+
+/**
  * Forms
  */
 define('GA_FORM', 'form');
@@ -170,18 +184,6 @@ define('GA_CONDENSED', 'condensed');
 define('GA_TABLE_CONDENSED', GA_TABLE . '-' . GA_CONDENSED);
 
 
-/**
- * Constant to define a Bootstrap button
- */
-define('GA_BTN' , 'btn');
-define('GA_BTN_DEFAULT', GA_BTN . '-' . GA_DEFAULT); // BS3
-define('GA_BTN_PRIMARY', GA_BTN . '-' . GA_PRIMARY);
-define('GA_BTN_INFO', GA_BTN . '-' . GA_INFO);
-define('GA_BTN_SUCCESS', GA_BTN . '-' . GA_SUCCESS);
-define('GA_BTN_WARNING', GA_BTN . '-' . GA_WARNING);
-define('GA_BTN_DANGER', GA_BTN . '-' . GA_DANGER);
-define('GA_BTN_INVERSE', GA_BTN . '-' . GA_INVERSE);
-define('GA_BTN_LINK', GA_BTN . '-' . GA_LINK);
 
 /**
  * Constants to define button size
