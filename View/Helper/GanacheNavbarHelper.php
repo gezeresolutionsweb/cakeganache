@@ -17,8 +17,8 @@
 App::import('Helper', 'Html') ;
 App::import('Routing', 'Router') ;
 
-class GanacheNavbarHelper extends AppHelper {
-
+class GanacheNavbarHelper extends AppHelper
+{
     public $helpers = array('Html') ;
     
     private $options = array() ;
@@ -173,15 +173,15 @@ class GanacheNavbarHelper extends AppHelper {
      *
     **/
     public function searchForm ($options = array()) {
-        App::import('Helper', 'BootstrapForm') ;
-        $bootFormHelper = new BootstrapFormHelper($this->_View);
+        App::import('Helper', 'CakeGanacge.GanacheForm') ;
+        $bootFormHelper = new GanacheFormHelper($this->_View);
         $formOptions = $this->_extractOption('form', $options, array()) ;
         unset($formOptions['form']) ;
         $pull = $this->_extractOption('pull', $options, 'left') ;
         unset($options['pull']) ;
         $model = $this->_extractOption('model', $options, null) ;
         unset($options['model']) ;
-        $formOptions = $this->addClass($formOptions, 'navbar-form pull-'.$pull) ;
+        $formOptions = $this->addClass($formOptions, GA_NAVBAR_FORM . ' pull-'.$pull) ;
         $this->block($bootFormHelper->searchForm($model, $formOptions), array('list' => false)) ;
     }
     
@@ -261,7 +261,7 @@ class GanacheNavbarHelper extends AppHelper {
         $class = '' ;
         switch ($nav['type']) {
         case 'text':
-            $nav['options'] = $this->addClass($nav['options'], 'navbar-text') ;
+            $nav['options'] = $this->addClass($nav['options'], GA_NAVBAR_TEXT) ;
             $inner = $this->Html->tag($nav['wrap'], $nav['text'], $nav['options']) ;
         break ;
         case 'link':
@@ -282,7 +282,7 @@ class GanacheNavbarHelper extends AppHelper {
             $inner = $nav['text'] ;
             break ;
         case 'divider':
-            $class = 'divider' ;
+            $class = GA_DIVIDER;
         break ;
         }
         return array(
@@ -309,13 +309,12 @@ class GanacheNavbarHelper extends AppHelper {
     **/
     private function compileMenu ($menu) {
         if ($menu['type'] === 'menu') {
-            $button = $this->Html->link($menu['text'].'<b class="caret"></b>', $menu['url'] ? $menu['url'] : '#', array(
-                'class' => 'dropdown-toggle',
+            $button = $this->Html->link($menu['text'].'<b class="' . GS_CARET . '"></b>', $menu['url'] ? $menu['url'] : '#', array(
+                'class' => GA_DROPDOWN_TOGGLE,
                 'data-toggle' => 'dropdown',
                 'escape' => false
             )) ;
-        }
-        else {
+        } else {
             $button = $this->Html->link($menu['text'], $menu['url'] ? $menu['url'] : '#', array(
                 'tabindex' => -1
             )) ;
@@ -326,14 +325,14 @@ class GanacheNavbarHelper extends AppHelper {
             $res = $this->compileNavBlock($m) ;
             if ($res['active']) {
                 $active = true ;
-                $res = $this->addClass($res, 'active') ;
+                $res = $this->addClass($res, GA_ACTIVE) ;
             }
             $link[] = $this->Html->tag('li', $res['inner'], $res['class'] ? array('class' => $res['class']) : array()) ;
         }
         $list = $this->Html->tag('ul', implode('', $link), array(
-            'class' => 'dropdown-menu'
+            'class' => GA_DROPDOWN_MENU
         )) ;
-        $class = ($menu['type'] === 'menu') ? 'dropdown' : 'dropdown-submenu' ;
+        $class = ($menu['type'] === 'menu') ? GA_DROPDOWN : GA_DROPDOWN_SUBMENU;
         if ($menu['pull'] !== 'auto') {
             $class .= ' pull-'.$menu['pull'] ;
         }
@@ -371,19 +370,19 @@ class GanacheNavbarHelper extends AppHelper {
             }
             if (!$ul && $nav['pull'] === 'auto') {
                 $ul = 'left' ;
-                $htmls[] = '<ul class="nav">' ;
+                $htmls[] = '<ul class="' . GA_NAV . '">' ;
             }
             if (!$ul && $nav['pull'] !== 'auto') {
                 $ul = $nav['pull'] ;
-                $htmls[] = '<ul class="nav pull-'.$nav['pull'].'">' ;
+                $htmls[] = '<ul class="' . GA_NAV . ' pull-'.$nav['pull'].'">' ;
             }
             $res = $this->compileNavBlock($nav) ;
             $options = array('class' => $res['class']) ;
             if ($res['active']) {
-                $options = $this->addClass($options, 'active') ;
+                $options = $this->addClass($options, GA_ACTIVE) ;
             }
             if ($res['disabled']) {
-                $options = $this->addClass($options, 'disabled') ;
+                $options = $this->addClass($options, GA_DISABLED) ;
             }
             $htmls[] = $this->Html->tag('li', $res['inner'], $options) ;
         }
@@ -393,40 +392,39 @@ class GanacheNavbarHelper extends AppHelper {
         }
         
         /** Generate options for outer div. **/
-        $this->options = $this->addClass($this->options, 'navbar') ;
+        $this->options = $this->addClass($this->options, GA_NAVBAR) ;
         if ($this->fixed !== false) {
             $this->options = $this->addClass($this->options, 'navbar-fixed-'.$this->fixed) ;
-        }
-        else if ($this->static !== false) {
-            $this->options = $this->addClass($this->options, 'navbar-static-top') ;
+        } else if ($this->static !== false) {
+            $this->options = $this->addClass($this->options, GA_NAVBAR_STATIC_TOP) ;
         }
         if ($this->inverse !== false) {
-            $this->options = $this->addClass($this->options , 'navbar-inverse') ;
+            $this->options = $this->addClass($this->options , GA_NAVBAR_INVERSE) ;
         }
         
         $inner = '' ;
         
         $brand = $this->brand !== null ? 
-            $this->Html->link($this->brand['text'], $this->brand['url'], array('class' => 'brand')) : null ;
+            $this->Html->link($this->brand['text'], $this->brand['url'], array('class' => GA_BRAND)) : null ;
         $inner = implode('', $htmls) ;
         
         if ($this->responsive) {
             $button = $this->Html->tag('a', 
                 implode('', array(
-                    $this->Html->tag('span', '', array('class' => 'icon-bar')),
-                    $this->Html->tag('span', '', array('class' => 'icon-bar')),
-                    $this->Html->tag('span', '', array('class' => 'icon-bar'))
+                    $this->Html->tag('span', '', array('class' => GA_ICON_BAR)),
+                    $this->Html->tag('span', '', array('class' => GA_ICON_BAR)),
+                    $this->Html->tag('span', '', array('class' => GA_ICON_BAR))
                 )),
                 array(
-                    'class' => 'btn btn-navbar',
+                    'class' => GA_BTN . ' ' . GA_BTN_NAVBAR,
                     'data-toggle' => 'collapse',
-                    'data-target' => '.nav-collapse'
+                    'data-target' => '.' . GA_NAV_COLLAPSE
                 )
             ) ;
             if ($this->brand !== null && $this->brand['collapse']) {
                 $inner = $brand.$inner ;
             }
-            $inner = $this->Html->tag('div', $inner, array('class' => 'nav-collapse collapse')) ;
+            $inner = $this->Html->tag('div', $inner, array('class' => GA_NAV_COLLAPSE . ' ' . GA_COLLAPSE)) ;
             if ($this->brand !== null && !$this->brand['collapse']) {
                 $inner = $brand.$inner ;
             }
@@ -437,10 +435,10 @@ class GanacheNavbarHelper extends AppHelper {
         }
         
         /** Add container. **/
-        $inner = $this->Html->tag('div', $inner, array('class' => 'container')) ;
+        $inner = $this->Html->tag('div', $inner, array('class' => GA_CONTAINER)) ;
         
         /** Add inner. **/
-        $inner = $this->Html->tag('div', $inner, array('class' => 'navbar-inner')) ;
+        $inner = $this->Html->tag('div', $inner, array('class' => GA_NAVBAR_INNER)) ;
                 
         /** Add and return outer div. **/
         return $this->Html->tag('div', $inner, $this->options) ;
