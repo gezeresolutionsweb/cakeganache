@@ -178,7 +178,7 @@ define('GA_TABLE', 'table');
 define('GA_TABLE_STRIPED', GA_TABLE . '-' . GA_STRIPED);
 define('GA_BORDERED', 'bordered');
 define('GA_TABLE_BORDERED', GA_TABLE . '-' . GA_BORDERED);
-define('GA_TABLE_HOVER', 'hover');
+define('GA_HOVER', 'hover');
 define('GA_TABLE_HOVER', GA_TABLE . '-' . GA_HOVER);
 define('GA_CONDENSED', 'condensed');
 define('GA_TABLE_CONDENSED', GA_TABLE . '-' . GA_CONDENSED);
