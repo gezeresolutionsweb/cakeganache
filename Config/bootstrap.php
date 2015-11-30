@@ -131,7 +131,7 @@ define('GA_CONTROLS', 'controls');
 define('GA_CONTROLS_ROW', GA_CONTROLS . '-' . GA_ROW);
 define('GA_INPUT', 'input');
 define('GA_PREPEND', 'prepend');
-define('GA_APPENED', 'append');
+define('GA_APPEND', 'append');
 define('GA_INPUT_PREPEND', GA_INPUT . '-' . GA_PREPEND);
 define('GA_INPUT_APPEND', GA_INPUT . '-' . GA_APPEND);
 define('GA_ADD_ON', 'add-on');
