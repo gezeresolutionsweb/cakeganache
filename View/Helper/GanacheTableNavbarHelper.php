@@ -82,7 +82,7 @@ class GanacheTableNavbarHelper extends AppHelper {
         $responsive = $this->_extractOption( 'responsive', $options, false );
 
         $formOptions = array(
-            'class' => 'form-inline'
+            'class' => GA_FORM_INLINE
         );
 
         if( $search === true ) {
@@ -123,7 +123,7 @@ class GanacheTableNavbarHelper extends AppHelper {
                 $form .= $this->Form->button( $this->Html->icon( 'filter' ), array(
                     'bootstrap-type' => 'primary',
                     'title' => $buttonFilterTitle,
-                    'data-toggle' => 'tablenavbar-search-button'
+                    'data-toggle' => GA_TABLENAVBAR_SEARCH_BUTTON
                 ) );
             }
 
@@ -131,7 +131,7 @@ class GanacheTableNavbarHelper extends AppHelper {
                 $form .= PHP_EOL;
                 $form .= $this->Form->button( $this->Html->icon( 'times' ), array(
                     'title' => $buttonClearFiltersTitle,
-                    'data-toggle' => 'tablenavbar-clear-button'
+                    'data-toggle' => GA_TABLENAVBAR_CLEAR_BUTTON
                 ) );
             }
 
@@ -148,15 +148,15 @@ class GanacheTableNavbarHelper extends AppHelper {
             foreach( $actions as $action ) {
                 $allAction .= $action;
             }
-            $buttonToolbar = $this->Html->tag( 'div', $allAction, array( 'class' => 'btn-toolbar' ) );
-            $actionContainer = $this->Html->tag( 'div', $buttonToolbar, array( 'class' => 'pull-right actions' ) );
+            $buttonToolbar = $this->Html->tag( 'div', $allAction, array( 'class' => GA_BTN_TOOLBAR ) );
+            $actionContainer = $this->Html->tag( 'div', $buttonToolbar, array( 'class' => GA_PULL_RIGHT . ' ' . GA_TABLENAVBAR_ACTIONS ) );
         }
 
         $inner = $actionContainer . $form;
 
-        $inner = $this->Html->tag( 'div', $inner, array( 'class' => 'navbar-inner' ) );
+        $inner = $this->Html->tag( 'div', $inner, array( 'class' => GA_NAVBAR_INNER ) );
 
-        return $this->Html->tag( 'div', $inner, array( 'class' => 'navbar table-navbar', 'data-provide' => 'tablenavbar' ) );
+        return $this->Html->tag( 'div', $inner, array( 'class' => GA_NAVBAR . ' ' . GA_TABLENAVBAR, 'data-provide' => GA_TABLENAVBAR ) );
     }
 
     private function _generateFilterInput($fieldname, $options = array()) {
@@ -168,8 +168,8 @@ class GanacheTableNavbarHelper extends AppHelper {
         $options = array_merge( $defaultOptions, $options );
 
 
-        if(!empty($options['type']) && $options['type'] === 'selectpicker') {
-            $options += array('class' => 'selectpicker show-tick');
+        if(!empty($options['type']) && $options['type'] === GA_SELECTPICKER) {
+            $options += array('class' => GA_SELECTPICKER . ' ' . GA_SHOW_TICK);
         }
 
         return $this->Form->input( $fieldname, $options );
