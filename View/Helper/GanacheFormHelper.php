@@ -521,15 +521,15 @@ class GanacheFormHelper extends FormHelper {
         // Verify everything is there
         
         if (!isset($args['fieldname']) && empty($args['fieldname'])) {
-            throw new InvalidArgumentException(__d('cakephp_bootstrap_helpers', 'Fieldname argument is mandatory !'));
+            throw new InvalidArgumentException(__d('cakeganache', 'Fieldname argument is mandatory !'));
         }
         
         if (!isset($args['label']) && empty($args['label'])) {
-            throw new InvalidArgumentException(__d('cakephp_bootstrap_helpers', 'Label argument is mandatory !'));
+            throw new InvalidArgumentException(__d('cakeganache', 'Label argument is mandatory !'));
         }
         
         if (!isset($args['adjustedFieldname']) && empty($args['adjustedFieldname'])) {
-            throw new InvalidArgumentException(__d('cakephp_bootstrap_helpers', 'Adjusted fieldname argument is mandatory !'));
+            throw new InvalidArgumentException(__d('cakeganache', 'Adjusted fieldname argument is mandatory !'));
         }
         $helptext = '';
         
@@ -559,7 +559,7 @@ class GanacheFormHelper extends FormHelper {
                 'div' => false,
                 'type' => $type,
                 'label' => false,
-                'placeholder' => __d('cakephp_bootstrap_helpers', 'Adjusted value') ,
+                'placeholder' => __d('cakeganache', 'Adjusted value') ,
                 'between' => '',
                 'after' => '</div></div>'
             )) . '</div>' . $helptext
