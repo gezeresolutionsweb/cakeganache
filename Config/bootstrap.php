@@ -297,3 +297,5 @@ define('GA_WELL_LARGE', 'well-large');
  */
 define('GA_TABLENAVBAR', 'tablenavbar');
 define('GA_TABLENAVBAR_DYNAMIC_CONTENT', 'tablenavbar-dynamic-content');
+define('GA_TABLENAVBAR_SEARCH_BUTTON', 'tablenavbar-search-button');
+define('GA_TABLENAVBAR_CLEAR_BUTTON', 'tablenavbar-clear-button');
