@@ -55,8 +55,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      * option found is equal to $default or if otion is not in $avail.
      * 
      **/
-    private function _extractType ($options, $key = 'type', $default = 'info', 
-        $avail = array('info', 'success', 'warning', 'error')) {
+    private function _extractType ($options, $key = 'type', $default = GA_INFO, $avail = array(GA_INFO, GA_SUCCESS, GA_WARNING, GA_ERROR)) {
             $type = $this->_extractOption($key, $options, $default) ;
             if ($type == $default) {
                 return null ;
@@ -128,11 +127,11 @@ class GanacheHtmlHelper extends HtmlHelper {
      *
      **/
     public function label ($text, $options = array()) {
-        $type = $this->_extractType($options, 'type', $default = 'default',
-            array('default', 'success', 'warning', 'info', 'important', 'inverse')) ;
+        $type = $this->_extractType($options, 'type', $default = GA_BTN_DEFAULT, array(GA_BTN_DEFAULT, GA_BTN_SUCCESS, GA_BTN_WARNING, GA_BTN_INFO, GA_BTN_IMPORTANT, GA_BTN_INVERSE));
         unset ($options['type']) ;
-        $options = $this->addClass($options, 'label') ;
-        if ($type !== 'default') {
+        $options = $this->addClass($options, 'label');
+
+        if ($type !== GA_BTN_DEFAULT) {
             $options = $this->addClass($options, 'label-'.$type) ;
         }
         return $this->tag('span', $text, $options) ;
@@ -150,11 +149,11 @@ class GanacheHtmlHelper extends HtmlHelper {
      *
      **/
     public function badge ($text, $options = array()) {
-        $type = $this->_extractType($options, 'type', $default = 'default',
-            array('default', 'success', 'warning', 'info', 'important', 'inverse')) ;
+        $type = $this->_extractType($options, 'type', $default = GA_BADGE_DEFAULT, array(GA_BADGE_DEFAULT, GA_BADGE_SUCCESS, GA_BADGE_WARNING, GA_BADGE_INFO, GA_BADGE_IMPORTANT, GA_BADGE_INVERSE)) ;
         unset ($options['type']) ;
         $options = $this->addClass($options, 'badge') ;
-        if ($type !== 'default') {
+
+        if ($type !== GA_BADGE_DEFAULT) {
             $options = $this->addClass($options, 'badge-'.$type) ;
         }
         return $this->tag('span', $text, $options) ;
@@ -171,8 +170,8 @@ class GanacheHtmlHelper extends HtmlHelper {
      * 	- Separator
      **/
     public function getCrumbList($options = array(), $startText = null) {
-        $options['separator'] = '<span class="divider">/</span>' ;
-        $options = $this->addClass($options, 'breadcrumb') ;
+        $options['separator'] = '<span class="' . GA_DIVIDER . '">/</span>' ;
+        $options = $this->addClass($options, GA_BREADCRUMB) ;
         return parent::getCrumbList ($options, $startText) ;
     }
 
@@ -190,14 +189,14 @@ class GanacheHtmlHelper extends HtmlHelper {
      *     
      **/
     public function alert ($text, $options = array()) {
-        $button = '<button class="close" data-dismiss="alert">&times;</button>' ;
-        $type = $this->_extractType($options, 'type', 'warning') ;
+        $button = '<button class="' . GA_CLOSE . '" data-dismiss="alert">&times;</button>' ;
+        $type = $this->_extractType($options, 'type', GA_WARNING) ;
         unset($options['type']) ;
         $block = $this->_extractOption('block', $options, false) ;
         unset($options['block']) ;
-        $options = $this->addClass($options, 'alert') ;
+        $options = $this->addClass($options, GA_ALERT) ;
         if ($block) {
-            $options = $this->addClass($options, 'alert-block') ;
+            $options = $this->addClass($options, GA_ALERT_BLOCK) ;
         }
         if ($type) {
             $options = $this->addClass($options, 'alert-'.$type) ;
@@ -229,23 +228,23 @@ class GanacheHtmlHelper extends HtmlHelper {
         $bars = '' ;
         if (is_array($widths)) {
             foreach ($widths as $w) {
-                $class = 'bar' ;
-                $type = $this->_extractType($w, 'type', 'info', array('info', 'success', 'warning', 'danger')) ;
+                $class = GA_BAR;
+                $type = $this->_extractType($w, 'type', GA_INFO, array(GA_INFO, GA_SUCCESS, GA_WARNING, GA_DANGER)) ;
                 if ($type) {
                     $class .= ' bar-'.$type ;
                 }
                 $bars .= $this->div($class, '', array('style' => 'width: '.$w['width'].'%;')) ;
             }
-        }
-        else {
+        } else {
             $bars = $this->div('bar', '', array('style' => 'width: '.$widths.'%;')) ;
         }
-        $options = $this->addClass($options, 'progress') ;
+        $options = $this->addClass($options, GA_PROGRESS);
+
         if ($active) {
-            $options = $this->addClass($options, 'active') ;
+            $options = $this->addClass($options, GA_ACTIVE) ;
         }
         if ($striped) {
-            $options = $this->addClass($options, 'progress-striped') ;
+            $options = $this->addClass($options, GA_PROGRESS_STRIPED) ;
         }
         $classes = $options['class'];
         unset($options['class']) ;
@@ -253,10 +252,10 @@ class GanacheHtmlHelper extends HtmlHelper {
     }
 
     public function closeIcon( $asLink = false ) {
-        $button = '<button class="close">&times;</button>';
+        $button = '<button class="'. GA_CLOSE . '">&times;</button>';
         if( $asLink === true ) {
             // iOS devices require an href="#" for click events if you would rather use an anchor. @see http://getbootstrap.com/2.3.2/components.html#misc
-            $button = '<a class="close" href="#">&times;</a>';
+            $button = '<a class="' . GA_CLOSE . '" href="#">&times;</a>';
         }
         return $button;
     }
@@ -509,15 +508,17 @@ class GanacheHtmlHelper extends HtmlHelper {
      */
     public function image($path, $options = array()) {
         if(isset($options['class'])){
-            $options['class'] = 'img-responsive '.$options['class'];
+            $options['class'] = GA_IMG_RESPONSIVE . $options['class'];
         }else{
-            $options['class'] = 'img-responsive';
+            $options['class'] = GA_IMG_RESPONSIVE;
         }
         return parent::image($path, $options);
     }
 
 
     /**
+     * IMPORTANT: Bootstrap 3 related function. Not use right now.
+     *
      * Create a <div class="col"> element.
      * 
      * Differents layouts with options.
@@ -600,6 +601,8 @@ class GanacheHtmlHelper extends HtmlHelper {
         return $out;
     }
     /**
+     * IMPORTANT: Bootstrap 3 related function. Not use right now.
+     *
      * Complementary function with BsHelper::col()
      *
      * Add the correct class for the option in parameter
