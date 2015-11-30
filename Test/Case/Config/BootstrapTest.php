@@ -15,6 +15,16 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_CONTAINER === 'container');
     }
 
+    public function testGaFluidExists()
+    {
+        $this->assertTrue(defined('GA_FLUID'));
+    }
+
+    public function testGaFluidValue()
+    {
+        $this->assertTrue(GA_FLUID === 'fluid');
+    }
+
     public function testGaContainerFluidExists()
     {
         $this->assertTrue(defined('GA_CONTAINER_FLUID'));
@@ -43,6 +53,16 @@ class BootstrapTest extends CakeTestCase
     public function testGaRowFluidValue()
     {
         $this->assertTrue(GA_ROW_FLUID === 'row-fluid');
+    }
+
+    public function testGaSpanExists()
+    {
+        $this->assertTrue(defined('GA_SPAN'));
+    }
+
+    public function testGaSpanValue()
+    {
+        $this->assertTrue(GA_SPAN === 'span');
     }
 
     public function testGaSpan1Exists()
@@ -163,6 +183,66 @@ class BootstrapTest extends CakeTestCase
     public function testGaSpan12Value()
     {
         $this->assertTrue(GA_SPAN12 === 'span12');
+    }
+
+
+    public function testGaBlockExists()
+    {
+        $this->assertTrue(defined('GA_BLOCK'));
+    }
+
+    public function testGaBlockValue()
+    {
+        $this->assertTrue(GA_BLOCK === 'block');
+    }
+
+    public function testGaInlineExists()
+    {
+        $this->assertTrue(defined('GA_INLINE'));
+    }
+
+    public function testGaInlineValue()
+    {
+        $this->assertTrue(GA_INLINE === 'inline');
+    }
+
+    public function testGaHorizontalExists()
+    {
+        $this->assertTrue(defined('GA_HORIZONTAL'));
+    }
+
+    public function testGaHorizontalValue()
+    {
+        $this->assertTrue(GA_HORIZONTAL === 'horizontal');
+    }
+    public function testGaFixedExists()
+    {
+        $this->assertTrue(defined('GA_FIXED'));
+    }
+
+    public function testGaFixedValue()
+    {
+        $this->assertTrue(GA_FIXED === 'fixed');
+    }
+
+    public function testGaStaticExists()
+    {
+        $this->assertTrue(defined('GA_STATIC'));
+    }
+
+    public function testGaStaticValue()
+    {
+        $this->assertTrue(GA_STATIC === 'static');
+    }
+
+    public function testGaDynamicExists()
+    {
+        $this->assertTrue(defined('GA_DYNAMIC'));
+    }
+
+    public function testGaDynamicValue()
+    {
+        $this->assertTrue(GA_DYNAMIC === 'dynamic');
     }
 
     public function testGaDlHorizontalExists()
@@ -655,16 +735,6 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_ACTIVE === 'active');
     }
 
-    public function testGaInlineExists()
-    {
-        $this->assertTrue(defined('GA_INLINE'));
-    }
-
-    public function testGaInlineValue()
-    {
-        $this->assertTrue(GA_INLINE === 'inline');
-    }
-
     public function testGaPullLeftExists()
     {
         $this->assertTrue(defined('GA_PULL_LEFT'));
@@ -773,36 +843,6 @@ class BootstrapTest extends CakeTestCase
     public function testGaLinkValue()
     {
         $this->assertTrue(GA_LINK === 'link');
-    }
-
-    public function testGaXsExists()
-    {
-        $this->assertTrue(defined('GA_XS'));
-    }
-
-    public function testGaXsValue()
-    {
-        $this->assertTrue(GA_XS === 'mini');
-    }
-
-    public function testGaSExists()
-    {
-        $this->assertTrue(defined('GA_S'));
-    }
-
-    public function testGaSValue()
-    {
-        $this->assertTrue(GA_S === 'small');
-    }
-
-    public function testGaLExists()
-    {
-        $this->assertTrue(defined('GA_L'));
-    }
-
-    public function testGaLValue()
-    {
-        $this->assertTrue(GA_L === 'large');
     }
 
     public function testGaTextLeftExists()
@@ -1685,24 +1725,24 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_TABLENAVBAR_DYNAMIC_CONTENT === 'tablenavbar-dynamic-content');
     }
 
-    public function testGaTablenavbarSearchButtonExists()
+    public function testGaTablenavbarSearchBtnExists()
     {
-        $this->assertTrue(defined('GA_TABLENAVBAR_SEARCH_BUTTON'));
+        $this->assertTrue(defined('GA_TABLENAVBAR_SEARCH_BTN'));
     }
 
-    public function testGaTablenavbarSearchButtonValue()
+    public function testGaTablenavbarSearchBtnValue()
     {
-        $this->assertTrue(GA_TABLENAVBAR_SEARCH_BUTTON === 'tablenavbar-search-button');
+        $this->assertTrue(GA_TABLENAVBAR_SEARCH_BTN === 'tablenavbar-search-btn');
     }
 
-    public function testGaTablenavbarClearButtonExists()
+    public function testGaTablenavbarClearBtnExists()
     {
-        $this->assertTrue(defined('GA_TABLENAVBAR_CLEAR_BUTTON'));
+        $this->assertTrue(defined('GA_TABLENAVBAR_CLEAR_BTN'));
     }
 
-    public function testGaTablenavbarClearButtonValue()
+    public function testGaTablenavbarClearBtnValue()
     {
-        $this->assertTrue(GA_TABLENAVBAR_CLEAR_BUTTON === 'tablenavbar-clear-button');
+        $this->assertTrue(GA_TABLENAVBAR_CLEAR_BTN === 'tablenavbar-clear-btn');
     }
 }
 
