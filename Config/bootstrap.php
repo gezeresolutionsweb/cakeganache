@@ -336,7 +336,6 @@ define('GA_THUMBNAIL', 'thumbnail');
  */
 define('GA_ALERT', 'alert');
 define('GA_CLOSE', 'close');
-define('GA_ALERT', 'alert');
 define('GA_ALERT_BLOCK', GA_ALERT . '-' . GA_BLOCK);
 define('GA_ALERT_ERROR', GA_ALERT . '-' . GA_ERROR);
 define('GA_ALERT_SUCCESS', GA_ALERT . '-' . GA_SUCCESS);
