@@ -22,8 +22,21 @@ class GanacheFormHelper extends FormHelper {
     public $inline = false;
     public $search = false;
     
-    private $buttonTypes = array('primary', 'info', 'success', 'warning', 'danger', 'inverse', 'link') ;
-    private $buttonSizes = array('mini', 'small', 'large') ;
+    private $buttonTypes = array(
+        GA_BTN_PRIMARY,
+        GA_BTN_INFO,
+        GA_BTN_SUCCESS,
+        GA_BTN_WARNING,
+        GA_BTN_DANGER,
+        GA_BTN_INVERSE,
+        GA_BTN_LINK
+    );
+
+    private $buttonSizes = array(
+        GA_BTN_MINI,
+        GA_BTN_SMALL,
+        GA_BTN_LARGE
+    );
     
     /**
      * 
@@ -35,7 +48,7 @@ class GanacheFormHelper extends FormHelper {
      * 
     **/
     private function addButtonClasses ($options) {
-        $options = $this->addClass($options, 'btn') ;
+        $options = $this->addClass($options, GA_BTN);
         foreach ($this->buttonTypes as $type) {
             if (isset($options['bootstrap-type']) && $options['bootstrap-type'] == $type) {
                 $options = $this->addClass($options, 'btn-'.$type) ;
@@ -79,21 +92,20 @@ class GanacheFormHelper extends FormHelper {
         $this->inline = $this->_extractOption('inline', $options, false) ;
         unset($options['inline']) ;
         if( $this->navbar ) {
-            $options = $this->addClass( $options, 'navbar-form' );
-        }
-        else if ($this->horizontal) {
-			$options = $this->addClass($options, 'form-horizontal') ;
-		}
-        else if ($this->inline) {
-            $options = $this->addClass($options, 'form-inline') ;
-        }
-        if ($this->search) {
-            $options = $this->addClass($options, 'form-search') ;
+            $options = $this->addClass($options, GA_NAVBAR_FORM);
+        } elseif ($this->horizontal) {
+			$options = $this->addClass($options, GA_FORM_HORIZONTAL);
+		} elseif ($this->inline) {
+            $options = $this->addClass($options, GA_FORM_INLINE);
         }
 
-        $options[ 'inputDefaults' ] = $this->_extractOption( 'inputDefaults', $options, array(
+        if ($this->search) {
+            $options = $this->addClass($options, GA_FORM_SEARCH);
+        }
+
+        $options['inputDefaults'] = $this->_extractOption( 'inputDefaults', $options, array(
             'div' => ( $this->inline || $this->navbar ) ? false : array(
-                'class' => 'control-group'
+                'class' => GA_CONTROL_GROUP
             )
         ) );
 
@@ -117,24 +129,22 @@ class GanacheFormHelper extends FormHelper {
         $this->setEntity($field);
         $optField = $this->_magicOptions(array()) ;
         $options['wrap'] = $this->_extractOption('wrap', $options, 'span') ;
-        $errorClass = 'help-block' ;
+        $errorClass = GA_HELP_BLOCK;
         if ($this->horizontal && $optField['type'] != 'checkbox') {
-            $errorClass = 'help-inline' ;
+            $errorClass = GA_HELP_INLINE;
         }
         $options = $this->addClass($options, $errorClass) ;
         return parent::error($field, $text, $options) ;
     }
     
     /**
-     * 
      * Create & return a label message (Twitter Boostrap like).
-     * 
-    **/
+     */
     public function label($fieldName = null, $text = null, $options = array()) {
         $this->setEntity($fieldName);
         $optField = $this->_magicOptions(array()) ;
         if ($optField['type'] != 'checkbox') {
-            $options = $this->addClass($options, 'control-label') ;
+            $options = $this->addClass($options, GA_CONTROL_LABEL);
         }
         return parent::label($fieldName, $text, $options) ;
     }
@@ -150,8 +160,8 @@ class GanacheFormHelper extends FormHelper {
      * 	- append: Same as prepend except it add elements after input
      *        
     **/
-    public function input($fieldName, $options = array()) {
-    
+    public function input($fieldName, $options = array())
+    {
         $prepend = $this->_extractOption('prepend', $options, null) ;
         unset ($options['prepend']) ;
         $append = $this->_extractOption('append', $options, null) ;
@@ -168,7 +178,7 @@ class GanacheFormHelper extends FormHelper {
         $beforeClass = '' ;
                 
         if ($options['type'] == 'checkbox') {
-            $labelStart = '<label class="checkbox">';
+            $labelStart = '<label class="' . GA_CHECKBOX . '">';
             $labelEnd = '</label>';
 
             if( $label === false ) {
@@ -176,29 +186,26 @@ class GanacheFormHelper extends FormHelper {
                 $labelEnd = '';
             }
 
-            $before = ($this->horizontal ? '<div class="controls">' : '') . $labelStart . $before ;
+            $before = ($this->horizontal ? '<div class="' . GA_CONTROLS . '">' : '') . $labelStart . $before ;
             $between = $between . $labelEnd;
             $options['format'] = array('before', 'input', 'label', 'between', 'error', 'after') ;
             $after = $after.($this->horizontal ? '</div>' : '') ;
-        }
-        else if ($options['type'] == 'radio') {
+        } elseif ($options['type'] == 'radio') {
             $options['legend'] = false ;
-            $before = (($label!=false)?$this->label($fieldName):'')
-                .($this->horizontal ? '<div class="controls">' : '').'<label class="radio">'.$before ;
-            $between = $between.'</label>' ;
+            $before = (($label!=false)?$this->label($fieldName):'') . ($this->horizontal ? '<div class="' . GA_CONTROLS . '">' : '') . '<label class="' . GA_RADIO . '">' . $before;
+            $between = $between . '</label>' ;
             $options['format'] = array('before', 'input', 'label', 'between', 'error', 'after') ;
             $after = $after.($this->horizontal ? '</div>' : '') ;
-        }
-        else if ($this->horizontal) {
-            $beforeClass .= ' controls' ;
-        }
-        else if ($this->inline && !$this->search && !$label) {
+        } elseif ($this->horizontal) {
+            $beforeClass .= ' ' . GA_CONTROLS;
+        } elseif($this->inline && !$this->search && !$label) {
             $options['label'] = false ;
         }
+
         if ($prepend) {
-            $beforeClass .= ' input-prepend' ;
+            $beforeClass .= ' ' . GA_INPUT_PREPEND;
             if (is_string($prepend)) {
-                $before .= '<span class="add-on">'.$prepend.'</span>' ;
+                $before .= '<span class="' . GA_ADD_ON . '">' . $prepend.'</span>';
             }
             if (is_array($prepend)) {
                 foreach ($prepend as $pre) {
@@ -207,13 +214,13 @@ class GanacheFormHelper extends FormHelper {
             }
         }
         if ($append) {
-            $beforeClass .= ' input-append' ;
+            $beforeClass .= ' ' . GA_INPUT_APPEND;
             if (is_string($append)) {
-                $between = '<span class="add-on">'.$append.'</span>'.$between ;
+                $between = '<span class="' . GA_ADD_ON . '">' . $append . '</span>' . $between;
             }
             if (is_array($append)) {
                 foreach ($append as $apd) {
-                    $between = $apd.$between ;
+                    $between = $apd . $between ;
                 }
             }
         }
@@ -258,9 +265,9 @@ class GanacheFormHelper extends FormHelper {
     public function buttonGroup ($buttons, $options = array()) {
         $vertical = $this->_extractOption('vertical', $options, false) ;
         unset($options['vertical']) ;
-        $options = $this->addClass($options, 'btn-group') ;
+        $options = $this->addClass($options, GA_BTN_GORUP) ;
         if ($vertical) {
-            $options = $this->addClass($options, 'btn-group-vertical') ;
+            $options = $this->addClass($options, GA_BTN_GROUP_VERTICAL) ;
         }
         return $this->Html->tag('div', implode('', $buttons), $options) ;
     }
@@ -274,7 +281,7 @@ class GanacheFormHelper extends FormHelper {
      * 
     **/
     public function buttonToolbar ($buttonGroups, $options = array()) {
-        $options = $this->addClass($options, 'btn-toolbar') ;
+        $options = $this->addClass($options, GA_BTN_TOOLBAR);
         return $this->Html->tag('div', implode('', $buttonGroups), $options) ;
     }
     
@@ -292,19 +299,19 @@ class GanacheFormHelper extends FormHelper {
         unset( $options[ 'wrap' ] );
 
         $options['type'] = false ;
-        $options['data-toggle'] = 'dropdown' ;
-        $options = $this->addClass($options, "dropdown-toggle") ;
+        $options['data-toggle'] = GA_DROPDOWN;
+        $options = $this->addClass($options, GA_DROPDOWN_TOGGLE);
 
         $outPut = '';
 
         if( $wrap ) {
-            $outPut = '<div class="btn-group">';
+            $outPut = '<div class="' . GA_BTN_GROUP . '">';
         }
-        $outPut = $this->button($title.'<span class="caret"></span>', $options) ;
-        $outPut .= '<ul class="dropdown-menu">' ;
+        $outPut = $this->button($title.'<span class="' . GA_CARET . '"></span>', $options) ;
+        $outPut .= '<ul class="' . GA_DROPDOWN_MENU . '">' ;
         foreach ($menu as $action) {
             if ($action === 'divider') {
-                $outPut .= '<li class="divider"></li>' ;
+                $outPut .= '<li class="' . GA_DIVIDER . '"></li>' ;
             } else {
                 if( is_array( $action ) ) {
                     $outPut .= '<li';
@@ -369,7 +376,7 @@ class GanacheFormHelper extends FormHelper {
             if (!array_key_exists('div', $options)) {
                 $options['div'] = array() ;
             }
-            $options['div']['class'] = 'form-actions';
+            $options['div']['class'] = GA_FORM_ACTIONS;
         }
 		return parent::end($options,$secureAttributes);
     }
@@ -441,24 +448,24 @@ class GanacheFormHelper extends FormHelper {
             return $this->input( $fieldName, $options );
         }
 
-        $html = '<div class="control-group">';
+        $html = '<div class="' . GS_CONTROL_GROUP . '">';
 
         // Generate label.
 
         $html .= $this->_getLabel( $fieldName, $options );
 
 
-        $html .= '<div class="controls">';
+        $html .= '<div class="' . GA_CONTROLS . '">';
 
 
         $html .= '<div role="tabpanel">';
-        $html .= '<ul class="nav nav-tabs" role="tablist">';
+        $html .= '<ul class="' . GA_NAV . ' ' . GA_TABS . '" role="tablist">';
         $isFirst = true;
         foreach( $languages as $language ) {
             $classActive = '';
             if( $isFirst === true ) {
                 $isFirst = false;
-                $classActive = ' class="active"';
+                $classActive = ' class="' . GA_ACTIVE . '"';
             }
 
             $this->setEntity( 'tab' . $fieldName . '.' . $language );
@@ -468,7 +475,7 @@ class GanacheFormHelper extends FormHelper {
         }
         $html .= '</ul> <!-- .nav -->';
 
-        $html .= '<div class="tab-content">';
+        $html .= '<div class="' . GA_TAB_CONTENT . '">';
         $isFirst = true;
         foreach( $languages as $language ) {
             $classActive = '';
@@ -478,7 +485,7 @@ class GanacheFormHelper extends FormHelper {
             }
             $this->setEntity( 'tab' . $fieldName . '.' . $language );
             $aria = $this->domId(); // Inflector to slugify;
-            $html .= '<div role="tabpanel" class="tab-pane' . $classActive . '" id="' . $aria . '">';
+            $html .= '<div role="tabpanel" class="' . GA_TAB_PANE . $classActive . '" id="' . $aria . '">';
             $options[ 'label' ] = false;
             $html .= $this->input( $fieldName . '.' . $language, $options );
             $html .= '</div> <!-- .tab-pane -->';
@@ -527,17 +534,17 @@ class GanacheFormHelper extends FormHelper {
         $helptext = '';
         
         if (isset($args['helptext']) && !empty($args['helptext'])) {
-            $helptext = '<span class="help-block">' . $args['helptext'] . '</span>';
+            $helptext = '<span class="' . GA_HELP_BLOCK . '">' . $args['helptext'] . '</span>';
         }
         $type = 'text';
         
         if (isset($args['type']) && !empty($args['type'])) {
             $type = $args['type'];
         }
-        $class = 'input-block-level';
+        $class = GA_INPUT_BLOCK_LEVEL;
         
         if (isset($args['class']) && !empty($args['class'])) {
-            $class = $args['class'] . ' input-block-level';
+            $class = $args['class'] . ' ' . GA_INPUT_BLOCK_LEVEL;
         }
         return $this->input($args['fieldname'], array(
             'label' => array(
@@ -546,8 +553,8 @@ class GanacheFormHelper extends FormHelper {
             'class' => $class,
             'before' => '',
             'type' => $type,
-            'between' => '<div class="controls"><div class="row-fluid"><div class="span3">',
-            'after' => '</div><div class="span3">' . $this->input($args['adjustedFieldname'], array(
+            'between' => '<div class="' . GA_CONTROLS . '"><div class="' . GA_ROW_FLUID . '"><div class="' . GA_SPAN3 . '">',
+            'after' => '</div><div class="' . GA_SPAN3 . '">' . $this->input($args['adjustedFieldname'], array(
                 'class' => $class,
                 'div' => false,
                 'type' => $type,
@@ -559,3 +566,4 @@ class GanacheFormHelper extends FormHelper {
         ));
     }
 }
+
