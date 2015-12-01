@@ -77,7 +77,7 @@ define('GA_LINK' , 'link');
 define('GA_LEFT', 'left');
 define('GA_RIGHT', 'right');
 define('GA_CENTER', 'center');
-define('GA_CENTERED', GA_CENTER , 'ed');
+define('GA_CENTERED', GA_CENTER . 'ed');
 define('GA_TOP', 'top');
 define('GA_BOTTOM', 'bottom');
 define('GA_BELOW', 'below');
@@ -216,7 +216,7 @@ define('GA_IMG', 'img');
 define('GA_RESPONSIVE', 'responsive');
 define('GA_IMG_RESPONSIVE', GA_IMG . '-' . GA_RESPONSIVE); // Bs3
 define('GA_ROUNDED', 'rounded');
-define('GA_IMG_ROUNDED', GA_IMG . '-' , GA_ROUNDED);
+define('GA_IMG_ROUNDED', GA_IMG . '-' . GA_ROUNDED);
 define('GA_CIRCLE', 'circle');
 define('GA_IMG_CIRCLE', GA_IMG . '-' . GA_CIRCLE);
 define('GA_POLAROID', 'polaroid');
