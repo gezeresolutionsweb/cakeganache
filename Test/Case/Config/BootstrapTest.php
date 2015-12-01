@@ -245,6 +245,371 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_DYNAMIC === 'dynamic');
     }
 
+
+    public function testGaMiniExists()
+    {
+        $this->assertTrue(defined('GA_MINI'));
+    }
+
+    public function testGaMiniValue()
+    {
+        $this->assertTrue(GA_MINI === 'mini');
+    }
+
+    public function testGaSmallExists()
+    {
+        $this->assertTrue(defined('GA_SMALL'));
+    }
+
+    public function testGaSmallValue()
+    {
+        $this->assertTrue(GA_SMALL === 'small');
+    }
+
+    public function testGaMediumExists()
+    {
+        $this->assertTrue(defined('GA_MEDIUM'));
+    }
+
+    public function testGaMediumValue()
+    {
+        $this->assertTrue(GA_MEDIUM === 'medium');
+    }
+
+    public function testGaLargeExists()
+    {
+        $this->assertTrue(defined('GA_LARGE'));
+    }
+
+    public function testGaLargeValue()
+    {
+        $this->assertTrue(GA_LARGE === 'large');
+    }
+
+    public function testGaXExists()
+    {
+        $this->assertTrue(defined('GA_X'));
+    }
+
+    public function testGaXValue()
+    {
+        $this->assertTrue(GA_X === 'x');
+    }
+
+    public function testGaXlargeExists()
+    {
+        $this->assertTrue(defined('GA_XLARGE'));
+    }
+
+    public function testGaXlargeValue()
+    {
+        $this->assertTrue(GA_XLARGE === 'xlarge');
+    }
+
+    public function testGaXxlargeExists()
+    {
+        $this->assertTrue(defined('GA_XXLARGE'));
+    }
+
+    public function testGaXxlargeValue()
+    {
+        $this->assertTrue(GA_XXLARGE === 'xxlarge');
+    }
+
+
+    public function testGaDefaultExists()
+    {
+        $this->assertTrue(defined('GA_DEFAULT'));
+    }
+
+    public function testGaDefaultValue()
+    {
+        $this->assertTrue(GA_DEFAULT === 'default');
+    }
+
+    public function testGaPrimaryExists()
+    {
+        $this->assertTrue(defined('GA_PRIMARY'));
+    }
+
+    public function testGaPrimaryValue()
+    {
+        $this->assertTrue(GA_PRIMARY === 'primary');
+    }
+
+    public function testGaErrorExists()
+    {
+        $this->assertTrue(defined('GA_ERROR'));
+    }
+
+    public function testGaErrorValue()
+    {
+        $this->assertTrue(GA_ERROR === 'error');
+    }
+
+    public function testGaSuccessExists()
+    {
+        $this->assertTrue(defined('GA_SUCCESS'));
+    }
+
+    public function testGaSuccessValue()
+    {
+        $this->assertTrue(GA_SUCCESS === 'success');
+    }
+
+    public function testGaWarningExists()
+    {
+        $this->assertTrue(defined('GA_WARNING'));
+    }
+
+    public function testGaWarningValue()
+    {
+        $this->assertTrue(GA_WARNING === 'warning');
+    }
+
+    public function testGaImportantExists()
+    {
+        $this->assertTrue(defined('GA_IMPORTANT'));
+    }
+
+    public function testGaImportantValue()
+    {
+        $this->assertTrue(GA_IMPORTANT === 'important');
+    }
+
+    public function testGaInfoExists()
+    {
+        $this->assertTrue(defined('GA_INFO'));
+    }
+
+    public function testGaInfoValue()
+    {
+        $this->assertTrue(GA_INFO === 'info');
+    }
+
+    public function testGaInverseExists()
+    {
+        $this->assertTrue(defined('GA_INVERSE'));
+    }
+
+    public function testGaInverseValue()
+    {
+        $this->assertTrue(GA_INVERSE === 'inverse');
+    }
+
+    public function testGaDangerExists()
+    {
+        $this->assertTrue(defined('GA_DANGER'));
+    }
+
+    public function testGaDangerValue()
+    {
+        $this->assertTrue(GA_DANGER === 'danger');
+    }
+
+    public function testGaLinkExists()
+    {
+        $this->assertTrue(defined('GA_LINK'));
+    }
+
+    public function testGaLinkValue()
+    {
+        $this->assertTrue(GA_LINK === 'link');
+    }
+
+
+    public function testGaLeftExists()
+    {
+        $this->assertTrue(defined('GA_LEFT'));
+    }
+
+    public function testGaLeftValue()
+    {
+        $this->assertTrue(GA_LEFT === 'left');
+    }
+
+    public function testGaRightExists()
+    {
+        $this->assertTrue(defined('GA_RIGHT'));
+    }
+
+    public function testGaRightValue()
+    {
+        $this->assertTrue(GA_RIGHT === 'right');
+    }
+
+    public function testGaCenterExists()
+    {
+        $this->assertTrue(defined('GA_CENTER'));
+    }
+
+    public function testGaCenterValue()
+    {
+        $this->assertTrue(GA_CENTER === 'center');
+    }
+
+    public function testGaCenteredExists()
+    {
+        $this->assertTrue(defined('GA_CENTERED'));
+    }
+
+    public function testGaCenteredValue()
+    {
+        $this->assertTrue(GA_CENTERED === 'centered');
+    }
+
+    public function testGaTopExists()
+    {
+        $this->assertTrue(defined('GA_TOP'));
+    }
+
+    public function testGaTopValue()
+    {
+        $this->assertTrue(GA_TOP === 'top');
+    }
+
+    public function testGaBottomExists()
+    {
+        $this->assertTrue(defined('GA_BOTTOM'));
+    }
+
+    public function testGaBottomValue()
+    {
+        $this->assertTrue(GA_BOTTOM === 'bottom');
+    }
+
+    public function testGaBelowExists()
+    {
+        $this->assertTrue(defined('GA_BELOW'));
+    }
+
+    public function testGaBelowValue()
+    {
+        $this->assertTrue(GA_BELOW === 'below');
+    }
+
+
+
+    public function testGaIconExists()
+    {
+        $this->assertTrue(defined('GA_ICON'));
+    }
+
+    public function testGaIconValue()
+    {
+        $this->assertTrue(GA_ICON === 'icon');
+    }
+
+    public function testGaBarExists()
+    {
+        $this->assertTrue(defined('GA_BAR'));
+    }
+
+    public function testGaBarValue()
+    {
+        $this->assertTrue(GA_BAR === 'bar');
+    }
+
+    public function testGaActionsExists()
+    {
+        $this->assertTrue(defined('GA_ACTIONS'));
+    }
+
+    public function testGaActionsValue()
+    {
+        $this->assertTrue(GA_ACTIONS === 'actions');
+    }
+
+    public function testGaStripedExists()
+    {
+        $this->assertTrue(defined('GA_STRIPED'));
+    }
+
+    public function testGaStripedValue()
+    {
+        $this->assertTrue(GA_STRIPED === 'striped');
+    }
+
+    public function testGaDisabledExists()
+    {
+        $this->assertTrue(defined('GA_DISABLED'));
+    }
+
+    public function testGaDisabledValue()
+    {
+        $this->assertTrue(GA_DISABLED === 'disabled');
+    }
+
+    public function testGaActiveExists()
+    {
+        $this->assertTrue(defined('GA_ACTIVE'));
+    }
+
+    public function testGaActiveValue()
+    {
+        $this->assertTrue(GA_ACTIVE === 'active');
+    }
+
+    public function testGaIconBarExists()
+    {
+        $this->assertTrue(defined('GA_ICON_BAR'));
+    }
+
+    public function testGaIconBarValue()
+    {
+        $this->assertTrue(GA_ICON_BAR === 'icon-bar');
+    }
+
+    public function testGaPullExists()
+    {
+        $this->assertTrue(defined('GA_PULL'));
+    }
+
+    public function testGaPullValue()
+    {
+        $this->assertTrue(GA_PULL === 'pull');
+    }
+
+    public function testGaPullLeftExists()
+    {
+        $this->assertTrue(defined('GA_PULL_LEFT'));
+    }
+
+    public function testGaPullLeftValue()
+    {
+        $this->assertTrue(GA_PULL_LEFT === 'pull-left');
+    }
+
+    public function testGaPullRightExists()
+    {
+        $this->assertTrue(defined('GA_PULL_RIGHT'));
+    }
+
+    public function testGaPullRightValue()
+    {
+        $this->assertTrue(GA_PULL_RIGHT === 'pull-right');
+    }
+
+    public function testGaMutedExists()
+    {
+        $this->assertTrue(defined('GA_MUTED'));
+    }
+
+    public function testGaMutedValue()
+    {
+        $this->assertTrue(GA_MUTED === 'muted');
+    }
+
+    public function testGaClearfixExists()
+    {
+        $this->assertTrue(defined('GA_CLEARFIX'));
+    }
+
+    public function testGaClearfixValue()
+    {
+        $this->assertTrue(GA_CLEARFIX === 'clearfix');
+    }
+
     public function testGaDlHorizontalExists()
     {
         $this->assertTrue(defined('GA_DL_HORIZONTAL'));
@@ -253,6 +618,47 @@ class BootstrapTest extends CakeTestCase
     public function testGaDlHorizontalValue()
     {
         $this->assertTrue(GA_DL_HORIZONTAL === 'dl-horizontal');
+    }
+
+
+    public function testGaListExists()
+    {
+        $this->assertTrue(defined('GA_LIST'));
+    }
+
+    public function testGaListValue()
+    {
+        $this->assertTrue(GA_LIST === 'list');
+    }
+
+    public function testGaDividerExists()
+    {
+        $this->assertTrue(defined('GA_DIVIDER'));
+    }
+
+    public function testGaDividerValue()
+    {
+        $this->assertTrue(GA_DIVIDER === 'divider');
+    }
+
+    public function testGaClearExists()
+    {
+        $this->assertTrue(defined('GA_CLEAR'));
+    }
+
+    public function testGaClearValue()
+    {
+        $this->assertTrue(GA_CLEAR === 'clear');
+    }
+
+    public function testGaHelpExists()
+    {
+        $this->assertTrue(defined('GA_HELP'));
+    }
+
+    public function testGaHelpValue()
+    {
+        $this->assertTrue(GA_HELP === 'help');
     }
 
     public function testGaHelpBlockExists()
@@ -275,315 +681,6 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_HELP_INLINE === 'help-inline');
     }
 
-    public function testGaCheckboxExists()
-    {
-        $this->assertTrue(defined('GA_CHECKBOX'));
-    }
-
-    public function testGaCheckboxValue()
-    {
-        $this->assertTrue(GA_CHECKBOX === 'checkbox');
-    }
-
-    public function testGaRadioExists()
-    {
-        $this->assertTrue(defined('GA_RADIO'));
-    }
-
-    public function testGaRadioValue()
-    {
-        $this->assertTrue(GA_RADIO === 'radio');
-    }
-
-    public function testGaFormSearchExists()
-    {
-        $this->assertTrue(defined('GA_FORM_SEARCH'));
-    }
-
-    public function testGaFormSearchValue()
-    {
-        $this->assertTrue(GA_FORM_SEARCH === 'form-search');
-    }
-
-    public function testGaSearchQueryExists()
-    {
-        $this->assertTrue(defined('GA_SEARCH_QUERY'));
-    }
-
-    public function testGaSearchQueryValue()
-    {
-        $this->assertTrue(GA_SEARCH_QUERY === 'search-query');
-    }
-
-    public function testGaFormInlineExists()
-    {
-        $this->assertTrue(defined('GA_FORM_INLINE'));
-    }
-
-    public function testGaFormInlineValue()
-    {
-        $this->assertTrue(GA_FORM_INLINE === 'form-inline');
-    }
-
-    public function testGaFormHorizontalExists()
-    {
-        $this->assertTrue(defined('GA_FORM_HORIZONTAL'));
-    }
-
-    public function testGaFormHorizontalValue()
-    {
-        $this->assertTrue(GA_FORM_HORIZONTAL === 'form-horizontal');
-    }
-
-    public function testGaControlGroupExists()
-    {
-        $this->assertTrue(defined('GA_CONTROL_GROUP'));
-    }
-
-    public function testGaControlGroupValue()
-    {
-        $this->assertTrue(GA_CONTROL_GROUP === 'control-group');
-    }
-
-    public function testGaControlLabelExists()
-    {
-        $this->assertTrue(defined('GA_CONTROL_LABEL'));
-    }
-
-    public function testGaControlLabelValue()
-    {
-        $this->assertTrue(GA_CONTROL_LABEL === 'control-label');
-    }
-
-    public function testGaControlsExists()
-    {
-        $this->assertTrue(defined('GA_CONTROLS'));
-    }
-
-    public function testGaControlsValue()
-    {
-        $this->assertTrue(GA_CONTROLS === 'controls');
-    }
-
-    public function testGaControlsRowExists()
-    {
-        $this->assertTrue(defined('GA_CONTROLS_ROW'));
-    }
-
-    public function testGaControlsRowValue()
-    {
-        $this->assertTrue(GA_CONTROLS_ROW === 'controls-row');
-    }
-
-    public function testGaInputPrependExists()
-    {
-        $this->assertTrue(defined('GA_INPUT_PREPEND'));
-    }
-
-    public function testGaInputPrependValue()
-    {
-        $this->assertTrue(GA_INPUT_PREPEND === 'input-prepend');
-    }
-
-    public function testGaInputAppendExists()
-    {
-        $this->assertTrue(defined('GA_INPUT_APPEND'));
-    }
-
-    public function testGaInputAppenedValue()
-    {
-        $this->assertTrue(GA_INPUT_APPEND === 'input-append');
-    }
-
-    public function testGaAddOnExists()
-    {
-        $this->assertTrue(defined('GA_ADD_ON'));
-    }
-
-    public function testGaAddOnValue()
-    {
-        $this->assertTrue(GA_ADD_ON === 'add-on');
-    }
-
-    public function testGaInputMiniExists()
-    {
-        $this->assertTrue(defined('GA_INPUT_MINI'));
-    }
-
-    public function testGaInputMiniValue()
-    {
-        $this->assertTrue(GA_INPUT_MINI === 'input-mini');
-    }
-
-    public function testGaInputSmallExists()
-    {
-        $this->assertTrue(defined('GA_INPUT_SMALL'));
-    }
-
-    public function testGaInputSmallValue()
-    {
-        $this->assertTrue(GA_INPUT_SMALL === 'input-small');
-    }
-
-    public function testGaInputMediumExists()
-    {
-        $this->assertTrue(defined('GA_INPUT_MEDIUM'));
-    }
-
-    public function testGaInputMediumValue()
-    {
-        $this->assertTrue(GA_INPUT_MEDIUM === 'input-medium');
-    }
-
-    public function testGaInputLargeExists()
-    {
-        $this->assertTrue(defined('GA_INPUT_LARGE'));
-    }
-
-    public function testGaInputLargeValue()
-    {
-        $this->assertTrue(GA_INPUT_LARGE === 'input-large');
-    }
-
-    public function testGaInputXlargeExists()
-    {
-        $this->assertTrue(defined('GA_INPUT_XLARGE'));
-    }
-
-    public function testGaInputXlargeValue()
-    {
-        $this->assertTrue(GA_INPUT_XLARGE === 'input-xlarge');
-    }
-
-    public function testGaInputXxlargeExists()
-    {
-        $this->assertTrue(defined('GA_INPUT_XXLARGE'));
-    }
-
-    public function testGaInputXxlargeValue()
-    {
-        $this->assertTrue(GA_INPUT_XXLARGE === 'input-xxlarge');
-    }
-
-    public function testGaInputBlockLevelExists()
-    {
-        $this->assertTrue(defined('GA_INPUT_BLOCK_LEVEL'));
-    }
-
-    public function testGaInputBlockLevelValue()
-    {
-        $this->assertTrue(GA_INPUT_BLOCK_LEVEL === 'input-block-level');
-    }
-
-    public function testGaUneditableInputExists()
-    {
-        $this->assertTrue(defined('GA_UNEDITABLE_INPUT'));
-    }
-
-    public function testGaUneditableInputValue()
-    {
-        $this->assertTrue(GA_UNEDITABLE_INPUT === 'uneditable-input');
-    }
-
-    public function testGaFormActionsExists()
-    {
-        $this->assertTrue(defined('GA_FORM_ACTIONS'));
-    }
-
-    public function testGaFormActionsValue()
-    {
-        $this->assertTrue(GA_FORM_ACTIONS === 'form-actions');
-    }
-
-    public function testGaBtnGroupExists()
-    {
-        $this->assertTrue(defined('GA_BTN_GROUP'));
-    }
-
-    public function testGaBtnGroupValue()
-    {
-        $this->assertTrue(GA_BTN_GROUP === 'btn-group');
-    }
-
-    public function testGaDropdownToggleExists()
-    {
-        $this->assertTrue(defined('GA_DROPDOWN_TOGGLE'));
-    }
-
-    public function testGaDropdownToggleValue()
-    {
-        $this->assertTrue(GA_DROPDOWN_TOGGLE === 'dropdown-toggle');
-    }
-
-    public function testGaDropdownMenuExists()
-    {
-        $this->assertTrue(defined('GA_DROPDOWN_MENU'));
-    }
-
-    public function testGaDropdownMenuValue()
-    {
-        $this->assertTrue(GA_DROPDOWN_MENU === 'dropdown-menu');
-    }
-
-    public function testGaCaretExists()
-    {
-        $this->assertTrue(defined('GA_CARET'));
-    }
-
-    public function testGaCaretValue()
-    {
-        $this->assertTrue(GA_CARET === 'caret');
-    }
-
-    public function testGaTableExists()
-    {
-        $this->assertTrue(defined('GA_TABLE'));
-    }
-
-    public function testGaTableValue()
-    {
-        $this->assertTrue(GA_TABLE === 'table');
-    }
-
-    public function testGaTableStripedExists()
-    {
-        $this->assertTrue(defined('GA_TABLE_STRIPED'));
-    }
-
-    public function testGaTableStripedValue()
-    {
-        $this->assertTrue(GA_TABLE_STRIPED === 'table-striped');
-    }
-
-    public function testGaTableBorderedExists()
-    {
-        $this->assertTrue(defined('GA_TABLE_BORDERED'));
-    }
-
-    public function testGaTableBorderedValue()
-    {
-        $this->assertTrue(GA_TABLE_BORDERED === 'table-bordered');
-    }
-
-    public function testGaTableHoverExists()
-    {
-        $this->assertTrue(defined('GA_TABLE_HOVER'));
-    }
-
-    public function testGaTableHoverValue()
-    {
-        $this->assertTrue(GA_TABLE_HOVER === 'table-hover');
-    }
-
-    public function testGaTableCondensedExists()
-    {
-        $this->assertTrue(defined('GA_TABLE_CONDENSED'));
-    }
-
-    public function testGaTableCondensedValue()
-    {
-        $this->assertTrue(GA_TABLE_CONDENSED === 'table-condensed');
-    }
 
     public function testGaBtnExists()
     {
@@ -675,6 +772,499 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_BTN_LINK === 'btn-link');
     }
 
+
+
+    public function testGaFormExists()
+    {
+        $this->assertTrue(defined('GA_FORM'));
+    }
+
+    public function testGaFormValue()
+    {
+        $this->assertTrue(GA_FORM === 'form');
+    }
+
+    public function testGaControlExists()
+    {
+        $this->assertTrue(defined('GA_CONTROL'));
+    }
+
+    public function testGaControlValue()
+    {
+        $this->assertTrue(GA_CONTROL === 'control');
+    }
+
+    public function testGaGroupExists()
+    {
+        $this->assertTrue(defined('GA_GROUP'));
+    }
+
+    public function testGaGroupValue()
+    {
+        $this->assertTrue(GA_GROUP === 'group');
+    }
+
+    public function testGaLabelExists()
+    {
+        $this->assertTrue(defined('GA_LABEL'));
+    }
+
+    public function testGaLabelValue()
+    {
+        $this->assertTrue(GA_LABEL === 'label');
+    }
+
+
+    public function testGaCheckboxExists()
+    {
+        $this->assertTrue(defined('GA_CHECKBOX'));
+    }
+
+    public function testGaCheckboxValue()
+    {
+        $this->assertTrue(GA_CHECKBOX === 'checkbox');
+    }
+
+    public function testGaRadioExists()
+    {
+        $this->assertTrue(defined('GA_RADIO'));
+    }
+
+    public function testGaRadioValue()
+    {
+        $this->assertTrue(GA_RADIO === 'radio');
+    }
+
+
+
+    public function testGaSearchExists()
+    {
+        $this->assertTrue(defined('GA_SEARCH'));
+    }
+
+    public function testGaSearchValue()
+    {
+        $this->assertTrue(GA_SEARCH === 'search');
+    }
+
+
+
+    public function testGaFormSearchExists()
+    {
+        $this->assertTrue(defined('GA_FORM_SEARCH'));
+    }
+
+    public function testGaFormSearchValue()
+    {
+        $this->assertTrue(GA_FORM_SEARCH === 'form-search');
+    }
+
+    public function testGaQueryExists()
+    {
+        $this->assertTrue(defined('GA_QUERY'));
+    }
+
+    public function testGaQueryValue()
+    {
+        $this->assertTrue(GA_QUERY === 'query');
+    }
+    public function testGaSearchQueryExists()
+    {
+        $this->assertTrue(defined('GA_SEARCH_QUERY'));
+    }
+
+    public function testGaSearchQueryValue()
+    {
+        $this->assertTrue(GA_SEARCH_QUERY === 'search-query');
+    }
+
+    public function testGaFormInlineExists()
+    {
+        $this->assertTrue(defined('GA_FORM_INLINE'));
+    }
+
+    public function testGaFormInlineValue()
+    {
+        $this->assertTrue(GA_FORM_INLINE === 'form-inline');
+    }
+
+    public function testGaFormHorizontalExists()
+    {
+        $this->assertTrue(defined('GA_FORM_HORIZONTAL'));
+    }
+
+    public function testGaFormHorizontalValue()
+    {
+        $this->assertTrue(GA_FORM_HORIZONTAL === 'form-horizontal');
+    }
+
+    public function testGaControlGroupExists()
+    {
+        $this->assertTrue(defined('GA_CONTROL_GROUP'));
+    }
+
+    public function testGaControlGroupValue()
+    {
+        $this->assertTrue(GA_CONTROL_GROUP === 'control-group');
+    }
+
+    public function testGaControlLabelExists()
+    {
+        $this->assertTrue(defined('GA_CONTROL_LABEL'));
+    }
+
+    public function testGaControlLabelValue()
+    {
+        $this->assertTrue(GA_CONTROL_LABEL === 'control-label');
+    }
+
+    public function testGaControlsExists()
+    {
+        $this->assertTrue(defined('GA_CONTROLS'));
+    }
+
+    public function testGaControlsValue()
+    {
+        $this->assertTrue(GA_CONTROLS === 'controls');
+    }
+
+    public function testGaControlsRowExists()
+    {
+        $this->assertTrue(defined('GA_CONTROLS_ROW'));
+    }
+
+    public function testGaControlsRowValue()
+    {
+        $this->assertTrue(GA_CONTROLS_ROW === 'controls-row');
+    }
+
+    public function testGaInputExists()
+    {
+        $this->assertTrue(defined('GA_INPUT'));
+    }
+
+    public function testGaInputValue()
+    {
+        $this->assertTrue(GA_INPUT === 'input');
+    }
+    public function testGaPrependExists()
+    {
+        $this->assertTrue(defined('GA_PREPEND'));
+    }
+
+    public function testGaPrependValue()
+    {
+        $this->assertTrue(GA_PREPEND === 'prepend');
+    }
+    public function testGaAppendExists()
+    {
+        $this->assertTrue(defined('GA_APPEND'));
+    }
+
+    public function testGaAppendValue()
+    {
+        $this->assertTrue(GA_APPEND === 'append');
+    }
+    public function testGaInputPrependExists()
+    {
+        $this->assertTrue(defined('GA_INPUT_PREPEND'));
+    }
+
+    public function testGaInputPrependValue()
+    {
+        $this->assertTrue(GA_INPUT_PREPEND === 'input-prepend');
+    }
+
+    public function testGaInputAppendExists()
+    {
+        $this->assertTrue(defined('GA_INPUT_APPEND'));
+    }
+
+    public function testGaInputAppenedValue()
+    {
+        $this->assertTrue(GA_INPUT_APPEND === 'input-append');
+    }
+
+    public function testGaAddOnExists()
+    {
+        $this->assertTrue(defined('GA_ADD_ON'));
+    }
+
+    public function testGaAddOnValue()
+    {
+        $this->assertTrue(GA_ADD_ON === 'add-on');
+    }
+
+    public function testGaInputMiniExists()
+    {
+        $this->assertTrue(defined('GA_INPUT_MINI'));
+    }
+
+    public function testGaInputMiniValue()
+    {
+        $this->assertTrue(GA_INPUT_MINI === 'input-mini');
+    }
+
+    public function testGaInputSmallExists()
+    {
+        $this->assertTrue(defined('GA_INPUT_SMALL'));
+    }
+
+    public function testGaInputSmallValue()
+    {
+        $this->assertTrue(GA_INPUT_SMALL === 'input-small');
+    }
+
+    public function testGaInputMediumExists()
+    {
+        $this->assertTrue(defined('GA_INPUT_MEDIUM'));
+    }
+
+    public function testGaInputMediumValue()
+    {
+        $this->assertTrue(GA_INPUT_MEDIUM === 'input-medium');
+    }
+
+    public function testGaInputLargeExists()
+    {
+        $this->assertTrue(defined('GA_INPUT_LARGE'));
+    }
+
+    public function testGaInputLargeValue()
+    {
+        $this->assertTrue(GA_INPUT_LARGE === 'input-large');
+    }
+
+    public function testGaInputXlargeExists()
+    {
+        $this->assertTrue(defined('GA_INPUT_XLARGE'));
+    }
+
+    public function testGaInputXlargeValue()
+    {
+        $this->assertTrue(GA_INPUT_XLARGE === 'input-xlarge');
+    }
+
+    public function testGaInputXxlargeExists()
+    {
+        $this->assertTrue(defined('GA_INPUT_XXLARGE'));
+    }
+
+    public function testGaInputXxlargeValue()
+    {
+        $this->assertTrue(GA_INPUT_XXLARGE === 'input-xxlarge');
+    }
+
+    public function testGaLevelExists()
+    {
+        $this->assertTrue(defined('GA_LEVEL'));
+    }
+
+    public function testGaLevelValue()
+    {
+        $this->assertTrue(GA_LEVEL === 'level');
+    }
+    public function testGaInputBlockLevelExists()
+    {
+        $this->assertTrue(defined('GA_INPUT_BLOCK_LEVEL'));
+    }
+
+    public function testGaInputBlockLevelValue()
+    {
+        $this->assertTrue(GA_INPUT_BLOCK_LEVEL === 'input-block-level');
+    }
+
+    public function testGaUneditableExists()
+    {
+        $this->assertTrue(defined('GA_UNEDITABLE'));
+    }
+
+    public function testGaUneditableValue()
+    {
+        $this->assertTrue(GA_UNEDITABLE === 'uneditable');
+    }
+    public function testGaUneditableInputExists()
+    {
+        $this->assertTrue(defined('GA_UNEDITABLE_INPUT'));
+    }
+
+    public function testGaUneditableInputValue()
+    {
+        $this->assertTrue(GA_UNEDITABLE_INPUT === 'uneditable-input');
+    }
+
+    public function testGaFormActionsExists()
+    {
+        $this->assertTrue(defined('GA_FORM_ACTIONS'));
+    }
+
+    public function testGaFormActionsValue()
+    {
+        $this->assertTrue(GA_FORM_ACTIONS === 'form-actions');
+    }
+
+    public function testGaBtnGroupExists()
+    {
+        $this->assertTrue(defined('GA_BTN_GROUP'));
+    }
+
+    public function testGaBtnGroupValue()
+    {
+        $this->assertTrue(GA_BTN_GROUP === 'btn-group');
+    }
+
+    public function testGaDropdownExists()
+    {
+        $this->assertTrue(defined('GA_DROPDOWN'));
+    }
+
+    public function testGaDropdownValue()
+    {
+        $this->assertTrue(GA_DROPDOWN === 'dropdown');
+    }
+    public function testGaToggleExists()
+    {
+        $this->assertTrue(defined('GA_TOGGLE'));
+    }
+
+    public function testGaToggleValue()
+    {
+        $this->assertTrue(GA_TOGGLE === 'toggle');
+    }
+    public function testGaDropdownToggleExists()
+    {
+        $this->assertTrue(defined('GA_DROPDOWN_TOGGLE'));
+    }
+
+    public function testGaDropdownToggleValue()
+    {
+        $this->assertTrue(GA_DROPDOWN_TOGGLE === 'dropdown-toggle');
+    }
+
+    public function testGaMenuExists()
+    {
+        $this->assertTrue(defined('GA_MENU'));
+    }
+
+    public function testGaMenuValue()
+    {
+        $this->assertTrue(GA_MENU === 'menu');
+    }
+    public function testGaSubmenuExists()
+    {
+        $this->assertTrue(defined('GA_SUBMENU'));
+    }
+
+    public function testGaSubmenuValue()
+    {
+        $this->assertTrue(GA_SUBMENU === 'submenu');
+    }
+    public function testGaDropdownMenuExists()
+    {
+        $this->assertTrue(defined('GA_DROPDOWN_MENU'));
+    }
+
+    public function testGaDropdownMenuValue()
+    {
+        $this->assertTrue(GA_DROPDOWN_MENU === 'dropdown-menu');
+    }
+
+    public function testGaDropdownSubmenuExists()
+    {
+        $this->assertTrue(defined('GA_DROPDOWN_SUBMENU'));
+    }
+
+    public function testGaDropdownSubmenuValue()
+    {
+        $this->assertTrue(GA_DROPDOWN_SUBMENU === 'dropdown-submenu');
+    }
+    public function testGaCaretExists()
+    {
+        $this->assertTrue(defined('GA_CARET'));
+    }
+
+    public function testGaCaretValue()
+    {
+        $this->assertTrue(GA_CARET === 'caret');
+    }
+
+    public function testGaTableExists()
+    {
+        $this->assertTrue(defined('GA_TABLE'));
+    }
+
+    public function testGaTableValue()
+    {
+        $this->assertTrue(GA_TABLE === 'table');
+    }
+
+    public function testGaTableStripedExists()
+    {
+        $this->assertTrue(defined('GA_TABLE_STRIPED'));
+    }
+
+    public function testGaTableStripedValue()
+    {
+        $this->assertTrue(GA_TABLE_STRIPED === 'table-striped');
+    }
+
+    public function testGaBorderedExists()
+    {
+        $this->assertTrue(defined('GA_BORDERED'));
+    }
+
+    public function testGaBorderedValue()
+    {
+        $this->assertTrue(GA_BORDERED === 'bordered');
+    }
+    public function testGaTableBorderedExists()
+    {
+        $this->assertTrue(defined('GA_TABLE_BORDERED'));
+    }
+
+    public function testGaTableBorderedValue()
+    {
+        $this->assertTrue(GA_TABLE_BORDERED === 'table-bordered');
+    }
+
+    public function testGaHoverExists()
+    {
+        $this->assertTrue(defined('GA_HOVER'));
+    }
+
+    public function testGaHoverValue()
+    {
+        $this->assertTrue(GA_HOVER === 'hover');
+    }
+    public function testGaTableHoverExists()
+    {
+        $this->assertTrue(defined('GA_TABLE_HOVER'));
+    }
+
+    public function testGaTableHoverValue()
+    {
+        $this->assertTrue(GA_TABLE_HOVER === 'table-hover');
+    }
+
+    public function testGaCondensedExists()
+    {
+        $this->assertTrue(defined('GA_CONDENSED'));
+    }
+
+    public function testGaCondensedValue()
+    {
+        $this->assertTrue(GA_CONDENSED === 'condensed');
+    }
+    public function testGaTableCondensedExists()
+    {
+        $this->assertTrue(defined('GA_TABLE_CONDENSED'));
+    }
+
+    public function testGaTableCondensedValue()
+    {
+        $this->assertTrue(GA_TABLE_CONDENSED === 'table-condensed');
+    }
+
     public function testGaBtnMiniExists()
     {
         $this->assertTrue(defined('GA_BTN_MINI'));
@@ -715,136 +1305,15 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_BTN_BLOCK === 'btn-block');
     }
 
-    public function testGaDisabledExists()
+    public function testGaTextExists()
     {
-        $this->assertTrue(defined('GA_DISABLED'));
+        $this->assertTrue(defined('GA_TEXT'));
     }
 
-    public function testGaDisabledValue()
+    public function testGaTextValue()
     {
-        $this->assertTrue(GA_DISABLED === 'disabled');
+        $this->assertTrue(GA_TEXT === 'text');
     }
-
-    public function testGaActiveExists()
-    {
-        $this->assertTrue(defined('GA_ACTIVE'));
-    }
-
-    public function testGaActiveValue()
-    {
-        $this->assertTrue(GA_ACTIVE === 'active');
-    }
-
-    public function testGaPullLeftExists()
-    {
-        $this->assertTrue(defined('GA_PULL_LEFT'));
-    }
-
-    public function testGaPullLeftValue()
-    {
-        $this->assertTrue(GA_PULL_LEFT === 'pull-left');
-    }
-
-    public function testGaPullRightExists()
-    {
-        $this->assertTrue(defined('GA_PULL_RIGHT'));
-    }
-
-    public function testGaPullRightValue()
-    {
-        $this->assertTrue(GA_PULL_RIGHT === 'pull-right');
-    }
-
-    public function testGaMutedExists()
-    {
-        $this->assertTrue(defined('GA_MUTED'));
-    }
-
-    public function testGaMutedValue()
-    {
-        $this->assertTrue(GA_MUTED === 'muted');
-    }
-
-    public function testGaClearfixExists()
-    {
-        $this->assertTrue(defined('GA_CLEARFIX'));
-    }
-
-    public function testGaClearfixValue()
-    {
-        $this->assertTrue(GA_CLEARFIX === 'clearfix');
-    }
-
-    public function testGaSuccessExists()
-    {
-        $this->assertTrue(defined('GA_SUCCESS'));
-    }
-
-    public function testGaSuccessValue()
-    {
-        $this->assertTrue(GA_SUCCESS === 'success');
-    }
-
-    public function testGaWarningExists()
-    {
-        $this->assertTrue(defined('GA_WARNING'));
-    }
-
-    public function testGaWarningValue()
-    {
-        $this->assertTrue(GA_WARNING === 'warning');
-    }
-
-    public function testGaImportantExists()
-    {
-        $this->assertTrue(defined('GA_IMPORTANT'));
-    }
-
-    public function testGaImportantValue()
-    {
-        $this->assertTrue(GA_IMPORTANT === 'important');
-    }
-
-    public function testGaInfoExists()
-    {
-        $this->assertTrue(defined('GA_INFO'));
-    }
-
-    public function testGaInfoValue()
-    {
-        $this->assertTrue(GA_INFO === 'info');
-    }
-
-    public function testGaInverseExists()
-    {
-        $this->assertTrue(defined('GA_INVERSE'));
-    }
-
-    public function testGaInverseValue()
-    {
-        $this->assertTrue(GA_INVERSE === 'inverse');
-    }
-
-    public function testGaDangerExists()
-    {
-        $this->assertTrue(defined('GA_DANGER'));
-    }
-
-    public function testGaDangerValue()
-    {
-        $this->assertTrue(GA_DANGER === 'danger');
-    }
-
-    public function testGaLinkExists()
-    {
-        $this->assertTrue(defined('GA_LINK'));
-    }
-
-    public function testGaLinkValue()
-    {
-        $this->assertTrue(GA_LINK === 'link');
-    }
-
     public function testGaTextLeftExists()
     {
         $this->assertTrue(defined('GA_TEXT_LEFT'));
@@ -915,6 +1384,42 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_TEXT_SUCCESS === 'text-success');
     }
 
+    public function testGaImgExists()
+    {
+        $this->assertTrue(defined('GA_IMG'));
+    }
+
+    public function testGaImgValue()
+    {
+        $this->assertTrue(GA_IMG === 'img');
+    }
+    public function testGaResponsiveExists()
+    {
+        $this->assertTrue(defined('GA_RESPONSIVE'));
+    }
+
+    public function testGaResponsiveValue()
+    {
+        $this->assertTrue(GA_RESPONSIVE === 'responsive');
+    }
+    public function testGaImgResponsiveExists()
+    {
+        $this->assertTrue(defined('GA_IMG_RESPONSIVE'));
+    }
+
+    public function testGaImgResponsiveValue()
+    {
+        $this->assertTrue(GA_IMG_RESPONSIVE === 'img-responsive');
+    }
+    public function testGaRoundedExists()
+    {
+        $this->assertTrue(defined('GA_ROUNDED'));
+    }
+
+    public function testGaRoundedValue()
+    {
+        $this->assertTrue(GA_ROUNDED === 'rounded');
+    }
     public function testGaImgRoundedExists()
     {
         $this->assertTrue(defined('GA_IMG_ROUNDED'));
@@ -925,6 +1430,15 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_IMG_ROUNDED === 'img-rounded');
     }
 
+    public function testGaCircleExists()
+    {
+        $this->assertTrue(defined('GA_CIRCLE'));
+    }
+
+    public function testGaCircleValue()
+    {
+        $this->assertTrue(GA_CIRCLE === 'circle');
+    }
     public function testGaImgCircleExists()
     {
         $this->assertTrue(defined('GA_IMG_CIRCLE'));
@@ -935,6 +1449,15 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_IMG_CIRCLE === 'img-circle');
     }
 
+    public function testGaPolaroidExists()
+    {
+        $this->assertTrue(defined('GA_POLAROID'));
+    }
+
+    public function testGaPolaroidValue()
+    {
+        $this->assertTrue(GA_POLAROID === 'polaroid');
+    }
     public function testGaImgPolaroidExists()
     {
         $this->assertTrue(defined('GA_IMG_POLAROID'));
@@ -955,6 +1478,15 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_NAV === 'nav');
     }
 
+    public function testGaTabsExists()
+    {
+        $this->assertTrue(defined('GA_TABS'));
+    }
+
+    public function testGaTabsValue()
+    {
+        $this->assertTrue(GA_TABS === 'tabs');
+    }
     public function testGaNavTabsExists()
     {
         $this->assertTrue(defined('GA_NAV_TABS'));
@@ -965,6 +1497,15 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_NAV_TABS === 'nav-tabs');
     }
 
+    public function testGaPillsExists()
+    {
+        $this->assertTrue(defined('GA_PILLS'));
+    }
+
+    public function testGaPillsValue()
+    {
+        $this->assertTrue(GA_PILLS === 'pills');
+    }
     public function testGaNavPillsExists()
     {
         $this->assertTrue(defined('GA_NAV_PILLS'));
@@ -985,6 +1526,15 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_NAV_LIST === 'nav-list');
     }
 
+    public function testGaStackedExists()
+    {
+        $this->assertTrue(defined('GA_STACKED'));
+    }
+
+    public function testGaStackedValue()
+    {
+        $this->assertTrue(GA_STACKED === 'stacked');
+    }
     public function testGaNavStackedExists()
     {
         $this->assertTrue(defined('GA_NAV_STACKED'));
@@ -995,6 +1545,15 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_NAV_STACKED === 'nav-stacked');
     }
 
+    public function testGaHeaderExists()
+    {
+        $this->assertTrue(defined('GA_HEADER'));
+    }
+
+    public function testGaHeaderValue()
+    {
+        $this->assertTrue(GA_HEADER === 'header');
+    }
     public function testGaNavHeaderExists()
     {
         $this->assertTrue(defined('GA_NAV_HEADER'));
@@ -1003,16 +1562,6 @@ class BootstrapTest extends CakeTestCase
     public function testGaNavHeaderValue()
     {
         $this->assertTrue(GA_NAV_HEADER === 'nav-header');
-    }
-
-    public function testGaDividerExists()
-    {
-        $this->assertTrue(defined('GA_DIVIDER'));
-    }
-
-    public function testGaDividerValue()
-    {
-        $this->assertTrue(GA_DIVIDER === 'divider');
     }
 
     public function testGaTabbableExists()
@@ -1025,6 +1574,24 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_TABBABLE === 'tabbable');
     }
 
+    public function testGaTabExists()
+    {
+        $this->assertTrue(defined('GA_TAB'));
+    }
+
+    public function testGaTabValue()
+    {
+        $this->assertTrue(GA_TAB === 'tab');
+    }
+    public function testGaContentExists()
+    {
+        $this->assertTrue(defined('GA_CONTENT'));
+    }
+
+    public function testGaContentValue()
+    {
+        $this->assertTrue(GA_CONTENT === 'content');
+    }
     public function testGaTabContentExists()
     {
         $this->assertTrue(defined('GA_TAB_CONTENT'));
@@ -1035,6 +1602,15 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_TAB_CONTENT === 'tab-content');
     }
 
+    public function testGaPaneExists()
+    {
+       $this->assertTrue(defined('GA_PANE'));
+    }
+
+    public function testGaPaneValue()
+    {
+        $this->assertTrue(GA_PANE === 'pane');
+    }
     public function testGaTabPaneExists()
     {
         $this->assertTrue(defined('GA_TAB_PANE'));
@@ -1125,6 +1701,15 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_NAVBAR === 'navbar');
     }
 
+    public function testGaInnerExists()
+    {
+        $this->assertTrue(defined('GA_INNER'));
+    }
+
+    public function testGaInnerValue()
+    {
+        $this->assertTrue(GA_INNER === 'inner');
+    }
     public function testGaNavbarInnerExists()
     {
         $this->assertTrue(defined('GA_NAVBAR_INNER'));
@@ -1145,6 +1730,15 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_BRAND === 'brand');
     }
 
+    public function testGaVerticalExists()
+    {
+        $this->assertTrue(defined('GA_VERTICAL'));
+    }
+
+    public function testGaVerticalValue()
+    {
+        $this->assertTrue(GA_VERTICAL === 'vertical');
+    }
     public function testGaDividerVerticalExists()
     {
         $this->assertTrue(defined('GA_DIVIDER_VERTICAL'));
@@ -1215,6 +1809,15 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_NAVBAR_STATIC_TOP === 'navbar-static-top');
     }
 
+    public function testGaCollapseExists()
+    {
+        $this->assertTrue(defined('GA_COLLAPSE'));
+    }
+
+    public function testGaCollapseValue()
+    {
+        $this->assertTrue(GA_COLLAPSE === 'collapse');
+    }
     public function testGaNavCollapseExists()
     {
         $this->assertTrue(defined('GA_NAV_COLLAPSE'));
@@ -1225,16 +1828,6 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_NAV_COLLAPSE === 'nav-collapse');
     }
 
-    public function testGaCollapseExists()
-    {
-        $this->assertTrue(defined('GA_COLLAPSE'));
-    }
-
-    public function testGaCollapseValue()
-    {
-        $this->assertTrue(GA_COLLAPSE === 'collapse');
-    }
-
     public function testGaNavbarInverseExists()
     {
         $this->assertTrue(defined('GA_NAVBAR_INVERSE'));
@@ -1243,6 +1836,16 @@ class BootstrapTest extends CakeTestCase
     public function testGaNavbarInverseValue()
     {
         $this->assertTrue(GA_NAVBAR_INVERSE === 'navbar-inverse');
+    }
+
+    public function testGaBtnNavbarExists()
+    {
+        $this->assertTrue(defined('GA_BTN_NAVBAR'));
+    }
+
+    public function testGaBtnNavbarValue()
+    {
+        $this->assertTrue(GA_BTN_NAVBAR === 'btn-navbar');
     }
 
     public function testGaBreadcrumbExists()
@@ -1343,16 +1946,6 @@ class BootstrapTest extends CakeTestCase
     public function testGaNextValue()
     {
         $this->assertTrue(GA_NEXT === 'next');
-    }
-
-    public function testGaLabelExists()
-    {
-        $this->assertTrue(defined('GA_LABEL'));
-    }
-
-    public function testGaLabelValue()
-    {
-        $this->assertTrue(GA_LABEL === 'label');
     }
 
     public function testGaLabelSuccessExists()
@@ -1575,16 +2168,6 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_PROGRESS === 'progress');
     }
 
-    public function testGaBarExists()
-    {
-        $this->assertTrue(defined('GA_BAR'));
-    }
-
-    public function testGaBarValue()
-    {
-        $this->assertTrue(GA_BAR === 'bar');
-    }
-
     public function testGaBarSuccessExists()
     {
         $this->assertTrue(defined('GA_BAR_SUCCESS'));
@@ -1645,6 +2228,16 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_MEDIA === 'media');
     }
 
+    public function testGaObjectExists()
+    {
+        $this->assertTrue(defined('GA_OBJECT'));
+    }
+
+    public function testGaObjectValue()
+    {
+        $this->assertTrue(GA_OBJECT === 'object');
+    }
+
     public function testGaMediaObjectExists()
     {
         $this->assertTrue(defined('GA_MEDIA_OBJECT'));
@@ -1655,6 +2248,16 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_MEDIA_OBJECT === 'media-object');
     }
 
+    public function testGaBodyExists()
+    {
+        $this->assertTrue(defined('GA_BODY'));
+    }
+
+    public function testGaBodyValue()
+    {
+        $this->assertTrue(GA_BODY === 'body');
+    }
+
     public function testGaMediaBodyExists()
     {
         $this->assertTrue(defined('GA_MEDIA_BODY'));
@@ -1663,6 +2266,16 @@ class BootstrapTest extends CakeTestCase
     public function testGaMediaBodyValue()
     {
         $this->assertTrue(GA_MEDIA_BODY === 'media-body');
+    }
+
+    public function testGaHeadingExists()
+    {
+        $this->assertTrue(defined('GA_HEADING'));
+    }
+
+    public function testGaHeadingValue()
+    {
+        $this->assertTrue(GA_HEADING === 'heading');
     }
 
     public function testGaMediaHeadingExists()
@@ -1744,5 +2357,33 @@ class BootstrapTest extends CakeTestCase
     {
         $this->assertTrue(GA_TABLENAVBAR_CLEAR_BTN === 'tablenavbar-clear-btn');
     }
+    public function testGaTablenavbarActionsExists()
+    {
+        $this->assertTrue(defined('GA_TABLENAVBAR_ACTIONS'));
+    }
+
+    public function testGaTablenavbarActionsValue()
+    {
+        $this->assertTrue(GA_TABLENAVBAR_ACTIONS === 'actions');
+    }
+    public function testGaSelectpickerExists()
+    {
+        $this->assertTrue(defined('GA_SELECTPICKER'));
+    }
+
+    public function testGaSelectpickerValue()
+    {
+        $this->assertTrue(GA_SELECTPICKER === 'selectpicker');
+    }
+    public function testGaShowTickExists()
+    {
+        $this->assertTrue(defined('GA_SHOW_TICK'));
+    }
+
+    public function testGaShowTickValue()
+    {
+        $this->assertTrue(GA_SHOW_TICK === 'show-tick');
+    }
+
 }
 
