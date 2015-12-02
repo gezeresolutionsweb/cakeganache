@@ -123,7 +123,7 @@ class GanacheTableNavbarHelper extends AppHelper {
                 $form .= $this->Form->button( $this->Html->icon( 'filter' ), array(
                     'bootstrap-type' => 'primary',
                     'title' => $buttonFilterTitle,
-                    'data-toggle' => GA_TABLENAVBAR_SEARCH_BUTTON
+                    'data-toggle' => GA_TABLENAVBAR_SEARCH_BTN
                 ) );
             }
 
@@ -131,7 +131,7 @@ class GanacheTableNavbarHelper extends AppHelper {
                 $form .= PHP_EOL;
                 $form .= $this->Form->button( $this->Html->icon( 'times' ), array(
                     'title' => $buttonClearFiltersTitle,
-                    'data-toggle' => GA_TABLENAVBAR_CLEAR_BUTTON
+                    'data-toggle' => GA_TABLENAVBAR_CLEAR_BTN
                 ) );
             }
 
