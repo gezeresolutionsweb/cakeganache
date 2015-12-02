@@ -90,17 +90,22 @@ class GanacheHtmlHelper extends HtmlHelper {
         // If class attribute is define we must force it as array.
         if(isset($options['class'])) {
             $classes = [];
-            if(is_string()) {
+            if(is_string($options['class'])) {
                 $classes = explode(' ', $options['class']);
             } elseif(is_array($options['class'])) {
                 $classes = $options['class'];
             }
-            $defaults['class'] = array_merge($defaults['class'], $options['options']);
+            unset($options['class']);
         }
 
         $options = array_merge($defaults, $options);
 
         array_push($options['class'], $options['ga_prefix'] . '-' . $icon);
+
+        // Merging regular classes.
+        if(isset($classes)) {
+            $options['class'] = array_merge($options['class'], $classes);
+        }
 
         // If ga_size is defined
         if(isset($options['ga_size'])) {
@@ -108,6 +113,13 @@ class GanacheHtmlHelper extends HtmlHelper {
             unset($options['ga_size']);
         }
 
+        // If ga_spin is true
+        if(isset($options['ga_spin']) && $options['ga_spin'] === true) {
+            array_push($options['class'], $options['ga_prefix'] . '-' . GA_SPIN);
+            unset($options['ga_spin']);
+        }
+
+        // Clean options before passing it to standard HtmlHelper::tag() function.
         unset($options['ga_prefix']);
 
         return $this->tag('i', '', $options);
