@@ -60,6 +60,8 @@ class GanacheHtmlHelper extends HtmlHelper {
      * Create an icon.
      * Compatible for Bootstrap 2.3.2 and 3.X glyphicons and FontAwesome by changin prefix for "fa"
      *
+     * @access public
+     * @author Sylvain Lévesque <slevesque@gezere.com>
      * @param string $icon label of the icon
      * @param array $options Options array.
      *
@@ -76,7 +78,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      *          GA_5X : 5x size
      *   ga_spin   : If this icon must spin. Add GA_SPIN to html class attribute. true|false (default: false)
      *
-     * @return string
+     * @return string Html element string.
      * @todo Try to implement stack icon in there.
      */
     public function icon($icon, $options = [])
