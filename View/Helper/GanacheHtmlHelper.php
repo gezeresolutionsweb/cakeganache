@@ -22,20 +22,10 @@ class GanacheHtmlHelper extends HtmlHelper {
      */
     protected $prefix = 'glyphicon';
 
-    /**
-     * Icon prefix.
-     */
-    protected $iconPrefix = ' glyphicon-';
-
-
     public function __construct(View $View, $settings = array()) {
         if( isset( $settings[ 'prefix' ] ) ) {
             $this->prefix = $settings[ 'prefix' ];
             unset( $settings[ 'prefix' ] );
-        }
-        if( isset( $settings[ 'iconPrefix' ] ) ) {
-            $this->iconPrefix = $settings[ 'iconPrefix' ];
-            unset( $settings[ 'iconPrefix' ] );
         }
 
         parent::__construct($View, $settings);
@@ -68,51 +58,59 @@ class GanacheHtmlHelper extends HtmlHelper {
 
     /**
      * Create an icon.
-     * Compatible for Bootstrap 3.2.1 glyphicons.
-     * Compatible for Bootstrap 2.3.2 glyphicons by changin iconPrefix for " icon-"
-     * Compatible for Fontawesome with changing prefix and iconPrefix for "fa" and " fa-"
+     * Compatible for Bootstrap 2.3.2 and 3.X glyphicons and FontAwesome by changin prefix for "fa"
      *
-     * @param string $iconLabel label of the icon
+     * @param string $icon label of the icon
      * @param array $options Options array.
      *
      * Extra:
-     *   - prefix: Library prefix. (default: "glyphicon")
-     *   - iconPrefix: Icon prefix class (default: " glyphicon-")
-     *   - classes: An array with specific library classes like: 'fixed-width', 'large', '2x'. Will prefix with iconPrefix.
-     *   - attributes: An array with other html attributes including "class". Class is used to add other classes without iconPrefix.
+     *   ga_prefix : Library prefix. (default: "glyphicon")
+     *   ga_size   : Icon size. Add size to html class attribute. (default: GA_1X)
+     *      Availables options:
+     *          GA_FW : Fixed with
+     *          GA_LG : Large icon
+     *          GA_1X : 1x size
+     *          GA_2X : 2x size
+     *          GA_3X : 3x size
+     *          GA_4X : 4x size
+     *          GA_5X : 5x size
+     *   ga_spin   : If this icon must spin. Add GA_SPIN to html class attribute.
      *
      * @return string
-     * @todo Use HtmlHelper::tag to generate tags.
+     * @todo Try to implement stack icon in there.
      */
-    public function icon( $iconLabel, $options = [] ) {
+    public function icon($icon, $options = [])
+    {
         $defaults = [
-            'prefix' => $this->prefix,
-            'iconPrefix' => $this->iconPrefix,
-            'classes' => [],
-            'attributes' => []
+            'ga_prefix' => $this->prefix,
+            'class' => [$this->prefix]
             ];
-        $options = array_merge( $defaults, $options );
 
-        $classes = '';
-        // Added more classes to the generated icon html tag.
-        if( isset( $options[ 'attributes' ][ 'class' ] ) ) {
-            $classes = ' ' . $options[ 'attributes' ][ 'class' ];
-            unset( $options[ 'attributes' ][ 'class' ] );
-        }
 
-        if (!empty($options[ 'classes' ] ) ) {
-            foreach( $options[ 'classes' ] as $opt ) {
-                $classes .= ' ' . $options[ 'iconPrefix' ] . $opt;
+        // If class attribute is define we must force it as array.
+        if(isset($options['class'])) {
+            $classes = [];
+            if(is_string()) {
+                $classes = explode(' ', $options['class']);
+            } elseif(is_array($options['class'])) {
+                $classes = $options['class'];
             }
+            $defaults['class'] = array_merge($defaults['class'], $options['options']);
         }
-        $attributes = '';
-        if (!empty($options[ 'attributes' ] ) ) {
-            foreach ($options[ 'attributes' ] as $key => $attr) {
-                $attributes .= ' ' . $key . '="' . $attr . '"';
-            }
-        }
-        return '<i class="' . $options[ 'prefix' ] . $options[ 'iconPrefix' ] . $iconLabel . $classes . '"' . $attributes . '></i>';
 
+        $options = array_merge($defaults, $options);
+
+        array_push($options['class'], $options['ga_prefix'] . '-' . $icon);
+
+        // If ga_size is defined
+        if(isset($options['ga_size'])) {
+            array_push($options['class'], $options['ga_prefix'] . '-' . $options['ga_size']);
+            unset($options['ga_size']);
+        }
+
+        unset($options['ga_prefix']);
+
+        return $this->tag('i', '', $options);
     }
 
     /**
