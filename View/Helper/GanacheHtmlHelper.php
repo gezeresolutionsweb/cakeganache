@@ -65,9 +65,9 @@ class GanacheHtmlHelper extends HtmlHelper {
      * @param string $icon label of the icon
      * @param array $options Options array.
      *
-     * Extra:
-     *   ga_prefix : Library prefix. (default: "glyphicon")
-     *   ga_size   : Icon size. Add size to html class attribute. (default: GA_1X)
+     * Extra options
+     *   - ga_prefix : Library prefix. (default: "glyphicon")
+     *   - ga_size   : Icon size. Add size to html class attribute. (default: GA_1X)
      *      values:
      *          GA_FW : Fixed with
      *          GA_LG : Large icon
@@ -76,7 +76,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      *          GA_3X : 3x size
      *          GA_4X : 4x size
      *          GA_5X : 5x size
-     *   ga_spin   : If this icon must spin. Add GA_SPIN to html class attribute. true|false (default: false)
+     *   - ga_spin   : If this icon must spin. Add GA_SPIN to html class attribute. true|false (default: false)
      *
      * @return string Html element string.
      * @todo Try to implement stack icon in there.
@@ -128,7 +128,6 @@ class GanacheHtmlHelper extends HtmlHelper {
     }
 
     /**
-     *
      * Create a Twitter Bootstrap span label.
      * 
      * @param text The label text
