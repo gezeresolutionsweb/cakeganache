@@ -110,7 +110,7 @@ class GanacheCalendarHelper extends AppHelper {
      * @return The full calendar (HTML string)
     **/
     public function showFullCalendar ( $elements = array(), $year = null, $month = null ) {
-        // @todo need to refacto with BSHtml::tag() function.
+        // @todo need to refacto with GanacheHtml::tag() function.
         
         $html = '<table class="calendar ' . GA_TABLE . ' ' . GA_TABLE_BORDERED . '">';
         $html .= $this->getHeader();
