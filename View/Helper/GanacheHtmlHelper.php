@@ -66,7 +66,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      * Extra:
      *   ga_prefix : Library prefix. (default: "glyphicon")
      *   ga_size   : Icon size. Add size to html class attribute. (default: GA_1X)
-     *      Availables options:
+     *      values:
      *          GA_FW : Fixed with
      *          GA_LG : Large icon
      *          GA_1X : 1x size
@@ -74,7 +74,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      *          GA_3X : 3x size
      *          GA_4X : 4x size
      *          GA_5X : 5x size
-     *   ga_spin   : If this icon must spin. Add GA_SPIN to html class attribute.
+     *   ga_spin   : If this icon must spin. Add GA_SPIN to html class attribute. true|false (default: false)
      *
      * @return string
      * @todo Try to implement stack icon in there.
