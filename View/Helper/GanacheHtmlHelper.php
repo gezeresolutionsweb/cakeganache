@@ -649,47 +649,68 @@ class GanacheHtmlHelper extends HtmlHelper {
     /**
      * Create a bootstrap link button.
      *
+     * @access public
+     * @author Sylvain Lévesque <slevesque@gezere.com>
      * @param string $title The content to be wrapped by <a> tags.
      * @param string|array $url Cake-relative URL or array of URL parameters, or external URL (starts with http://)
      * @param array $options Array of options and HTML attributes.
      * @return string An `<a />` element or bootstraped button link.
      * @link http://book.cakephp.org/2.0/en/core-libraries/helpers/html.html#HtmlHelper::link
      *
-     * ### Bootstrap options
-     *
-     * - `bsType` GA_BTN_DEFAULT|GA_BTN_PRIMARY|GA_BTN_INFO|GA_BTN_SUCCESS|GA_BTN_WARNING|GA_BTN_DANGER|GA_BTN_INVERSE|GA_BTN_LINK
-     * - `bsSize` GA_BTN_MINI|GA_BTN_SMALL|GA_BTN_LARGE|GA_BTN_BLOCK
-     * - `bsIcon` BsHtml::icon() icon string result.
+     * Extra options
+     * - ga_type         : string GA_DEFAULT|GA_PRIMARY|GA_INFO|GA_SUCCESS|GA_WARNING|GA_DANGER|GA_INVERSE|GA_LINK (default: GA_DEFAULT)
+     * - ga_size         : string GA_MINI|GA_SMALL|GA_LARGE|GA_BLOCK
+     * - ga_icon         : string GanacheHtml::icon() icon string result.
+     * - ga_icon_options : array|string GanacheHtml::icon() icon options.
      */
     function btn($title, $url = NULL, $options = Array())
     {
-        $class = GA_BTN;
+        $defaults = array(
+            'ga_type' => GA_DEFAULT,
+            'class' => [GA_BTN]
+        );
+
+        // If class attribute is define we must force it as array.
         if(isset($options['class'])) {
-            $class = $options['class'] . ' ' . $class;
+            $classes = [];
+            if (is_string($options['class'])) {
+                $classes = explode(' ', $options['class']);
+            } elseif (is_array($options['class'])) {
+                $classes = $options['class'];
+            }
+            unset($options['class']);
         }
 
-        // Button type processing (GA_BTN_SUCCESS, GA_BTN_DANGER, etc.)
-        if(isset($options['bsType'])) {
-            $class .= ' ' . $options['bsType'];
-            unset($options['bsType']);
+        $options = array_merge($defaults, $options);
+
+        array_push($options['class'], GA_BTN . '-' . $options['ga_type']);
+        unset($options['ga_type']);
+
+        // Merging regular classes.
+        if(isset($classes)) {
+            $options['class'] = array_merge($options['class'], $classes);
         }
 
         // Button size processing (GA_BTN_LARGE, GA_BTN_SMALL, etc.)
-        if(isset($options['bsSize'])) {
-            $class .= ' ' . $options['bsSize'];
-            unset($options['bsSize']);
+        if(isset($options['ga_size'])) {
+            array_push($options['class'], GA_BTN . '-' . $options['ga_size']);
+            unset($options['ga_size']);
         }
 
-        // bsIcon processing
-        if(isset($options['bsIcon'])) {
+        // Button icon
+        if(isset($options['ga_icon'])) {
             $options['escape'] = false;
-            $title = $options['bsIcon'] . ' ' . $title;
-            unset($options['bsIcon']);
+
+            // Icon options
+            $iconOptions = [];
+            if(isset($options['ga_icon_options'])) {
+                $iconOptions = $options['ga_icon_options'];
+                unset($options['ga_icon_options']);
+            }
+            $title = $this->icon($options['ga_icon'], $iconOptions) . ' ' . $title;
+            unset($options['ga_icon']);
         }
-
         
-        $options['class'] = $class;
-
         return parent::link($title, $url, $options);
     }
 
