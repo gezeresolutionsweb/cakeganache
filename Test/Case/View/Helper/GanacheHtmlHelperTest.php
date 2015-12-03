@@ -257,4 +257,11 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected = '<a href="/" class="btn btn-default" title="home"><i class="glyphicon glyphicon-home glyphicon-1x"></i> home</a>';
         $this->assertEquals($expected, $result);
     }
+    public function testBtnWithConfirmMessage()
+    {
+        $result = $this->GanacheHtmlHelper->btn('home', '/', ['confirm' => 'Really wanna do this ?']);
+        $expected = '<a href="/" class="btn btn-default" title="home" onclick="if (confirm(&quot;Really wanna do this ?&quot;)) { return true; } return false;">home</a>';
+        $this->assertEquals($expected, $result);
+    }
 }
+
