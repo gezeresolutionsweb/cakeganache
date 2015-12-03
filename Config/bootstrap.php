@@ -101,6 +101,7 @@ define('GA_DL_HORIZONTAL', 'dl-' . GA_HORIZONTAL);
 define('GA_LIST', 'list');
 define('GA_DIVIDER', 'divider');
 define('GA_CLEAR', 'clear');
+define('GA_PRE_SCROLLABLE', 'pre-scrollable'); // @test
 
 
 /**
@@ -385,3 +386,48 @@ define('GA_TABLENAVBAR_ACTIONS', GA_ACTIONS);
  */
 define('GA_SELECTPICKER', 'selectpicker');
 define('GA_SHOW_TICK', 'show-tick');
+
+/**
+ * Responsive
+ */
+define('GA_VISIBLE', 'visible'); // @test
+define('GA_PHONE', 'phone'); // @test
+define('GA_TABLET', 'tablet'); // @test
+define('GA_DESKTOP', 'desktop'); // @test
+define('GA_VISIBLE_PHONE', GA_VISIBLE . '-' . GA_PHONE); // @test
+define('GA_VISIBLE_TABLET', GA_VISIBLE . '-' . GA_TABLET); // @test
+define('GA_VISIBLE_DESKTOP', GA_VISIBLE . '-' . GA_DESKTOP); // @test
+define('GA_HIDDEN', 'hidden'); // @test
+define('GA_HIDDEN_PHONE', GA_HIDDEN . '-' . GA_PHONE); // @test
+define('GA_HIDDEN_TABLET', GA_HIDDEN . '-' . GA_TABLET); // @test
+define('GA_HIDDEN_DESKTOP', GA_HIDDEN . '-' . GA_DESKTOP); // @test
+
+/**
+ * Icons
+ */
+define('GA_WHITE', 'white'); // @test
+define('GA_ICON_WHITE', GA_ICON . '-' . GA_WHITE); // @test
+define('GA_LG', 'lg'); // @test
+define('GA_2X', '2x'); // @test
+define('GA_3X', '3x'); // @test
+define('GA_4X', '4x'); // @test
+define('GA_5X', '5x'); // @test
+define('GA_FW', 'fw'); // @test
+define('GA_SPINNER', 'spinner'); // @test
+define('GA_SPIN', 'spin'); // @test
+define('GA_PULSE', 'pulse'); // @test
+define('GA_BORDER', 'border'); // @test
+define('GA_ROTATE', 'rotate'); // @test
+define('GA_90', '90'); // @test
+define('GA_ROTATE_90', GA_ROTATE . '-' . GA_90); // @test
+define('GA_180', '180'); // @test
+define('GA_ROTATE_180', GA_ROTATE . '-' . GA_180); // @test
+define('GA_270', '270'); // @test
+define('GA_ROTATE_270', GA_ROTATE . '-' . GA_270); // @test
+define('GA_FLIP', 'flip'); // @test
+define('GA_FLIP_HORIZONTAL', GA_FLIP . '-' . GA_HORIZONTAL); // @test
+define('GA_FLIP_VERTICAL', GA_FLIP . '-' . GA_VERTICAL); // @test
+define('GA_STACK', 'stack'); // @test
+define('GA_1X', '1x'); // @test
+define('GA_STACK_1X', GA_STACK . '-' . GA_1X); // @test
+define('GA_STACK_2X', GA_STACK . '-' . GA_2X); // @test
