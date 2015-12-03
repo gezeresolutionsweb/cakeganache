@@ -663,7 +663,8 @@ class GanacheHtmlHelper extends HtmlHelper {
      * - ga_icon         : string GanacheHtml::icon() icon string result.
      * - ga_icon_options : array|string GanacheHtml::icon() icon options.
      *
-     *  @todo Escape title from to avoid html tags.
+     * @todo Escape title from to avoid html tags.
+     * @todo Choose if we want a link of a button tag.
      */
     function btn($title, $url = NULL, $options = Array())
     {
