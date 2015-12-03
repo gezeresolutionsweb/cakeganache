@@ -662,6 +662,8 @@ class GanacheHtmlHelper extends HtmlHelper {
      * - ga_size         : string GA_MINI|GA_SMALL|GA_LARGE|GA_BLOCK
      * - ga_icon         : string GanacheHtml::icon() icon string result.
      * - ga_icon_options : array|string GanacheHtml::icon() icon options.
+     *
+     *  @todo Escape title from to avoid html tags.
      */
     function btn($title, $url = NULL, $options = Array())
     {
