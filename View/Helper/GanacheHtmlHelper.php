@@ -683,6 +683,11 @@ class GanacheHtmlHelper extends HtmlHelper {
 
         $options = array_merge($defaults, $options);
 
+        // Is title attribute is not define, define it by default.
+        if(!isset($options['title'])) {
+            $options['title'] = $title;
+        }
+
         array_push($options['class'], GA_BTN . '-' . $options['ga_type']);
         unset($options['ga_type']);
 
