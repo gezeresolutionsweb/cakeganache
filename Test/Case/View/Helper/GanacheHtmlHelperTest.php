@@ -104,162 +104,162 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function testBasicBtnWithoutOptions()
+    public function testLinkButtonWithoutOptions()
     {
-        $result = $this->GanacheHtmlHelper->btn('home', '/');
+        $result = $this->GanacheHtmlHelper->linkButton('home', '/');
         $expected = '<a href="/" class="btn btn-default" title="home">home</a>';
         $this->assertEquals($expected, $result);
     }
 
-    public function testBasicBtnWithUrlAsArray()
+    public function testLinkButtonWithUrlAsArray()
     {
-        $result = $this->GanacheHtmlHelper->btn('home', ['plugin' => 'admin', 'controller' => 'admin', 'action' => 'manage']);
+        $result = $this->GanacheHtmlHelper->linkButton('home', ['plugin' => 'admin', 'controller' => 'admin', 'action' => 'manage']);
         $expected = '<a href="/admin/admin/manage" class="btn btn-default" title="home">home</a>';
         $this->assertEquals($expected, $result);
     }
 
-    public function testBasicBtnWithTitleAttribute()
+    public function testLinkButtonWithTitleAttribute()
     {
-        $result = $this->GanacheHtmlHelper->btn('home', '/', ['title' => 'My super home']);
+        $result = $this->GanacheHtmlHelper->linkButton('home', '/', ['title' => 'My super home']);
         $expected = '<a href="/" class="btn btn-default" title="My super home">home</a>';
         $this->assertEquals($expected, $result);
     }
 
-    public function testBtnTypeDefault()
+    public function testLinkButtonTypeDefault()
     {
-        $result = $this->GanacheHtmlHelper->btn('home', '/', ['ga_type' => GA_DEFAULT]);
+        $result = $this->GanacheHtmlHelper->linkButton('home', '/', ['ga_type' => GA_DEFAULT]);
         $expected = '<a href="/" class="btn btn-default" title="home">home</a>';
         $this->assertEquals($expected, $result);
     }
 
-    public function testBtnTypePrimary()
+    public function testLinkButtonTypePrimary()
     {
-        $result = $this->GanacheHtmlHelper->btn('home', '/', ['ga_type' => GA_PRIMARY]);
+        $result = $this->GanacheHtmlHelper->linkButton('home', '/', ['ga_type' => GA_PRIMARY]);
         $expected = '<a href="/" class="btn btn-primary" title="home">home</a>';
         $this->assertEquals($expected, $result);
     }
 
-    public function testBtnTypeInfo()
+    public function testLinkButtonTypeInfo()
     {
-        $result = $this->GanacheHtmlHelper->btn('home', '/', ['ga_type' => GA_INFO]);
+        $result = $this->GanacheHtmlHelper->linkButton('home', '/', ['ga_type' => GA_INFO]);
         $expected = '<a href="/" class="btn btn-info" title="home">home</a>';
         $this->assertEquals($expected, $result);
     }
 
-    public function testBtnTypeSuccess()
+    public function testLinkButtonTypeSuccess()
     {
-        $result = $this->GanacheHtmlHelper->btn('home', '/', ['ga_type' => GA_SUCCESS]);
+        $result = $this->GanacheHtmlHelper->linkButton('home', '/', ['ga_type' => GA_SUCCESS]);
         $expected = '<a href="/" class="btn btn-success" title="home">home</a>';
         $this->assertEquals($expected, $result);
     }
 
-    public function testBtnTypeWarning()
+    public function testLinkButtonTypeWarning()
     {
-        $result = $this->GanacheHtmlHelper->btn('home', '/', ['ga_type' => GA_WARNING]);
+        $result = $this->GanacheHtmlHelper->linkButton('home', '/', ['ga_type' => GA_WARNING]);
         $expected = '<a href="/" class="btn btn-warning" title="home">home</a>';
         $this->assertEquals($expected, $result);
     }
 
-    public function testBtnTypeDanger()
+    public function testLinkButtonTypeDanger()
     {
-        $result = $this->GanacheHtmlHelper->btn('home', '/', ['ga_type' => GA_DANGER]);
+        $result = $this->GanacheHtmlHelper->linkButton('home', '/', ['ga_type' => GA_DANGER]);
         $expected = '<a href="/" class="btn btn-danger" title="home">home</a>';
         $this->assertEquals($expected, $result);
     }
 
-    public function testBtnTypeInverse()
+    public function testLinkButtonTypeInverse()
     {
-        $result = $this->GanacheHtmlHelper->btn('home', '/', ['ga_type' => GA_INVERSE]);
+        $result = $this->GanacheHtmlHelper->linkButton('home', '/', ['ga_type' => GA_INVERSE]);
         $expected = '<a href="/" class="btn btn-inverse" title="home">home</a>';
         $this->assertEquals($expected, $result);
     }
 
-    public function testBtnTypeLink()
+    public function testLinkButtonTypeLink()
     {
-        $result = $this->GanacheHtmlHelper->btn('home', '/', ['ga_type' => GA_LINK]);
+        $result = $this->GanacheHtmlHelper->linkButton('home', '/', ['ga_type' => GA_LINK]);
         $expected = '<a href="/" class="btn btn-link" title="home">home</a>';
         $this->assertEquals($expected, $result);
     }
 
-    public function testBtnMini()
+    public function testLinkButtonSizeMini()
     {
-        $result = $this->GanacheHtmlHelper->btn('home', '/', ['ga_size' => GA_MINI]);
+        $result = $this->GanacheHtmlHelper->linkButton('home', '/', ['ga_size' => GA_MINI]);
         $expected = '<a href="/" class="btn btn-default btn-mini" title="home">home</a>';
         $this->assertEquals($expected, $result);
     }
 
-    public function testBtnSmall()
+    public function testLinkButtonSizeSmall()
     {
-        $result = $this->GanacheHtmlHelper->btn('home', '/', ['ga_size' => GA_SMALL]);
+        $result = $this->GanacheHtmlHelper->linkButton('home', '/', ['ga_size' => GA_SMALL]);
         $expected = '<a href="/" class="btn btn-default btn-small" title="home">home</a>';
         $this->assertEquals($expected, $result);
     }
 
-    public function testBtnLarge()
+    public function testLinkButtonLarge()
     {
-        $result = $this->GanacheHtmlHelper->btn('home', '/', ['ga_size' => GA_LARGE]);
+        $result = $this->GanacheHtmlHelper->linkButton('home', '/', ['ga_size' => GA_LARGE]);
         $expected = '<a href="/" class="btn btn-default btn-large" title="home">home</a>';
         $this->assertEquals($expected, $result);
     }
 
-    public function testBtnBlock()
+    public function testLinkButtonSizeBlock()
     {
-        $result = $this->GanacheHtmlHelper->btn('home', '/', ['ga_size' => GA_BLOCK]);
+        $result = $this->GanacheHtmlHelper->linkButton('home', '/', ['ga_size' => GA_BLOCK]);
         $expected = '<a href="/" class="btn btn-default btn-block" title="home">home</a>';
         $this->assertEquals($expected, $result);
     }
     
-    public function testBtnWithCustomClassAsString()
+    public function testLinkButtonWithCustomClassAsString()
     {
-        $result = $this->GanacheHtmlHelper->btn('home', '/', ['class' => 'special-button']);
+        $result = $this->GanacheHtmlHelper->linkButton('home', '/', ['class' => 'special-button']);
         $expected = '<a href="/" class="btn btn-default special-button" title="home">home</a>';
         $this->assertEquals($expected, $result);
     }
 
-    public function testBtnWithTwoCustomClassAsString()
+    public function testLinkButtonWithTwoCustomClassAsString()
     {
-        $result = $this->GanacheHtmlHelper->btn('home', '/', ['class' => 'special-button special-button-order']);
+        $result = $this->GanacheHtmlHelper->linkButton('home', '/', ['class' => 'special-button special-button-order']);
         $expected = '<a href="/" class="btn btn-default special-button special-button-order" title="home">home</a>';
         $this->assertEquals($expected, $result);
     }
 
-    public function testBtnWithCustomClassAsArray()
+    public function testLinkButtonWithCustomClassAsArray()
     {
-        $result = $this->GanacheHtmlHelper->btn('home', '/', ['class' => ['special-button']]);
+        $result = $this->GanacheHtmlHelper->linkButton('home', '/', ['class' => ['special-button']]);
         $expected = '<a href="/" class="btn btn-default special-button" title="home">home</a>';
         $this->assertEquals($expected, $result);
     }
 
-    public function testBtnWithTwoCustomClassAsArray()
+    public function testLinkButtonWithTwoCustomClassAsArray()
     {
-        $result = $this->GanacheHtmlHelper->btn('home', '/', ['class' => ['special-button', 'special-button-order']]);
+        $result = $this->GanacheHtmlHelper->linkButton('home', '/', ['class' => ['special-button', 'special-button-order']]);
         $expected = '<a href="/" class="btn btn-default special-button special-button-order" title="home">home</a>';
         $this->assertEquals($expected, $result);
     }
 
-    public function testBtnWithIcon()
+    public function testLinkButtonWithIcon()
     {
-        $result = $this->GanacheHtmlHelper->btn('home', '/', ['ga_icon' => 'home']);
+        $result = $this->GanacheHtmlHelper->linkButton('home', '/', ['ga_icon' => 'home']);
         $expected = '<a href="/" class="btn btn-default" title="home"><i class="glyphicon glyphicon-home"></i> home</a>';
         $this->assertEquals($expected, $result);
     }
 
-    public function testBtnWithIconAndSpinOption()
+    public function testLinkButtonWithIconAndSpinOption()
     {
-        $result = $this->GanacheHtmlHelper->btn('home', '/', ['ga_icon' => 'home', 'ga_icon_options' => ['ga_spin' => true]]);
+        $result = $this->GanacheHtmlHelper->linkButton('home', '/', ['ga_icon' => 'home', 'ga_icon_options' => ['ga_spin' => true]]);
         $expected = '<a href="/" class="btn btn-default" title="home"><i class="glyphicon glyphicon-home glyphicon-spin"></i> home</a>';
         $this->assertEquals($expected, $result);
     }
 
-    public function testBtnWithIconAndSize1x()
+    public function testLinkButtonWithIconAndSize1x()
     {
-        $result = $this->GanacheHtmlHelper->btn('home', '/', ['ga_icon' => 'home', 'ga_icon_options' => ['ga_size' => GA_1X]]);
+        $result = $this->GanacheHtmlHelper->linkButton('home', '/', ['ga_icon' => 'home', 'ga_icon_options' => ['ga_size' => GA_1X]]);
         $expected = '<a href="/" class="btn btn-default" title="home"><i class="glyphicon glyphicon-home glyphicon-1x"></i> home</a>';
         $this->assertEquals($expected, $result);
     }
-    public function testBtnWithConfirmMessage()
+    public function testLinkButtonWithConfirmMessage()
     {
-        $result = $this->GanacheHtmlHelper->btn('home', '/', ['confirm' => 'Really wanna do this ?']);
+        $result = $this->GanacheHtmlHelper->linkButton('home', '/', ['confirm' => 'Really wanna do this ?']);
         $expected = '<a href="/" class="btn btn-default" title="home" onclick="if (confirm(&quot;Really wanna do this ?&quot;)) { return true; } return false;">home</a>';
         $this->assertEquals($expected, $result);
     }
