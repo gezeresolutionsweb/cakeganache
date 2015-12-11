@@ -215,7 +215,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      * - ga_icon         : string GanacheHtml::icon() icon string result.
      * - ga_icon_options : array|string GanacheHtml::icon() icon options.
      *
-     **/
+     */
     public function label ($text, $options = [])
     {
         $types = [GA_DEFAULT, GA_SUCCESS, GA_WARNING, GA_INFO, GA_IMPORTANT, GA_INVERSE];
@@ -248,24 +248,45 @@ class GanacheHtmlHelper extends HtmlHelper {
     }
 
     /**
-     *
      * Create a Twitter Bootstrap span badge.
      * 
      * @param text The badge text
      * @param options Options for span
      *
      * Extra options
-     *  - type The type of the badge
+     * - ga_type         : The type of the label GA_DEFAULT|GA_SUCCESS|GA_WARNING|GA_INFO|GA_IMPORTANT|GA_INVERSE (default: GA_DEFAULT)
+     * - ga_icon         : string GanacheHtml::icon() icon string result.
+     * - ga_icon_options : array|string GanacheHtml::icon() icon options.
      *
-     **/
+     * @todo This function is almost the same as label(). Generalization.
+     */
     public function badge ($text, $options = array()) {
-        $type = $this->_extractType($options, 'type', $default = GA_BADGE_DEFAULT, array(GA_BADGE_DEFAULT, GA_BADGE_SUCCESS, GA_BADGE_WARNING, GA_BADGE_INFO, GA_BADGE_IMPORTANT, GA_BADGE_INVERSE)) ;
-        unset ($options['type']) ;
-        $options = $this->addClass($options, 'badge') ;
+        $types = [GA_DEFAULT, GA_SUCCESS, GA_WARNING, GA_INFO, GA_IMPORTANT, GA_INVERSE];
 
-        if ($type !== GA_BADGE_DEFAULT) {
-            $options = $this->addClass($options, 'badge-'.$type) ;
+        $type = GA_DEFAULT;
+        if(!empty($options['ga_type'])) {
+            if(in_array($options['ga_type'], $types)) {
+                $type = $options['ga_type'];
+            }
+            unset($options['ga_type']);
         }
+
+        // @todo We surely can generalize this in a function later.
+        // Button icon
+        if(isset($options['ga_icon'])) {
+            // Icon options
+            $iconOptions = [];
+            if(isset($options['ga_icon_options'])) {
+                $iconOptions = $options['ga_icon_options'];
+                unset($options['ga_icon_options']);
+            }
+            $text = $this->icon($options['ga_icon'], $iconOptions) . ' ' . $text;
+            unset($options['ga_icon']);
+        }
+
+        $options = $this->addClass($options, GA_BADGE);
+        $options = $this->addClass($options, GA_BADGE . '-' . $type) ;
+
         return $this->tag('span', $text, $options) ;
     }
 
