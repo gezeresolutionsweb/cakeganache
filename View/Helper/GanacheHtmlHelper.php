@@ -664,9 +664,9 @@ class GanacheHtmlHelper extends HtmlHelper {
      * - ga_icon_options : array|string GanacheHtml::icon() icon options.
      *
      * @todo Escape title from to avoid html tags.
-     * @todo Choose if we want a link of a button tag.
+     * @todo Add ga_icon_after option to put icon after the label. There is one case.
      */
-    function btn($title, $url = NULL, $options = Array())
+    function linkButton($title, $url = NULL, $options = [])
     {
         $defaults = array(
             'ga_type' => GA_DEFAULT,
