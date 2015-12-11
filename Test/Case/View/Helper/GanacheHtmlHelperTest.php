@@ -263,5 +263,53 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected = '<a href="/" class="btn btn-default" title="home" onclick="if (confirm(&quot;Really wanna do this ?&quot;)) { return true; } return false;">home</a>';
         $this->assertEquals($expected, $result);
     }
+    public function testLabelWithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->label('Home');
+        $expected = '<span class="label label-default">Home</span>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testLabelTypeDefault()
+    {
+        $result = $this->GanacheHtmlHelper->label('Home', ['ga_type' => GA_DEFAULT]);
+        $expected = '<span class="label label-default">Home</span>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testLabelTypeSuccess()
+    {
+        $result = $this->GanacheHtmlHelper->label('Home', ['ga_type' => GA_SUCCESS]);
+        $expected = '<span class="label label-success">Home</span>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testLabelTypeWarning()
+    {
+        $result = $this->GanacheHtmlHelper->label('Home', ['ga_type' => GA_WARNING]);
+        $expected = '<span class="label label-warning">Home</span>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testLabelTypeInfo()
+    {
+        $result = $this->GanacheHtmlHelper->label('Home', ['ga_type' => GA_INFO]);
+        $expected = '<span class="label label-info">Home</span>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testLabelTypeImportant()
+    {
+        $result = $this->GanacheHtmlHelper->label('Home', ['ga_type' => GA_IMPORTANT]);
+        $expected = '<span class="label label-important">Home</span>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testLabelTypeInverse()
+    {
+        $result = $this->GanacheHtmlHelper->label('Home', ['ga_type' => GA_INVERSE]);
+        $expected = '<span class="label label-inverse">Home</span>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testLabelWithInvalidType()
+    {
+        $result = $this->GanacheHtmlHelper->label('Home', ['ga_type' => 'invalid_type']);
+        $expected = '<span class="label label-default">Home</span>';
+        $this->assertEquals($expected, $result);
+    }
 }
 
