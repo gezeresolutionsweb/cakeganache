@@ -128,13 +128,92 @@ class GanacheHtmlHelper extends HtmlHelper {
     }
 
     /**
+     * Create a bootstrap link button.
+     *
+     * @access public
+     * @author Sylvain Lévesque <slevesque@gezere.com>
+     * @param string $title The content to be wrapped by <a> tags.
+     * @param string|array $url Cake-relative URL or array of URL parameters, or external URL (starts with http://)
+     * @param array $options Array of options and HTML attributes.
+     * @return string An `<a />` element or bootstraped button link.
+     * @link http://book.cakephp.org/2.0/en/core-libraries/helpers/html.html#HtmlHelper::link
+     *
+     * Extra options
+     * - ga_type         : string GA_DEFAULT|GA_PRIMARY|GA_INFO|GA_SUCCESS|GA_WARNING|GA_DANGER|GA_INVERSE|GA_LINK (default: GA_DEFAULT)
+     * - ga_size         : string GA_MINI|GA_SMALL|GA_LARGE|GA_BLOCK
+     * - ga_icon         : string GanacheHtml::icon() icon string result.
+     * - ga_icon_options : array|string GanacheHtml::icon() icon options.
+     *
+     * @todo Escape title from to avoid html tags.
+     * @todo Add ga_icon_after option to put icon after the label. There is one case.
+     */
+    public function linkButton($title, $url = NULL, $options = [])
+    {
+        $defaults = array(
+            'ga_type' => GA_DEFAULT,
+            'class' => [GA_BTN]
+        );
+
+        // If class attribute is define we must force it as array.
+        if(isset($options['class'])) {
+            $classes = [];
+            if (is_string($options['class'])) {
+                $classes = explode(' ', $options['class']);
+            } elseif (is_array($options['class'])) {
+                $classes = $options['class'];
+            }
+            unset($options['class']);
+        }
+
+        $options = array_merge($defaults, $options);
+
+        // Is title attribute is not define, define it by default.
+        if(!isset($options['title'])) {
+            $options['title'] = $title;
+        }
+
+        array_push($options['class'], GA_BTN . '-' . $options['ga_type']);
+        unset($options['ga_type']);
+
+        // Merging regular classes.
+        if(isset($classes)) {
+            $options['class'] = array_merge($options['class'], $classes);
+        }
+
+        // Button size processing (GA_BTN_LARGE, GA_BTN_SMALL, etc.)
+        if(isset($options['ga_size'])) {
+            array_push($options['class'], GA_BTN . '-' . $options['ga_size']);
+            unset($options['ga_size']);
+        }
+
+        // @todo We surely can generalize this in a function later.
+        // Button icon
+        if(isset($options['ga_icon'])) {
+            $options['escape'] = false;
+
+            // Icon options
+            $iconOptions = [];
+            if(isset($options['ga_icon_options'])) {
+                $iconOptions = $options['ga_icon_options'];
+                unset($options['ga_icon_options']);
+            }
+            $title = $this->icon($options['ga_icon'], $iconOptions) . ' ' . $title;
+            unset($options['ga_icon']);
+        }
+        
+        return parent::link($title, $url, $options);
+    }
+
+    /**
      * Create a Twitter Bootstrap span label.
      * 
      * @param text The label text
      * @param options Options for span
      *
      * Extra options
-     *  - ga_type : The type of the label GA_DEFAULT|GA_SUCCESS|GA_WARNING|GA_INFO|GA_IMPORTANT|GA_INVERSE (default: GA_DEFAULT)
+     * - ga_type         : The type of the label GA_DEFAULT|GA_SUCCESS|GA_WARNING|GA_INFO|GA_IMPORTANT|GA_INVERSE (default: GA_DEFAULT)
+     * - ga_icon         : string GanacheHtml::icon() icon string result.
+     * - ga_icon_options : array|string GanacheHtml::icon() icon options.
      *
      **/
     public function label ($text, $options = [])
@@ -147,6 +226,19 @@ class GanacheHtmlHelper extends HtmlHelper {
                 $type = $options['ga_type'];
             }
             unset($options['ga_type']);
+        }
+
+        // @todo We surely can generalize this in a function later.
+        // Button icon
+        if(isset($options['ga_icon'])) {
+            // Icon options
+            $iconOptions = [];
+            if(isset($options['ga_icon_options'])) {
+                $iconOptions = $options['ga_icon_options'];
+                unset($options['ga_icon_options']);
+            }
+            $text = $this->icon($options['ga_icon'], $iconOptions) . ' ' . $text;
+            unset($options['ga_icon']);
         }
 
         $options = $this->addClass($options, GA_LABEL);
@@ -652,82 +744,6 @@ class GanacheHtmlHelper extends HtmlHelper {
     }
 
 
-
-    /**
-     * Create a bootstrap link button.
-     *
-     * @access public
-     * @author Sylvain Lévesque <slevesque@gezere.com>
-     * @param string $title The content to be wrapped by <a> tags.
-     * @param string|array $url Cake-relative URL or array of URL parameters, or external URL (starts with http://)
-     * @param array $options Array of options and HTML attributes.
-     * @return string An `<a />` element or bootstraped button link.
-     * @link http://book.cakephp.org/2.0/en/core-libraries/helpers/html.html#HtmlHelper::link
-     *
-     * Extra options
-     * - ga_type         : string GA_DEFAULT|GA_PRIMARY|GA_INFO|GA_SUCCESS|GA_WARNING|GA_DANGER|GA_INVERSE|GA_LINK (default: GA_DEFAULT)
-     * - ga_size         : string GA_MINI|GA_SMALL|GA_LARGE|GA_BLOCK
-     * - ga_icon         : string GanacheHtml::icon() icon string result.
-     * - ga_icon_options : array|string GanacheHtml::icon() icon options.
-     *
-     * @todo Escape title from to avoid html tags.
-     * @todo Add ga_icon_after option to put icon after the label. There is one case.
-     */
-    function linkButton($title, $url = NULL, $options = [])
-    {
-        $defaults = array(
-            'ga_type' => GA_DEFAULT,
-            'class' => [GA_BTN]
-        );
-
-        // If class attribute is define we must force it as array.
-        if(isset($options['class'])) {
-            $classes = [];
-            if (is_string($options['class'])) {
-                $classes = explode(' ', $options['class']);
-            } elseif (is_array($options['class'])) {
-                $classes = $options['class'];
-            }
-            unset($options['class']);
-        }
-
-        $options = array_merge($defaults, $options);
-
-        // Is title attribute is not define, define it by default.
-        if(!isset($options['title'])) {
-            $options['title'] = $title;
-        }
-
-        array_push($options['class'], GA_BTN . '-' . $options['ga_type']);
-        unset($options['ga_type']);
-
-        // Merging regular classes.
-        if(isset($classes)) {
-            $options['class'] = array_merge($options['class'], $classes);
-        }
-
-        // Button size processing (GA_BTN_LARGE, GA_BTN_SMALL, etc.)
-        if(isset($options['ga_size'])) {
-            array_push($options['class'], GA_BTN . '-' . $options['ga_size']);
-            unset($options['ga_size']);
-        }
-
-        // Button icon
-        if(isset($options['ga_icon'])) {
-            $options['escape'] = false;
-
-            // Icon options
-            $iconOptions = [];
-            if(isset($options['ga_icon_options'])) {
-                $iconOptions = $options['ga_icon_options'];
-                unset($options['ga_icon_options']);
-            }
-            $title = $this->icon($options['ga_icon'], $iconOptions) . ' ' . $title;
-            unset($options['ga_icon']);
-        }
-        
-        return parent::link($title, $url, $options);
-    }
 
 
 }
