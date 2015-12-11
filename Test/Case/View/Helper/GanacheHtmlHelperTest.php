@@ -311,5 +311,23 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected = '<span class="label label-default">Home</span>';
         $this->assertEquals($expected, $result);
     }
+    public function testLabelWithIcon()
+    {
+        $result = $this->GanacheHtmlHelper->label('Home', ['ga_icon' => 'home']);
+        $expected = '<span class="label label-default"><i class="glyphicon glyphicon-home"></i> Home</span>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testLabelWithIconAndIconOptions()
+    {
+        $result = $this->GanacheHtmlHelper->label('Home', ['ga_icon' => 'home', 'ga_icon_options' => ['ga_size' => GA_LG]]);
+        $expected = '<span class="label label-default"><i class="glyphicon glyphicon-home glyphicon-lg"></i> Home</span>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testLabelWithCustomClassAsString()
+    {
+        $result = $this->GanacheHtmlHelper->label('Home', ['class' => 'custom-class']);
+        $expected = '<span class="custom-class label label-default">Home</span>';
+        $this->assertEquals($expected, $result);
+    }
 }
 
