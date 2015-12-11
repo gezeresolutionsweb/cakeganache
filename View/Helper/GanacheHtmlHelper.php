@@ -134,17 +134,24 @@ class GanacheHtmlHelper extends HtmlHelper {
      * @param options Options for span
      *
      * Extra options
-     *  - type The type of the label
+     *  - ga_type : The type of the label GA_DEFAULT|GA_SUCCESS|GA_WARNING|GA_INFO|GA_IMPORTANT|GA_INVERSE (default: GA_DEFAULT)
      *
      **/
-    public function label ($text, $options = array()) {
-        $type = $this->_extractType($options, 'type', $default = GA_BTN_DEFAULT, array(GA_BTN_DEFAULT, GA_BTN_SUCCESS, GA_BTN_WARNING, GA_BTN_INFO, GA_BTN_IMPORTANT, GA_BTN_INVERSE));
-        unset ($options['type']) ;
-        $options = $this->addClass($options, 'label');
+    public function label ($text, $options = [])
+    {
+        $types = [GA_DEFAULT, GA_SUCCESS, GA_WARNING, GA_INFO, GA_IMPORTANT, GA_INVERSE];
 
-        if ($type !== GA_BTN_DEFAULT) {
-            $options = $this->addClass($options, 'label-'.$type) ;
+        $type = GA_DEFAULT;
+        if(!empty($options['ga_type'])) {
+            if(in_array($options['ga_type'], $types)) {
+                $type = $options['ga_type'];
+            }
+            unset($options['ga_type']);
         }
+
+        $options = $this->addClass($options, GA_LABEL);
+        $options = $this->addClass($options, GA_LABEL . '-' . $type) ;
+
         return $this->tag('span', $text, $options) ;
     }
 
