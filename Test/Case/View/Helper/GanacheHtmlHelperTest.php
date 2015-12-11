@@ -329,5 +329,68 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected = '<span class="custom-class label label-default">Home</span>';
         $this->assertEquals($expected, $result);
     }
+
+    public function testBadgeTypeDefault()
+
+    {
+        $result = $this->GanacheHtmlHelper->badge('Home', ['ga_type' => GA_DEFAULT]);
+        $expected = '<span class="badge badge-default">Home</span>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testBadgeTypeSuccess()
+    {
+        $result = $this->GanacheHtmlHelper->badge('Home', ['ga_type' => GA_SUCCESS]);
+        $expected = '<span class="badge badge-success">Home</span>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testBadgeTypeWarning()
+    {
+        $result = $this->GanacheHtmlHelper->badge('Home', ['ga_type' => GA_WARNING]);
+        $expected = '<span class="badge badge-warning">Home</span>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testBadgeTypeInfo()
+    {
+        $result = $this->GanacheHtmlHelper->badge('Home', ['ga_type' => GA_INFO]);
+        $expected = '<span class="badge badge-info">Home</span>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testBadgeTypeImportant()
+    {
+        $result = $this->GanacheHtmlHelper->badge('Home', ['ga_type' => GA_IMPORTANT]);
+        $expected = '<span class="badge badge-important">Home</span>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testBadgeTypeInverse()
+    {
+        $result = $this->GanacheHtmlHelper->badge('Home', ['ga_type' => GA_INVERSE]);
+        $expected = '<span class="badge badge-inverse">Home</span>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testBadgeWithInvalidType()
+    {
+        $result = $this->GanacheHtmlHelper->badge('Home', ['ga_type' => 'invalid_type']);
+        $expected = '<span class="badge badge-default">Home</span>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testBadgeWithIcon()
+    {
+        $result = $this->GanacheHtmlHelper->badge('Home', ['ga_icon' => 'home']);
+        $expected = '<span class="badge badge-default"><i class="glyphicon glyphicon-home"></i> Home</span>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testBadgeWithIconAndIconOptions()
+    {
+        $result = $this->GanacheHtmlHelper->badge('Home', ['ga_icon' => 'home', 'ga_icon_options' => ['ga_size' => GA_LG]]);
+        $expected = '<span class="badge badge-default"><i class="glyphicon glyphicon-home glyphicon-lg"></i> Home</span>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testBadgeWithCustomClassAsString()
+    {
+        $result = $this->GanacheHtmlHelper->badge('Home', ['class' => 'custom-class']);
+        $expected = '<span class="custom-class badge badge-default">Home</span>';
+        $this->assertEquals($expected, $result);
+    }
+
 }
 
