@@ -392,5 +392,51 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $this->assertEquals($expected, $result);
     }
 
+    public function testGetCrumbListWithoutOptionsAndNoCrumb()
+    {
+        $result = $this->GanacheHtmlHelper->getCrumbList();
+        $this->assertNull($result);
+    }
+    public function testGetCrumbListWithCustomStartText()
+    {
+        $result = $this->GanacheHtmlHelper->getCrumbList([], 'Home');
+        $expected = '<ul class="breadcrumb"><li class="first"><a href="/">Home</a></li></ul>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testGetCrumbListWithOneCrumb()
+    {
+        $this->GanacheHtmlHelper->addCrumb('Home');
+        $result = $this->GanacheHtmlHelper->getCrumbList();
+        $expected = '<ul class="breadcrumb"><li class="first">Home</li></ul>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testGetCrumbListWithTwoCrumbs()
+    {
+        $this->GanacheHtmlHelper->addCrumb('Home')->addCrumb('Dashboard');
+        $result = $this->GanacheHtmlHelper->getCrumbList();
+        $expected = '<ul class="breadcrumb"><li class="first">Home<span class="divider">/</span></li><li class="last">Dashboard</li></ul>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testGetCrumbListWithThreeCrumbs()
+    {
+        $this->GanacheHtmlHelper->addCrumb('Home')->addCrumb('Dashboard')->addCrumb('Access');
+        $result = $this->GanacheHtmlHelper->getCrumbList();
+        $expected = '<ul class="breadcrumb"><li class="first">Home<span class="divider">/</span></li><li>Dashboard<span class="divider">/</span></li><li class="last">Access</li></ul>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testGetCrumbListWithCustomSeparator()
+    {
+        $this->GanacheHtmlHelper->addCrumb('Home')->addCrumb('Dashboard');
+        $result = $this->GanacheHtmlHelper->getCrumbList(['ga_separator' => '#']);
+        $expected = '<ul class="breadcrumb"><li class="first">Home<span class="divider">#</span></li><li class="last">Dashboard</li></ul>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testGetCrumbListWithStartTextAndThreeCrumbAndCustomSeparator()
+    {
+        $this->GanacheHtmlHelper->addCrumb('Dashboard')->addCrumb('Access')->addCrumb('Logs');
+        $result = $this->GanacheHtmlHelper->getCrumbList(['ga_separator' => '#'], 'Home');
+        $expected = '<ul class="breadcrumb"><li class="first"><a href="/">Home</a><span class="divider">#</span></li><li>Dashboard<span class="divider">#</span></li><li>Access<span class="divider">#</span></li><li class="last">Logs</li></ul>';
+        $this->assertEquals($expected, $result);
+    }
 }
 
