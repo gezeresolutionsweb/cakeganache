@@ -321,13 +321,13 @@ class GanacheHtmlHelper extends HtmlHelper {
      * 
      * Extra options
      * - ga_block : boolean specify if alert should have 'alert-block' class (default: false)
-     * - ga_type  : string The type of the alert GA_DEFAULT|GA_SUCCESS|GA_WARNING|GA_INFO|GA_IMPORTANT|GA_INVERSE (default: GA_WARNING)
+     * - ga_type  : string The type of the alert GA_DEFAULT|GA_SUCCESS|GA_WARNING|GA_ERROR|GA_INFO|GA_IMPORTANT|GA_INVERSE (default: GA_WARNING)
      */
     public function alert($text, $options = [])
     {
         $button = $this->tag('button', '&times;', ['class' => GA_CLOSE, 'data-dismiss' => GA_ALERT]);
 
-        $types = [GA_DEFAULT, GA_SUCCESS, GA_WARNING, GA_INFO, GA_IMPORTANT, GA_INVERSE];
+        $types = [GA_DEFAULT, GA_SUCCESS, GA_WARNING, GA_ERROR, GA_INFO, GA_IMPORTANT, GA_INVERSE];
 
         $type = GA_WARNING;
         if(!empty($options['ga_type'])) {
