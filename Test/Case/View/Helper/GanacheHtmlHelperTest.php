@@ -438,5 +438,59 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected = '<ul class="breadcrumb"><li class="first"><a href="/">Home</a><span class="divider">#</span></li><li>Dashboard<span class="divider">#</span></li><li>Access<span class="divider">#</span></li><li class="last">Logs</li></ul>';
         $this->assertEquals($expected, $result);
     }
+    public function testAlertWithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->alert('This is an alert !');
+        $expected = '<div class="alert alert-warning"><button class="close" data-dismiss="alert">&times;</button>This is an alert !</div>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testAlertWithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->alert('This is an alert !', ['class' => 'custom-class']);
+        $expected = '<div class="custom-class alert alert-warning"><button class="close" data-dismiss="alert">&times;</button>This is an alert !</div>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testAlertBlock()
+    {
+        $result = $this->GanacheHtmlHelper->alert('This is an alert !', ['ga_block' => true]);
+        $expected = '<div class="alert alert-block alert-warning"><button class="close" data-dismiss="alert">&times;</button>This is an alert !</div>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testAlertTypeDefault()
+    {
+        $result = $this->GanacheHtmlHelper->alert('This is an alert !', ['ga_type' => GA_DEFAULT]);
+        $expected = '<div class="alert alert-default"><button class="close" data-dismiss="alert">&times;</button>This is an alert !</div>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testAlertTypeSuccess()
+    {
+        $result = $this->GanacheHtmlHelper->alert('This is an alert !', ['ga_type' => GA_SUCCESS]);
+        $expected = '<div class="alert alert-success"><button class="close" data-dismiss="alert">&times;</button>This is an alert !</div>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testAlertTypeWarning()
+    {
+        $result = $this->GanacheHtmlHelper->alert('This is an alert !', ['ga_type' => GA_WARNING]);
+        $expected = '<div class="alert alert-warning"><button class="close" data-dismiss="alert">&times;</button>This is an alert !</div>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testAlertTypeInfo()
+    {
+        $result = $this->GanacheHtmlHelper->alert('This is an alert !', ['ga_type' => GA_INFO]);
+        $expected = '<div class="alert alert-info"><button class="close" data-dismiss="alert">&times;</button>This is an alert !</div>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testAlertTypeImportant()
+    {
+        $result = $this->GanacheHtmlHelper->alert('This is an alert !', ['ga_type' => GA_IMPORTANT]);
+        $expected = '<div class="alert alert-important"><button class="close" data-dismiss="alert">&times;</button>This is an alert !</div>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testAlertTypeInverse()
+    {
+        $result = $this->GanacheHtmlHelper->alert('This is an alert !', ['ga_type' => GA_INVERSE]);
+        $expected = '<div class="alert alert-inverse"><button class="close" data-dismiss="alert">&times;</button>This is an alert !</div>';
+        $this->assertEquals($expected, $result);
+    }
 }
 
