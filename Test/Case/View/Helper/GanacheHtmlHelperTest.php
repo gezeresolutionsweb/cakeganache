@@ -468,6 +468,12 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected = '<div class="alert alert-success"><button class="close" data-dismiss="alert">&times;</button>This is an alert !</div>';
         $this->assertEquals($expected, $result);
     }
+    public function testAlertTypeError()
+    {
+        $result = $this->GanacheHtmlHelper->alert('This is an alert !', ['ga_type' => GA_ERROR]);
+        $expected = '<div class="alert alert-error"><button class="close" data-dismiss="alert">&times;</button>This is an alert !</div>';
+        $this->assertEquals($expected, $result);
+    }
     public function testAlertTypeWarning()
     {
         $result = $this->GanacheHtmlHelper->alert('This is an alert !', ['ga_type' => GA_WARNING]);
