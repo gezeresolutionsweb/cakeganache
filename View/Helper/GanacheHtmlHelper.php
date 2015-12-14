@@ -305,7 +305,7 @@ class GanacheHtmlHelper extends HtmlHelper {
             $separator = $options['ga_separator'];
             unset($options['ga_separator']);
         }
-        $options['separator'] = '<span class="' . GA_DIVIDER . '">' . $separator . '</span>' ;
+        $options['separator'] = $this->tag('span', $separator, ['class' => GA_DIVIDER]);
 
         $options = $this->addClass($options, GA_BREADCRUMB) ;
 
