@@ -260,7 +260,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      *
      * @todo This function is almost the same as label(). Generalization.
      */
-    public function badge ($text, $options = array()) {
+    public function badge ($text, $options = []) {
         $types = [GA_DEFAULT, GA_SUCCESS, GA_WARNING, GA_INFO, GA_IMPORTANT, GA_INVERSE];
 
         $type = GA_DEFAULT;
@@ -291,18 +291,24 @@ class GanacheHtmlHelper extends HtmlHelper {
     }
 
     /**
-     * 
      * Get crumb lists in a HTML list, with bootstrap like style.
      *
      * @param $options Options for list
      * @param $startText Text to insert before list
      * 
-     * Unusable options:
-     * 	- Separator
-     **/
-    public function getCrumbList($options = array(), $startText = null) {
-        $options['separator'] = '<span class="' . GA_DIVIDER . '">/</span>' ;
+     * Extra options:
+     * 	- ga_separator : Crumb separator character.
+     */
+    public function getCrumbList($options = [], $startText = null) {
+        $separator = '/';
+        if(!empty($options['ga_separator'])) {
+            $separator = $options['ga_separator'];
+            unset($options['ga_separator']);
+        }
+        $options['separator'] = '<span class="' . GA_DIVIDER . '">' . $separator . '</span>' ;
+
         $options = $this->addClass($options, GA_BREADCRUMB) ;
+
         return parent::getCrumbList ($options, $startText) ;
     }
 
