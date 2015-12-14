@@ -254,7 +254,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      * @param options Options for span
      *
      * Extra options
-     * - ga_type         : The type of the label GA_DEFAULT|GA_SUCCESS|GA_WARNING|GA_INFO|GA_IMPORTANT|GA_INVERSE (default: GA_DEFAULT)
+     * - ga_type         : string The type of the label GA_DEFAULT|GA_SUCCESS|GA_WARNING|GA_INFO|GA_IMPORTANT|GA_INVERSE (default: GA_DEFAULT)
      * - ga_icon         : string GanacheHtml::icon() icon string result.
      * - ga_icon_options : array|string GanacheHtml::icon() icon options.
      *
@@ -297,7 +297,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      * @param $startText Text to insert before list
      * 
      * Extra options:
-     * 	- ga_separator : Crumb separator character.
+     * 	- ga_separator : string Crumb separator character.
      */
     public function getCrumbList($options = [], $startText = null) {
         $separator = '/';
@@ -313,34 +313,50 @@ class GanacheHtmlHelper extends HtmlHelper {
     }
 
     /**
-     *  
      * Create a Twitter Bootstrap style alert block, containing text.
      *  
      * @param $text The alert text
      * @param $options Options that will be passed to Html::div method
      * 
      * 
-     * Available BootstrapHtml options:
-     * 	- block: boolean, specify if alert should have 'alert-block' class
-     * 	- type: string, type of alert (default, error, info, success)
-     *     
-     **/
-    public function alert ($text, $options = array()) {
-        $button = '<button class="' . GA_CLOSE . '" data-dismiss="alert">&times;</button>' ;
-        $type = $this->_extractType($options, 'type', GA_WARNING) ;
-        unset($options['type']) ;
-        $block = $this->_extractOption('block', $options, false) ;
-        unset($options['block']) ;
+     * Extra options
+     * - ga_block : boolean specify if alert should have 'alert-block' class (default: false)
+     * - ga_type  : string The type of the alert GA_DEFAULT|GA_SUCCESS|GA_WARNING|GA_INFO|GA_IMPORTANT|GA_INVERSE (default: GA_WARNING)
+     */
+    public function alert($text, $options = [])
+    {
+        $button = $this->tag('button', '&times;', ['class' => GA_CLOSE, 'data-dismiss' => GA_ALERT]);
+
+        $types = [GA_DEFAULT, GA_SUCCESS, GA_WARNING, GA_INFO, GA_IMPORTANT, GA_INVERSE];
+
+        $type = GA_WARNING;
+        if(!empty($options['ga_type'])) {
+            if(in_array($type, $types)) {
+                $type = $options['ga_type'];
+            }
+            unset($options['ga_type']);
+        }
+
+        $block = false;
+        if(!empty($options['ga_block'])) {
+            $block = true;
+            unset($options['ga_block']);
+        }
+
         $options = $this->addClass($options, GA_ALERT) ;
         if ($block) {
-            $options = $this->addClass($options, GA_ALERT_BLOCK) ;
+            $options = $this->addClass($options, GA_ALERT_BLOCK);
         }
-        if ($type) {
-            $options = $this->addClass($options, 'alert-'.$type) ;
+
+        $options = $this->addClass($options, GA_ALERT . '-' . $type) ;
+
+        $class = '';
+        if(!empty($options['class'])) {
+            $class = $options['class'] ;
+            unset($options['class']);
         }
-        $class = $options['class'] ;
-        unset($options['class']) ;
-        return $this->div($class, $button.$text, $options) ;
+
+        return $this->div($class, $button.$text, $options);
     }
 
     /**
