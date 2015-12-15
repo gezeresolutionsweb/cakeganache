@@ -619,5 +619,89 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected = '<a href="#" class="close" data-dismiss="modal" aria-hidden="true">&times;</a>';
         $this->assertEquals($expected, $result);
     }
+    public function testHtmlWithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->html();
+        $expected = '<!DOCTYPE html>' . PHP_EOL;
+        $expected .= '<html lang="en">' . PHP_EOL;
+        $expected .= '<head>' . PHP_EOL;
+        $expected .= '<meta charset="utf-8"/>' . PHP_EOL;
+        $expected .= '<title></title>' . PHP_EOL;
+        $expected .= '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>' . PHP_EOL;
+        $expected .= '<meta name="description" content=""/>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testHtmlWithTitle()
+    {
+        $result = $this->GanacheHtmlHelper->html('My title');
+        $expected = '<!DOCTYPE html>' . PHP_EOL;
+        $expected .= '<html lang="en">' . PHP_EOL;
+        $expected .= '<head>' . PHP_EOL;
+        $expected .= '<meta charset="utf-8"/>' . PHP_EOL;
+        $expected .= '<title>My title</title>' . PHP_EOL;
+        $expected .= '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>' . PHP_EOL;
+        $expected .= '<meta name="description" content=""/>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testHtmlWithDescription()
+    {
+        $result = $this->GanacheHtmlHelper->html('My title', 'This is my description');
+        $expected = '<!DOCTYPE html>' . PHP_EOL;
+        $expected .= '<html lang="en">' . PHP_EOL;
+        $expected .= '<head>' . PHP_EOL;
+        $expected .= '<meta charset="utf-8"/>' . PHP_EOL;
+        $expected .= '<title>My title</title>' . PHP_EOL;
+        $expected .= '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>' . PHP_EOL;
+        $expected .= '<meta name="description" content="This is my description"/>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testHtmlWithLanguage()
+    {
+        $result = $this->GanacheHtmlHelper->html('My title', 'This is my description', 'fr');
+        $expected = '<!DOCTYPE html>' . PHP_EOL;
+        $expected .= '<html lang="fr">' . PHP_EOL;
+        $expected .= '<head>' . PHP_EOL;
+        $expected .= '<meta charset="utf-8"/>' . PHP_EOL;
+        $expected .= '<title>My title</title>' . PHP_EOL;
+        $expected .= '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>' . PHP_EOL;
+        $expected .= '<meta name="description" content="This is my description"/>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testHtmlWithCharset()
+    {
+        $result = $this->GanacheHtmlHelper->html('My title', 'This is my description', 'fr', 'iso-8859-1');
+        $expected = '<!DOCTYPE html>' . PHP_EOL;
+        $expected .= '<html lang="fr">' . PHP_EOL;
+        $expected .= '<head>' . PHP_EOL;
+        $expected .= '<meta charset="iso-8859-1"/>' . PHP_EOL;
+        $expected .= '<title>My title</title>' . PHP_EOL;
+        $expected .= '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>' . PHP_EOL;
+        $expected .= '<meta name="description" content="This is my description"/>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testHtmlWithDoctypeHtml5()
+    {
+        $result = $this->GanacheHtmlHelper->html('My title', 'This is my description', 'fr', 'iso-8859-1', 'html5');
+        $expected = '<!DOCTYPE html>' . PHP_EOL;
+        $expected .= '<html lang="fr">' . PHP_EOL;
+        $expected .= '<head>' . PHP_EOL;
+        $expected .= '<meta charset="iso-8859-1"/>' . PHP_EOL;
+        $expected .= '<title>My title</title>' . PHP_EOL;
+        $expected .= '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>' . PHP_EOL;
+        $expected .= '<meta name="description" content="This is my description"/>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testHtmlWithDoctypeHtml4Trans()
+    {
+        $result = $this->GanacheHtmlHelper->html('My title', 'This is my description', 'fr', 'iso-8859-1', 'html4-trans');
+        $expected = '<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">' . PHP_EOL;
+        $expected .= '<html lang="fr">' . PHP_EOL;
+        $expected .= '<head>' . PHP_EOL;
+        $expected .= '<meta charset="iso-8859-1"/>' . PHP_EOL;
+        $expected .= '<title>My title</title>' . PHP_EOL;
+        $expected .= '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>' . PHP_EOL;
+        $expected .= '<meta name="description" content="This is my description"/>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
 }
 
