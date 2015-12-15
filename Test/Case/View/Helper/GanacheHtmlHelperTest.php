@@ -613,5 +613,11 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected = '<a href="#" class="close">&times;</a>';
         $this->assertEquals($expected, $result);
     }
+    public function testCloseIconWithOptions()
+    {
+        $result = $this->GanacheHtmlHelper->closeIcon(true, ['data-dismiss' => 'modal', 'aria-hidden' => 'true']);
+        $expected = '<a href="#" class="close" data-dismiss="modal" aria-hidden="true">&times;</a>';
+        $this->assertEquals($expected, $result);
+    }
 }
 
