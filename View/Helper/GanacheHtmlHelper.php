@@ -455,15 +455,31 @@ class GanacheHtmlHelper extends HtmlHelper {
      * As button by default or as a link.
      *
      * @param boolean $asLink Generate close icon as link. (default: false)
+     * @param array $options Array of attributes to pass to HtmlHelper::tag() function.
      * @return string
      *
      * @todo Can we only always generate it as link to support iOS events ? @see http://getbootstrap.com/2.3.2/components.html#misc
      */
-    public function closeIcon($asLink = false)
+    public function closeIcon($asLink = false, $options = [])
     {
-        $button = $this->tag('button', '&times;', ['class' => GA_CLOSE]);
+        $defaultOptions = [
+            'class' => GA_CLOSE
+        ];
+
+        $currentOptions = array_merge($defaultOptions, $options);
+
+        if(!empty($options['class'])) {
+            if(is_array($options['class'])) {
+                $currentOptions['class'] .= ' ' . implode(' ', $options['class']);
+            } else {
+                $currentOptions['class'] .= ' ' . $options['class'];
+            }
+        }
+
+        $button = $this->tag('button', '&times;', $currentOptions);
         if ($asLink === true) {
-            $button = $this->link('&times;', '#', ['class' => GA_CLOSE, 'escape' => false]);
+            $currentOptions['escape'] = false;
+            $button = $this->link('&times;', '#', $currentOptions);
         }
         return $button;
     }
