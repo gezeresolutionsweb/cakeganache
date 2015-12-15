@@ -498,5 +498,108 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected = '<div class="alert alert-inverse"><button class="close" data-dismiss="alert">&times;</button>This is an alert !</div>';
         $this->assertEquals($expected, $result);
     }
+    public function testProgressWithoutBasicPercentage()
+    {
+        $result = $this->GanacheHtmlHelper->progress(10);
+        $expected = '<div class="progress progress-info"><div style="width: 10%;" class="bar"></div></div>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testProgressWithStriped()
+    {
+        $result = $this->GanacheHtmlHelper->progress(10, ['ga_striped' => true]);
+        $expected = '<div class="progress progress-info progress-striped"><div style="width: 10%;" class="bar"></div></div>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testProgressWithActive()
+    {
+        $result = $this->GanacheHtmlHelper->progress(10, ['ga_active' => true]);
+        $expected = '<div class="progress progress-info active"><div style="width: 10%;" class="bar"></div></div>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testProgressWithStripedAndActive()
+    {
+        $result = $this->GanacheHtmlHelper->progress(10, ['ga_striped' => true, 'ga_active' => true]);
+        $expected = '<div class="progress progress-info progress-striped active"><div style="width: 10%;" class="bar"></div></div>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testProgressTypeInfo()
+    {
+        $result = $this->GanacheHtmlHelper->progress(20, ['ga_type' => GA_INFO]);
+        $expected = '<div class="progress progress-info"><div style="width: 20%;" class="bar"></div></div>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testProgressTypeSuccess()
+    {
+        $result = $this->GanacheHtmlHelper->progress(20, ['ga_type' => GA_SUCCESS]);
+        $expected = '<div class="progress progress-success"><div style="width: 20%;" class="bar"></div></div>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testProgressTypeWarning()
+    {
+        $result = $this->GanacheHtmlHelper->progress(20, ['ga_type' => GA_WARNING]);
+        $expected = '<div class="progress progress-warning"><div style="width: 20%;" class="bar"></div></div>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testProgressTypeDanger()
+    {
+        $result = $this->GanacheHtmlHelper->progress(20, ['ga_type' => GA_DANGER]);
+        $expected = '<div class="progress progress-danger"><div style="width: 20%;" class="bar"></div></div>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testProgressWithTwoBasicBarBothAsString()
+    {
+        $result = $this->GanacheHtmlHelper->progress([10,35]);
+        $expected = '<div class="progress"><div style="width: 10%;" class="bar bar-info"></div><div style="width: 35%;" class="bar bar-info"></div></div>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testProgressWithTwoBasicBarFirstAsStringSecondAsArray()
+    {
+        $result = $this->GanacheHtmlHelper->progress([20,['ga_width' => 40]]);
+        $expected = '<div class="progress"><div style="width: 20%;" class="bar bar-info"></div><div style="width: 40%;" class="bar bar-info"></div></div>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testProgressWithTwoBasicBarBothAsArray()
+    {
+        $result = $this->GanacheHtmlHelper->progress([['ga_width' => 25],['ga_width' => 45]]);
+        $expected = '<div class="progress"><div style="width: 25%;" class="bar bar-info"></div><div style="width: 45%;" class="bar bar-info"></div></div>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testProgressWithTwoBarsFirstTypeInfoAndSecondTypeDefault()
+    {
+        $result = $this->GanacheHtmlHelper->progress([['ga_width' => 15, 'ga_type' => GA_DANGER],['ga_width' => 65]]);
+        $expected = '<div class="progress"><div style="width: 15%;" class="bar bar-danger"></div><div style="width: 65%;" class="bar bar-info"></div></div>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testProgressWithTwoBarsFirstTypeSuccessAndSecondTypeWarning()
+    {
+        $result = $this->GanacheHtmlHelper->progress([['ga_width' => 10, 'ga_type' => GA_SUCCESS],['ga_width' => 90, 'ga_type' => GA_WARNING]]);
+        $expected = '<div class="progress"><div style="width: 10%;" class="bar bar-success"></div><div style="width: 90%;" class="bar bar-warning"></div></div>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testProgressWithThreeBars()
+    {
+        $result = $this->GanacheHtmlHelper->progress([['ga_width' => 12, 'ga_type' => GA_SUCCESS],['ga_width' => 40, 'ga_type' => GA_WARNING], ['ga_width' => 48, 'ga_type' => GA_DANGER]]);
+        $expected = '<div class="progress"><div style="width: 12%;" class="bar bar-success"></div><div style="width: 40%;" class="bar bar-warning"></div><div style="width: 48%;" class="bar bar-danger"></div></div>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testProgressWithTwoBasicBarAndStriped()
+    {
+        $result = $this->GanacheHtmlHelper->progress([23,47], ['ga_striped' => true]);
+        $expected = '<div class="progress progress-striped"><div style="width: 23%;" class="bar bar-info"></div><div style="width: 47%;" class="bar bar-info"></div></div>';
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testProgressWithTwoBasicBarAndActive()
+    {
+        $result = $this->GanacheHtmlHelper->progress([23,47], ['ga_active' => true]);
+        $expected = '<div class="progress active"><div style="width: 23%;" class="bar bar-info"></div><div style="width: 47%;" class="bar bar-info"></div></div>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testProgressWithTwoBasicBarAndStripedAndActive()
+    {
+        $result = $this->GanacheHtmlHelper->progress([23,47], ['ga_striped' => true, 'ga_active' => true]);
+        $expected = '<div class="progress progress-striped active"><div style="width: 23%;" class="bar bar-info"></div><div style="width: 47%;" class="bar bar-info"></div></div>';
+        $this->assertEquals($expected, $result);
+    }
 }
 
