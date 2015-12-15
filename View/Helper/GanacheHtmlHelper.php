@@ -450,11 +450,20 @@ class GanacheHtmlHelper extends HtmlHelper {
         return $this->div($classes, $bars, $options) ;
     }
 
-    public function closeIcon( $asLink = false ) {
-        $button = '<button class="'. GA_CLOSE . '">&times;</button>';
-        if( $asLink === true ) {
-            // iOS devices require an href="#" for click events if you would rather use an anchor. @see http://getbootstrap.com/2.3.2/components.html#misc
-            $button = '<a class="' . GA_CLOSE . '" href="#">&times;</a>';
+    /**
+     * Create a Bootstrap close icon button.
+     * As button by default or as a link.
+     *
+     * @param boolean $asLink Generate close icon as link. (default: false)
+     * @return string
+     *
+     * @todo Can we only always generate it as link to support iOS events ? @see http://getbootstrap.com/2.3.2/components.html#misc
+     */
+    public function closeIcon($asLink = false)
+    {
+        $button = $this->tag('button', '&times;', ['class' => GA_CLOSE]);
+        if ($asLink === true) {
+            $button = $this->link('&times;', '#', ['class' => GA_CLOSE, 'escape' => false]);
         }
         return $button;
     }
