@@ -360,47 +360,93 @@ class GanacheHtmlHelper extends HtmlHelper {
     }
 
     /**
-     * 
      * Create a Twitter Bootstrap style progress bar.
      * 
      * @param $widths 
      * 	- The width (in %) of the bar
-     * 	- An array of bar, with width and type (info, danger, success, warning) specified for each bar
+     * 	- An array of bar, with ga_width and ga_type (GA_INFO|GA_DANGER|GA_SUCCESS|GA_WARNING) specified for each bar. (default: GA_INFO)
+     * 	examples:
+     * 	    [10,45] or
+     * 	    [10,['ga_width' => 56]] or
+     * 	    [['ga_width' => 10], ['ga_width' => 56]] or
+     * 	    [90,['ga_width' => 10, 'ga_type' => GA_DANGER]]
      * @param $options Options that will be passed to Html::div method (only for main div)
      *  
-     * Available BootstrapHtml options:
-     * 	- striped: boolean, specify if progress bar should be striped
-     * 	- active: boolean, specify if progress bar should be active
-     *     
-     **/
-    public function progress ($widths, $options = array()) {
-        $striped = $this->_extractOption('striped', $options, false) ;
-        unset($options['striped']) ;
-        $active = $this->_extractOption('active', $options, false) ;
-        unset($options['active']) ;
+     * Extra options
+     * - ga_type    : string, Type of the progress bar. GA_INFO|GA_SUCCESS|GA_WARNING|GA_DANGER (default: GA_INFO)
+     * - ga_striped : boolean, specify if progress bar should be striped
+     * - ga_active  : boolean, specify if progress bar should be active
+     *
+     * @todo Should we verify that we are not busting 100%.
+     * @todo Should we recompute the percentage to attribute ?
+     */
+    public function progress($widths, $options = []) {
+        $types = [GA_INFO, GA_SUCCESS, GA_WARNING, GA_DANGER];
+
+        $type = GA_INFO;
+        if(!empty($options['ga_type'])) {
+            if(in_array($options['ga_type'], $types)) {
+                $type = $options['ga_type'];
+            }
+            unset($options['ga_type']);
+        }
+
+        $striped = false;
+        if(!empty($options['ga_striped'])) {
+            $striped = true;
+            unset($options['ga_striped']);
+        }
+
+        $active = false;
+        if(!empty($options['ga_active'])) {
+            $active = true;
+            unset($options['ga_active']);
+        }
+
         $bars = '' ;
         if (is_array($widths)) {
             foreach ($widths as $w) {
                 $class = GA_BAR;
-                $type = $this->_extractType($w, 'type', GA_INFO, array(GA_INFO, GA_SUCCESS, GA_WARNING, GA_DANGER)) ;
-                if ($type) {
-                    $class .= ' bar-'.$type ;
+                $type = GA_INFO;
+                if(!empty($w['ga_type'])) {
+                    if(in_array($w['ga_type'], $types)) {
+                        $type = $w['ga_type'];
+                    }
                 }
-                $bars .= $this->div($class, '', array('style' => 'width: '.$w['width'].'%;')) ;
+
+                $width = 0;
+                if(!empty($w)) {
+                    if(is_array($w)) {
+                        if(!empty($w['ga_width'])) {
+                            $width = $w['ga_width'];
+                        }
+                    } else {
+                        $width = (int) $w;
+                    }
+                }
+
+                $class .= ' ' . GA_BAR . '-' . $type;
+                $bars .= $this->div($class, '', ['style' => 'width: ' . $width . '%;']);
             }
         } else {
-            $bars = $this->div('bar', '', array('style' => 'width: '.$widths.'%;')) ;
+            $bars = $this->div(GA_BAR, '', ['style' => 'width: ' . $widths . '%;']);
         }
         $options = $this->addClass($options, GA_PROGRESS);
 
-        if ($active) {
-            $options = $this->addClass($options, GA_ACTIVE) ;
+        if (!is_array($widths)) {
+            $options = $this->addClass($options, GA_PROGRESS . '-' . $type);
         }
+
         if ($striped) {
-            $options = $this->addClass($options, GA_PROGRESS_STRIPED) ;
+            $options = $this->addClass($options, GA_PROGRESS_STRIPED);
         }
+
+        if ($active) {
+            $options = $this->addClass($options, GA_ACTIVE);
+        }
+
         $classes = $options['class'];
-        unset($options['class']) ;
+        unset($options['class']);
         return $this->div($classes, $bars, $options) ;
     }
 
