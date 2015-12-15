@@ -490,18 +490,22 @@ class GanacheHtmlHelper extends HtmlHelper {
      *
      * @param string $titre The name of the current page
      * @param string $description The description of the current page
-     * @param string $lang The language of the current page. By default 'fr' because we are french
+     * @param string $lang The language of the current page. (default: 'en')
+     * @param string $charset Charset of the page. (default: 'utf-8')
+     * @param string $doctype The page doctype (default: 'html5')
      * @return string
+     *
+     * @todo Add doctype constants.
      */
-    public function html($titre = '' , $description = '' , $lang = 'fr')
+    public function html($titre = '' , $description = '' , $lang = 'en', $charset = 'utf-8', $doctype = 'html5')
     {
-        $out = '<!DOCTYPE html>' . PHP_EOL;
-        $out .= '<html lang="'.$lang.'">' . PHP_EOL;
-        $out .= '<head>' . PHP_EOL;
-        $out .= '<meta charset="utf-8">' . PHP_EOL;
-        $out .= '<title>'.$titre.'</title>' . PHP_EOL;
-        $out .= '<meta name="viewport" content="width=device-width, initial-scale=1.0">' . PHP_EOL;
-        $out .= '<meta name="description" content="'.$description.'">' . PHP_EOL;
+        $out = $this->doctype($doctype) . PHP_EOL;
+        $out .= $this->tag('html', null, ['lang' => $lang]) . PHP_EOL;
+        $out .= $this->tag('head', null) . PHP_EOL;
+        $out .= $this->meta('', null, ['charset' => $charset]) . PHP_EOL;
+        $out .= $this->tag('title', $titre) . PHP_EOL;
+        $out .= $this->meta('', null, ['name' => 'viewport', 'content' => 'width=device-width, initial-scale=1.0']) . PHP_EOL;
+        $out .= $this->meta('description', $description) . PHP_EOL;
 
         return $out;
     }
