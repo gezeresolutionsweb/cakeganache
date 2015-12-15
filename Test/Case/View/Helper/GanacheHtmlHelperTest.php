@@ -601,5 +601,17 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected = '<div class="progress progress-striped active"><div style="width: 23%;" class="bar bar-info"></div><div style="width: 47%;" class="bar bar-info"></div></div>';
         $this->assertEquals($expected, $result);
     }
+    public function testCloseIconAsButton()
+    {
+        $result = $this->GanacheHtmlHelper->closeIcon();
+        $expected = '<button class="close">&times;</button>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testCloseIconAsLink()
+    {
+        $result = $this->GanacheHtmlHelper->closeIcon(true);
+        $expected = '<a href="#" class="close">&times;</a>';
+        $this->assertEquals($expected, $result);
+    }
 }
 
