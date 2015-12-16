@@ -504,61 +504,42 @@ class GanacheHtmlHelper extends HtmlHelper {
         $out .= $this->tag('head', null) . PHP_EOL;
         $out .= $this->meta('', null, ['charset' => $charset]) . PHP_EOL;
         $out .= $this->tag('title', $titre) . PHP_EOL;
-        $out .= $this->meta('', null, ['name' => 'viewport', 'content' => 'width=device-width, initial-scale=1.0']) . PHP_EOL;
+        $out .= $this->meta('', null, ['name' => 'viewport', 'content' => 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no']) . PHP_EOL;
         $out .= $this->meta('description', $description) . PHP_EOL;
 
         return $out;
     }
 
-    public function h1($title, $options = array())
+    public function h1($title, $options = [])
     {
         return $this->tag('h1', $title, $options);
     }
 
-    public function h2($title, $options = array())
+    public function h2($title, $options = [])
     {
         return $this->tag('h2', $title, $options);
     }
 
-    public function h3($title, $options = array())
+    public function h3($title, $options = [])
     {
         return $this->tag('h3', $title, $options);
     }
 
-    public function h4($title, $options = array())
+    public function h4($title, $options = [])
     {
         return $this->tag('h4', $title, $options);
     }
 
-    public function h5($title, $options = array())
+    public function h5($title, $options = [])
     {
         return $this->tag('h5', $title, $options);
     }
 
-    public function h6($title, $options = array())
+    public function h6($title, $options = [])
     {
         return $this->tag('h6', $title, $options);
     }
 
-    /**
-     * Initialize an HTML 5 document and the head
-     *
-     * @param string $titre The name of the current page
-     * @param string $description The description of the current page
-     * @param string $lang The language of the current page. By default 'fr' because we are french
-     * @return string
-     */
-    public function html5($titre = '' , $description = '' , $lang = 'fr')
-    {
-        $out = $this->html($titre , $description , $lang);
-
-        // Script JS for IE and HTML 5
-        $out .= '<!--[if lt IE 9]>' . PHP_EOL;
-        $out .= '<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>' . PHP_EOL;
-        $out .= '<![endif]-->' . PHP_EOL;
-
-        return $out;
-    }
 
     /**
      * Close the head element and initialize the body element
@@ -567,8 +548,8 @@ class GanacheHtmlHelper extends HtmlHelper {
      */
     public function body()
     {
-        $out =  '</head>' . PHP_EOL;
-        $out .= '<body>' . PHP_EOL;
+        $out =  $this->tag('/head', null) . PHP_EOL;
+        $out .= $this->tag('body', null) . PHP_EOL;
 
         return $out;
     }
@@ -580,13 +561,11 @@ class GanacheHtmlHelper extends HtmlHelper {
      */
     public function end()
     {
-        $out =  '</body>' . PHP_EOL;
-        $out .= '</html>';
+        $out =  $this->tag('/body', null) . PHP_EOL;
+        $out .= $this->tag('/html', null);
 
         return $out;
     }
-
-
 
     /**
      * Open a Bootstrap container
