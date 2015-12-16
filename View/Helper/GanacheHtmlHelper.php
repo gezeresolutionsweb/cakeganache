@@ -573,30 +573,28 @@ class GanacheHtmlHelper extends HtmlHelper {
      * @param array $options Options of the div element
      * @return string Div element with the class 'container'
      */
-    public function container($options = array()) {
-        $out = '';
+    public function container($options = [])
+    {
         $class = GA_CONTAINER;
         if (isset($options['class'])) {
             $class .= ' ' . $options['class'];
         }
-        $out .= parent::div($class, null, $options);
-        return $out;
+        return $this->div($class, null, $options) . PHP_EOL;
     }
 
     /**
      * Open a Bootstrap container fluid
      *
      * @param array $options Options of the div element
-     * @return string Div element with the class 'container'
+     * @return string Div element with the class 'container-fluid'
      */
-    public function containerFluid($options = array()) {
-        $out = '';
+    public function containerFluid($options = [])
+    {
         $class = GA_CONTAINER_FLUID;
         if (isset($options['class'])) {
             $class .= ' ' . $options['class'];
         }
-        $out .= parent::div($class, null, $options);
-        return $out;
+        return $this->div($class, null, $options) . PHP_EOL;
     }
 
     /**
@@ -605,67 +603,188 @@ class GanacheHtmlHelper extends HtmlHelper {
      * @param array $options Options of the div element
      * @return string Div element with the class 'row'
      */
-    public function row($options = array())
+    public function row($options = [])
     {
-        $out = '';
         $class = GA_ROW;
         if (isset($options['class'])) {
             $class .= ' ' . $options['class'];
         }
-        $out .= parent::div($class, null, $options);
-        return $out;
+        return $this->div($class, null, $options) . PHP_EOL;
     }
 
     /**
      * Open a Bootstrap row fluid
      *
      * @param array $options Options of the div element
-     * @return string Div element with the class 'row'
+     * @return string Div element with the class 'row-fluid'
      */
-    public function rowFluid($options = array())
+    public function rowFluid($options = [])
     {
-        $out = '';
         $class = GA_ROW_FLUID;
         if (isset($options['class'])) {
             $class .= ' ' . $options['class'];
         }
-        $out .= parent::div($class, null, $options);
-        return $out;
+        return $this->div($class, null, $options) . PHP_EOL;
     }
 
-    public function span($width = 1, $options = [])
-    {
-        if(!is_int($width)) {
-            throw new InvalidArgumentException('Width argument must be an integer');
+    private function __span($class, $options = []) {
+        $classes = [
+            GA_SPAN1,
+            GA_SPAN2,
+            GA_SPAN3,
+            GA_SPAN4,
+            GA_SPAN5,
+            GA_SPAN6,
+            GA_SPAN7,
+            GA_SPAN8,
+            GA_SPAN9,
+            GA_SPAN10,
+            GA_SPAN11,
+            GA_SPAN12,
+        ];
+
+        if(!in_array($class, $classes)) {
+            $class = GA_SPAN1;
         }
 
-        if((int)$width < 1 || (int) $width > 12) {
-            $width = 1;
-        }
-
-        $classes = array(
-            1 => GA_SPAN1,
-            2 => GA_SPAN2,
-            3 => GA_SPAN3,
-            4 => GA_SPAN4,
-            5 => GA_SPAN5,
-            6 => GA_SPAN6,
-            7 => GA_SPAN7,
-            8 => GA_SPAN8,
-            9 => GA_SPAN9,
-            10 => GA_SPAN10,
-            11 => GA_SPAN11,
-            12 => GA_SPAN12
-        );
-
-        $class = $classes[$width];
         if(isset($options['class'])) {
             $class .= ' ' . $options['class'];
         }
 
-        return parent::div($classes[$width], null, $options);
+        return $this->div($class, null, $options) . PHP_EOL;
     }
 
+    /**
+     * Open a Bootstrap cell span1.
+     *
+     * @param array $options Options of the div element
+     * @return string Div element with the class 'span1'
+     */
+    public function span1($options = [])
+    {
+        return $this->__span(GA_SPAN1, $options);
+    }
+
+    /**
+     * Open a Bootstrap cell span2.
+     *
+     * @param array $options Options of the div element
+     * @return string Div element with the class 'span2'
+     */
+    public function span2($options = [])
+    {
+        return $this->__span(GA_SPAN2, $options);
+    }
+
+    /**
+     * Open a Bootstrap cell span3.
+     *
+     * @param array $options Options of the div element
+     * @return string Div element with the class 'span3'
+     */
+    public function span3($options = [])
+    {
+        return $this->__span(GA_SPAN3, $options);
+    }
+
+    /**
+     * Open a Bootstrap cell span4.
+     *
+     * @param array $options Options of the div element
+     * @return string Div element with the class 'span4'
+     */
+    public function span4($options = [])
+    {
+        return $this->__span(GA_SPAN4, $options);
+    }
+
+    /**
+     * Open a Bootstrap cell span5.
+     *
+     * @param array $options Options of the div element
+     * @return string Div element with the class 'span5'
+     */
+    public function span5($options = [])
+    {
+        return $this->__span(GA_SPAN5, $options);
+    }
+
+    /**
+     * Open a Bootstrap cell span6.
+     *
+     * @param array $options Options of the div element
+     * @return string Div element with the class 'span6'
+     */
+    public function span6($options = [])
+    {
+        return $this->__span(GA_SPAN6, $options);
+    }
+
+    /**
+     * Open a Bootstrap cell span7.
+     *
+     * @param array $options Options of the div element
+     * @return string Div element with the class 'span7'
+     */
+    public function span7($options = [])
+    {
+        return $this->__span(GA_SPAN7, $options);
+    }
+
+    /**
+     * Open a Bootstrap cell span8.
+     *
+     * @param array $options Options of the div element
+     * @return string Div element with the class 'span8'
+     */
+    public function span8($options = [])
+    {
+        return $this->__span(GA_SPAN8, $options);
+    }
+
+    /**
+     * Open a Bootstrap cell span9.
+     *
+     * @param array $options Options of the div element
+     * @return string Div element with the class 'span9'
+     */
+    public function span9($options = [])
+    {
+        return $this->__span(GA_SPAN9, $options);
+    }
+
+    /**
+     * Open a Bootstrap cell span10.
+     *
+     * @param array $options Options of the div element
+     * @return string Div element with the class 'span10'
+     */
+    public function span10($options = [])
+    {
+        return $this->__span(GA_SPAN10, $options);
+    }
+
+    /**
+     * Open a Bootstrap cell span11.
+     *
+     * @param array $options Options of the div element
+     * @return string Div element with the class 'span11'
+     */
+    public function span11($options = [])
+    {
+        return $this->__span(GA_SPAN11, $options);
+    }
+
+    /**
+     * Open a Bootstrap cell span12.
+     *
+     * @param array $options Options of the div element
+     * @return string Div element with the class 'span12'
+     */
+    public function span12($options = [])
+    {
+        return $this->__span(GA_SPAN12, $options);
+    }
 
     /**
      * Close div elements
@@ -675,11 +794,8 @@ class GanacheHtmlHelper extends HtmlHelper {
      */
     public function close($nb = 1)
     {
-        return str_repeat($this->useTag('tagend', 'div'), $nb);
+        return str_repeat($this->tag('/div', null) . PHP_EOL, $nb);
     }
-
-
-
 
     /**
      * Open a header element
@@ -687,10 +803,9 @@ class GanacheHtmlHelper extends HtmlHelper {
      * @param array $options Options of the header element
      * @return string Tag header
      */
-    public function header($options = array())
+    public function header($options = [])
     {
-        $out = parent::tag('header', null, $options). PHP_EOL;
-        return $out;
+        return $this->tag('header', null, $options). PHP_EOL;
     }
 
     /**
@@ -700,9 +815,8 @@ class GanacheHtmlHelper extends HtmlHelper {
      */
     public function closeHeader()
     {
-        return '</header>' . PHP_EOL;
+        return $this->tag('/header', null) . PHP_EOL;
     }
-
 
     /**
      * Picture responsive
@@ -712,16 +826,29 @@ class GanacheHtmlHelper extends HtmlHelper {
      * @param string $path Path to the image file, relative to the app/webroot/img/ directory.
      * @param array $options Array of HTML attributes. See above for special options.
      * @return string End tag header
+     *
+     * Extra options
+     * - ga_responsive : boolean Image should be responsive. (default: false)
+     * - ga_shape      : string Shape of the images GA_ROUNDED|GA_CIRCLE|GA_POLAROID
      */
-    public function image($path, $options = array()) {
-        if(isset($options['class'])){
-            $options['class'] = GA_IMG_RESPONSIVE . $options['class'];
-        }else{
-            $options['class'] = GA_IMG_RESPONSIVE;
+    public function image($path, $options = [])
+    {
+        if(!empty($options['ga_responsive']) && $options['ga_responsive'] === true) {
+            $options = $this->addClass($options, GA_IMG_RESPONSIVE);
+            unset($options['ga_responsive']);
         }
+
+        $shapes = [GA_ROUNDED, GA_CIRCLE, GA_POLAROID];
+
+        if(!empty($options['ga_shape'])) {
+            if(in_array($options['ga_shape'], $shapes)) {
+                $options = $this->addClass($options, GA_IMG . '-' . $options['ga_shape']);
+            }
+            unset($options['ga_shape']);
+        }
+
         return parent::image($path, $options);
     }
-
 
     /**
      * IMPORTANT: Bootstrap 3 related function. Not use right now.
@@ -755,6 +882,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      * @param array $attributes Options of the div element
      * @return string DIV tag element 
      */
+    /*
     public function col() {
         $class = '';
         $devices = array();
@@ -807,6 +935,7 @@ class GanacheHtmlHelper extends HtmlHelper {
         $out = parent::div($class , null, $attributes). BL;
         return $out;
     }
+     */
     /**
      * IMPORTANT: Bootstrap 3 related function. Not use right now.
      *
@@ -818,6 +947,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      * @param string $ecran // layout concerné {PARAMETRE OBLIGATOIRE}
      * @return string The class corresponding to the option
      */
+    /*
     private function optCol($elem, $ecran){
         $attr = substr($elem, 0, 2);
         $taille = substr($elem, 2);
@@ -839,9 +969,6 @@ class GanacheHtmlHelper extends HtmlHelper {
             }
         }
     }
-
-
-
-
+     */
 }
 
