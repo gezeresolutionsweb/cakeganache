@@ -627,7 +627,7 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected .= '<head>' . PHP_EOL;
         $expected .= '<meta charset="utf-8"/>' . PHP_EOL;
         $expected .= '<title></title>' . PHP_EOL;
-        $expected .= '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>' . PHP_EOL;
+        $expected .= '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>' . PHP_EOL;
         $expected .= '<meta name="description" content=""/>' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
@@ -639,7 +639,7 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected .= '<head>' . PHP_EOL;
         $expected .= '<meta charset="utf-8"/>' . PHP_EOL;
         $expected .= '<title>My title</title>' . PHP_EOL;
-        $expected .= '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>' . PHP_EOL;
+        $expected .= '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>' . PHP_EOL;
         $expected .= '<meta name="description" content=""/>' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
@@ -651,7 +651,7 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected .= '<head>' . PHP_EOL;
         $expected .= '<meta charset="utf-8"/>' . PHP_EOL;
         $expected .= '<title>My title</title>' . PHP_EOL;
-        $expected .= '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>' . PHP_EOL;
+        $expected .= '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>' . PHP_EOL;
         $expected .= '<meta name="description" content="This is my description"/>' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
@@ -663,7 +663,7 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected .= '<head>' . PHP_EOL;
         $expected .= '<meta charset="utf-8"/>' . PHP_EOL;
         $expected .= '<title>My title</title>' . PHP_EOL;
-        $expected .= '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>' . PHP_EOL;
+        $expected .= '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>' . PHP_EOL;
         $expected .= '<meta name="description" content="This is my description"/>' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
@@ -675,7 +675,7 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected .= '<head>' . PHP_EOL;
         $expected .= '<meta charset="iso-8859-1"/>' . PHP_EOL;
         $expected .= '<title>My title</title>' . PHP_EOL;
-        $expected .= '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>' . PHP_EOL;
+        $expected .= '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>' . PHP_EOL;
         $expected .= '<meta name="description" content="This is my description"/>' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
@@ -687,7 +687,7 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected .= '<head>' . PHP_EOL;
         $expected .= '<meta charset="iso-8859-1"/>' . PHP_EOL;
         $expected .= '<title>My title</title>' . PHP_EOL;
-        $expected .= '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>' . PHP_EOL;
+        $expected .= '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>' . PHP_EOL;
         $expected .= '<meta name="description" content="This is my description"/>' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
@@ -699,8 +699,94 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected .= '<head>' . PHP_EOL;
         $expected .= '<meta charset="iso-8859-1"/>' . PHP_EOL;
         $expected .= '<title>My title</title>' . PHP_EOL;
-        $expected .= '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>' . PHP_EOL;
+        $expected .= '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>' . PHP_EOL;
         $expected .= '<meta name="description" content="This is my description"/>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testH1WithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->h1('Header 1');
+        $expected = '<h1>Header 1</h1>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testH1WithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->h1('Header 1', ['class' => 'my-class']);
+        $expected = '<h1 class="my-class">Header 1</h1>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testH2WithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->h2('Header 2');
+        $expected = '<h2>Header 2</h2>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testH2WithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->h2('Header 2', ['class' => 'my-class']);
+        $expected = '<h2 class="my-class">Header 2</h2>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testH3WithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->h3('Header 3');
+        $expected = '<h3>Header 3</h3>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testH3WithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->h3('Header 3', ['class' => 'my-class']);
+        $expected = '<h3 class="my-class">Header 3</h3>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testH4WithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->h4('Header 4');
+        $expected = '<h4>Header 4</h4>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testH4WithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->h4('Header 4', ['class' => 'my-class']);
+        $expected = '<h4 class="my-class">Header 4</h4>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testH5WithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->h5('Header 5');
+        $expected = '<h5>Header 5</h5>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testH5WithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->h5('Header 5', ['class' => 'my-class']);
+        $expected = '<h5 class="my-class">Header 5</h5>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testH6WithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->h6('Header 6');
+        $expected = '<h6>Header 6</h6>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testH6WithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->h6('Header 6', ['class' => 'my-class']);
+        $expected = '<h6 class="my-class">Header 6</h6>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testBody()
+    {
+        $result = $this->GanacheHtmlHelper->body();
+        $expected = '</head>' . PHP_EOL;
+        $expected .= '<body>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testEnd()
+    {
+        $result = $this->GanacheHtmlHelper->end();
+        $expected = '</body>' . PHP_EOL;
+        $expected .= '</html>';
         $this->assertEquals($expected, $result);
     }
 }
