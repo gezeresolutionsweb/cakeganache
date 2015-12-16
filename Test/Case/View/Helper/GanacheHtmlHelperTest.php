@@ -789,5 +789,359 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected .= '</html>';
         $this->assertEquals($expected, $result);
     }
+    public function testContainerWithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->container();
+        $expected = '<div class="container">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testContainerWithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->container(['class' => 'my-class']);
+        $expected = '<div class="container my-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testContainerWithIdOptions()
+    {
+        $result = $this->GanacheHtmlHelper->container(['id' => 'my-id']);
+        $expected = '<div id="my-id" class="container">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testContainerFluidWithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->containerFluid();
+        $expected = '<div class="container-fluid">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testContainerFluidWithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->containerFluid(['class' => 'my-class']);
+        $expected = '<div class="container-fluid my-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testContainerFluidWithIdOptions()
+    {
+        $result = $this->GanacheHtmlHelper->containerFluid(['id' => 'my-id']);
+        $expected = '<div id="my-id" class="container-fluid">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testRowWithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->row();
+        $expected = '<div class="row">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testRowWithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->row(['class' => 'my-class']);
+        $expected = '<div class="row my-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testRowWithIdOptions()
+    {
+        $result = $this->GanacheHtmlHelper->row(['id' => 'my-id']);
+        $expected = '<div id="my-id" class="row">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testRowFluidWithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->rowFluid();
+        $expected = '<div class="row-fluid">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testRowFluidWithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->rowFluid(['class' => 'my-class']);
+        $expected = '<div class="row-fluid my-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testRowFluidWithIdOptions()
+    {
+        $result = $this->GanacheHtmlHelper->rowFluid(['id' => 'my-id']);
+        $expected = '<div id="my-id" class="row-fluid">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan1WithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->span1();
+        $expected = '<div class="span1">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan1WithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->span1(['class' => 'my-class']);
+        $expected = '<div class="span1 my-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan1WithIdOptions()
+    {
+        $result = $this->GanacheHtmlHelper->span1(['id' => 'my-id']);
+        $expected = '<div id="my-id" class="span1">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan2WithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->span2();
+        $expected = '<div class="span2">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan2WithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->span2(['class' => 'my-class']);
+        $expected = '<div class="span2 my-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan2WithIdOptions()
+    {
+        $result = $this->GanacheHtmlHelper->span2(['id' => 'my-id']);
+        $expected = '<div id="my-id" class="span2">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan3WithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->span3();
+        $expected = '<div class="span3">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan3WithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->span3(['class' => 'my-class']);
+        $expected = '<div class="span3 my-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan3WithIdOptions()
+    {
+        $result = $this->GanacheHtmlHelper->span3(['id' => 'my-id']);
+        $expected = '<div id="my-id" class="span3">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan4WithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->span4();
+        $expected = '<div class="span4">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan4WithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->span4(['class' => 'my-class']);
+        $expected = '<div class="span4 my-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan4WithIdOptions()
+    {
+        $result = $this->GanacheHtmlHelper->span4(['id' => 'my-id']);
+        $expected = '<div id="my-id" class="span4">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan5WithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->span5();
+        $expected = '<div class="span5">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan5WithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->span5(['class' => 'my-class']);
+        $expected = '<div class="span5 my-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan5WithIdOptions()
+    {
+        $result = $this->GanacheHtmlHelper->span5(['id' => 'my-id']);
+        $expected = '<div id="my-id" class="span5">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan6WithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->span6();
+        $expected = '<div class="span6">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan6WithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->span6(['class' => 'my-class']);
+        $expected = '<div class="span6 my-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan6WithIdOptions()
+    {
+        $result = $this->GanacheHtmlHelper->span6(['id' => 'my-id']);
+        $expected = '<div id="my-id" class="span6">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan7WithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->span7();
+        $expected = '<div class="span7">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan7WithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->span7(['class' => 'my-class']);
+        $expected = '<div class="span7 my-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan7WithIdOptions()
+    {
+        $result = $this->GanacheHtmlHelper->span7(['id' => 'my-id']);
+        $expected = '<div id="my-id" class="span7">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan8WithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->span8();
+        $expected = '<div class="span8">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan8WithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->span8(['class' => 'my-class']);
+        $expected = '<div class="span8 my-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan8WithIdOptions()
+    {
+        $result = $this->GanacheHtmlHelper->span8(['id' => 'my-id']);
+        $expected = '<div id="my-id" class="span8">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan9WithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->span9();
+        $expected = '<div class="span9">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan9WithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->span9(['class' => 'my-class']);
+        $expected = '<div class="span9 my-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan9WithIdOptions()
+    {
+        $result = $this->GanacheHtmlHelper->span9(['id' => 'my-id']);
+        $expected = '<div id="my-id" class="span9">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan10WithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->span10();
+        $expected = '<div class="span10">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan10WithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->span10(['class' => 'my-class']);
+        $expected = '<div class="span10 my-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan10WithIdOptions()
+    {
+        $result = $this->GanacheHtmlHelper->span10(['id' => 'my-id']);
+        $expected = '<div id="my-id" class="span10">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan11WithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->span11();
+        $expected = '<div class="span11">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan11WithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->span11(['class' => 'my-class']);
+        $expected = '<div class="span11 my-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan11WithIdOptions()
+    {
+        $result = $this->GanacheHtmlHelper->span11(['id' => 'my-id']);
+        $expected = '<div id="my-id" class="span11">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan12WithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->span12();
+        $expected = '<div class="span12">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan12WithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->span12(['class' => 'my-class']);
+        $expected = '<div class="span12 my-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testSpan12WithIdOptions()
+    {
+        $result = $this->GanacheHtmlHelper->span12(['id' => 'my-id']);
+        $expected = '<div id="my-id" class="span12">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testCloseWithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->close();
+        $expected = '</div>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testCloseWithTwo()
+    {
+        $result = $this->GanacheHtmlHelper->close(2);
+        $expected = '</div>' . PHP_EOL . '</div>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testHeaderWithOptions()
+    {
+        $result = $this->GanacheHtmlHelper->header();
+        $expected = '<header>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testHeaderWithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->header(['class' => 'my-class']);
+        $expected = '<header class="my-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testCloseHeader()
+    {
+        $result = $this->GanacheHtmlHelper->closeHeader();
+        $expected = '</header>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testImageWithoutOptions()
+    {
+        $result = $this->GanacheHtmlHelper->image('logo.png');
+        $expected = '<img src="/img/logo.png" alt=""/>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testImageResponsive()
+    {
+        $result = $this->GanacheHtmlHelper->image('logo.png', ['ga_responsive' => true]);
+        $expected = '<img src="/img/logo.png" class="img-responsive" alt=""/>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testImageShapeRounded()
+    {
+        $result = $this->GanacheHtmlHelper->image('logo.png', ['ga_shape' => GA_ROUNDED]);
+        $expected = '<img src="/img/logo.png" class="img-rounded" alt=""/>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testImageShapeCircle()
+    {
+        $result = $this->GanacheHtmlHelper->image('logo.png', ['ga_shape' => GA_CIRCLE]);
+        $expected = '<img src="/img/logo.png" class="img-circle" alt=""/>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testImageShapePolaroid()
+    {
+        $result = $this->GanacheHtmlHelper->image('logo.png', ['ga_shape' => GA_POLAROID]);
+        $expected = '<img src="/img/logo.png" class="img-polaroid" alt=""/>';
+        $this->assertEquals($expected, $result);
+    }
+    public function testImageShapeUnknown()
+    {
+        $result = $this->GanacheHtmlHelper->image('logo.png', ['ga_shape' => 'triangle']);
+        $expected = '<img src="/img/logo.png" alt=""/>';
+        $this->assertEquals($expected, $result);
+    }
 }
 
