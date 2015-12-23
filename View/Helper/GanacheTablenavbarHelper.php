@@ -18,7 +18,7 @@ App::import('CakeGanache.Helper', 'GanacheHtml');
 App::import('CakeGanache.Helper', 'GanacheForm');
 App::import('Routing', 'Router');
 
-class GanacheTableNavbarHelper extends AppHelper {
+class GanacheTablenavbarHelper extends AppHelper {
     public $helpers = array(
         'Html' => array( 'className' => 'CakeGanache.GanacheHtml', 'prefix' => 'fa', 'iconPrefix' => ' fa-' ),
         'Form' => 'CakeGanache.GanacheForm',

@@ -47,7 +47,7 @@ public $helpers = array(
     'Form' => 'CakeGanache.GanacheForm', 
     'Paginator' => 'CakeGanache.GanachePaginator',
     'Navbar' => 'CakeGanache.GanacheNavbar'
-    'TableNavbar' => 'CakeGanache.GanacheTableNavbar'
+    'Tablenavbar' => 'CakeGanache.GanacheTablenavbar'
     'Calendar' => 'CakeGanache.GanacheCalendar'
 ) ;
 ```
