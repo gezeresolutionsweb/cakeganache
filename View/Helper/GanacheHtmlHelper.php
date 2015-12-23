@@ -594,25 +594,18 @@ class GanacheHtmlHelper extends HtmlHelper {
      *
      * @param array $options Options of the div element
      * @return string Div element with the class 'row'
+     *
+     * Extra options
+     * - ga_fluid : boolean Set row fluid (default: true)
      */
     public function row($options = [])
     {
-        $class = GA_ROW;
-        if (isset($options['class'])) {
-            $class .= ' ' . $options['class'];
-        }
-        return $this->div($class, null, $options) . PHP_EOL;
-    }
-
-    /**
-     * Open a Bootstrap row fluid
-     *
-     * @param array $options Options of the div element
-     * @return string Div element with the class 'row-fluid'
-     */
-    public function rowFluid($options = [])
-    {
         $class = GA_ROW_FLUID;
+        if(isset($options['ga_fluid']) && $options['ga_fluid'] === false) {
+            $class = GA_ROW;
+        }
+        unset($options['ga_fluid']);
+
         if (isset($options['class'])) {
             $class .= ' ' . $options['class'];
         }

@@ -828,37 +828,37 @@ class GanacheHtmlHelperTest extends CakeTestCase
     public function testRowWithoutOptions()
     {
         $result = $this->GanacheHtmlHelper->row();
-        $expected = '<div class="row">' . PHP_EOL;
+        $expected = '<div class="row-fluid">' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
     public function testRowWithCustomClass()
     {
         $result = $this->GanacheHtmlHelper->row(['class' => 'my-class']);
-        $expected = '<div class="row my-class">' . PHP_EOL;
+        $expected = '<div class="row-fluid my-class">' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
     public function testRowWithIdOptions()
     {
         $result = $this->GanacheHtmlHelper->row(['id' => 'my-id']);
-        $expected = '<div id="my-id" class="row">' . PHP_EOL;
+        $expected = '<div id="my-id" class="row-fluid">' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
-    public function testRowFluidWithoutOptions()
+    public function testRowFluidTrue()
     {
-        $result = $this->GanacheHtmlHelper->rowFluid();
+        $result = $this->GanacheHtmlHelper->row(['ga_fluid' => true]);
         $expected = '<div class="row-fluid">' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
-    public function testRowFluidWithCustomClass()
+    public function testRowFluidFalse()
     {
-        $result = $this->GanacheHtmlHelper->rowFluid(['class' => 'my-class']);
-        $expected = '<div class="row-fluid my-class">' . PHP_EOL;
+        $result = $this->GanacheHtmlHelper->row(['ga_fluid' => false]);
+        $expected = '<div class="row">' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
-    public function testRowFluidWithIdOptions()
+    public function testRowFluidWithUnknownValue()
     {
-        $result = $this->GanacheHtmlHelper->rowFluid(['id' => 'my-id']);
-        $expected = '<div id="my-id" class="row-fluid">' . PHP_EOL;
+        $result = $this->GanacheHtmlHelper->row(['ga_fluid' => 'my-id']);
+        $expected = '<div class="row-fluid">' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
     public function testSpan1WithoutOptions()
