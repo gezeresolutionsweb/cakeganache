@@ -807,22 +807,22 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected = '<div id="my-id" class="container">' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
-    public function testContainerFluidWithoutOptions()
+    public function testContainerFluidTrue()
     {
-        $result = $this->GanacheHtmlHelper->containerFluid();
+        $result = $this->GanacheHtmlHelper->container(['ga_fluid' => true]);
         $expected = '<div class="container-fluid">' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
-    public function testContainerFluidWithCustomClass()
+    public function testContainerFluidFalse()
     {
-        $result = $this->GanacheHtmlHelper->containerFluid(['class' => 'my-class']);
-        $expected = '<div class="container-fluid my-class">' . PHP_EOL;
+        $result = $this->GanacheHtmlHelper->container(['ga_fluid' => false]);
+        $expected = '<div class="container">' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
-    public function testContainerFluidWithIdOptions()
+    public function testContainerFluidInvalidValue()
     {
-        $result = $this->GanacheHtmlHelper->containerFluid(['id' => 'my-id']);
-        $expected = '<div id="my-id" class="container-fluid">' . PHP_EOL;
+        $result = $this->GanacheHtmlHelper->container(['ga_fluid' => 'my-id']);
+        $expected = '<div class="container">' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
     public function testRowWithoutOptions()

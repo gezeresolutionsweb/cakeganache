@@ -572,25 +572,17 @@ class GanacheHtmlHelper extends HtmlHelper {
      *
      * @param array $options Options of the div element
      * @return string Div element with the class 'container'
+     *
+     * Extra options
+     * - ga_fluid : boolean To switch to fluid layout (default: false)
      */
     public function container($options = [])
     {
         $class = GA_CONTAINER;
-        if (isset($options['class'])) {
-            $class .= ' ' . $options['class'];
+        if(isset($options['ga_fluid']) && $options['ga_fluid'] === true) {
+            $class = GA_CONTAINER_FLUID;
         }
-        return $this->div($class, null, $options) . PHP_EOL;
-    }
-
-    /**
-     * Open a Bootstrap container fluid
-     *
-     * @param array $options Options of the div element
-     * @return string Div element with the class 'container-fluid'
-     */
-    public function containerFluid($options = [])
-    {
-        $class = GA_CONTAINER_FLUID;
+        unset($options['ga_fluid']);
         if (isset($options['class'])) {
             $class .= ' ' . $options['class'];
         }
