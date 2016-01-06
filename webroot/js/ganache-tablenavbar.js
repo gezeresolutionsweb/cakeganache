@@ -29,8 +29,8 @@
         this.cleared = this.options.cleared || this.cleared;
 
         // bind action button.
-        this.$element.on('click.tablenavbar-data-api.tablenavbar-search-button', '[data-toggle=tablenavbar-search-button]', $.proxy(this.search, this));
-        this.$element.on('click.tablenavbar-data-api.tablenavbar-clear-button', '[data-toggle=tablenavbar-clear-button]', $.proxy(this.clear, this));
+        this.$element.on('click.tablenavbar-data-api.tablenavbar-search-btn', '[data-toggle=tablenavbar-search-btn]', $.proxy(this.search, this));
+        this.$element.on('click.tablenavbar-data-api.tablenavbar-clear-btn', '[data-toggle=tablenavbar-clear-btn]', $.proxy(this.clear, this));
     };
 
     Tablenavbar.VERSION = '2.3.2';
