@@ -55,16 +55,6 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_ROW_FLUID === 'row-fluid');
     }
 
-    public function testGaSpanExists()
-    {
-        $this->assertTrue(defined('GA_SPAN'));
-    }
-
-    public function testGaSpanValue()
-    {
-        $this->assertTrue(GA_SPAN === 'span');
-    }
-
     public function testGa1Exists()
     {
         $this->assertTrue(defined('GA_1'));
@@ -286,16 +276,6 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_LARGE === 'large');
     }
 
-    public function testGaXExists()
-    {
-        $this->assertTrue(defined('GA_X'));
-    }
-
-    public function testGaXValue()
-    {
-        $this->assertTrue(GA_X === 'x');
-    }
-
     public function testGaXlargeExists()
     {
         $this->assertTrue(defined('GA_XLARGE'));
@@ -489,16 +469,6 @@ class BootstrapTest extends CakeTestCase
     }
 
 
-
-    public function testGaIconExists()
-    {
-        $this->assertTrue(defined('GA_ICON'));
-    }
-
-    public function testGaIconValue()
-    {
-        $this->assertTrue(GA_ICON === 'icon');
-    }
 
     public function testGaBarExists()
     {
