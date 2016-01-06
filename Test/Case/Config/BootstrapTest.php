@@ -530,16 +530,6 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_ICON_BAR === 'icon-bar');
     }
 
-    public function testGaPullExists()
-    {
-        $this->assertTrue(defined('GA_PULL'));
-    }
-
-    public function testGaPullValue()
-    {
-        $this->assertTrue(GA_PULL === 'pull');
-    }
-
     public function testGaPullLeftExists()
     {
         $this->assertTrue(defined('GA_PULL_LEFT'));
@@ -619,16 +609,6 @@ class BootstrapTest extends CakeTestCase
     public function testGaClearValue()
     {
         $this->assertTrue(GA_CLEAR === 'clear');
-    }
-
-    public function testGaHelpExists()
-    {
-        $this->assertTrue(defined('GA_HELP'));
-    }
-
-    public function testGaHelpValue()
-    {
-        $this->assertTrue(GA_HELP === 'help');
     }
 
     public function testGaHelpBlockExists()
