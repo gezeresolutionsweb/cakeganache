@@ -265,7 +265,7 @@ class GanacheFormHelper extends FormHelper {
     public function buttonGroup ($buttons, $options = array()) {
         $vertical = $this->_extractOption('vertical', $options, false) ;
         unset($options['vertical']) ;
-        $options = $this->addClass($options, GA_BTN_GORUP) ;
+        $options = $this->addClass($options, GA_BTN_GROUP) ;
         if ($vertical) {
             $options = $this->addClass($options, GA_BTN_GROUP_VERTICAL) ;
         }
