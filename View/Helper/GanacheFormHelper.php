@@ -553,8 +553,8 @@ class GanacheFormHelper extends FormHelper {
             'class' => $class,
             'before' => '',
             'type' => $type,
-            'between' => '<div class="' . GA_CONTROLS . '"><div class="' . GA_ROW_FLUID . '"><div class="' . GA_SPAN3 . '">',
-            'after' => '</div><div class="' . GA_SPAN3 . '">' . $this->input($args['adjustedFieldname'], array(
+            'between' => '<div class="' . GA_CONTROLS . '"><div class="' . GA_ROW_FLUID . '"><div class="' . GA_3 . '">',
+            'after' => '</div><div class="' . GA_3 . '">' . $this->input($args['adjustedFieldname'], array(
                 'class' => $class,
                 'div' => false,
                 'type' => $type,

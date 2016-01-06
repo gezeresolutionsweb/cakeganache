@@ -614,22 +614,22 @@ class GanacheHtmlHelper extends HtmlHelper {
 
     private function __span($class, $options = []) {
         $classes = [
-            GA_SPAN1,
-            GA_SPAN2,
-            GA_SPAN3,
-            GA_SPAN4,
-            GA_SPAN5,
-            GA_SPAN6,
-            GA_SPAN7,
-            GA_SPAN8,
-            GA_SPAN9,
-            GA_SPAN10,
-            GA_SPAN11,
-            GA_SPAN12,
+            GA_1,
+            GA_2,
+            GA_3,
+            GA_4,
+            GA_5,
+            GA_6,
+            GA_7,
+            GA_8,
+            GA_9,
+            GA_10,
+            GA_11,
+            GA_12,
         ];
 
         if(!in_array($class, $classes)) {
-            $class = GA_SPAN1;
+            $class = GA_1;
         }
 
         if(isset($options['class'])) {
@@ -647,7 +647,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      */
     public function span1($options = [])
     {
-        return $this->__span(GA_SPAN1, $options);
+        return $this->__span(GA_1, $options);
     }
 
     /**
@@ -658,7 +658,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      */
     public function span2($options = [])
     {
-        return $this->__span(GA_SPAN2, $options);
+        return $this->__span(GA_2, $options);
     }
 
     /**
@@ -669,7 +669,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      */
     public function span3($options = [])
     {
-        return $this->__span(GA_SPAN3, $options);
+        return $this->__span(GA_3, $options);
     }
 
     /**
@@ -680,7 +680,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      */
     public function span4($options = [])
     {
-        return $this->__span(GA_SPAN4, $options);
+        return $this->__span(GA_4, $options);
     }
 
     /**
@@ -691,7 +691,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      */
     public function span5($options = [])
     {
-        return $this->__span(GA_SPAN5, $options);
+        return $this->__span(GA_5, $options);
     }
 
     /**
@@ -702,7 +702,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      */
     public function span6($options = [])
     {
-        return $this->__span(GA_SPAN6, $options);
+        return $this->__span(GA_6, $options);
     }
 
     /**
@@ -713,7 +713,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      */
     public function span7($options = [])
     {
-        return $this->__span(GA_SPAN7, $options);
+        return $this->__span(GA_7, $options);
     }
 
     /**
@@ -724,7 +724,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      */
     public function span8($options = [])
     {
-        return $this->__span(GA_SPAN8, $options);
+        return $this->__span(GA_8, $options);
     }
 
     /**
@@ -735,7 +735,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      */
     public function span9($options = [])
     {
-        return $this->__span(GA_SPAN9, $options);
+        return $this->__span(GA_9, $options);
     }
 
     /**
@@ -746,7 +746,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      */
     public function span10($options = [])
     {
-        return $this->__span(GA_SPAN10, $options);
+        return $this->__span(GA_10, $options);
     }
 
     /**
@@ -757,7 +757,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      */
     public function span11($options = [])
     {
-        return $this->__span(GA_SPAN11, $options);
+        return $this->__span(GA_11, $options);
     }
 
     /**
@@ -768,7 +768,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      */
     public function span12($options = [])
     {
-        return $this->__span(GA_SPAN12, $options);
+        return $this->__span(GA_12, $options);
     }
 
     /**
@@ -836,124 +836,56 @@ class GanacheHtmlHelper extends HtmlHelper {
     }
 
     /**
-     * IMPORTANT: Bootstrap 3 related function. Not use right now.
-     *
-     * Create a <div class="col"> element.
+     * Create a column element.
      * 
-     * Differents layouts with options.
+     * @example
+     * <?php
+     *   // Bootstrap 2.x sample
+     *   // Tell to create a 6 size column with offset of 1.
+     *   $this->Bs->col([GA_6, GA_OF1]);
+     * ?>
      *
-     * ### Construction
+     * <?php
+     *   // Bootstrap 3.x sample
+     *   // Tell XS size of 3 with offset of 1 and push of 2 plus,
+     *   // MD size of 3 with offset of 2 and pull of 1.
+     *   $this->Bs->col([GA_XS3, GA_XS_OF1, GA_XS_PH2, GA_MD3, GA_MD_OF2, GA_MD_PL1]);
+     * ?>
      *
-     * $this->Bs->col('xs3 of1 ph9', 'md3');
-     *
-     * It means : - For XS layout, a column size of 3, offset of 1 and push of 9.
-     *             - For MD layout, a column size of 3.
-     *
-     * You can give all parameters you want before $attributes. The rule of params is :
-     *
-     * 'LAYOUT+SIZE OPTIONS+SIZE'
-     *
-     * LAYOUT -> not obligatory for the first param ('xs' by default).
-     * SIZE -> size of the column in a grid of 12 columns.
-     * OPTIONS -> Not obligatory. Offset, push or pull. Called like this : 'of', 'ph' or 'pl'.
-     * SIZE -> size of the option.
-     *
-     *
-     * ### Attributes
-     *
-     * Same options that HtmlHelper::div();
-     *
-     * @param string layout, size and options (offset, push and/or pull)
+     * @param array $classes Size and options (offset, push and/or pull) for each screen.
      * @param array $attributes Options of the div element
      * @return string DIV tag element 
      */
-    /*
-    public function col() {
-        $class = '';
-        $devices = array();
-        $attributes = array();
-        $args = func_get_args();
-        foreach ($args as $arg) {
-            if (!is_array($arg)) {
-                $devices[] = $arg;
-            } else {
-                $attributes = $arg;
-            }
-        }
-        $arrayDevice = array('xs' , 'sm' , 'md' , 'lg');
-        $arrayOptions = array('of' , 'ph' , 'pl');
-        foreach ($devices as $device) {
-            $ecran = null;
-            $taille = null;
-            $opt = null;
-            $replace = array('(', ')', '-', '_', '/', '\\', ';', ',', ':', ' ');
-            $device = str_replace($replace, '.', $device);
-            $device = explode('.', $device);
-            // On doit obligatoirement définir un écran en premier sinon ça ne marche pas
-            foreach ($device as $elem) {
-                if (!$ecran) {
-                    $nom = substr($elem, 0, 2);
-                    if(in_array($nom , $arrayDevice)) {
-                        $ecran = $nom;
-                        $taille = substr($elem, 2);
-                    }
-                }else{
-                    if ($opt) {
-                        $opt .= ' '.$this->optCol($elem, $ecran);
-                    }
-                    else{
-                        $opt = $this->optCol($elem, $ecran);
-                    }
-                }
-            }
-            if (isset($ecran) && $taille) {
-                if ($opt) {
-                    $class .= 'col-'.$ecran.'-'.$taille.' '.$opt.' ';
-                }else{
-                    $class .= 'col-'.$ecran.'-'.$taille.' ';
-                }
-            }
-        }
-        $class = substr($class,0,-1);
-        if(isset($attributes['class']))
-            $class .= SP . $attributes['class'];
-        $out = parent::div($class , null, $attributes). BL;
-        return $out;
+    public function col(Array $classes, Array $attributes = []) {
+        $validClasses = $this->getValidClasses();
+        $class = array_intersect($classes, $validClasses);
+        $class = array_implode(' ', $class);
+        return parent::div($class , null, $attributes) . PHP_EOL;
     }
-     */
-    /**
-     * IMPORTANT: Bootstrap 3 related function. Not use right now.
-     *
-     * Complementary function with BsHelper::col()
-     *
-     * Add the correct class for the option in parameter
-     *
-     * @param array $elem // classe appliquée sur l'élément col {PARAMETRE OBLIGATOIRE}
-     * @param string $ecran // layout concerné {PARAMETRE OBLIGATOIRE}
-     * @return string The class corresponding to the option
-     */
-    /*
-    private function optCol($elem, $ecran){
-        $attr = substr($elem, 0, 2);
-        $taille = substr($elem, 2);
-        if (is_integer($taille) || !($taille == 0 && $ecran == 'sm'))  {
-            switch ($attr) {
-            case 'pl':
-                return 'col-'.$ecran.'-pull-'.$taille;
-                break;
-            case 'ph':
-                return 'col-'.$ecran.'-push-'.$taille;
-                break;
 
-            case 'of':
-                return 'col-'.$ecran.'-offset-'.$taille;
-                break;
-            default:
-                return null;
-                break;
+    public function getValidClasses() {
+        $screens = ['XS', 'SM', 'MD', 'LG'];
+        $sizes = range(1,12);
+        $options = ['PH', 'PL', 'OF'];
+        $prefix = 'GA_';
+    
+        $validClasses = [];
+
+        foreach($sizes as $size) {
+            foreach($screens as $screen) {
+                $class = $prefix . $screen . $size;
+                if(defined($class)) {
+                    $validClasses[] = constant($class);
+                }
+
+            }
+            foreach($options as $option) {
+                $class = $prefix . $option . $size;
+                if(defined($class)) {
+                    $validClasses[] = constant($class);
+                }
             }
         }
     }
-     */
 }
 

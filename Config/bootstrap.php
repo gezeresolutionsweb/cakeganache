@@ -16,161 +16,147 @@
 
 // @todo Missing carousel related constants.
 
-/**
- * GRID
- */
+// GRID
 define('GA_CONTAINER', 'container');
 define('GA_FLUID', 'fluid');
 define('GA_CONTAINER_FLUID', GA_CONTAINER . '-' . GA_FLUID);
 define('GA_ROW', 'row');
 define('GA_ROW_FLUID', GA_ROW . '-' . GA_FLUID);
 define('GA_SPAN', 'span');
-define('GA_1', '1'); // @test
-define('GA_2', '2'); // @test
-define('GA_3', '3'); // @test
-define('GA_4', '4'); // @test
-define('GA_5', '5'); // @test
-define('GA_6', '6'); // @test
-define('GA_7', '7'); // @test
-define('GA_8', '8'); // @test
-define('GA_9', '9'); // @test
-define('GA_10', '10'); // @test
-define('GA_11', '11'); // @test
-define('GA_12', '12'); // @test
-define('GA_SPAN1', GA_SPAN . GA_1); // @test
-define('GA_SPAN2', GA_SPAN . GA_2); // @test
-define('GA_SPAN3', GA_SPAN . GA_3); // @test
-define('GA_SPAN4', GA_SPAN . GA_4); // @test
-define('GA_SPAN5', GA_SPAN . GA_5); // @test
-define('GA_SPAN6', GA_SPAN . GA_6); // @test
-define('GA_SPAN7', GA_SPAN . GA_7); // @test
-define('GA_SPAN8', GA_SPAN . GA_8); // @test
-define('GA_SPAN9', GA_SPAN . GA_9); // @test
-define('GA_SPAN10', GA_SPAN . GA_10); // @test
-define('GA_SPAN11', GA_SPAN . GA_11); // @test
-define('GA_SPAN12', GA_SPAN . GA_12); // @test
+define('GA_1', GA_SPAN . '1'); // @test
+define('GA_2', GA_SPAN . '2'); // @test
+define('GA_3', GA_SPAN . '3'); // @test
+define('GA_4', GA_SPAN . '4'); // @test
+define('GA_5', GA_SPAN . '5'); // @test
+define('GA_6', GA_SPAN . '6'); // @test
+define('GA_7', GA_SPAN . '7'); // @test
+define('GA_8', GA_SPAN . '8'); // @test
+define('GA_9', GA_SPAN . '9'); // @test
+define('GA_10', GA_SPAN . '10'); // @test
+define('GA_11', GA_SPAN . '11'); // @test
+define('GA_12', GA_SPAN . '12'); // @test
 define('GA_COL', 'col'); // BS3 only @test
 define('GA_XS', 'xs'); // BS3 only @test
 define('GA_SM', 'sm'); // BS3 only @test
 define('GA_MD', 'md'); // BS3 only @test
 define('GA_LG', 'lg'); // BS3 only @test
 define('GA_COL_XS', GA_COL . '-' . GA_XS); // BS3 only @test
-define('GA_COL_XS_1', GA_COL_XS . '-' . GA_1); // BS3 only @test
-define('GA_COL_XS_2', GA_COL_XS . '-' . GA_2); // BS3 only @test
-define('GA_COL_XS_3', GA_COL_XS . '-' . GA_3); // BS3 only @test
-define('GA_COL_XS_4', GA_COL_XS . '-' . GA_4); // BS3 only @test
-define('GA_COL_XS_5', GA_COL_XS . '-' . GA_5); // BS3 only @test
-define('GA_COL_XS_6', GA_COL_XS . '-' . GA_6); // BS3 only @test
-define('GA_COL_XS_7', GA_COL_XS . '-' . GA_7); // BS3 only @test
-define('GA_COL_XS_8', GA_COL_XS . '-' . GA_8); // BS3 only @test
-define('GA_COL_XS_9', GA_COL_XS . '-' . GA_9); // BS3 only @test
-define('GA_COL_XS_10', GA_COL_XS . '-' . GA_10); // BS3 only @test
-define('GA_COL_XS_11', GA_COL_XS . '-' . GA_11); // BS3 only @test
-define('GA_COL_XS_12', GA_COL_XS . '-' . GA_12); // BS3 only @test
+define('GA_XS1', GA_COL_XS . '-1'); // BS3 only @test
+define('GA_XS2', GA_COL_XS . '-2'); // BS3 only @test
+define('GA_XS3', GA_COL_XS . '-3'); // BS3 only @test
+define('GA_XS4', GA_COL_XS . '-4'); // BS3 only @test
+define('GA_XS5', GA_COL_XS . '-5'); // BS3 only @test
+define('GA_XS6', GA_COL_XS . '-6'); // BS3 only @test
+define('GA_XS7', GA_COL_XS . '-7'); // BS3 only @test
+define('GA_XS8', GA_COL_XS . '-8'); // BS3 only @test
+define('GA_XS9', GA_COL_XS . '-9'); // BS3 only @test
+define('GA_XS10', GA_COL_XS . '-10'); // BS3 only @test
+define('GA_XS11', GA_COL_XS . '-11'); // BS3 only @test
+define('GA_XS12', GA_COL_XS . '-12'); // BS3 only @test
 define('GA_COL_SM', GA_COL . '-' . GA_SM); // BS3 only @test
-define('GA_COL_SM_1', GA_COL_SM . '-' . GA_1); // BS3 only @test
-define('GA_COL_SM_2', GA_COL_SM . '-' . GA_2); // BS3 only @test
-define('GA_COL_SM_3', GA_COL_SM . '-' . GA_3); // BS3 only @test
-define('GA_COL_SM_4', GA_COL_SM . '-' . GA_4); // BS3 only @test
-define('GA_COL_SM_5', GA_COL_SM . '-' . GA_5); // BS3 only @test
-define('GA_COL_SM_6', GA_COL_SM . '-' . GA_6); // BS3 only @test
-define('GA_COL_SM_7', GA_COL_SM . '-' . GA_7); // BS3 only @test
-define('GA_COL_SM_8', GA_COL_SM . '-' . GA_8); // BS3 only @test
-define('GA_COL_SM_9', GA_COL_SM . '-' . GA_9); // BS3 only @test
-define('GA_COL_SM_10', GA_COL_SM . '-' . GA_10); // BS3 only @test
-define('GA_COL_SM_11', GA_COL_SM . '-' . GA_11); // BS3 only @test
-define('GA_COL_SM_12', GA_COL_SM . '-' . GA_12); // BS3 only @test
+define('GA_SM1', GA_COL_SM . '-1'); // BS3 only @test
+define('GA_SM2', GA_COL_SM . '-2'); // BS3 only @test
+define('GA_SM3', GA_COL_SM . '-3'); // BS3 only @test
+define('GA_SM4', GA_COL_SM . '-4'); // BS3 only @test
+define('GA_SM5', GA_COL_SM . '-5'); // BS3 only @test
+define('GA_SM6', GA_COL_SM . '-6'); // BS3 only @test
+define('GA_SM7', GA_COL_SM . '-7'); // BS3 only @test
+define('GA_SM8', GA_COL_SM . '-8'); // BS3 only @test
+define('GA_SM9', GA_COL_SM . '-9'); // BS3 only @test
+define('GA_SM10', GA_COL_SM . '-10'); // BS3 only @test
+define('GA_SM11', GA_COL_SM . '-11'); // BS3 only @test
+define('GA_SM12', GA_COL_SM . '-12'); // BS3 only @test
 define('GA_COL_MD', GA_COL . '-' . GA_MD); // BS3 only @test
-define('GA_COL_MD_1', GA_COL_MD . '-' . GA_1); // BS3 only @test
-define('GA_COL_MD_2', GA_COL_MD . '-' . GA_2); // BS3 only @test
-define('GA_COL_MD_3', GA_COL_MD . '-' . GA_3); // BS3 only @test
-define('GA_COL_MD_4', GA_COL_MD . '-' . GA_4); // BS3 only @test
-define('GA_COL_MD_5', GA_COL_MD . '-' . GA_5); // BS3 only @test
-define('GA_COL_MD_6', GA_COL_MD . '-' . GA_6); // BS3 only @test
-define('GA_COL_MD_7', GA_COL_MD . '-' . GA_7); // BS3 only @test
-define('GA_COL_MD_8', GA_COL_MD . '-' . GA_8); // BS3 only @test
-define('GA_COL_MD_9', GA_COL_MD . '-' . GA_9); // BS3 only @test
-define('GA_COL_MD_10', GA_COL_MD . '-' . GA_10); // BS3 only @test
-define('GA_COL_MD_11', GA_COL_MD . '-' . GA_11); // BS3 only @test
-define('GA_COL_MD_12', GA_COL_MD . '-' . GA_12); // BS3 only @test
+define('GA_MD1', GA_COL_MD . '-1'); // BS3 only @test
+define('GA_MD2', GA_COL_MD . '-2'); // BS3 only @test
+define('GA_MD3', GA_COL_MD . '-3'); // BS3 only @test
+define('GA_MD4', GA_COL_MD . '-4'); // BS3 only @test
+define('GA_MD5', GA_COL_MD . '-5'); // BS3 only @test
+define('GA_MD6', GA_COL_MD . '-6'); // BS3 only @test
+define('GA_MD7', GA_COL_MD . '-7'); // BS3 only @test
+define('GA_MD8', GA_COL_MD . '-8'); // BS3 only @test
+define('GA_MD9', GA_COL_MD . '-9'); // BS3 only @test
+define('GA_MD10', GA_COL_MD . '-10'); // BS3 only @test
+define('GA_MD11', GA_COL_MD . '-11'); // BS3 only @test
+define('GA_MD12', GA_COL_MD . '-12'); // BS3 only @test
 define('GA_COL_MD', GA_COL . '-' . GA_LG); // BS3 only @test
-define('GA_COL_LG_1', GA_COL_LG . '-' . GA_1); // BS3 only @test
-define('GA_COL_LG_2', GA_COL_LG . '-' . GA_2); // BS3 only @test
-define('GA_COL_LG_3', GA_COL_LG . '-' . GA_3); // BS3 only @test
-define('GA_COL_LG_4', GA_COL_LG . '-' . GA_4); // BS3 only @test
-define('GA_COL_LG_5', GA_COL_LG . '-' . GA_5); // BS3 only @test
-define('GA_COL_LG_6', GA_COL_LG . '-' . GA_6); // BS3 only @test
-define('GA_COL_LG_7', GA_COL_LG . '-' . GA_7); // BS3 only @test
-define('GA_COL_LG_8', GA_COL_LG . '-' . GA_8); // BS3 only @test
-define('GA_COL_LG_9', GA_COL_LG . '-' . GA_9); // BS3 only @test
-define('GA_COL_LG_10', GA_COL_LG . '-' . GA_10); // BS3 only @test
-define('GA_COL_LG_11', GA_COL_LG . '-' . GA_11); // BS3 only @test
-define('GA_COL_LG_12', GA_COL_LG . '-' . GA_12); // BS3 only @test
+define('GA_LG1', GA_COL_LG . '-1'); // BS3 only @test
+define('GA_LG2', GA_COL_LG . '-2'); // BS3 only @test
+define('GA_LG3', GA_COL_LG . '-3'); // BS3 only @test
+define('GA_LG4', GA_COL_LG . '-4'); // BS3 only @test
+define('GA_LG5', GA_COL_LG . '-5'); // BS3 only @test
+define('GA_LG6', GA_COL_LG . '-6'); // BS3 only @test
+define('GA_LG7', GA_COL_LG . '-7'); // BS3 only @test
+define('GA_LG8', GA_COL_LG . '-8'); // BS3 only @test
+define('GA_LG9', GA_COL_LG . '-9'); // BS3 only @test
+define('GA_LG10', GA_COL_LG . '-10'); // BS3 only @test
+define('GA_LG11', GA_COL_LG . '-11'); // BS3 only @test
+define('GA_LG12', GA_COL_LG . '-12'); // BS3 only @test
 define('GA_OFFSET', 'offset'); // @test
-define('GA_OFFSET_1', GA_OFFSET . '-' . GA_1); // @test
-define('GA_OFFSET_2', GA_OFFSET . '-' . GA_2); // @test
-define('GA_OFFSET_3', GA_OFFSET . '-' . GA_3); // @test
-define('GA_OFFSET_4', GA_OFFSET . '-' . GA_4); // @test
-define('GA_OFFSET_5', GA_OFFSET . '-' . GA_5); // @test
-define('GA_OFFSET_6', GA_OFFSET . '-' . GA_6); // @test
-define('GA_OFFSET_7', GA_OFFSET . '-' . GA_7); // @test
-define('GA_OFFSET_8', GA_OFFSET . '-' . GA_8); // @test
-define('GA_OFFSET_9', GA_OFFSET . '-' . GA_9); // @test
-define('GA_OFFSET_10', GA_OFFSET . '-' . GA_10); // @test
-define('GA_OFFSET_11', GA_OFFSET . '-' . GA_11); // @test
-define('GA_OFFSET_12', GA_OFFSET . '-' . GA_12); // @test
+define('GA_OF1', GA_OFFSET . '-1'); // @test
+define('GA_OF2', GA_OFFSET . '-2'); // @test
+define('GA_OF3', GA_OFFSET . '-3'); // @test
+define('GA_OF4', GA_OFFSET . '-4'); // @test
+define('GA_OF5', GA_OFFSET . '-5'); // @test
+define('GA_OF6', GA_OFFSET . '-6'); // @test
+define('GA_OF7', GA_OFFSET . '-7'); // @test
+define('GA_OF8', GA_OFFSET . '-8'); // @test
+define('GA_OF9', GA_OFFSET . '-9'); // @test
+define('GA_OF10', GA_OFFSET . '-10'); // @test
+define('GA_OF11', GA_OFFSET . '-11'); // @test
+define('GA_OF12', GA_OFFSET . '-12'); // @test
 define('GA_COL_XS_OFFSET', GA_COL_XS . '-' . GA_OFFSET); // BS3 only @test
-define('GA_COL_XS_OFFSET_1', GA_COL_XS_OFFSET . '-' . GA_1); // BS3 only @test
-define('GA_COL_XS_OFFSET_2', GA_COL_XS_OFFSET . '-' . GA_2); // BS3 only @test
-define('GA_COL_XS_OFFSET_3', GA_COL_XS_OFFSET . '-' . GA_3); // BS3 only @test
-define('GA_COL_XS_OFFSET_4', GA_COL_XS_OFFSET . '-' . GA_4); // BS3 only @test
-define('GA_COL_XS_OFFSET_5', GA_COL_XS_OFFSET . '-' . GA_5); // BS3 only @test
-define('GA_COL_XS_OFFSET_6', GA_COL_XS_OFFSET . '-' . GA_6); // BS3 only @test
-define('GA_COL_XS_OFFSET_7', GA_COL_XS_OFFSET . '-' . GA_7); // BS3 only @test
-define('GA_COL_XS_OFFSET_8', GA_COL_XS_OFFSET . '-' . GA_8); // BS3 only @test
-define('GA_COL_XS_OFFSET_9', GA_COL_XS_OFFSET . '-' . GA_9); // BS3 only @test
-define('GA_COL_XS_OFFSET_10', GA_COL_XS_OFFSET . '-' . GA_10); // BS3 only @test
-define('GA_COL_XS_OFFSET_11', GA_COL_XS_OFFSET . '-' . GA_11); // BS3 only @test
-define('GA_COL_XS_OFFSET_12', GA_COL_XS_OFFSET . '-' . GA_12); // BS3 only @test
+define('GA_XS_OF1', GA_COL_XS_OFFSET . '-1'); // BS3 only @test
+define('GA_XS_OF2', GA_COL_XS_OFFSET . '-2'); // BS3 only @test
+define('GA_XS_OF3', GA_COL_XS_OFFSET . '-3'); // BS3 only @test
+define('GA_XS_OF4', GA_COL_XS_OFFSET . '-4'); // BS3 only @test
+define('GA_XS_OF5', GA_COL_XS_OFFSET . '-5'); // BS3 only @test
+define('GA_XS_OF6', GA_COL_XS_OFFSET . '-6'); // BS3 only @test
+define('GA_XS_OF7', GA_COL_XS_OFFSET . '-7'); // BS3 only @test
+define('GA_XS_OF8', GA_COL_XS_OFFSET . '-8'); // BS3 only @test
+define('GA_XS_OF9', GA_COL_XS_OFFSET . '-9'); // BS3 only @test
+define('GA_XS_OF10', GA_COL_XS_OFFSET . '-10'); // BS3 only @test
+define('GA_XS_OF11', GA_COL_XS_OFFSET . '-11'); // BS3 only @test
+define('GA_XS_OF12', GA_COL_XS_OFFSET . '-12'); // BS3 only @test
 define('GA_COL_SM_OFFSET', GA_COL_SM . '-' . GA_OFFSET); // BS3 only @test
-define('GA_COL_SM_OFFSET_1', GA_COL_SM_OFFSET . '-' . GA_1); // BS3 only @test
-define('GA_COL_SM_OFFSET_2', GA_COL_SM_OFFSET . '-' . GA_2); // BS3 only @test
-define('GA_COL_SM_OFFSET_3', GA_COL_SM_OFFSET . '-' . GA_3); // BS3 only @test
-define('GA_COL_SM_OFFSET_4', GA_COL_SM_OFFSET . '-' . GA_4); // BS3 only @test
-define('GA_COL_SM_OFFSET_5', GA_COL_SM_OFFSET . '-' . GA_5); // BS3 only @test
-define('GA_COL_SM_OFFSET_6', GA_COL_SM_OFFSET . '-' . GA_6); // BS3 only @test
-define('GA_COL_SM_OFFSET_7', GA_COL_SM_OFFSET . '-' . GA_7); // BS3 only @test
-define('GA_COL_SM_OFFSET_8', GA_COL_SM_OFFSET . '-' . GA_8); // BS3 only @test
-define('GA_COL_SM_OFFSET_9', GA_COL_SM_OFFSET . '-' . GA_9); // BS3 only @test
-define('GA_COL_SM_OFFSET_10', GA_COL_SM_OFFSET . '-' . GA_10); // BS3 only @test
-define('GA_COL_SM_OFFSET_11', GA_COL_SM_OFFSET . '-' . GA_11); // BS3 only @test
-define('GA_COL_SM_OFFSET_12', GA_COL_SM_OFFSET . '-' . GA_12); // BS3 only @test
+define('GA_SM_OF1', GA_COL_SM_OFFSET . '-1'); // BS3 only @test
+define('GA_SM_OF2', GA_COL_SM_OFFSET . '-2'); // BS3 only @test
+define('GA_SM_OF3', GA_COL_SM_OFFSET . '-3'); // BS3 only @test
+define('GA_SM_OF4', GA_COL_SM_OFFSET . '-4'); // BS3 only @test
+define('GA_SM_OF5', GA_COL_SM_OFFSET . '-5'); // BS3 only @test
+define('GA_SM_OF6', GA_COL_SM_OFFSET . '-6'); // BS3 only @test
+define('GA_SM_OF7', GA_COL_SM_OFFSET . '-7'); // BS3 only @test
+define('GA_SM_OF8', GA_COL_SM_OFFSET . '-8'); // BS3 only @test
+define('GA_SM_OF9', GA_COL_SM_OFFSET . '-9'); // BS3 only @test
+define('GA_SM_OF10', GA_COL_SM_OFFSET . '-10'); // BS3 only @test
+define('GA_SM_OF11', GA_COL_SM_OFFSET . '-11'); // BS3 only @test
+define('GA_SM_OF12', GA_COL_SM_OFFSET . '-12'); // BS3 only @test
 define('GA_COL_MD_OFFSET', GA_COL_MD . '-' . GA_OFFSET); // BS3 only @test
-define('GA_COL_MD_OFFSET_1', GA_COL_MD_OFFSET . '-' . GA_1); // BS3 only @test
-define('GA_COL_MD_OFFSET_2', GA_COL_MD_OFFSET . '-' . GA_2); // BS3 only @test
-define('GA_COL_MD_OFFSET_3', GA_COL_MD_OFFSET . '-' . GA_3); // BS3 only @test
-define('GA_COL_MD_OFFSET_4', GA_COL_MD_OFFSET . '-' . GA_4); // BS3 only @test
-define('GA_COL_MD_OFFSET_5', GA_COL_MD_OFFSET . '-' . GA_5); // BS3 only @test
-define('GA_COL_MD_OFFSET_6', GA_COL_MD_OFFSET . '-' . GA_6); // BS3 only @test
-define('GA_COL_MD_OFFSET_7', GA_COL_MD_OFFSET . '-' . GA_7); // BS3 only @test
-define('GA_COL_MD_OFFSET_8', GA_COL_MD_OFFSET . '-' . GA_8); // BS3 only @test
-define('GA_COL_MD_OFFSET_9', GA_COL_MD_OFFSET . '-' . GA_9); // BS3 only @test
-define('GA_COL_MD_OFFSET_10', GA_COL_MD_OFFSET . '-' . GA_10); // BS3 only @test
-define('GA_COL_MD_OFFSET_11', GA_COL_MD_OFFSET . '-' . GA_11); // BS3 only @test
-define('GA_COL_MD_OFFSET_12', GA_COL_MD_OFFSET . '-' . GA_12); // BS3 only @test
+define('GA_MD_OF1', GA_COL_MD_OFFSET . '-1'); // BS3 only @test
+define('GA_MD_OF2', GA_COL_MD_OFFSET . '-2'); // BS3 only @test
+define('GA_MD_OF3', GA_COL_MD_OFFSET . '-3'); // BS3 only @test
+define('GA_MD_OF4', GA_COL_MD_OFFSET . '-4'); // BS3 only @test
+define('GA_MD_OF5', GA_COL_MD_OFFSET . '-5'); // BS3 only @test
+define('GA_MD_OF6', GA_COL_MD_OFFSET . '-6'); // BS3 only @test
+define('GA_MD_OF7', GA_COL_MD_OFFSET . '-7'); // BS3 only @test
+define('GA_MD_OF8', GA_COL_MD_OFFSET . '-8'); // BS3 only @test
+define('GA_MD_OF9', GA_COL_MD_OFFSET . '-9'); // BS3 only @test
+define('GA_MD_OF10', GA_COL_MD_OFFSET . '-10'); // BS3 only @test
+define('GA_MD_OF11', GA_COL_MD_OFFSET . '-11'); // BS3 only @test
+define('GA_MD_OF12', GA_COL_MD_OFFSET . '-12'); // BS3 only @test
 define('GA_COL_LG_OFFSET', GA_COL_LG . '-' . GA_OFFSET); // BS3 only @test
-define('GA_COL_LG_OFFSET_1', GA_COL_LG_OFFSET . '-' . GA_1); // BS3 only @test
-define('GA_COL_LG_OFFSET_2', GA_COL_LG_OFFSET . '-' . GA_2); // BS3 only @test
-define('GA_COL_LG_OFFSET_3', GA_COL_LG_OFFSET . '-' . GA_3); // BS3 only @test
-define('GA_COL_LG_OFFSET_4', GA_COL_LG_OFFSET . '-' . GA_4); // BS3 only @test
-define('GA_COL_LG_OFFSET_5', GA_COL_LG_OFFSET . '-' . GA_5); // BS3 only @test
-define('GA_COL_LG_OFFSET_6', GA_COL_LG_OFFSET . '-' . GA_6); // BS3 only @test
-define('GA_COL_LG_OFFSET_7', GA_COL_LG_OFFSET . '-' . GA_7); // BS3 only @test
-define('GA_COL_LG_OFFSET_8', GA_COL_LG_OFFSET . '-' . GA_8); // BS3 only @test
-define('GA_COL_LG_OFFSET_9', GA_COL_LG_OFFSET . '-' . GA_9); // BS3 only @test
-define('GA_COL_LG_OFFSET_10', GA_COL_LG_OFFSET . '-' . GA_10); // BS3 only @test
-define('GA_COL_LG_OFFSET_11', GA_COL_LG_OFFSET . '-' . GA_11); // BS3 only @test
-define('GA_COL_LG_OFFSET_12', GA_COL_LG_OFFSET . '-' . GA_12); // BS3 only @test
+define('GA_LG_OF1', GA_COL_LG_OFFSET . '-1'); // BS3 only @test
+define('GA_LG_OF2', GA_COL_LG_OFFSET . '-2'); // BS3 only @test
+define('GA_LG_OF3', GA_COL_LG_OFFSET . '-3'); // BS3 only @test
+define('GA_LG_OF4', GA_COL_LG_OFFSET . '-4'); // BS3 only @test
+define('GA_LG_OF5', GA_COL_LG_OFFSET . '-5'); // BS3 only @test
+define('GA_LG_OF6', GA_COL_LG_OFFSET . '-6'); // BS3 only @test
+define('GA_LG_OF7', GA_COL_LG_OFFSET . '-7'); // BS3 only @test
+define('GA_LG_OF8', GA_COL_LG_OFFSET . '-8'); // BS3 only @test
+define('GA_LG_OF9', GA_COL_LG_OFFSET . '-9'); // BS3 only @test
+define('GA_LG_OF10', GA_COL_LG_OFFSET . '-10'); // BS3 only @test
+define('GA_LG_OF11', GA_COL_LG_OFFSET . '-11'); // BS3 only @test
+define('GA_LG_OF12', GA_COL_LG_OFFSET . '-12'); // BS3 only @test
 
 /**
  * Displays

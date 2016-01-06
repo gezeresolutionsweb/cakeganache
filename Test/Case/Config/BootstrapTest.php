@@ -65,124 +65,124 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_SPAN === 'span');
     }
 
-    public function testGaSpan1Exists()
+    public function testGa1Exists()
     {
-        $this->assertTrue(defined('GA_SPAN1'));
+        $this->assertTrue(defined('GA_1'));
     }
 
-    public function testGaSpan1Value()
+    public function testGa1Value()
     {
-        $this->assertTrue(GA_SPAN1 === 'span1');
+        $this->assertTrue(GA_1 === 'span1');
     }
 
-    public function testGaSpan2Exists()
+    public function testGa2Exists()
     {
-        $this->assertTrue(defined('GA_SPAN2'));
+        $this->assertTrue(defined('GA_2'));
     }
 
-    public function testGaSpan2Value()
+    public function testGa2Value()
     {
-        $this->assertTrue(GA_SPAN2 === 'span2');
+        $this->assertTrue(GA_2 === 'span2');
     }
 
-    public function testGaSpan3Exists()
+    public function testGa3Exists()
     {
-        $this->assertTrue(defined('GA_SPAN3'));
+        $this->assertTrue(defined('GA_3'));
     }
 
-    public function testGaSpan3Value()
+    public function testGa3Value()
     {
-        $this->assertTrue(GA_SPAN3 === 'span3');
+        $this->assertTrue(GA_3 === 'span3');
     }
 
-    public function testGaSpan4Exists()
+    public function testGa4Exists()
     {
-        $this->assertTrue(defined('GA_SPAN4'));
+        $this->assertTrue(defined('GA_4'));
     }
 
-    public function testGaSpan4Value()
+    public function testGa4Value()
     {
-        $this->assertTrue(GA_SPAN4 === 'span4');
+        $this->assertTrue(GA_4 === 'span4');
     }
 
-    public function testGaSpan5Exists()
+    public function testGa5Exists()
     {
-        $this->assertTrue(defined('GA_SPAN5'));
+        $this->assertTrue(defined('GA_5'));
     }
 
-    public function testGaSpan5Value()
+    public function testGa5Value()
     {
-        $this->assertTrue(GA_SPAN5 === 'span5');
+        $this->assertTrue(GA_5 === 'span5');
     }
 
-    public function testGaSpan6Exists()
+    public function testGa6Exists()
     {
-        $this->assertTrue(defined('GA_SPAN6'));
+        $this->assertTrue(defined('GA_6'));
     }
 
-    public function testGaSpan6Value()
+    public function testGa6Value()
     {
-        $this->assertTrue(GA_SPAN6 === 'span6');
+        $this->assertTrue(GA_6 === 'span6');
     }
 
-    public function testGaSpan7Exists()
+    public function testGa7Exists()
     {
-        $this->assertTrue(defined('GA_SPAN7'));
+        $this->assertTrue(defined('GA_7'));
     }
 
-    public function testGaSpan7Value()
+    public function testGa7Value()
     {
-        $this->assertTrue(GA_SPAN7 === 'span7');
+        $this->assertTrue(GA_7 === 'span7');
     }
 
-    public function testGaSpan8Exists()
+    public function testGa8Exists()
     {
-        $this->assertTrue(defined('GA_SPAN8'));
+        $this->assertTrue(defined('GA_8'));
     }
 
-    public function testGaSpan8Value()
+    public function testGa8Value()
     {
-        $this->assertTrue(GA_SPAN8 === 'span8');
+        $this->assertTrue(GA_8 === 'span8');
     }
 
-    public function testGaSpan9Exists()
+    public function testGa9Exists()
     {
-        $this->assertTrue(defined('GA_SPAN9'));
+        $this->assertTrue(defined('GA_9'));
     }
 
-    public function testGaSpan9Value()
+    public function testGa9Value()
     {
-        $this->assertTrue(GA_SPAN9 === 'span9');
+        $this->assertTrue(GA_9 === 'span9');
     }
 
-    public function testGaSpan10Exists()
+    public function testGa10Exists()
     {
-        $this->assertTrue(defined('GA_SPAN10'));
+        $this->assertTrue(defined('GA_10'));
     }
 
-    public function testGaSpan10Value()
+    public function testGa10Value()
     {
-        $this->assertTrue(GA_SPAN10 === 'span10');
+        $this->assertTrue(GA_10 === 'span10');
     }
 
-    public function testGaSpan11Exists()
+    public function testGa11Exists()
     {
-        $this->assertTrue(defined('GA_SPAN11'));
+        $this->assertTrue(defined('GA_11'));
     }
 
-    public function testGaSpan11Value()
+    public function testGa11Value()
     {
-        $this->assertTrue(GA_SPAN11 === 'span11');
+        $this->assertTrue(GA_11 === 'span11');
     }
 
-    public function testGaSpan12Exists()
+    public function testGa12Exists()
     {
-        $this->assertTrue(defined('GA_SPAN12'));
+        $this->assertTrue(defined('GA_12'));
     }
 
-    public function testGaSpan12Value()
+    public function testGa12Value()
     {
-        $this->assertTrue(GA_SPAN12 === 'span12');
+        $this->assertTrue(GA_12 === 'span12');
     }
 
 
