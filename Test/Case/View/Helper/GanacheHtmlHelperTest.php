@@ -1293,5 +1293,11 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected = '<div id="my-id" class="span1">' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
+    public function testCol1WithCustomClass()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_1], ['class' => 'my-class']);
+        $expected = '<div class="span1 my-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
 }
 
