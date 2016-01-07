@@ -1137,5 +1137,161 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected = '<img src="/img/logo.png" alt=""/>';
         $this->assertEquals($expected, $result);
     }
+    public function testCol1()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_1]);
+        $expected = '<div class="span1">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testCol2()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_2]);
+        $expected = '<div class="span2">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testCol3()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_3]);
+        $expected = '<div class="span3">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testCol4()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_4]);
+        $expected = '<div class="span4">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testCol5()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_5]);
+        $expected = '<div class="span5">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testCol6()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_6]);
+        $expected = '<div class="span6">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testCol7()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_7]);
+        $expected = '<div class="span7">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testCol8()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_8]);
+        $expected = '<div class="span8">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testCol9()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_9]);
+        $expected = '<div class="span9">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testCol10()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_10]);
+        $expected = '<div class="span10">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testCol11()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_11]);
+        $expected = '<div class="span11">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testCol12()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_12]);
+        $expected = '<div class="span12">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testColOf1()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_OF1]);
+        $expected = '<div class="offset1">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testColOf2()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_OF2]);
+        $expected = '<div class="offset2">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testColOf3()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_OF3]);
+        $expected = '<div class="offset3">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testColOf4()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_OF4]);
+        $expected = '<div class="offset4">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testColOf5()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_OF5]);
+        $expected = '<div class="offset5">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testColOf6()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_OF6]);
+        $expected = '<div class="offset6">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testColOf7()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_OF7]);
+        $expected = '<div class="offset7">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testColOf8()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_OF8]);
+        $expected = '<div class="offset8">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testColOf9()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_OF9]);
+        $expected = '<div class="offset9">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testColOf10()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_OF10]);
+        $expected = '<div class="offset10">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testColOf11()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_OF11]);
+        $expected = '<div class="offset11">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testColOf12()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_OF12]);
+        $expected = '<div class="offset12">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testCol6AndOf3()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_6, GA_OF3]);
+        $expected = '<div class="span6 offset3">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testCol1WithIdHtmlAttribute()
+    {
+        $result = $this->GanacheHtmlHelper->col([GA_1], ['id' => 'my-id']);
+        $expected = '<div id="my-id" class="span1">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
 }
 

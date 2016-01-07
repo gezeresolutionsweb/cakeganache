@@ -79,18 +79,18 @@ define('GA_9', 'span9');
 define('GA_10', 'span10');
 define('GA_11', 'span11');
 define('GA_12', 'span12');
-define('GA_OF1', 'offset-1'); // @test
-define('GA_OF2', 'offset-2'); // @test
-define('GA_OF3', 'offset-3'); // @test
-define('GA_OF4', 'offset-4'); // @test
-define('GA_OF5', 'offset-5'); // @test
-define('GA_OF6', 'offset-6'); // @test
-define('GA_OF7', 'offset-7'); // @test
-define('GA_OF8', 'offset-8'); // @test
-define('GA_OF9', 'offset-9'); // @test
-define('GA_OF10', 'offset-10'); // @test
-define('GA_OF11', 'offset-11'); // @test
-define('GA_OF12', 'offset-12'); // @test
+define('GA_OF1', 'offset1'); // @test
+define('GA_OF2', 'offset2'); // @test
+define('GA_OF3', 'offset3'); // @test
+define('GA_OF4', 'offset4'); // @test
+define('GA_OF5', 'offset5'); // @test
+define('GA_OF6', 'offset6'); // @test
+define('GA_OF7', 'offset7'); // @test
+define('GA_OF8', 'offset8'); // @test
+define('GA_OF9', 'offset9'); // @test
+define('GA_OF10', 'offset10'); // @test
+define('GA_OF11', 'offset11'); // @test
+define('GA_OF12', 'offset12'); // @test
 
 // LAYOUT
 define('GA_CONTAINER', 'container');

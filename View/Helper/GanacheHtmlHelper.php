@@ -850,7 +850,7 @@ class GanacheHtmlHelper extends HtmlHelper {
             GA_OF1, GA_OF2, GA_OF3, GA_OF4, GA_OF5, GA_OF6, GA_OF7, GA_OF8, GA_OF9, GA_OF10, GA_OF11, GA_OF12,
         ];
         $class = array_intersect($classes, $validClasses);
-        $class = array_implode(' ', $class);
+        $class = implode(' ', $class);
         return parent::div($class , null, $attributes) . PHP_EOL;
     }
 }
