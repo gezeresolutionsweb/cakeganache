@@ -832,54 +832,26 @@ class GanacheHtmlHelper extends HtmlHelper {
     /**
      * Create a column element.
      * 
-     * @example
+     * Use example:
+     * <code>
      * <?php
-     *   // Bootstrap 2.x sample
      *   // Tell to create a 6 size column with offset of 1.
      *   $this->Bs->col([GA_6, GA_OF1]);
      * ?>
+     * </code>
      *
-     * <?php
-     *   // Bootstrap 3.x sample
-     *   // Tell XS size of 3 with offset of 1 and push of 2 plus,
-     *   // MD size of 3 with offset of 2 and pull of 1.
-     *   $this->Bs->col([GA_XS3, GA_XS_OF1, GA_XS_PH2, GA_MD3, GA_MD_OF2, GA_MD_PL1]);
-     * ?>
-     *
-     * @param array $classes Size and options (offset, push and/or pull) for each screen.
+     * @param array $classes Size and offset classes.
      * @param array $attributes Options of the div element
      * @return string DIV tag element 
      */
     public function col(Array $classes, Array $attributes = []) {
-        $validClasses = $this->getValidClasses();
+        $validClasses = [
+            GA_1, GA_2, GA_3, GA_4, GA_5, GA_6, GA_7, GA_8, GA_9, GA_10, GA_11, GA_12,
+            GA_OF1, GA_OF2, GA_OF3, GA_OF4, GA_OF5, GA_OF6, GA_OF7, GA_OF8, GA_OF9, GA_OF10, GA_OF11, GA_OF12,
+        ];
         $class = array_intersect($classes, $validClasses);
         $class = array_implode(' ', $class);
         return parent::div($class , null, $attributes) . PHP_EOL;
-    }
-
-    public function getValidClasses() {
-        $screens = ['XS', 'SM', 'MD', 'LG'];
-        $sizes = range(1,12);
-        $options = ['PH', 'PL', 'OF'];
-        $prefix = 'GA_';
-    
-        $validClasses = [];
-
-        foreach($sizes as $size) {
-            foreach($screens as $screen) {
-                $class = $prefix . $screen . $size;
-                if(defined($class)) {
-                    $validClasses[] = constant($class);
-                }
-
-            }
-            foreach($options as $option) {
-                $class = $prefix . $option . $size;
-                if(defined($class)) {
-                    $validClasses[] = constant($class);
-                }
-            }
-        }
     }
 }
 
