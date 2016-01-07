@@ -15,16 +15,6 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_CONTAINER === 'container');
     }
 
-    public function testGaFluidExists()
-    {
-        $this->assertTrue(defined('GA_FLUID'));
-    }
-
-    public function testGaFluidValue()
-    {
-        $this->assertTrue(GA_FLUID === 'fluid');
-    }
-
     public function testGaContainerFluidExists()
     {
         $this->assertTrue(defined('GA_CONTAINER_FLUID'));
@@ -1334,33 +1324,6 @@ class BootstrapTest extends CakeTestCase
         $this->assertTrue(GA_TEXT_SUCCESS === 'text-success');
     }
 
-    public function testGaImgExists()
-    {
-        $this->assertTrue(defined('GA_IMG'));
-    }
-
-    public function testGaImgValue()
-    {
-        $this->assertTrue(GA_IMG === 'img');
-    }
-    public function testGaResponsiveExists()
-    {
-        $this->assertTrue(defined('GA_RESPONSIVE'));
-    }
-
-    public function testGaResponsiveValue()
-    {
-        $this->assertTrue(GA_RESPONSIVE === 'responsive');
-    }
-    public function testGaImgResponsiveExists()
-    {
-        $this->assertTrue(defined('GA_IMG_RESPONSIVE'));
-    }
-
-    public function testGaImgResponsiveValue()
-    {
-        $this->assertTrue(GA_IMG_RESPONSIVE === 'img-responsive');
-    }
     public function testGaRoundedExists()
     {
         $this->assertTrue(defined('GA_ROUNDED'));
@@ -1368,18 +1331,8 @@ class BootstrapTest extends CakeTestCase
 
     public function testGaRoundedValue()
     {
-        $this->assertTrue(GA_ROUNDED === 'rounded');
+        $this->assertTrue(GA_ROUNDED === 'img-rounded');
     }
-    public function testGaImgRoundedExists()
-    {
-        $this->assertTrue(defined('GA_IMG_ROUNDED'));
-    }
-
-    public function testGaImgRoundedValue()
-    {
-        $this->assertTrue(GA_IMG_ROUNDED === 'img-rounded');
-    }
-
     public function testGaCircleExists()
     {
         $this->assertTrue(defined('GA_CIRCLE'));
@@ -1387,18 +1340,8 @@ class BootstrapTest extends CakeTestCase
 
     public function testGaCircleValue()
     {
-        $this->assertTrue(GA_CIRCLE === 'circle');
+        $this->assertTrue(GA_CIRCLE === 'img-circle');
     }
-    public function testGaImgCircleExists()
-    {
-        $this->assertTrue(defined('GA_IMG_CIRCLE'));
-    }
-
-    public function testGaImgCircleValue()
-    {
-        $this->assertTrue(GA_IMG_CIRCLE === 'img-circle');
-    }
-
     public function testGaPolaroidExists()
     {
         $this->assertTrue(defined('GA_POLAROID'));
@@ -1406,18 +1349,8 @@ class BootstrapTest extends CakeTestCase
 
     public function testGaPolaroidValue()
     {
-        $this->assertTrue(GA_POLAROID === 'polaroid');
+        $this->assertTrue(GA_POLAROID === 'img-polaroid');
     }
-    public function testGaImgPolaroidExists()
-    {
-        $this->assertTrue(defined('GA_IMG_POLAROID'));
-    }
-
-    public function testGaImgPolaroidValue()
-    {
-        $this->assertTrue(GA_IMG_POLAROID === 'img-polaroid');
-    }
-
     public function testGaNavExists()
     {
         $this->assertTrue(defined('GA_NAV'));

@@ -1113,12 +1113,6 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected = '<img src="/img/logo.png" alt=""/>';
         $this->assertEquals($expected, $result);
     }
-    public function testImageResponsive()
-    {
-        $result = $this->GanacheHtmlHelper->image('logo.png', ['ga_responsive' => true]);
-        $expected = '<img src="/img/logo.png" class="img-responsive" alt=""/>';
-        $this->assertEquals($expected, $result);
-    }
     public function testImageShapeRounded()
     {
         $result = $this->GanacheHtmlHelper->image('logo.png', ['ga_shape' => GA_ROUNDED]);

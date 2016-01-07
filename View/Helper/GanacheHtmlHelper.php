@@ -804,7 +804,7 @@ class GanacheHtmlHelper extends HtmlHelper {
     }
 
     /**
-     * Picture responsive
+     * Picture
      *
      * Extends from HtmlHelper:image()
      *    
@@ -813,21 +813,15 @@ class GanacheHtmlHelper extends HtmlHelper {
      * @return string End tag header
      *
      * Extra options
-     * - ga_responsive : boolean Image should be responsive. (default: false)
      * - ga_shape      : string Shape of the images GA_ROUNDED|GA_CIRCLE|GA_POLAROID
      */
     public function image($path, $options = [])
     {
-        if(!empty($options['ga_responsive']) && $options['ga_responsive'] === true) {
-            $options = $this->addClass($options, GA_IMG_RESPONSIVE);
-            unset($options['ga_responsive']);
-        }
-
         $shapes = [GA_ROUNDED, GA_CIRCLE, GA_POLAROID];
 
         if(!empty($options['ga_shape'])) {
             if(in_array($options['ga_shape'], $shapes)) {
-                $options = $this->addClass($options, GA_IMG . '-' . $options['ga_shape']);
+                $options = $this->addClass($options, $options['ga_shape']);
             }
             unset($options['ga_shape']);
         }
