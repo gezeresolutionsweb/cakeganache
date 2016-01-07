@@ -39,7 +39,7 @@ How to use?
 -----------
 
 
-Helpers are developpe with respect of core helper in mind. So load the helpers in your controller.
+Helpers are developped with respect of core helper in mind. So load the helpers in your controller.
 
 ```php
 public $helpers = array(
