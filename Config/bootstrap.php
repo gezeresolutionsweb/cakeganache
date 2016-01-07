@@ -14,6 +14,49 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
+// COMMON DISPLAYS
+define('GA_BLOCK', 'block');
+define('GA_INLINE', 'inline');
+define('GA_INLINE_BLOCK', 'inline-block'); // BS3 only @test
+define('GA_HORIZONTAL', 'horizontal');
+define('GA_FIXED', 'fixed');
+define('GA_STATIC', 'static');
+define('GA_DYNAMIC', 'dynamic');
+
+// COMMON SIZES
+define('GA_MINI', 'mini');
+define('GA_SMALL', 'small');
+define('GA_MEDIUM', 'medium');
+define('GA_LARGE', 'large');
+define('GA_XLARGE', 'xlarge');
+define('GA_XXLARGE', 'xxlarge');
+
+// COMMON STATES
+define('GA_DEFAULT', 'default'); // Bs3
+define('GA_PRIMARY' , 'primary');
+define('GA_ERROR' , 'error');
+define('GA_SUCCESS' , 'success');
+define('GA_WARNING' , 'warning');
+define('GA_IMPORTANT' , 'important');
+define('GA_INFO' , 'info');
+define('GA_INVERSE' , 'inverse');
+define('GA_DANGER' , 'danger');
+define('GA_LINK' , 'link');
+
+// COMMON DIRECTIONNAL
+define('GA_LEFT', 'left');
+define('GA_RIGHT', 'right');
+define('GA_CENTER', 'center');
+define('GA_CENTERED', 'centered');
+define('GA_TOP', 'top');
+define('GA_BOTTOM', 'bottom');
+define('GA_BELOW', 'below');
+
+// COMMON IMAGE SIZE
+define('GA_ROUNDED', 'img-rounded');
+define('GA_POLAROID', 'img-polaroid');
+define('GA_CIRCLE', 'img-circle');
+
 // VARIABLES
 
 // MIXINS
@@ -105,6 +148,32 @@ define('GA_CONDENSED', 'condensed');
 define('GA_TABLE_CONDENSED', 'table-condensed');
 
 // SPRITES
+define('GA_WHITE', 'white'); // @test
+define('GA_ICON_WHITE', 'icon-white'); // @test
+define('GA_LG', 'lg'); // @test
+define('GA_2X', '2x'); // @test
+define('GA_3X', '3x'); // @test
+define('GA_4X', '4x'); // @test
+define('GA_5X', '5x'); // @test
+define('GA_FW', 'fw'); // @test
+define('GA_SPINNER', 'spinner'); // @test
+define('GA_SPIN', 'spin'); // @test
+define('GA_PULSE', 'pulse'); // @test
+define('GA_BORDER', 'border'); // @test
+define('GA_ROTATE', 'rotate'); // @test
+define('GA_90', '90'); // @test
+define('GA_ROTATE_90', 'rotate-90'); // @test
+define('GA_180', '180'); // @test
+define('GA_ROTATE_180', 'rotate-180'); // @test
+define('GA_270', '270'); // @test
+define('GA_ROTATE_270', 'rotate-270'); // @test
+define('GA_FLIP', 'flip'); // @test
+define('GA_FLIP_HORIZONTAL', 'flip-horizontal'); // @test
+define('GA_FLIP_VERTICAL', 'flip-vertical'); // @test
+define('GA_STACK', 'stack'); // @test
+define('GA_1X', '1x'); // @test
+define('GA_STACK_1X', 'stack-1x'); // @test
+define('GA_STACK_2X', 'stack-2x'); // @test
 
 // DROPDOWN
 define('GA_BTN_GROUP', 'btn-group');
@@ -210,7 +279,6 @@ define('GA_PAGER', 'pager');
 define('GA_PREVIOUS', 'previous');
 define('GA_NEXT', 'next');
 
-
 // MODALS
 
 // TOOLTIP
@@ -266,49 +334,6 @@ define('GA_ACCORDION_INNER', 'accordion-inner'); // @test
 define('GA_HERO_UNIT', 'hero-unit');
 
 // UTILITY CLASSES
-
-
-//////// OLD STUFF DOWN THERE !!!
-
-// Displays
-define('GA_BLOCK', 'block');
-define('GA_INLINE', 'inline');
-define('GA_INLINE_BLOCK', 'inline-block'); // BS3 only @test
-define('GA_HORIZONTAL', 'horizontal');
-define('GA_FIXED', 'fixed');
-define('GA_STATIC', 'static');
-define('GA_DYNAMIC', 'dynamic');
-
-// Sizes
-define('GA_MINI', 'mini');
-define('GA_SMALL', 'small');
-define('GA_MEDIUM', 'medium');
-define('GA_LARGE', 'large');
-define('GA_XLARGE', 'xlarge');
-define('GA_XXLARGE', 'xxlarge');
-
-// States
-define('GA_DEFAULT', 'default'); // Bs3
-define('GA_PRIMARY' , 'primary');
-define('GA_ERROR' , 'error');
-define('GA_SUCCESS' , 'success');
-define('GA_WARNING' , 'warning');
-define('GA_IMPORTANT' , 'important');
-define('GA_INFO' , 'info');
-define('GA_INVERSE' , 'inverse');
-define('GA_DANGER' , 'danger');
-define('GA_LINK' , 'link');
-
-// Directional
-define('GA_LEFT', 'left');
-define('GA_RIGHT', 'right');
-define('GA_CENTER', 'center');
-define('GA_CENTERED', 'centered');
-define('GA_TOP', 'top');
-define('GA_BOTTOM', 'bottom');
-define('GA_BELOW', 'below');
-
-// Various
 define('GA_BAR', 'bar');
 define('GA_ACTIONS', 'actions');
 define('GA_STRIPED', 'striped');
@@ -324,29 +349,6 @@ define('GA_LIST', 'list');
 define('GA_DIVIDER', 'divider');
 define('GA_CLEAR', 'clear');
 define('GA_PRE_SCROLLABLE', 'pre-scrollable'); // @test
-
-// Help
-define('GA_HELP_BLOCK', 'help-block');
-define('GA_HELP_INLINE', 'help-inline');
-
-// Text alignment
-define('GA_TEXT', 'text');
-define('GA_TEXT_LEFT', 'text-left');
-define('GA_TEXT_CENTER', 'text-center');
-define('GA_TEXT_RIGHT', 'text-right');
-
-// Text emphasis
-define('GA_TEXT_WARNING', 'text-warning');
-define('GA_TEXT_ERROR', 'text-error');
-define('GA_TEXT_INFO', 'text-info');
-define('GA_TEXT_SUCCESS', 'text-success');
-
-// IMAGE
-define('GA_ROUNDED', 'img-rounded');
-define('GA_POLAROID', 'img-polaroid');
-define('GA_CIRCLE', 'img-circle');
-
-// RESPONSIVE UTILITIES
 define('GA_VISIBLE', 'visible'); // @test
 define('GA_PHONE', 'phone'); // @test
 define('GA_TABLET', 'tablet'); // @test
@@ -358,59 +360,18 @@ define('GA_HIDDEN', 'hidden'); // @test
 define('GA_HIDDEN_PHONE', 'hidden-phone'); // @test
 define('GA_HIDDEN_TABLET', 'hidden-tablet'); // @test
 define('GA_HIDDEN_DESKTOP', 'hidden-desktop'); // @test
+define('GA_HELP_BLOCK', 'help-block');
+define('GA_HELP_INLINE', 'help-inline');
+define('GA_TEXT', 'text');
+define('GA_TEXT_LEFT', 'text-left');
+define('GA_TEXT_CENTER', 'text-center');
+define('GA_TEXT_RIGHT', 'text-right');
+define('GA_TEXT_WARNING', 'text-warning');
+define('GA_TEXT_ERROR', 'text-error');
+define('GA_TEXT_INFO', 'text-info');
+define('GA_TEXT_SUCCESS', 'text-success');
 
-define('GA_VISIBLE_XS_BLOCK', 'visible-xs-block'); // BS3 only @test
-define('GA_VISIBLE_XS_INLINE', 'visible-xs-inline'); // BS3 only @test
-define('GA_VISIBLE_XS_INLINE_BLOCK', 'visible-xs-inline-block'); // BS3 only @test
-define('GA_VISIBLE_SM_BLOCK', 'visible-sm-block'); // BS3 only @test
-define('GA_VISIBLE_SM_INLINE', 'visible-sm-inline'); // BS3 only @test
-define('GA_VISIBLE_SM_INLINE_BLOCK', 'visible-sm-inline-block'); // BS3 only @test
-define('GA_VISIBLE_MD_BLOCK', 'visible-md-block'); // BS3 only @test
-define('GA_VISIBLE_MD_INLINE', 'visible-md-inline'); // BS3 only @test
-define('GA_VISIBLE_MD_INLINE_BLOCK', 'visible-md-inline-block'); // BS3 only @test
-define('GA_VISIBLE_LG_BLOCK', 'visible-lg-block'); // BS3 only @test
-define('GA_VISIBLE_LG_INLINE', 'visible-lg-inline'); // BS3 only @test
-define('GA_VISIBLE_LG_INLINE_BLOCK', 'visible-lg-inline-block'); // BS3 only @test
-define('GA_HIDDEN_XS', 'hidden-xs'); // BS3 only @test
-define('GA_HIDDEN_SM', 'hidden-sm'); // BS3 only @test
-define('GA_HIDDEN_MD', 'hidden-md'); // BS3 only @test
-define('GA_HIDDEN_LG', 'hidden-lg'); // BS3 only @test
-define('GA_VISIBLE_PRINT_BLOCK', 'visible-print-block'); // BS3 only @test
-define('GA_VISIBLE_PRINT_INLINE', 'visible-print-inline'); // BS3 only @test
-define('GA_VISIBLE_PRINT_INLINE_BLOCK', 'visible-print-inline-block'); // BS3 only @test
-define('GA_HIDDEN_PRINT', 'hidden-print'); // BS3 only @test
-
-// Icons
-define('GA_WHITE', 'white'); // @test
-define('GA_ICON_WHITE', 'icon-white'); // @test
-define('GA_LG', 'lg'); // @test
-define('GA_2X', '2x'); // @test
-define('GA_3X', '3x'); // @test
-define('GA_4X', '4x'); // @test
-define('GA_5X', '5x'); // @test
-define('GA_FW', 'fw'); // @test
-define('GA_SPINNER', 'spinner'); // @test
-define('GA_SPIN', 'spin'); // @test
-define('GA_PULSE', 'pulse'); // @test
-define('GA_BORDER', 'border'); // @test
-define('GA_ROTATE', 'rotate'); // @test
-define('GA_90', '90'); // @test
-define('GA_ROTATE_90', 'rotate-90'); // @test
-define('GA_180', '180'); // @test
-define('GA_ROTATE_180', 'rotate-180'); // @test
-define('GA_270', '270'); // @test
-define('GA_ROTATE_270', 'rotate-270'); // @test
-define('GA_FLIP', 'flip'); // @test
-define('GA_FLIP_HORIZONTAL', 'flip-horizontal'); // @test
-define('GA_FLIP_VERTICAL', 'flip-vertical'); // @test
-define('GA_STACK', 'stack'); // @test
-define('GA_1X', '1x'); // @test
-define('GA_STACK_1X', 'stack-1x'); // @test
-define('GA_STACK_2X', 'stack-2x'); // @test
-
-/**
- * Extended Bootstrap 2.3.2 components TABLENAVBAR
- */
+// TABLENAVBAR
 define('GA_TABLENAVBAR', 'tablenavbar');
 define('GA_TABLENAVBAR_DYNAMIC_CONTENT', 'tablenavbar-dynamic-content');
 define('GA_TABLENAVBAR_SEARCH_BTN', 'tablenavbar-search-btn');
@@ -420,3 +381,4 @@ define('GA_TABLENAVBAR_ACTIONS', 'actions');
 // SELECT PICKER
 define('GA_SELECTPICKER', 'selectpicker');
 define('GA_SHOW_TICK', 'show-tick');
+

@@ -149,3 +149,25 @@ define('GA_VISIBLE_PRINT_INLINE', 'visible-print-inline'); // BS3 only @test
 define('GA_VISIBLE_PRINT_INLINE_BLOCK', 'visible-print-inline-block'); // BS3 only @test
 define('GA_HIDDEN_PRINT', 'hidden-print'); // BS3 only @test
 
+// RESPONSIVE UTILITIES
+define('GA_VISIBLE_XS_BLOCK', 'visible-xs-block'); // BS3 only @test
+define('GA_VISIBLE_XS_INLINE', 'visible-xs-inline'); // BS3 only @test
+define('GA_VISIBLE_XS_INLINE_BLOCK', 'visible-xs-inline-block'); // BS3 only @test
+define('GA_VISIBLE_SM_BLOCK', 'visible-sm-block'); // BS3 only @test
+define('GA_VISIBLE_SM_INLINE', 'visible-sm-inline'); // BS3 only @test
+define('GA_VISIBLE_SM_INLINE_BLOCK', 'visible-sm-inline-block'); // BS3 only @test
+define('GA_VISIBLE_MD_BLOCK', 'visible-md-block'); // BS3 only @test
+define('GA_VISIBLE_MD_INLINE', 'visible-md-inline'); // BS3 only @test
+define('GA_VISIBLE_MD_INLINE_BLOCK', 'visible-md-inline-block'); // BS3 only @test
+define('GA_VISIBLE_LG_BLOCK', 'visible-lg-block'); // BS3 only @test
+define('GA_VISIBLE_LG_INLINE', 'visible-lg-inline'); // BS3 only @test
+define('GA_VISIBLE_LG_INLINE_BLOCK', 'visible-lg-inline-block'); // BS3 only @test
+define('GA_HIDDEN_XS', 'hidden-xs'); // BS3 only @test
+define('GA_HIDDEN_SM', 'hidden-sm'); // BS3 only @test
+define('GA_HIDDEN_MD', 'hidden-md'); // BS3 only @test
+define('GA_HIDDEN_LG', 'hidden-lg'); // BS3 only @test
+define('GA_VISIBLE_PRINT_BLOCK', 'visible-print-block'); // BS3 only @test
+define('GA_VISIBLE_PRINT_INLINE', 'visible-print-inline'); // BS3 only @test
+define('GA_VISIBLE_PRINT_INLINE_BLOCK', 'visible-print-inline-block'); // BS3 only @test
+define('GA_HIDDEN_PRINT', 'hidden-print'); // BS3 only @test
+
