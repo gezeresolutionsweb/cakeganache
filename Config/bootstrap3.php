@@ -15,6 +15,11 @@
  */
 
 // This files contain bootstrap 3 classes for later use.
+//
+// COMMON DISPLAYS
+define('GA_INLINE_BLOCK', 'inline-block'); // BS3 only @test
+
+// GRID
 define('GA_XS1', 'col-xs-1'); // BS3 only @test
 define('GA_XS2', 'col-xs-2'); // BS3 only @test
 define('GA_XS3', 'col-xs-3'); // BS3 only @test

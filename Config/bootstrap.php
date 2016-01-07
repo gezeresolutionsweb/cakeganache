@@ -17,7 +17,6 @@
 // COMMON DISPLAYS
 define('GA_BLOCK', 'block');
 define('GA_INLINE', 'inline');
-define('GA_INLINE_BLOCK', 'inline-block'); // BS3 only @test
 define('GA_HORIZONTAL', 'horizontal');
 define('GA_FIXED', 'fixed');
 define('GA_STATIC', 'static');
@@ -136,6 +135,8 @@ define('GA_INPUT_BLOCK_LEVEL', 'input-block-level');
 define('GA_UNEDITABLE', 'uneditable');
 define('GA_UNEDITABLE_INPUT', 'uneditable-input');
 define('GA_FORM_ACTIONS', 'form-actions');
+define('GA_HELP_BLOCK', 'help-block');
+define('GA_HELP_INLINE', 'help-inline');
 
 // TABLES
 define('GA_TABLE', 'table');
@@ -360,8 +361,6 @@ define('GA_HIDDEN', 'hidden'); // @test
 define('GA_HIDDEN_PHONE', 'hidden-phone'); // @test
 define('GA_HIDDEN_TABLET', 'hidden-tablet'); // @test
 define('GA_HIDDEN_DESKTOP', 'hidden-desktop'); // @test
-define('GA_HELP_BLOCK', 'help-block');
-define('GA_HELP_INLINE', 'help-inline');
 define('GA_TEXT', 'text');
 define('GA_TEXT_LEFT', 'text-left');
 define('GA_TEXT_CENTER', 'text-center');
