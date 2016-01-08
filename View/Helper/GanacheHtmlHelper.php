@@ -612,165 +612,36 @@ class GanacheHtmlHelper extends HtmlHelper {
         return $this->div($class, null, $options) . PHP_EOL;
     }
 
-    private function __span($class, $options = []) {
-        $classes = [
-            GA_1,
-            GA_2,
-            GA_3,
-            GA_4,
-            GA_5,
-            GA_6,
-            GA_7,
-            GA_8,
-            GA_9,
-            GA_10,
-            GA_11,
-            GA_12,
+    /**
+     * Create a column element.
+     * 
+     * Use example:
+     * <code>
+     * <?php
+     *   // Tell to create a 6 size column with offset of 1.
+     *   $this->Bs->col([GA_6, GA_OF1]);
+     * ?>
+     * </code>
+     *
+     * @param array $classes Size and offset classes.
+     * @param array $options Options of the div element
+     * @return string DIV tag element 
+     */
+    public function col(Array $classes, Array $options = []) {
+        $validClasses = [
+            GA_1, GA_2, GA_3, GA_4, GA_5, GA_6, GA_7, GA_8, GA_9, GA_10, GA_11, GA_12,
+            GA_OF1, GA_OF2, GA_OF3, GA_OF4, GA_OF5, GA_OF6, GA_OF7, GA_OF8, GA_OF9, GA_OF10, GA_OF11, GA_OF12,
         ];
-
-        if(!in_array($class, $classes)) {
-            $class = GA_1;
-        }
+        $class = array_intersect($classes, $validClasses);
+        $class = implode(' ', $class);
 
         if(isset($options['class'])) {
             $class .= ' ' . $options['class'];
+            unset($options['class']);
         }
 
-        return $this->div($class, null, $options) . PHP_EOL;
+        return parent::div($class , null, $options) . PHP_EOL;
     }
-
-    /**
-     * Open a Bootstrap cell span1.
-     *
-     * @param array $options Options of the div element
-     * @return string Div element with the class 'span1'
-     */
-    public function span1($options = [])
-    {
-        return $this->__span(GA_1, $options);
-    }
-
-    /**
-     * Open a Bootstrap cell span2.
-     *
-     * @param array $options Options of the div element
-     * @return string Div element with the class 'span2'
-     */
-    public function span2($options = [])
-    {
-        return $this->__span(GA_2, $options);
-    }
-
-    /**
-     * Open a Bootstrap cell span3.
-     *
-     * @param array $options Options of the div element
-     * @return string Div element with the class 'span3'
-     */
-    public function span3($options = [])
-    {
-        return $this->__span(GA_3, $options);
-    }
-
-    /**
-     * Open a Bootstrap cell span4.
-     *
-     * @param array $options Options of the div element
-     * @return string Div element with the class 'span4'
-     */
-    public function span4($options = [])
-    {
-        return $this->__span(GA_4, $options);
-    }
-
-    /**
-     * Open a Bootstrap cell span5.
-     *
-     * @param array $options Options of the div element
-     * @return string Div element with the class 'span5'
-     */
-    public function span5($options = [])
-    {
-        return $this->__span(GA_5, $options);
-    }
-
-    /**
-     * Open a Bootstrap cell span6.
-     *
-     * @param array $options Options of the div element
-     * @return string Div element with the class 'span6'
-     */
-    public function span6($options = [])
-    {
-        return $this->__span(GA_6, $options);
-    }
-
-    /**
-     * Open a Bootstrap cell span7.
-     *
-     * @param array $options Options of the div element
-     * @return string Div element with the class 'span7'
-     */
-    public function span7($options = [])
-    {
-        return $this->__span(GA_7, $options);
-    }
-
-    /**
-     * Open a Bootstrap cell span8.
-     *
-     * @param array $options Options of the div element
-     * @return string Div element with the class 'span8'
-     */
-    public function span8($options = [])
-    {
-        return $this->__span(GA_8, $options);
-    }
-
-    /**
-     * Open a Bootstrap cell span9.
-     *
-     * @param array $options Options of the div element
-     * @return string Div element with the class 'span9'
-     */
-    public function span9($options = [])
-    {
-        return $this->__span(GA_9, $options);
-    }
-
-    /**
-     * Open a Bootstrap cell span10.
-     *
-     * @param array $options Options of the div element
-     * @return string Div element with the class 'span10'
-     */
-    public function span10($options = [])
-    {
-        return $this->__span(GA_10, $options);
-    }
-
-    /**
-     * Open a Bootstrap cell span11.
-     *
-     * @param array $options Options of the div element
-     * @return string Div element with the class 'span11'
-     */
-    public function span11($options = [])
-    {
-        return $this->__span(GA_11, $options);
-    }
-
-    /**
-     * Open a Bootstrap cell span12.
-     *
-     * @param array $options Options of the div element
-     * @return string Div element with the class 'span12'
-     */
-    public function span12($options = [])
-    {
-        return $this->__span(GA_12, $options);
-    }
-
     /**
      * Close div elements
      *
@@ -829,35 +700,5 @@ class GanacheHtmlHelper extends HtmlHelper {
         return parent::image($path, $options);
     }
 
-    /**
-     * Create a column element.
-     * 
-     * Use example:
-     * <code>
-     * <?php
-     *   // Tell to create a 6 size column with offset of 1.
-     *   $this->Bs->col([GA_6, GA_OF1]);
-     * ?>
-     * </code>
-     *
-     * @param array $classes Size and offset classes.
-     * @param array $options Options of the div element
-     * @return string DIV tag element 
-     */
-    public function col(Array $classes, Array $options = []) {
-        $validClasses = [
-            GA_1, GA_2, GA_3, GA_4, GA_5, GA_6, GA_7, GA_8, GA_9, GA_10, GA_11, GA_12,
-            GA_OF1, GA_OF2, GA_OF3, GA_OF4, GA_OF5, GA_OF6, GA_OF7, GA_OF8, GA_OF9, GA_OF10, GA_OF11, GA_OF12,
-        ];
-        $class = array_intersect($classes, $validClasses);
-        $class = implode(' ', $class);
-
-        if(isset($options['class'])) {
-            $class .= ' ' . $options['class'];
-            unset($options['class']);
-        }
-
-        return parent::div($class , null, $options) . PHP_EOL;
-    }
 }
 
