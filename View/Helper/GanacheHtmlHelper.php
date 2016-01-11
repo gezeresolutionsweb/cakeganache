@@ -684,7 +684,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      * @return string End tag header
      *
      * Extra options
-     * - ga_shape      : string Shape of the images GA_ROUNDED|GA_CIRCLE|GA_POLAROID
+     * - ga_shape : string Shape of the images GA_ROUNDED|GA_CIRCLE|GA_POLAROID
      */
     public function image($path, $options = [])
     {
@@ -700,5 +700,170 @@ class GanacheHtmlHelper extends HtmlHelper {
         return parent::image($path, $options);
     }
 
+    /**
+     * Table
+     *
+     * Create a full HTML table in one call.
+     *    
+     * @param array $data Array of table data to be pass to HtmlHelper::tableCells().
+     * @param array $options Array of options.
+     * @return string Full HTML table string.
+     *
+     * Extra options
+     * - ga_odd_tr_options     : array Array of data odd tr options. to be pass to HtmlHelper::tableCells().
+     * - ga_even_tr_options    : array Array of data even tr options. to be pass to HtmlHelper::tableCells().
+     * - ga_use_count          : bool adds class "column-$i". (Default: false)
+     * - ga_headers            : array Array of headers. to be pass to Html::tableHeaders().
+     * - ga_headers_tr_options : array Array of headers tr options. to be pass to HtmlHelper::tableHeaders().
+     * - ga_headers_th_options : array Array of headers th options. to be pass to HtmlHelper::tableHeaders().
+     * - ga_actions            : array Array of row actions. Will generate a series of HtmlHelper::link().
+     * - ga_hidden_fields      : array Array of hidden fields from data contained in $data array.
+     */
+    public function table(Array $data, Array $options = [])
+    {
+        $actions = [];
+        if(isset($options['ga_actions'])) {
+            $actions = $options['ga_actions'];
+            unset($options['ga_actions']);
+        }
+
+        $oddTrOptions = null;
+        if(isset($options['ga_odd_tr_options'])) {
+            $oddTrOptions = $options['ga_odd_tr_options'];
+            unset($options['ga_odd_tr_options']);
+        }
+
+        $evenTrOptions = null;
+        if(isset($options['ga_even_tr_options'])) {
+            $evenTrOptions = $options['ga_even_tr_options'];
+            unset($options['ga_even_tr_options']);
+        }
+
+        $useCount = false;
+        if(isset($options['ga_use_count'])) {
+            $useCount = true;
+            unset($options['ga_use_count']);
+        }
+
+        $hiddenFields = [];
+        if(isset($options['ga_hidden_fields'])) {
+            $hiddenFields = $options['ga_hidden_fields'];
+            unset($options['ga_hidden_fields']);
+        }
+
+        $headers = [];
+        if(isset($options['ga_headers'])) {
+            $headers = $options['ga_headers'];
+            unset($options['ga_headers']);
+
+            // If there is some row actions we add an empty headers col.
+            if(!empty($actions)) {
+                $headers[] = '';
+            }
+        }
+
+        $headersTrOptions = [];
+        if(isset($options['ga_headers_tr_options'])) {
+            $headersTrOptions = $options['ga_headers_tr_options'];
+            unset($options['ga_headers_tr_options']);
+        }
+
+        $headersThOptions = [];
+        if(isset($options['ga_headers_th_options'])) {
+            $headersThOptions = $options['ga_headers_th_options'];
+            unset($options['ga_headers_th_options']);
+        }
+
+        // Bind actions on each row.
+        if(!empty($data) && !empty($actions)) {
+            foreach($data as $k => $d) {
+                // If the row is a string we transform it into array.
+                if(is_string($data[$k])) {
+                    $data[$k] = [$d];
+                }
+
+                // Bind extract url actions parameters for each row.
+                $data[$k][] = $this->tableActions($actions, $d);
+            }
+        }
+
+        // Process hidden fields.
+        if(!empty($hiddenFields)) {
+            foreach($hiddenFields as $field) {
+                $data = Hash::remove($data, '{n}.' . $field);
+            }
+        }
+
+        $table = $this->tag('table', null) . PHP_EOL;
+        if(!empty($headers)) {
+            $table .= $this->tag('thead', null) . PHP_EOL;
+            $table .= $this->tableHeaders($headers, $headersTrOptions, $headersThOptions);
+            $table .= PHP_EOL . $this->tag('/thead') . PHP_EOL;
+        }
+        $table .= $this->tag('tbody', null) . PHP_EOL;
+        $table .= $this->tableCells($data, $oddTrOptions, $evenTrOptions, $useCount, false);
+        $table .= PHP_EOL . $this->tag('/tbody') . PHP_EOL;
+        $table .= $this->tag('/table') . PHP_EOL;
+
+        return $table;
+    }
+
+    /**
+     * Table actions
+     *
+     * Transform an array of table row action into HTML.Create
+     *    
+     * @param array $actionsdata Array of actions. An array of array of elements to be past to HtmlHelper::link().
+     * @param array $data Array of data for custom arguments in url. Example for an edit link that we need to pass the id.
+     * @return string HTML string of row link actions.
+     */
+    private function tableActions($actions, $data) {
+        $out = '';
+        foreach($actions as $action) {
+            $title = '';
+            if(isset($action['title'])) {
+                $title = $action['title'];
+            } else {
+                // If there is no title in the array we simply ignore the link.
+                continue;
+            }
+
+            $url = '#';
+            if(isset($action['url'])) {
+                $url = $action['url'];
+
+                $isString = false;
+                
+                if(is_string($url)) {
+                    $url = explode('/', $url);
+                    $isString = true;
+                }
+
+                foreach($url as $k => $f) {
+                    if(preg_match('/^:/', $f)) {
+                        $field = str_replace(':', '', $f);
+                        if(isset($data[$field])) {
+                            $url[$k] = $data[$field];
+                        } else {
+                            throw new RuntimeException('Cannot find key in data array.');
+                        }
+                    }
+                }
+
+                if($isString === true) {
+                    $url = implode('/', $url);
+                }
+            }
+
+            $options = [];
+            if(isset($action['options'])) {
+                $options = $action['options'];
+            }
+
+            $out .= $this->link($title, $url, $options);
+        }
+
+        return $out;
+    }
 }
 
