@@ -1266,8 +1266,8 @@ class GanacheHtmlHelperTest extends CakeTestCase
         ]);
         $expected = '<table class="table">' . PHP_EOL;
         $expected .= '<tbody>' . PHP_EOL;
-        $expected .= '<tr><td>First line</td> <td><a href="#" title="Add a new item">Add</a></td></tr>' . PHP_EOL;
-        $expected .= '<tr><td>Second line</td> <td><a href="#" title="Add a new item">Add</a></td></tr>';
+        $expected .= '<tr><td>First line</td> <td><span class="pull-right"><a href="#" title="Add a new item">Add</a></span></td></tr>' . PHP_EOL;
+        $expected .= '<tr><td>Second line</td> <td><span class="pull-right"><a href="#" title="Add a new item">Add</a></span></td></tr>';
         $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
         $expected .= '</table>' . PHP_EOL;
         $this->assertEquals($expected, $result);
@@ -1283,10 +1283,11 @@ class GanacheHtmlHelperTest extends CakeTestCase
                 ['title' => 'Edit', 'action' => '/', 'options' => ['title' => 'Edit item']]
             ]
         ]);
+
         $expected = '<table class="table">' . PHP_EOL;
         $expected .= '<tbody>' . PHP_EOL;
-        $expected .= '<tr><td>First line</td> <td><a href="#" title="Add a new item">Add</a><a href="#" title="Edit item">Edit</a></td></tr>' . PHP_EOL;
-        $expected .= '<tr><td>Second line</td> <td><a href="#" title="Add a new item">Add</a><a href="#" title="Edit item">Edit</a></td></tr>';
+        $expected .= '<tr><td>First line</td> <td><span class="pull-right"><a href="#" title="Add a new item">Add</a><a href="#" title="Edit item">Edit</a></span></td></tr>' . PHP_EOL;
+        $expected .= '<tr><td>Second line</td> <td><span class="pull-right"><a href="#" title="Add a new item">Add</a><a href="#" title="Edit item">Edit</a></span></td></tr>';
         $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
         $expected .= '</table>' . PHP_EOL;
         $this->assertEquals($expected, $result);
@@ -1380,8 +1381,8 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected .= '<tr><th>id</th> <th>title</th></tr>' . PHP_EOL;
         $expected .= '</thead>' . PHP_EOL;
         $expected .= '<tbody>' . PHP_EOL;
-        $expected .= '<tr><td>1</td> <td>First line</td> <td><a href="/edit/1">Edit</a></td></tr>' . PHP_EOL;
-        $expected .= '<tr><td>2</td> <td>Second line</td> <td><a href="/edit/2">Edit</a></td></tr>';
+        $expected .= '<tr><td>1</td> <td>First line</td> <td><span class="pull-right"><a href="/edit/1">Edit</a></span></td></tr>' . PHP_EOL;
+        $expected .= '<tr><td>2</td> <td>Second line</td> <td><span class="pull-right"><a href="/edit/2">Edit</a></span></td></tr>';
         $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
         $expected .= '</table>' . PHP_EOL;
         $this->assertEquals($expected, $result);
@@ -1402,8 +1403,8 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected .= '<tr><th>id</th> <th>title</th></tr>' . PHP_EOL;
         $expected .= '</thead>' . PHP_EOL;
         $expected .= '<tbody>' . PHP_EOL;
-        $expected .= '<tr><td>1</td> <td>First line</td> <td><a href="/edit/1">Edit</a></td></tr>' . PHP_EOL;
-        $expected .= '<tr><td>2</td> <td>Second line</td> <td><a href="/edit/2">Edit</a></td></tr>';
+        $expected .= '<tr><td>1</td> <td>First line</td> <td><span class="pull-right"><a href="/edit/1">Edit</a></span></td></tr>' . PHP_EOL;
+        $expected .= '<tr><td>2</td> <td>Second line</td> <td><span class="pull-right"><a href="/edit/2">Edit</a></span></td></tr>';
         $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
         $expected .= '</table>' . PHP_EOL;
         $this->assertEquals($expected, $result);
@@ -1478,6 +1479,39 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected = '<table class="table table-hover">' . PHP_EOL;
         $expected .= '<tbody>' . PHP_EOL;
         $expected .= '<tr></tr>';
+        $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
+        $expected .= '</table>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableActionsPullRight()
+    {
+        $result = $this->GanacheHtmlHelper->table([
+            'First line',
+        ],[
+            'ga_actions' => [
+                ['title' => 'Add', 'url' => '#', 'options' => ['title' => 'Add a new item']]
+            ]
+        ]);
+        $expected = '<table class="table">' . PHP_EOL;
+        $expected .= '<tbody>' . PHP_EOL;
+        $expected .= '<tr><td>First line</td> <td><span class="pull-right"><a href="#" title="Add a new item">Add</a></span></td></tr>';
+        $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
+        $expected .= '</table>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableActionsPullRightFalse()
+    {
+        $result = $this->GanacheHtmlHelper->table([
+            'First line',
+        ],[
+            'ga_actions' => [
+                ['title' => 'Add', 'url' => '#', 'options' => ['title' => 'Add a new item']]
+            ],
+            'ga_actions_pull_right' => false
+        ]);
+        $expected = '<table class="table">' . PHP_EOL;
+        $expected .= '<tbody>' . PHP_EOL;
+        $expected .= '<tr><td>First line</td> <td><a href="#" title="Add a new item">Add</a></td></tr>';
         $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
         $expected .= '</table>' . PHP_EOL;
         $this->assertEquals($expected, $result);

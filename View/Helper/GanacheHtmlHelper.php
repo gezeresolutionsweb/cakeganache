@@ -721,6 +721,7 @@ class GanacheHtmlHelper extends HtmlHelper {
      * - ga_headers_tr_options : array Array of headers tr options. to be pass to HtmlHelper::tableHeaders().
      * - ga_headers_th_options : array Array of headers th options. to be pass to HtmlHelper::tableHeaders().
      * - ga_actions            : array Array of row actions. Will generate a series of HtmlHelper::link().
+     * - ga_actions_pull_right : bool Pull right actions links. (default: true)
      * - ga_hidden_fields      : array Array of hidden fields from data contained in $data array.
      */
     public function table(Array $data, Array $options = [])
@@ -814,6 +815,12 @@ class GanacheHtmlHelper extends HtmlHelper {
             unset($options['ga_headers_th_options']);
         }
 
+        $actionsPullRight = true;
+        if(isset($options['ga_actions_pull_right'])) {
+            $actionsPullRight = (bool) $options['ga_actions_pull_right'];
+            unset($options['ga_actions_pull_right']);
+        }
+
         // Bind actions on each row.
         if(!empty($data) && !empty($actions)) {
             foreach($data as $k => $d) {
@@ -823,7 +830,7 @@ class GanacheHtmlHelper extends HtmlHelper {
                 }
 
                 // Bind extract url actions parameters for each row.
-                $data[$k][] = $this->tableActions($actions, $d);
+                $data[$k][] = $this->tableActions($actions, $d, $actionsPullRight);
             }
         }
 
@@ -892,9 +899,10 @@ class GanacheHtmlHelper extends HtmlHelper {
      *    
      * @param array $actionsdata Array of actions. An array of array of elements to be past to HtmlHelper::link().
      * @param array $data Array of data for custom arguments in url. Example for an edit link that we need to pass the id.
+     * @param bool $pullRight Pull right link actions.
      * @return string HTML string of row link actions.
      */
-    private function tableActions($actions, $data) {
+    private function tableActions($actions, $data, $pullRight = true) {
         $out = '';
         foreach($actions as $action) {
             $title = '';
@@ -938,6 +946,10 @@ class GanacheHtmlHelper extends HtmlHelper {
             }
 
             $out .= $this->link($title, $url, $options);
+        }
+
+        if($pullRight === true) {
+            $out = $this->tag('span', $out, ['class' => GA_PULL_RIGHT]);
         }
 
         return $out;
