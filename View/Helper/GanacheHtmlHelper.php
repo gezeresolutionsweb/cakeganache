@@ -906,9 +906,11 @@ class GanacheHtmlHelper extends HtmlHelper {
 
             $item = [];
             foreach($fields as $field) {
+                $value = '';
                 if(isset($v[$field])) {
-                    $item[$field] = $v[$field];
+                    $value = $v[$field];
                 }
+                $item[$field] = $value;
             }
             $newData[$k] = $item;
         }
