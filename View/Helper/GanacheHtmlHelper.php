@@ -844,6 +844,41 @@ class GanacheHtmlHelper extends HtmlHelper {
             $headers = array_flip($headers);
         }
 
+        // Process headers defined as array before generating them.
+        $columnsPullRight = [];
+        foreach($headers as $k => $v) {
+            if(is_array($v)) {
+                $label = '';
+                if(isset($v['label'])) {
+                    $label = $v['label'];
+                }
+
+                $headerPullRight = false;
+                if(isset($v['ga_pull_right'])) {
+                    $headerPullRight = $v['ga_pull_right'];
+                }
+
+                if($headerPullRight === true) {
+                    $label = $this->tag('span', $v['label'], ['class' => GA_PULL_RIGHT]);
+                    $columnsPullRight[] = $k;
+                }
+
+                $headers[$k] = $label;
+            }
+        }
+
+        // Process data for columns alignment.
+        if(!empty($columnsPullRight)) {
+            foreach($columnsPullRight as $column) {
+                $data = array_map(function($v) use ($data, $column) {
+                    if(isset($v[$column])) {
+                        $v[$column] = $this->tag('span', $v[$column], ['class' => GA_PULL_RIGHT]);
+                    }
+                    return $v;
+                }, $data);
+            }
+        }
+
         $table = $this->tag('table', null, ['class' => $tableClasses]) . PHP_EOL;
         if(!empty($headers)) {
             $table .= $this->tag('thead', null) . PHP_EOL;

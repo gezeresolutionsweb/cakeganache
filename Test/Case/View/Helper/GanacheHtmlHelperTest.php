@@ -1516,5 +1516,94 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected .= '</table>' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
+    public function testTableHeadersWithValuesAsArray()
+    {
+        $result = $this->GanacheHtmlHelper->table([
+            ['Deborah', 'Presley'],
+            ['Elvis', 'Costello']
+        ],[
+            'ga_headers' => [
+                ['label' => 'Firstname'],
+                ['label' => 'Lastname']
+            ]
+        ]);
+        $expected = '<table class="table">' . PHP_EOL;
+        $expected .= '<thead>' . PHP_EOL;
+        $expected .= '<tr><th>Firstname</th> <th>Lastname</th></tr>' . PHP_EOL;
+        $expected .= '</thead>' . PHP_EOL;
+        $expected .= '<tbody>' . PHP_EOL;
+        $expected .= '<tr><td>Deborah</td> <td>Presley</td></tr>' . PHP_EOL;
+        $expected .= '<tr><td>Elvis</td> <td>Costello</td></tr>';
+        $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
+        $expected .= '</table>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableHeadersWithValuesAsArrayAndSomeAlignement()
+    {
+        $result = $this->GanacheHtmlHelper->table([
+            ['January', 234.56],
+            ['February', 125.95]
+        ],[
+            'ga_headers' => [
+                ['label' => 'Month'],
+                ['label' => 'Total', 'ga_pull_right' => true]
+            ]
+        ]);
+        $expected = '<table class="table">' . PHP_EOL;
+        $expected .= '<thead>' . PHP_EOL;
+        $expected .= '<tr><th>Month</th> <th><span class="pull-right">Total</span></th></tr>' . PHP_EOL;
+        $expected .= '</thead>' . PHP_EOL;
+        $expected .= '<tbody>' . PHP_EOL;
+        $expected .= '<tr><td>January</td> <td><span class="pull-right">234.56</span></td></tr>' . PHP_EOL;
+        $expected .= '<tr><td>February</td> <td><span class="pull-right">125.95</span></td></tr>';
+        $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
+        $expected .= '</table>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableHeadersWithValuesAsArrayAndSomeAlignementWithKeyDefined()
+    {
+        $result = $this->GanacheHtmlHelper->table([
+            ['month' => 'January', 'total' => 234.56],
+            ['month' => 'February', 'total' => 125.95]
+        ],[
+            'ga_headers' => [
+                'month' => ['label' => 'Month'],
+                'total' => ['label' => 'Total', 'ga_pull_right' => true]
+            ]
+        ]);
+        $expected = '<table class="table">' . PHP_EOL;
+        $expected .= '<thead>' . PHP_EOL;
+        $expected .= '<tr><th>Month</th> <th><span class="pull-right">Total</span></th></tr>' . PHP_EOL;
+        $expected .= '</thead>' . PHP_EOL;
+        $expected .= '<tbody>' . PHP_EOL;
+        $expected .= '<tr><td>January</td> <td><span class="pull-right">234.56</span></td></tr>' . PHP_EOL;
+        $expected .= '<tr><td>February</td> <td><span class="pull-right">125.95</span></td></tr>';
+        $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
+        $expected .= '</table>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableHeadersWithValuesAsArrayAndMultipleColumnAlignementWithKeyDefined()
+    {
+        $result = $this->GanacheHtmlHelper->table([
+            ['month' => 'January', 'subtotal' => 200.11, 'total' => 234.56],
+            ['month' => 'February', 'subtotal' => 100.22, 'total' => 125.95]
+        ],[
+            'ga_headers' => [
+                'month' => ['label' => 'Month'],
+                'subtotal' => ['label' => 'Subtotal', 'ga_pull_right' => true],
+                'total' => ['label' => 'Total', 'ga_pull_right' => true]
+            ]
+        ]);
+        $expected = '<table class="table">' . PHP_EOL;
+        $expected .= '<thead>' . PHP_EOL;
+        $expected .= '<tr><th>Month</th> <th><span class="pull-right">Subtotal</span></th> <th><span class="pull-right">Total</span></th></tr>' . PHP_EOL;
+        $expected .= '</thead>' . PHP_EOL;
+        $expected .= '<tbody>' . PHP_EOL;
+        $expected .= '<tr><td>January</td> <td><span class="pull-right">200.11</span></td> <td><span class="pull-right">234.56</span></td></tr>' . PHP_EOL;
+        $expected .= '<tr><td>February</td> <td><span class="pull-right">100.22</span></td> <td><span class="pull-right">125.95</span></td></tr>';
+        $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
+        $expected .= '</table>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
 }
 
