@@ -710,6 +710,10 @@ class GanacheHtmlHelper extends HtmlHelper {
      * @return string Full HTML table string.
      *
      * Extra options
+     * - ga_condensed          : bool Get a condensed table. (Default: false)
+     * - ga_striped            : bool Get a striped table. (Default: false)
+     * - ga_bordered           : bool Get a bordered table. (Default: false)
+     * - ga_hover              : bool Get a hovered table. (Default: false)
      * - ga_odd_tr_options     : array Array of data odd tr options. to be pass to HtmlHelper::tableCells().
      * - ga_even_tr_options    : array Array of data even tr options. to be pass to HtmlHelper::tableCells().
      * - ga_use_count          : bool adds class "column-$i". (Default: false)
@@ -721,6 +725,30 @@ class GanacheHtmlHelper extends HtmlHelper {
      */
     public function table(Array $data, Array $options = [])
     {
+        $data = $this->toTableArray($data);
+
+        $tableClasses = [GA_TABLE];
+
+        if(isset($options['ga_condensed'])) {
+            $tableClasses[] = GA_TABLE_CONDENSED;
+            unset($options['ga_condensed']);
+        }
+
+        if(isset($options['ga_striped'])) {
+            $tableClasses[] = GA_TABLE_STRIPED;
+            unset($options['ga_stiped']);
+        }
+
+        if(isset($options['ga_bordered'])) {
+            $tableClasses[] = GA_TABLE_BORDERED;
+            unset($options['ga_bordered']);
+        }
+
+        if(isset($options['ga_hover'])) {
+            $tableClasses[] = GA_TABLE_HOVER;
+            unset($options['ga_hover']);
+        }
+
         $actions = [];
         if(isset($options['ga_actions'])) {
             $actions = $options['ga_actions'];
@@ -756,9 +784,21 @@ class GanacheHtmlHelper extends HtmlHelper {
             $headers = $options['ga_headers'];
             unset($options['ga_headers']);
 
+            // If there is some headers we must rebuild $data to keep only fields that we want.
+            $data = $this->rebuildData($data, $headers);
+
             // If there is some row actions we add an empty headers col.
             if(!empty($actions)) {
                 $headers[] = '';
+            }
+        } else {
+            if(!empty($data)) { 
+                $keys = array_keys($data[0]);
+
+                // If there is no headers explicitly defined we set headers only if keys are not all numeric.
+                if(!is_numeric(implode('', $keys))) {
+                    $headers = $keys;
+                }
             }
         }
 
@@ -789,12 +829,15 @@ class GanacheHtmlHelper extends HtmlHelper {
 
         // Process hidden fields.
         if(!empty($hiddenFields)) {
+            $headers = array_flip($headers);
             foreach($hiddenFields as $field) {
                 $data = Hash::remove($data, '{n}.' . $field);
+                $headers = hash::remove($headers, $field);
             }
+            $headers = array_flip($headers);
         }
 
-        $table = $this->tag('table', null) . PHP_EOL;
+        $table = $this->tag('table', null, ['class' => $tableClasses]) . PHP_EOL;
         if(!empty($headers)) {
             $table .= $this->tag('thead', null) . PHP_EOL;
             $table .= $this->tableHeaders($headers, $headersTrOptions, $headersThOptions);
@@ -806,6 +849,40 @@ class GanacheHtmlHelper extends HtmlHelper {
         $table .= $this->tag('/table') . PHP_EOL;
 
         return $table;
+    }
+
+    private function rebuildData($data, $headers) {
+        $fields = array_keys($headers);
+
+
+        $newData = [];
+        foreach($data as $k => $v) {
+            // If headers are all numeric.. so we need an index array of values.
+            if(is_numeric(implode('', $fields))) {
+                $v = array_values($v);
+            }
+
+            $item = [];
+            foreach($fields as $field) {
+                if(isset($v[$field])) {
+                    $item[$field] = $v[$field];
+                }
+            }
+            $newData[$k] = $item;
+        }
+        return $newData;
+    }
+
+    private function toTableArray($data) {
+        foreach($data as $k => $v) {
+            // If the element is a string we transform it into an array with it as first element.
+            if(is_string($v)) {
+                $v = [$v];
+            }
+
+            $data[$k] = Hash::flatten($v);
+        }
+        return $data;
     }
 
     /**

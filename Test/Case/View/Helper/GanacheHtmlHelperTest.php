@@ -1086,56 +1086,170 @@ class GanacheHtmlHelperTest extends CakeTestCase
     public function testTableWithoutAnyData()
     {
         $result = $this->GanacheHtmlHelper->table([]);
-        $expected = '<table>' . PHP_EOL;
+        $expected = '<table class="table">' . PHP_EOL;
         $expected .= '<tbody>' . PHP_EOL;
         $expected .= '<tr></tr>';
         $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
         $expected .= '</table>' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
-    public function testTableWithOneLineTwoCellOfData()
+    public function testTableWithSimpleIndexedArrayOfStrings()
     {
-        $result = $this->GanacheHtmlHelper->table(['First line', 'Second line']);
-        $expected = '<table>' . PHP_EOL;
+        $result = $this->GanacheHtmlHelper->table([
+            'Buzz Aldrin',
+            'Dean Martin',
+            'Jimmy Page'
+        ]);
+        $expected = '<table class="table">' . PHP_EOL;
         $expected .= '<tbody>' . PHP_EOL;
-        $expected .= '<tr><td>First line</td> <td>Second line</td></tr>';
+        $expected .= '<tr><td>Buzz Aldrin</td></tr>' . PHP_EOL;
+        $expected .= '<tr><td>Dean Martin</td></tr>' . PHP_EOL;
+        $expected .= '<tr><td>Jimmy Page</td></tr>';
         $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
         $expected .= '</table>' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
-    public function testTableWithTwoLinesOfTwoCellsOfData()
+    public function testTableWithSimpleDataIndexedArray()
     {
-        $result = $this->GanacheHtmlHelper->table([['First', 'line'], ['Second', 'line']]);
-        $expected = '<table>' . PHP_EOL;
+        $result = $this->GanacheHtmlHelper->table([
+            ['Buzz', 'Aldrin'],
+            ['Dean', 'Martin'],
+            ['Jimmy', 'Page']
+        ]);
+        $expected = '<table class="table">' . PHP_EOL;
         $expected .= '<tbody>' . PHP_EOL;
-        $expected .= '<tr><td>First</td> <td>line</td></tr>' . PHP_EOL;
-        $expected .= '<tr><td>Second</td> <td>line</td></tr>';
+        $expected .= '<tr><td>Buzz</td> <td>Aldrin</td></tr>' . PHP_EOL;
+        $expected .= '<tr><td>Dean</td> <td>Martin</td></tr>' . PHP_EOL;
+        $expected .= '<tr><td>Jimmy</td> <td>Page</td></tr>';
         $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
         $expected .= '</table>' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
-    public function testTableWithOnLineAndHeader()
+    public function testTableWithCakeLikeArrayWithRelations()
     {
-        $result = $this->GanacheHtmlHelper->table(['First'], ['ga_headers' => ['Name']]);
-        $expected = '<table>' . PHP_EOL;
+        $result = $this->GanacheHtmlHelper->table([
+            [
+                'User' => ['firstname' => 'Buzz', 'lastname' => 'Aldrin'],
+                'City' => ['id' => 203, 'name' => 'Miami']
+            ],
+            [
+                'User' => ['firstname' => 'Dean', 'lastname' => 'Martin'],
+                'City' => ['id' => 209, 'name' => 'Los Angeles']
+            ],
+            [
+                'User' => ['firstname' => 'Jimmy', 'lastname' => 'Page'],
+                'City' => ['id' => 256, 'name' => 'London']
+            ],
+        ]);
+        $expected = '<table class="table">' . PHP_EOL;
         $expected .= '<thead>' . PHP_EOL;
-        $expected .= '<tr><th>Name</th></tr>' . PHP_EOL;
+        $expected .= '<tr><th>User.firstname</th> <th>User.lastname</th> <th>City.id</th> <th>City.name</th></tr>' . PHP_EOL;
         $expected .= '</thead>' . PHP_EOL;
         $expected .= '<tbody>' . PHP_EOL;
-        $expected .= '<tr><td>First</td></tr>';
+        $expected .= '<tr><td>Buzz</td> <td>Aldrin</td> <td>203</td> <td>Miami</td></tr>' . PHP_EOL;
+        $expected .= '<tr><td>Dean</td> <td>Martin</td> <td>209</td> <td>Los Angeles</td></tr>' . PHP_EOL;
+        $expected .= '<tr><td>Jimmy</td> <td>Page</td> <td>256</td> <td>London</td></tr>';
         $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
         $expected .= '</table>' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
-    public function testTableWithOnLineTwoCellsAndHeader()
+    public function testTableWithCakeLikeArrayDisplayingOnlySomeFields()
     {
-        $result = $this->GanacheHtmlHelper->table(['First','Second'], ['ga_headers' => ['Name','Lastname']]);
-        $expected = '<table>' . PHP_EOL;
+        $result = $this->GanacheHtmlHelper->table([
+            [
+                'User' => ['firstname' => 'Buzz', 'lastname' => 'Aldrin'],
+                'City' => ['id' => 203, 'name' => 'Miami']
+            ],
+            [
+                'User' => ['firstname' => 'Dean', 'lastname' => 'Martin'],
+                'City' => ['id' => 209, 'name' => 'Los Angeles']
+            ],
+            [
+                'User' => ['firstname' => 'Jimmy', 'lastname' => 'Page'],
+                'City' => ['id' => 256, 'name' => 'London']
+            ],
+        ], [
+            'ga_headers' => [
+                'User.firstname' => 'Firstname',
+                'User.lastname' => 'Lastname'
+            ]
+        ]);
+        $expected = '<table class="table">' . PHP_EOL;
         $expected .= '<thead>' . PHP_EOL;
-        $expected .= '<tr><th>Name</th> <th>Lastname</th></tr>' . PHP_EOL;
+        $expected .= '<tr><th>Firstname</th> <th>Lastname</th></tr>' . PHP_EOL;
         $expected .= '</thead>' . PHP_EOL;
         $expected .= '<tbody>' . PHP_EOL;
-        $expected .= '<tr><td>First</td> <td>Second</td></tr>';
+        $expected .= '<tr><td>Buzz</td> <td>Aldrin</td></tr>' . PHP_EOL;
+        $expected .= '<tr><td>Dean</td> <td>Martin</td></tr>' . PHP_EOL;
+        $expected .= '<tr><td>Jimmy</td> <td>Page</td></tr>';
+        $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
+        $expected .= '</table>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableWithCakeLikeSimpleArray()
+    {
+        $result = $this->GanacheHtmlHelper->table([
+            [
+                'User' => [
+                    'firstname' => 'Gino',
+                    'lastname' => 'Vanelli'
+                ]
+            ]
+        ]);
+        $expected = '<table class="table">' . PHP_EOL;
+        $expected .= '<thead>' . PHP_EOL;
+        $expected .= '<tr><th>User.firstname</th> <th>User.lastname</th></tr>' . PHP_EOL;
+        $expected .= '</thead>' . PHP_EOL;
+        $expected .= '<tbody>' . PHP_EOL;
+        $expected .= '<tr><td>Gino</td> <td>Vanelli</td></tr>';
+        $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
+        $expected .= '</table>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableWithDataIndexedArrayAndIndexedArrayOfHeaders()
+    {
+        $result = $this->GanacheHtmlHelper->table([['Brenda', 'Lee'], ['Michael', 'Buble']], ['ga_headers' => ['Firstname', 'Lastname']]);
+        $expected = '<table class="table">' . PHP_EOL;
+        $expected .= '<thead>' . PHP_EOL;
+        $expected .= '<tr><th>Firstname</th> <th>Lastname</th></tr>' . PHP_EOL;
+        $expected .= '</thead>' . PHP_EOL;
+        $expected .= '<tbody>' . PHP_EOL;
+        $expected .= '<tr><td>Brenda</td> <td>Lee</td></tr>' . PHP_EOL;
+        $expected .= '<tr><td>Michael</td> <td>Buble</td></tr>';
+        $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
+        $expected .= '</table>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableWithDataCakeLikeArrayAndIndexedArrayOfHeaders()
+    {
+        $result = $this->GanacheHtmlHelper->table([
+            ['User' => ['firstname' => 'Brenda', 'lastname' => 'Lee']],
+            ['User' => ['firstname' => 'Michael', 'lastname' => 'Buble']],
+        ], ['ga_headers' => ['Firstname', 'Lastname']]);
+        $expected = '<table class="table">' . PHP_EOL;
+        $expected .= '<thead>' . PHP_EOL;
+        $expected .= '<tr><th>Firstname</th> <th>Lastname</th></tr>' . PHP_EOL;
+        $expected .= '</thead>' . PHP_EOL;
+        $expected .= '<tbody>' . PHP_EOL;
+        $expected .= '<tr><td>Brenda</td> <td>Lee</td></tr>' . PHP_EOL;
+        $expected .= '<tr><td>Michael</td> <td>Buble</td></tr>';
+        $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
+        $expected .= '</table>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableWithDataCakeLikeArrayAndArrayOfHeadersWithFields()
+    {
+        $result = $this->GanacheHtmlHelper->table([
+            ['User' => ['firstname' => 'Bret', 'lastname' => 'Michael']],
+            ['User' => ['firstname' => 'Boy', 'lastname' => 'George']],
+        ], ['ga_headers' => ['User.firstname' => 'First', 'User.lastname' => 'Last']]);
+        $expected = '<table class="table">' . PHP_EOL;
+        $expected .= '<thead>' . PHP_EOL;
+        $expected .= '<tr><th>First</th> <th>Last</th></tr>' . PHP_EOL;
+        $expected .= '</thead>' . PHP_EOL;
+        $expected .= '<tbody>' . PHP_EOL;
+        $expected .= '<tr><td>Bret</td> <td>Michael</td></tr>' . PHP_EOL;
+        $expected .= '<tr><td>Boy</td> <td>George</td></tr>';
         $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
         $expected .= '</table>' . PHP_EOL;
         $this->assertEquals($expected, $result);
@@ -1150,7 +1264,7 @@ class GanacheHtmlHelperTest extends CakeTestCase
                 ['title' => 'Add', 'url' => '#', 'options' => ['title' => 'Add a new item']]
             ]
         ]);
-        $expected = '<table>' . PHP_EOL;
+        $expected = '<table class="table">' . PHP_EOL;
         $expected .= '<tbody>' . PHP_EOL;
         $expected .= '<tr><td>First line</td> <td><a href="#" title="Add a new item">Add</a></td></tr>' . PHP_EOL;
         $expected .= '<tr><td>Second line</td> <td><a href="#" title="Add a new item">Add</a></td></tr>';
@@ -1169,7 +1283,7 @@ class GanacheHtmlHelperTest extends CakeTestCase
                 ['title' => 'Edit', 'action' => '/', 'options' => ['title' => 'Edit item']]
             ]
         ]);
-        $expected = '<table>' . PHP_EOL;
+        $expected = '<table class="table">' . PHP_EOL;
         $expected .= '<tbody>' . PHP_EOL;
         $expected .= '<tr><td>First line</td> <td><a href="#" title="Add a new item">Add</a><a href="#" title="Edit item">Edit</a></td></tr>' . PHP_EOL;
         $expected .= '<tr><td>Second line</td> <td><a href="#" title="Add a new item">Add</a><a href="#" title="Edit item">Edit</a></td></tr>';
@@ -1180,7 +1294,7 @@ class GanacheHtmlHelperTest extends CakeTestCase
     public function testTableOddTrOptions()
     {
         $result = $this->GanacheHtmlHelper->table([['First line'], ['Second line'], ['Third line']], ['ga_odd_tr_options' => ['class' => 'odd-line']]);
-        $expected = '<table>' . PHP_EOL;
+        $expected = '<table class="table">' . PHP_EOL;
         $expected .= '<tbody>' . PHP_EOL;
         $expected .= '<tr class="odd-line"><td>First line</td></tr>' . PHP_EOL;
         $expected .= '<tr><td>Second line</td></tr>' . PHP_EOL;
@@ -1192,7 +1306,7 @@ class GanacheHtmlHelperTest extends CakeTestCase
     public function testTableEvenTrOptions()
     {
         $result = $this->GanacheHtmlHelper->table([['First line'], ['Second line'], ['Third line']], ['ga_even_tr_options' => ['class' => 'even-line']]);
-        $expected = '<table>' . PHP_EOL;
+        $expected = '<table class="table">' . PHP_EOL;
         $expected .= '<tbody>' . PHP_EOL;
         $expected .= '<tr><td>First line</td></tr>' . PHP_EOL;
         $expected .= '<tr class="even-line"><td>Second line</td></tr>' . PHP_EOL;
@@ -1203,8 +1317,8 @@ class GanacheHtmlHelperTest extends CakeTestCase
     }
     public function testTableUseCount()
     {
-        $result = $this->GanacheHtmlHelper->table(['First line', 'Second line', 'Third line'], ['ga_use_count' => true]);
-        $expected = '<table>' . PHP_EOL;
+        $result = $this->GanacheHtmlHelper->table([['First line', 'Second line', 'Third line']], ['ga_use_count' => true]);
+        $expected = '<table class="table">' . PHP_EOL;
         $expected .= '<tbody>' . PHP_EOL;
         $expected .= '<tr><td class="column-1">First line</td> <td class="column-2">Second line</td> <td class="column-3">Third line</td></tr>';
         $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
@@ -1213,21 +1327,21 @@ class GanacheHtmlHelperTest extends CakeTestCase
     }
     public function testTableHeaders()
     {
-        $result = $this->GanacheHtmlHelper->table(['First line', 'Second line'], ['ga_headers' => ['First header', 'Second header']]);
-        $expected = '<table>' . PHP_EOL;
+        $result = $this->GanacheHtmlHelper->table([['First', 'Second']], ['ga_headers' => ['First', 'Second']]);
+        $expected = '<table class="table">' . PHP_EOL;
         $expected .= '<thead>' . PHP_EOL;
-        $expected .= '<tr><th>First header</th> <th>Second header</th></tr>' . PHP_EOL;
+        $expected .= '<tr><th>First</th> <th>Second</th></tr>' . PHP_EOL;
         $expected .= '</thead>' . PHP_EOL;
         $expected .= '<tbody>' . PHP_EOL;
-        $expected .= '<tr><td>First line</td> <td>Second line</td></tr>';
+        $expected .= '<tr><td>First</td> <td>Second</td></tr>';
         $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
         $expected .= '</table>' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
     public function testTableHeadersTrOptions()
     {
-        $result = $this->GanacheHtmlHelper->table(['First line', 'Second line'], ['ga_headers' => ['First header', 'Second header'], 'ga_headers_tr_options' => ['class' => 'tr-header-class']]);
-        $expected = '<table>' . PHP_EOL;
+        $result = $this->GanacheHtmlHelper->table([['First line', 'Second line']], ['ga_headers' => ['First header', 'Second header'], 'ga_headers_tr_options' => ['class' => 'tr-header-class']]);
+        $expected = '<table class="table">' . PHP_EOL;
         $expected .= '<thead>' . PHP_EOL;
         $expected .= '<tr class="tr-header-class"><th>First header</th> <th>Second header</th></tr>' . PHP_EOL;
         $expected .= '</thead>' . PHP_EOL;
@@ -1239,8 +1353,8 @@ class GanacheHtmlHelperTest extends CakeTestCase
     }
     public function testTableHeadersThOptions()
     {
-        $result = $this->GanacheHtmlHelper->table(['First line', 'Second line'], ['ga_headers' => ['First header', 'Second header'], 'ga_headers_th_options' => ['class' => 'th-header-class']]);
-        $expected = '<table>' . PHP_EOL;
+        $result = $this->GanacheHtmlHelper->table([['First line', 'Second line']], ['ga_headers' => ['First header', 'Second header'], 'ga_headers_th_options' => ['class' => 'th-header-class']]);
+        $expected = '<table class="table">' . PHP_EOL;
         $expected .= '<thead>' . PHP_EOL;
         $expected .= '<tr><th class="th-header-class">First header</th> <th class="th-header-class">Second header</th></tr>' . PHP_EOL;
         $expected .= '</thead>' . PHP_EOL;
@@ -1261,7 +1375,10 @@ class GanacheHtmlHelperTest extends CakeTestCase
                 ['title' => 'Edit', 'url' => ['action' => 'edit', ':id']]
             ],
         ]);
-        $expected = '<table>' . PHP_EOL;
+        $expected = '<table class="table">' . PHP_EOL;
+        $expected .= '<thead>' . PHP_EOL;
+        $expected .= '<tr><th>id</th> <th>title</th></tr>' . PHP_EOL;
+        $expected .= '</thead>' . PHP_EOL;
         $expected .= '<tbody>' . PHP_EOL;
         $expected .= '<tr><td>1</td> <td>First line</td> <td><a href="/edit/1">Edit</a></td></tr>' . PHP_EOL;
         $expected .= '<tr><td>2</td> <td>Second line</td> <td><a href="/edit/2">Edit</a></td></tr>';
@@ -1280,13 +1397,28 @@ class GanacheHtmlHelperTest extends CakeTestCase
                 ['title' => 'Edit', 'url' => '/edit/:id']
             ],
         ]);
-        $expected = '<table>' . PHP_EOL;
+        $expected = '<table class="table">' . PHP_EOL;
+        $expected .= '<thead>' . PHP_EOL;
+        $expected .= '<tr><th>id</th> <th>title</th></tr>' . PHP_EOL;
+        $expected .= '</thead>' . PHP_EOL;
         $expected .= '<tbody>' . PHP_EOL;
         $expected .= '<tr><td>1</td> <td>First line</td> <td><a href="/edit/1">Edit</a></td></tr>' . PHP_EOL;
         $expected .= '<tr><td>2</td> <td>Second line</td> <td><a href="/edit/2">Edit</a></td></tr>';
         $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
         $expected .= '</table>' . PHP_EOL;
         $this->assertEquals($expected, $result);
+    }
+    public function testTableActionsWithCustomArgumentsException()
+    {
+        $this->setExpectedException('RuntimeException', 'Cannot find key in data array.');
+        $this->GanacheHtmlHelper->table([
+            ['id' => 1,'title' => 'First line'],
+        ],
+        [
+            'ga_actions' => [
+                ['title' => 'Edit', 'url' => '/edit/:unknown_id']
+            ],
+        ]);
     }
     public function testTableHiddenFields()
     {
@@ -1299,10 +1431,53 @@ class GanacheHtmlHelperTest extends CakeTestCase
                 'customer_id'
             ],
         ]);
-        $expected = '<table>' . PHP_EOL;
+        $expected = '<table class="table">' . PHP_EOL;
+        $expected .= '<thead>' . PHP_EOL;
+        $expected .= '<tr><th>id</th> <th>title</th></tr>' . PHP_EOL;
+        $expected .= '</thead>' . PHP_EOL;
         $expected .= '<tbody>' . PHP_EOL;
         $expected .= '<tr><td>1</td> <td>First line</td></tr>' . PHP_EOL;
         $expected .= '<tr><td>2</td> <td>Second line</td></tr>';
+        $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
+        $expected .= '</table>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableCondensed()
+    {
+        $result = $this->GanacheHtmlHelper->table([], ['ga_condensed' => true]);
+        $expected = '<table class="table table-condensed">' . PHP_EOL;
+        $expected .= '<tbody>' . PHP_EOL;
+        $expected .= '<tr></tr>';
+        $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
+        $expected .= '</table>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableStriped()
+    {
+        $result = $this->GanacheHtmlHelper->table([], ['ga_striped' => true]);
+        $expected = '<table class="table table-striped">' . PHP_EOL;
+        $expected .= '<tbody>' . PHP_EOL;
+        $expected .= '<tr></tr>';
+        $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
+        $expected .= '</table>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableBordered()
+    {
+        $result = $this->GanacheHtmlHelper->table([], ['ga_bordered' => true]);
+        $expected = '<table class="table table-bordered">' . PHP_EOL;
+        $expected .= '<tbody>' . PHP_EOL;
+        $expected .= '<tr></tr>';
+        $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
+        $expected .= '</table>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableHover()
+    {
+        $result = $this->GanacheHtmlHelper->table([], ['ga_hover' => true]);
+        $expected = '<table class="table table-hover">' . PHP_EOL;
+        $expected .= '<tbody>' . PHP_EOL;
+        $expected .= '<tr></tr>';
         $expected .= PHP_EOL . '</tbody>' . PHP_EOL;
         $expected .= '</table>' . PHP_EOL;
         $this->assertEquals($expected, $result);
