@@ -82,11 +82,12 @@ class GanacheTablenavbarHelper extends AppHelper {
         $responsive = $this->_extractOption( 'responsive', $options, false );
 
         $formOptions = array(
-            'class' => GA_FORM_INLINE
+            'class' => GA_FORM_INLINE,
+            'type' => 'get',
         );
 
         if( $search === true ) {
-            $form = $this->Form->create( $searchFormModel, array_merge( $formOptions, $searchFormOptions ) );
+            $form = $this->Form->create($searchFormModel, array_merge($formOptions, $searchFormOptions));
 
             // Treat filters if any.
             foreach($filters as $fieldname => $options) {
