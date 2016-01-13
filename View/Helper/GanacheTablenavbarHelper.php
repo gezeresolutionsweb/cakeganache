@@ -171,6 +171,7 @@ class GanacheTablenavbarHelper extends AppHelper {
 
         if(!empty($options['type']) && $options['type'] === GA_SELECTPICKER) {
             $options += array('class' => GA_SELECTPICKER . ' ' . GA_SHOW_TICK);
+            $options['type'] = 'select';
         }
 
         return $this->Form->input( $fieldname, $options );
