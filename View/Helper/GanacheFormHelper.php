@@ -23,19 +23,19 @@ class GanacheFormHelper extends FormHelper {
     public $search = false;
     
     private $buttonTypes = array(
-        GA_BTN_PRIMARY,
-        GA_BTN_INFO,
-        GA_BTN_SUCCESS,
-        GA_BTN_WARNING,
-        GA_BTN_DANGER,
-        GA_BTN_INVERSE,
-        GA_BTN_LINK
+        GA_PRIMARY,
+        GA_INFO,
+        GA_SUCCESS,
+        GA_WARNING,
+        GA_DANGER,
+        GA_INVERSE,
+        GA_LINK
     );
 
     private $buttonSizes = array(
-        GA_BTN_MINI,
-        GA_BTN_SMALL,
-        GA_BTN_LARGE
+        GA_MINI,
+        GA_SMALL,
+        GA_LARGE
     );
     
     /**
