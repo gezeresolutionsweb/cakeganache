@@ -700,6 +700,8 @@ class GanacheHtmlHelper extends HtmlHelper {
         return parent::image($path, $options);
     }
 
+
+
     /**
      * Table
      *
@@ -990,6 +992,27 @@ class GanacheHtmlHelper extends HtmlHelper {
         }
 
         return $out;
+    }
+
+
+
+
+    public function tableOpen($options = []) {
+    }
+
+    public function tableClose() {
+    }
+
+    public function tableHeaderOpen() {
+    }
+
+    public function tableHeaderClose() {
+    }
+
+    public function tableBodyOpen() {
+    }
+
+    public function tableBodyClose() {
     }
 }
 
