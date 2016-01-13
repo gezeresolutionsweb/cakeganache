@@ -23,13 +23,9 @@
         this.$searchForm = this.$element.find('form');
         this.options = $.extend({}, Tablenavbar.DEFAULTS, options);
 
-        this.search = this.options.search || this.search;
-        this.searched = this.options.searched || this.searched;
         this.clear = this.options.clear || this.clear;
-        this.cleared = this.options.cleared || this.cleared;
 
         // bind action button.
-        this.$element.on('click.tablenavbar-data-api.tablenavbar-search-btn', '[data-toggle=tablenavbar-search-btn]', $.proxy(this.search, this));
         this.$element.on('click.tablenavbar-data-api.tablenavbar-clear-btn', '[data-toggle=tablenavbar-clear-btn]', $.proxy(this.clear, this));
     };
 
@@ -37,19 +33,6 @@
 
     Tablenavbar.DEFAULTS = {
         container: '.tablenavbar-dynamic-content'
-    };
-
-    Tablenavbar.prototype.search = function(e) {
-        e.preventDefault();
-
-        var url = this.$searchForm.attr( 'action' );
-        var postData = this.$searchForm.serializeArray();
-
-        $.post( url, postData, $.proxy(this.searched, this) );
-    };
-
-    Tablenavbar.prototype.searched = function(data) {
-        $( this.options.container ).html( data );
     };
 
     Tablenavbar.prototype.clear = function(e) {
@@ -60,11 +43,7 @@
             .find('textarea, :text').val('').end()
             .find('select').find('option:first').attr('selected', 'selected').trigger('change');
 
-        this.cleared();
-    };
-
-    Tablenavbar.prototype.cleared = function() {
-        //$( this.options.container ).html( '' ); // Should we do this by default ?
+        this.$element.find('button[data-toggle=tablenavbar-search-btn]').click();
     };
 
     function Plugin(option) {
