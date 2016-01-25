@@ -1,0 +1,40 @@
+/**
+ * CakeGanache : (https://github.com/gezeresolutionsweb/cakeganache)
+ * Copyright (c) Sylvain Lévesque (http://www.gezere.com)
+ *
+ * Licensed under The MIT License
+ * For full copyright and license information, please see the LICENSE.txt
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @copyright     Copyright (c) Sylvain Lévesque (http://www.gezere.com)
+ * @link          http://www.gezere.com
+ * @package       CakeGanache
+ * @since         CakeGanache v 0.0.0
+ * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ */
+
+.tablenavbar .navbar-inner {
+    padding: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+}
+
+.tablenavbar .btn,
+.tablenavbar .btn-group {
+    margin-top: 0;
+}
+
+.tablenavbar .navbar-inner .actions .btn-toolbar {
+    margin: 0;
+}
+
+.tablenavbar .form-inline input,
+.tablenavbar .form-inline textarea,
+.tablenavbar .form-inline select,
+.tablenavbar .form-inline .help-inline,
+.tablenavbar .form-inline .uneditable-input,
+.tablenavbar .form-inline .input-prepend,
+.tablenavbar .form-inline .input-append {
+    margin-right: 1px;
+}
