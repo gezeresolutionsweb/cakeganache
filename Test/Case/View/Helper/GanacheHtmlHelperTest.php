@@ -1605,5 +1605,11 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected .= '</table>' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
+    public function testTableClose()
+    {
+        $result = $this->GanacheHtmlHelper->tableClose();
+        $expected = '</table>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
 }
 

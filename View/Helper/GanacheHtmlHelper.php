@@ -1000,7 +1000,15 @@ class GanacheHtmlHelper extends HtmlHelper {
     public function tableOpen($options = []) {
     }
 
+    /**
+     * Table close
+     *
+     * Generate a closing table HTML tag.
+     *    
+     * @return string HTML string of closing table HTML tag.
+     */
     public function tableClose() {
+        return $this->tag('/table') . PHP_EOL;
     }
 
     public function tableHeaderOpen() {
