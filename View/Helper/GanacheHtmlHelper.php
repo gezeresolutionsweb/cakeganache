@@ -995,9 +995,57 @@ class GanacheHtmlHelper extends HtmlHelper {
     }
 
 
-
-
+    /**
+     * Table open
+     *
+     * Generate an opening table HTML tag.
+     *    
+     * @param array $options Array of options.
+     * @return string HTML string of closing table HTML tag.
+     *
+     * Extra options
+     * - ga_condensed          : bool Get a condensed table. (Default: false)
+     * - ga_striped            : bool Get a striped table. (Default: false)
+     * - ga_bordered           : bool Get a bordered table. (Default: false)
+     * - ga_hover              : bool Get a hovered table. (Default: false)
+     */
     public function tableOpen($options = []) {
+        $tableClasses = [GA_TABLE];
+
+        if(isset($options['ga_condensed'])) {
+            $tableClasses[] = GA_TABLE_CONDENSED;
+            unset($options['ga_condensed']);
+        }
+
+        if(isset($options['ga_striped'])) {
+            $tableClasses[] = GA_TABLE_STRIPED;
+            unset($options['ga_striped']);
+        }
+
+        if(isset($options['ga_bordered'])) {
+            $tableClasses[] = GA_TABLE_BORDERED;
+            unset($options['ga_bordered']);
+        }
+
+        if(isset($options['ga_hover'])) {
+            $tableClasses[] = GA_TABLE_HOVER;
+            unset($options['ga_hover']);
+        }
+
+        if(isset($options['class']) && !empty($options['class'])) {
+            if(is_array($options['class'])) {
+                $tableClasses = array_merge($tableClasses, $options['class']);
+            }
+
+            if(is_string($options['class'])) {
+                $tableClasses = array_merge($tableClasses, explode(' ', $options['class']));
+            }
+            unset($options['class']);
+        }
+
+        $options['class'] = $tableClasses;
+
+        return $this->tag('table', null, $options) . PHP_EOL;
     }
 
     /**

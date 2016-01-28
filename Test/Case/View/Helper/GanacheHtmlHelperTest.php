@@ -1605,6 +1605,133 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected .= '</table>' . PHP_EOL;
         $this->assertEquals($expected, $result);
     }
+    public function testTableOpenWithoutAnyOptions()
+    {
+        $result = $this->GanacheHtmlHelper->tableOpen();
+        $expected = '<table class="table">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableOpenGaCondensed()
+    {
+        $result = $this->GanacheHtmlHelper->tableOpen([
+            'ga_condensed' => true
+        ]);
+        $expected = '<table class="table table-condensed">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableOpenGaStriped()
+    {
+        $result = $this->GanacheHtmlHelper->tableOpen([
+            'ga_striped' => true
+        ]);
+        $expected = '<table class="table table-striped">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableOpenGaBordered()
+    {
+        $result = $this->GanacheHtmlHelper->tableOpen([
+            'ga_bordered' => true
+        ]);
+        $expected = '<table class="table table-bordered">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableOpenGaHover()
+    {
+        $result = $this->GanacheHtmlHelper->tableOpen([
+            'ga_hover' => true
+        ]);
+        $expected = '<table class="table table-hover">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableOpenWithAllOptions()
+    {
+        $result = $this->GanacheHtmlHelper->tableOpen([
+            'ga_condensed' => true,
+            'ga_striped' => true,
+            'ga_bordered' => true,
+            'ga_hover' => true
+        ]);
+        $expected = '<table class="table table-condensed table-striped table-bordered table-hover">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableOpenWithCustomSingleClassAsString()
+    {
+        $result = $this->GanacheHtmlHelper->tableOpen([
+            'class' => 'my-custom-class',
+        ]);
+        $expected = '<table class="table my-custom-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableOpenWithCustomSingleClassAsStringAndOneOption()
+    {
+        $result = $this->GanacheHtmlHelper->tableOpen([
+            'ga_condensed' => true,
+            'class' => 'my-custom-class'
+        ]);
+        $expected = '<table class="table table-condensed my-custom-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableOpenWithCustomMultipleClassesAsString()
+    {
+        $result = $this->GanacheHtmlHelper->tableOpen([
+            'class' => 'my-custom-class my-second'
+        ]);
+        $expected = '<table class="table my-custom-class my-second">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableOpenWithCustomMultipleClassesAsStringAndOneOption()
+    {
+        $result = $this->GanacheHtmlHelper->tableOpen([
+            'ga_condensed' => true,
+            'class' => 'my-custom-class my-second'
+        ]);
+        $expected = '<table class="table table-condensed my-custom-class my-second">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableOpenWithCustomSingleClassAsArray()
+    {
+        $result = $this->GanacheHtmlHelper->tableOpen([
+            'class' => ['my-custom-class']
+        ]);
+        $expected = '<table class="table my-custom-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableOpenWithCustomSingleClassAsArrayAnOneOption()
+    {
+        $result = $this->GanacheHtmlHelper->tableOpen([
+            'ga_hover' => true,
+            'class' => ['my-custom-class']
+        ]);
+        $expected = '<table class="table table-hover my-custom-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableOpenWithCustomMultipleClassesAsArray()
+    {
+        $result = $this->GanacheHtmlHelper->tableOpen([
+            'class' => ['my-custom-class', 'second-class']
+        ]);
+        $expected = '<table class="table my-custom-class second-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableOpenWithCustomMultipleClassesAsArrayAnOneOption()
+    {
+        $result = $this->GanacheHtmlHelper->tableOpen([
+            'ga_hover' => true,
+            'class' => ['my-custom-class', 'second-class']
+        ]);
+        $expected = '<table class="table table-hover my-custom-class second-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testTableOpenWithCustomAttribute()
+    {
+        $result = $this->GanacheHtmlHelper->tableOpen([
+            'id' => 'this-is-my-id',
+            'ga_hover' => true,
+            'class' => ['my-custom-class', 'second-class']
+        ]);
+        $expected = '<table id="this-is-my-id" class="table table-hover my-custom-class second-class">' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
     public function testTableClose()
     {
         $result = $this->GanacheHtmlHelper->tableClose();
