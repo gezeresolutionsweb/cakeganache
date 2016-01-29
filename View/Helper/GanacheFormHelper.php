@@ -38,6 +38,13 @@ class GanacheFormHelper extends FormHelper
         GA_SMALL,
         GA_LARGE
     ];
+
+    public $formTypes = [
+        GA_NAVBAR => GA_NAVBAR_FORM,
+        GA_HORIZONTAL => GA_FORM_HORIZONTAL,
+        GA_INLINE => GA_FORM_INLINE,
+        GA_SEARCH => GA_FORM_SEARCH
+    ];
     
     /**
      * Add classes to options according to values of bootstrap-type and bootstrap-size for button.
@@ -71,54 +78,34 @@ class GanacheFormHelper extends FormHelper
     }
 	
     /**
-     * 
      * Create a Twitter Bootstrap like form. 
-     * 
-     * New options available:
-     * 	- navbar: boolean, specify if the form is a navbar form
-     * 	- horizontal: boolean, specify if the form is horizontal
-     * 	- inline: boolean, specify if the form is inline
-     * 	- search: boolean, specify if the form is a search form
      * 
      * @param $model The model corresponding to the form
      * @param $options Options to customize the form
-     * 
      * @return The HTML tags corresponding to the openning of the form
-     * 
-    **/
+     *
+     * Extra options:
+     *  - ga_type : string Form type GA_NAVBAR|GA_HORIZONTAL|GA_INLINE|GA_SEARCH
+     */
     public function create($model = null, $options = array()) {
-        $this->navbar = $this->_extractOption('navbar', $options, false);
-		unset($options['navbar']);
-        $this->horizontal = $this->_extractOption('horizontal', $options, false);
-		unset($options['horizontal']);
-        $this->search = $this->_extractOption('search', $options, false) ;
-        unset($options['search']) ;
-        $this->inline = $this->_extractOption('inline', $options, false) ;
-        unset($options['inline']) ;
-        if( $this->navbar ) {
-            $options = $this->addClass($options, GA_NAVBAR_FORM);
-        } elseif ($this->horizontal) {
-			$options = $this->addClass($options, GA_FORM_HORIZONTAL);
-		} elseif ($this->inline) {
-            $options = $this->addClass($options, GA_FORM_INLINE);
+        $type = $this->_extractOption('ga_type', $options, null);
+		unset($options['ga_type']);
+
+        if(!empty($type) && in_array($type, array_keys($this->formTypes))) {
+            $options = $this->addClass($options, $this->formTypes[$type]);
         }
 
-        if ($this->search) {
-            $options = $this->addClass($options, GA_FORM_SEARCH);
+        $options['inputDefaults'] = $this->_extractOption('inputDefaults', $options, [
+            'div' => ['class' => GA_CONTROL_GROUP]
+        ]);
+
+        if(in_array($type, [GA_NAVBAR, GA_INLINE, GA_SEARCH])) {
+            if(isset($options['inputDefaults']['div'])) {
+                $options['inputDefaults']['div'] = false;
+            }
         }
 
-        $options['inputDefaults'] = $this->_extractOption( 'inputDefaults', $options, array(
-            'div' => ( $this->inline || $this->navbar ) ? false : array(
-                'class' => GA_CONTROL_GROUP
-            )
-        ) );
-
-        // If inputDefault is defined but not div and this is a navbar or inline form.
-        if( !isset( $options[ 'inputDefaults' ][ 'div' ] ) && ( $this->navbar || $this->inline ) ) {
-            $options[ 'inputDefaults' ][ 'div' ] = false;
-        }
-
-		return parent::create($model, $options) ;
+		return parent::create($model, $options) . PHP_EOL;
 	}
     
     /**

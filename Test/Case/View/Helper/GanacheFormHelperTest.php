@@ -24,6 +24,12 @@ class GanacheFormHelperTest extends CakeTestCase
         $expected = ['mini', 'small', 'large'];
         $this->assertEquals($expected, $result);
     }
+    public function testFormTypesArray()
+    {
+        $result = $this->GanacheFormHelper->formTypes;
+        $expected = ['navbar' => 'navbar-form', 'horizontal' => 'form-horizontal', 'inline' => 'form-inline', 'search' => 'form-search'];
+        $this->assertEquals($expected, $result);
+    }
     public function testAddButtonClassesWithoutAnyOptions()
     {
         $result = $this->GanacheFormHelper->addButtonClasses([]);
@@ -112,6 +118,141 @@ class GanacheFormHelperTest extends CakeTestCase
     {
         $result = $this->GanacheFormHelper->addButtonClasses(['id' => 'my-super-id']);
         $expected = ['id' => 'my-super-id', 'class' => 'btn'];
+        $this->assertEquals($expected, $result);
+    }
+    public function testCreateWithoutAnyOptions()
+    {
+        $result = $this->GanacheFormHelper->create('User');
+        $expected = '<form action="/" id="UserForm" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testCreateNavbarForm()
+    {
+        $result = $this->GanacheFormHelper->create('User', ['ga_type' => GA_NAVBAR]);
+        $expected = '<form action="/" class="navbar-form" id="UserForm" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testCreateHorizontalForm()
+    {
+        $result = $this->GanacheFormHelper->create('User', ['ga_type' => GA_HORIZONTAL]);
+        $expected = '<form action="/" class="form-horizontal" id="UserForm" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testCreateInlineForm()
+    {
+        $result = $this->GanacheFormHelper->create('User', ['ga_type' => GA_INLINE]);
+        $expected = '<form action="/" class="form-inline" id="UserForm" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testCreateSearchForm()
+    {
+        $result = $this->GanacheFormHelper->create('User', ['ga_type' => GA_SEARCH]);
+        $expected = '<form action="/" class="form-search" id="UserForm" method="post" accept-charset="utf-8"><div style="display:none;"><input type="hidden" name="_method" value="POST"/></div>' . PHP_EOL;
+        $this->assertEquals($expected, $result);
+    }
+    public function testCreateTestInputDefaultsWithoutPassingOverrides()
+    {
+        $this->GanacheFormHelper->create('User');
+        $result = $this->GanacheFormHelper->inputDefaults();
+        $expected = ['div' => ['class' => GA_CONTROL_GROUP]];
+        $this->assertEquals($expected, $result);
+    }
+    public function testCreateTestInputDefaultsWithNavbarFormType()
+    {
+        $this->GanacheFormHelper->create('User', ['ga_type' => GA_NAVBAR]);
+        $result = $this->GanacheFormHelper->inputDefaults();
+        $expected = ['div' => false];
+        $this->assertEquals($expected, $result);
+    }
+    public function testCreateTestInputDefaultsWithHorizontalFormType()
+    {
+        $this->GanacheFormHelper->create('User', ['ga_type' => GA_HORIZONTAL]);
+        $result = $this->GanacheFormHelper->inputDefaults();
+        $expected = ['div' => ['class' => GA_CONTROL_GROUP]];
+        $this->assertEquals($expected, $result);
+    }
+    public function testCreateTestInputDefaultsWithSearchFormType()
+    {
+        $this->GanacheFormHelper->create('User', ['ga_type' => GA_SEARCH]);
+        $result = $this->GanacheFormHelper->inputDefaults();
+        $expected = ['div' => false];
+        $this->assertEquals($expected, $result);
+    }
+    public function testCreateTestInputDefaultsWithInlineFormType()
+    {
+        $this->GanacheFormHelper->create('User', ['ga_type' => GA_INLINE]);
+        $result = $this->GanacheFormHelper->inputDefaults();
+        $expected = ['div' => false];
+        $this->assertEquals($expected, $result);
+    }
+    public function testCreateTestInputDefaultsWithoutFormTypeAndInputDefaultsWithDiv()
+    {
+        $this->GanacheFormHelper->create('User', ['inputDefaults' => ['div' => ['class' => 'my-custom-class']]]);
+        $result = $this->GanacheFormHelper->inputDefaults();
+        $expected = ['div' => ['class' => 'my-custom-class']];
+        $this->assertEquals($expected, $result);
+    }
+    public function testCreateTestInputDefaultsWithNavbarFormTypeAndInputDefaultsWithDiv()
+    {
+        $this->GanacheFormHelper->create('User', ['ga_type' => GA_NAVBAR, 'inputDefaults' => ['div' => ['class' => 'my-custom-class']]]);
+        $result = $this->GanacheFormHelper->inputDefaults();
+        $expected = ['div' => false];
+        $this->assertEquals($expected, $result);
+    }
+    public function testCreateTestInputDefaultsWithHorizontalFormTypeAndInputDefaultsWithDiv()
+    {
+        $this->GanacheFormHelper->create('User', ['ga_type' => GA_HORIZONTAL, 'inputDefaults' => ['div' => ['class' => 'my-custom-class']]]);
+        $result = $this->GanacheFormHelper->inputDefaults();
+        $expected = ['div' => ['class' => 'my-custom-class']];
+        $this->assertEquals($expected, $result);
+    }
+    public function testCreateTestInputDefaultsWithSearchFormTypeAndInputDefaultsWithDiv()
+    {
+        $this->GanacheFormHelper->create('User', ['ga_type' => GA_SEARCH, 'inputDefaults' => ['div' => ['class' => 'my-custom-class']]]);
+        $result = $this->GanacheFormHelper->inputDefaults();
+        $expected = ['div' => false];
+        $this->assertEquals($expected, $result);
+    }
+    public function testCreateTestInputDefaultsWithInlineFormTypeAndInputDefaultsWithDiv()
+    {
+        $this->GanacheFormHelper->create('User', ['ga_type' => GA_INLINE, 'inputDefaults' => ['div' => ['class' => 'my-custom-class']]]);
+        $result = $this->GanacheFormHelper->inputDefaults();
+        $expected = ['div' => false];
+        $this->assertEquals($expected, $result);
+    }
+    public function testCreateTestInputDefaultsWithoutFormTypeAndInputDefaultsWithoutDiv()
+    {
+        $this->GanacheFormHelper->create('User', ['inputDefaults' => ['label' => ['class' => 'my-custom-class']]]);
+        $result = $this->GanacheFormHelper->inputDefaults();
+        $expected = ['label' => ['class' => 'my-custom-class']];
+        $this->assertEquals($expected, $result);
+    }
+    public function testCreateTestInputDefaultsWithNavbarFormTypeAndInputDefaultsWithoutDiv()
+    {
+        $this->GanacheFormHelper->create('User', ['ga_type' => GA_NAVBAR, 'inputDefaults' => ['label' => ['class' => 'my-custom-class']]]);
+        $result = $this->GanacheFormHelper->inputDefaults();
+        $expected = ['label' => ['class' => 'my-custom-class']];
+        $this->assertEquals($expected, $result);
+    }
+    public function testCreateTestInputDefaultsWithHorizontalFormTypeAndInputDefaultsWithoutDiv()
+    {
+        $this->GanacheFormHelper->create('User', ['ga_type' => GA_HORIZONTAL, 'inputDefaults' => ['label' => ['class' => 'my-custom-class']]]);
+        $result = $this->GanacheFormHelper->inputDefaults();
+        $expected = ['label' => ['class' => 'my-custom-class']];
+        $this->assertEquals($expected, $result);
+    }
+    public function testCreateTestInputDefaultsWithSearchFormTypeAndInputDefaultsWithoutDiv()
+    {
+        $this->GanacheFormHelper->create('User', ['ga_type' => GA_SEARCH, 'inputDefaults' => ['label' => ['class' => 'my-custom-class']]]);
+        $result = $this->GanacheFormHelper->inputDefaults();
+        $expected = ['label' => ['class' => 'my-custom-class']];
+        $this->assertEquals($expected, $result);
+    }
+    public function testCreateTestInputDefaultsWithInlineFormTypeAndInputDefaultsWithoutDiv()
+    {
+        $this->GanacheFormHelper->create('User', ['ga_type' => GA_INLINE, 'inputDefaults' => ['label' => ['class' => 'my-custom-class']]]);
+        $result = $this->GanacheFormHelper->inputDefaults();
+        $expected = ['label' => ['class' => 'my-custom-class']];
         $this->assertEquals($expected, $result);
     }
 }
