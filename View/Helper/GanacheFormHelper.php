@@ -52,21 +52,22 @@ class GanacheFormHelper extends FormHelper
     public function addButtonClasses($options)
     {
         $options = $this->addClass($options, GA_BTN);
-        foreach ($this->buttonTypes as $type) {
-            if (isset($options['bootstrap-type']) && $options['bootstrap-type'] === $type) {
-                $options = $this->addClass($options, 'btn-'.$type) ;
-                break ;
+
+        if(isset($options['bootstrap-type'])) {
+            if(in_array($options['bootstrap-type'], $this->buttonTypes)) {
+                $options = $this->addClass($options, GA_BTN . '-' . $options['bootstrap-type']);
             }
+            unset($options['bootstrap-type']);
         }
-        foreach ($this->buttonSizes as $size) {
-            if (isset($options['bootstrap-size']) && $options['bootstrap-size'] === $size) {
-                $options = $this->addClass($options, 'btn-'.$size) ;
-                break ;
+
+        if(isset($options['bootstrap-size'])) {
+            if(in_array($options['bootstrap-size'], $this->buttonSizes)) {
+                $options = $this->addClass($options, GA_BTN . '-' . $options['bootstrap-size']);
             }
+            unset($options['bootstrap-size']);
         }
-        unset($options['bootstrap-size']) ;
-        unset($options['bootstrap-type']) ;
-        return $options ;
+
+        return $options;
     }
 	
     /**
