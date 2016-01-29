@@ -16,13 +16,14 @@
 
 App::import('Helper', 'Form') ;
 
-class GanacheFormHelper extends FormHelper {
+class GanacheFormHelper extends FormHelper
+{
     public $navbar = false;
     public $horizontal = false;
     public $inline = false;
     public $search = false;
     
-    private $buttonTypes = array(
+    private $buttonTypes = [
         GA_PRIMARY,
         GA_INFO,
         GA_SUCCESS,
@@ -30,23 +31,20 @@ class GanacheFormHelper extends FormHelper {
         GA_DANGER,
         GA_INVERSE,
         GA_LINK
-    );
+    ];
 
-    private $buttonSizes = array(
+    private $buttonSizes = [
         GA_MINI,
         GA_SMALL,
         GA_LARGE
-    );
+    ];
     
     /**
-     * 
      * Add classes to options according to values of bootstrap-type and bootstrap-size for button.
      * 
      * @param $options The initial options with bootstrap-type and/or bootstrat-size values
-     * 
      * @return The new options with class values (btn, and btn-* according to initial options)
-     * 
-    **/
+     */
     private function addButtonClasses ($options) {
         $options = $this->addClass($options, GA_BTN);
         foreach ($this->buttonTypes as $type) {
