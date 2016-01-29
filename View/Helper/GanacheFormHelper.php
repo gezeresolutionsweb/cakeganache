@@ -23,7 +23,7 @@ class GanacheFormHelper extends FormHelper
     public $inline = false;
     public $search = false;
     
-    private $buttonTypes = [
+    public $buttonTypes = [
         GA_PRIMARY,
         GA_INFO,
         GA_SUCCESS,
@@ -33,7 +33,7 @@ class GanacheFormHelper extends FormHelper
         GA_LINK
     ];
 
-    private $buttonSizes = [
+    public $buttonSizes = [
         GA_MINI,
         GA_SMALL,
         GA_LARGE
@@ -44,17 +44,22 @@ class GanacheFormHelper extends FormHelper
      * 
      * @param $options The initial options with bootstrap-type and/or bootstrat-size values
      * @return The new options with class values (btn, and btn-* according to initial options)
+     *
+     * Extra options:
+     *   - bootstrap-type: string Type of the button. GA_PRIMARY|GA_INFO|GA_SUCCESS|GA_WARNING|GA_DANGER|GA_INVERSE|GA_LINK
+     *   - bootstrap-size: string Size of the button. GA_MINI|GA_SMALL|GA_LARGE
      */
-    private function addButtonClasses ($options) {
+    public function addButtonClasses($options)
+    {
         $options = $this->addClass($options, GA_BTN);
         foreach ($this->buttonTypes as $type) {
-            if (isset($options['bootstrap-type']) && $options['bootstrap-type'] == $type) {
+            if (isset($options['bootstrap-type']) && $options['bootstrap-type'] === $type) {
                 $options = $this->addClass($options, 'btn-'.$type) ;
                 break ;
             }
         }
         foreach ($this->buttonSizes as $size) {
-            if (isset($options['bootstrap-size']) && $options['bootstrap-size'] == $size) {
+            if (isset($options['bootstrap-size']) && $options['bootstrap-size'] === $size) {
                 $options = $this->addClass($options, 'btn-'.$size) ;
                 break ;
             }
