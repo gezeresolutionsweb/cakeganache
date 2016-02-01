@@ -109,13 +109,15 @@ class GanacheFormHelper extends FormHelper
 	}
     
     /**
-     * 
      * Create & return a error message (Twitter Bootstrap like).
      * 
      * The error is wrapped in a <span> tag, with a class
      * according to the form type (help-inline or help-block).
-     * 
-    **/
+     *
+     * @param string $field Field name.
+     * @param string $text Error message.
+     * @param array $options Array of options to passed to parent::error().
+     */
     public function error($field, $text = null, $options = array()) {
         $this->setEntity($field);
         $optField = $this->_magicOptions(array()) ;
