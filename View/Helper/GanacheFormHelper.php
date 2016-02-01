@@ -115,6 +115,7 @@ class GanacheFormHelper extends FormHelper
      * @param string $field Field name.
      * @param string $text Error message.
      * @param array $options Array of options to passed to parent::error().
+     * @return string HTML string of the error message for the field.
      */
     public function error($field, $text = null, $options = []) {
         $this->setEntity($field);
@@ -130,11 +131,16 @@ class GanacheFormHelper extends FormHelper
     
     /**
      * Create & return a label message (Twitter Boostrap like).
+     *
+     * @param string Field name.
+     * @param string $text Label name string.
+     * @param array $options Array of options for the label.
+     * @return string HTML string of the label.
      */
-    public function label($fieldName = null, $text = null, $options = array()) {
+    public function label($fieldName = null, $text = null, $options = []) {
         $this->setEntity($fieldName);
-        $optField = $this->_magicOptions(array()) ;
-        if ($optField['type'] != 'checkbox') {
+        $optField = $this->_magicOptions([]);
+        if ($optField['type'] !== 'checkbox') {
             $options = $this->addClass($options, GA_CONTROL_LABEL);
         }
         return parent::label($fieldName, $text, $options) ;

@@ -377,5 +377,27 @@ class GanacheFormHelperTest extends CakeTestCase
         ];
         $this->assertTags($result, $expected);
     }
+    public function testLabelWithRegularField()
+    {
+        $this->GanacheFormHelper->create('Contact');
+        $result = $this->GanacheFormHelper->label('Contact.name');
+        $expected = [
+            'label' => ['for' => 'ContactName', 'class' => GA_CONTROL_LABEL],
+            'Name',
+            '/label'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testLabelWithCheckboxField()
+    {
+        $this->GanacheFormHelper->create('Contact');
+        $result = $this->GanacheFormHelper->label('Contact.is_active');
+        $expected = [
+            'label' => ['for' => 'ContactIsActive'],
+            'Is Active',
+            '/label'
+        ];
+        $this->assertTags($result, $expected);
+    }
 }
 
