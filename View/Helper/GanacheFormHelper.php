@@ -85,7 +85,7 @@ class GanacheFormHelper extends FormHelper
      * Extra options:
      *  - ga_type : string Form type GA_NAVBAR|GA_HORIZONTAL|GA_INLINE|GA_SEARCH
      */
-    public function create($model = null, $options = array()) {
+    public function create($model = null, $options = []) {
         $this->formType = $this->_extractOption('ga_type', $options, null);
 		unset($options['ga_type']);
 
