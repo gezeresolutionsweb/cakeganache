@@ -4,16 +4,6 @@ App::uses('View', 'View');
 App::uses('GanacheFormHelper', 'CakeGanache.View/Helper');
 App::uses('ClassRegistry', 'Utility');
 
-//App::uses('Controller', 'Controller');
-//App::uses('View', 'View');
-//App::uses('Model', 'Model');
-//App::uses('Security', 'Utility');
-//App::uses('CakeRequest', 'Network');
-//App::uses('HtmlHelper', 'View/Helper');
-//App::uses('FormHelper', 'View/Helper');
-//App::uses('Router', 'Routing');
-
-
 /**
  * Contact class
  *
@@ -54,8 +44,6 @@ class Contact extends CakeTestModel
     public $validate = [
     ];
 }
-
-
 
 class GanacheFormHelperTest extends CakeTestCase
 {
