@@ -18,6 +18,9 @@ App::import('Helper', 'Form') ;
 
 class GanacheFormHelper extends FormHelper
 {
+    // Current form type create.
+    public $formType = null;
+
     public $navbar = false;
     public $horizontal = false;
     public $inline = false;
@@ -88,18 +91,18 @@ class GanacheFormHelper extends FormHelper
      *  - ga_type : string Form type GA_NAVBAR|GA_HORIZONTAL|GA_INLINE|GA_SEARCH
      */
     public function create($model = null, $options = array()) {
-        $type = $this->_extractOption('ga_type', $options, null);
+        $this->formType = $this->_extractOption('ga_type', $options, null);
 		unset($options['ga_type']);
 
-        if(!empty($type) && in_array($type, array_keys($this->formTypes))) {
-            $options = $this->addClass($options, $this->formTypes[$type]);
+        if(!empty($this->formType) && in_array($this->formType, array_keys($this->formTypes))) {
+            $options = $this->addClass($options, $this->formTypes[$this->formType]);
         }
 
         $options['inputDefaults'] = $this->_extractOption('inputDefaults', $options, [
             'div' => ['class' => GA_CONTROL_GROUP]
         ]);
 
-        if(in_array($type, [GA_NAVBAR, GA_INLINE, GA_SEARCH])) {
+        if(in_array($this->formType, [GA_NAVBAR, GA_INLINE, GA_SEARCH])) {
             if(isset($options['inputDefaults']['div'])) {
                 $options['inputDefaults']['div'] = false;
             }
