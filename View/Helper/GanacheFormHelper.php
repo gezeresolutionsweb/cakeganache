@@ -21,11 +21,6 @@ class GanacheFormHelper extends FormHelper
     // Current form type create.
     public $formType = null;
 
-    public $navbar = false;
-    public $horizontal = false;
-    public $inline = false;
-    public $search = false;
-    
     public $buttonTypes = [
         GA_PRIMARY,
         GA_INFO,
@@ -126,7 +121,7 @@ class GanacheFormHelper extends FormHelper
         $optField = $this->_magicOptions(array()) ;
         $options['wrap'] = $this->_extractOption('wrap', $options, 'span') ;
         $errorClass = GA_HELP_BLOCK;
-        if ($this->horizontal && $optField['type'] != 'checkbox') {
+        if($this->formType === GA_HORIZONTAL && $optField['type'] != 'checkbox') {
             $errorClass = GA_HELP_INLINE;
         }
         $options = $this->addClass($options, $errorClass) ;
@@ -182,19 +177,19 @@ class GanacheFormHelper extends FormHelper
                 $labelEnd = '';
             }
 
-            $before = ($this->horizontal ? '<div class="' . GA_CONTROLS . '">' : '') . $labelStart . $before ;
+            $before = ($this->formType === GA_HORIZONTAL ? '<div class="' . GA_CONTROLS . '">' : '') . $labelStart . $before ;
             $between = $between . $labelEnd;
             $options['format'] = array('before', 'input', 'label', 'between', 'error', 'after') ;
-            $after = $after.($this->horizontal ? '</div>' : '') ;
+            $after = $after.($this->formType === GA_HORIZONTAL ? '</div>' : '') ;
         } elseif ($options['type'] == 'radio') {
             $options['legend'] = false ;
-            $before = (($label!=false)?$this->label($fieldName):'') . ($this->horizontal ? '<div class="' . GA_CONTROLS . '">' : '') . '<label class="' . GA_RADIO . '">' . $before;
+            $before = (($label!=false)?$this->label($fieldName):'') . ($this->formType === GA_HORIZONTAL ? '<div class="' . GA_CONTROLS . '">' : '') . '<label class="' . GA_RADIO . '">' . $before;
             $between = $between . '</label>' ;
             $options['format'] = array('before', 'input', 'label', 'between', 'error', 'after') ;
-            $after = $after.($this->horizontal ? '</div>' : '') ;
-        } elseif ($this->horizontal) {
+            $after = $after.($this->formType === GA_HORIZONTAL ? '</div>' : '') ;
+        } elseif ($this->formType === GA_HORIZONTAL) {
             $beforeClass .= ' ' . GA_CONTROLS;
-        } elseif($this->inline && !$this->search && !$label) {
+        } elseif($this->formType === GA_INLINE && !$this->formType === GA_SEARCH && !$label) {
             $options['label'] = false ;
         }
 
@@ -368,7 +363,7 @@ class GanacheFormHelper extends FormHelper
 	if (is_string($options)) {
 		$options = array('label' => $options) ;
 	}
-        if (!$this->inline) {
+        if (!$this->formType === GA_INLINE) {
             if (!array_key_exists('div', $options)) {
                 $options['div'] = array() ;
             }
