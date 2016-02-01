@@ -116,16 +116,16 @@ class GanacheFormHelper extends FormHelper
      * @param string $text Error message.
      * @param array $options Array of options to passed to parent::error().
      */
-    public function error($field, $text = null, $options = array()) {
+    public function error($field, $text = null, $options = []) {
         $this->setEntity($field);
-        $optField = $this->_magicOptions(array()) ;
-        $options['wrap'] = $this->_extractOption('wrap', $options, 'span') ;
+        $optField = $this->_magicOptions([]);
+        $options['wrap'] = $this->_extractOption('wrap', $options, 'span');
         $errorClass = GA_HELP_BLOCK;
-        if($this->formType === GA_HORIZONTAL && $optField['type'] != 'checkbox') {
+        if($this->formType === GA_HORIZONTAL && $optField['type'] !== 'checkbox') {
             $errorClass = GA_HELP_INLINE;
         }
-        $options = $this->addClass($options, $errorClass) ;
-        return parent::error($field, $text, $options) ;
+        $options = $this->addClass($options, $errorClass);
+        return parent::error($field, $text, $options);
     }
     
     /**

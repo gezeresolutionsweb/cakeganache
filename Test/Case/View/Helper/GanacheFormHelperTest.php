@@ -2,6 +2,60 @@
 App::uses('Controller', 'Controller');
 App::uses('View', 'View');
 App::uses('GanacheFormHelper', 'CakeGanache.View/Helper');
+App::uses('ClassRegistry', 'Utility');
+
+//App::uses('Controller', 'Controller');
+//App::uses('View', 'View');
+//App::uses('Model', 'Model');
+//App::uses('Security', 'Utility');
+//App::uses('CakeRequest', 'Network');
+//App::uses('HtmlHelper', 'View/Helper');
+//App::uses('FormHelper', 'View/Helper');
+//App::uses('Router', 'Routing');
+
+
+/**
+ * Contact class
+ *
+ * @package CakeGanache.Test.Case.View.Helper
+ */ 
+class Contact extends CakeTestModel
+{ 
+    /**
+     * useTable property
+     *
+     * @var bool
+     */
+    public $useTable = false;
+
+    /**
+     * Default schema
+     *
+     * @var array
+     */
+    protected $_schema = [
+        'id' => ['type' => 'integer', 'null' => '', 'default' => '', 'length' => '8'],
+        'name' => ['type' => 'string', 'null' => '', 'default' => '', 'length' => '255'],
+        'email' => ['type' => 'string', 'null' => '', 'default' => '', 'length' => '255'],
+        'phone' => ['type' => 'string', 'null' => '', 'default' => '', 'length' => '255'],
+        'password' => ['type' => 'string', 'null' => '', 'default' => '', 'length' => '255'],
+        'published' => ['type' => 'date', 'null' => true, 'default' => null, 'length' => null],
+        'created' => ['type' => 'date', 'null' => '1', 'default' => '', 'length' => ''],
+        'updated' => ['type' => 'datetime', 'null' => '1', 'default' => '', 'length' => null],
+        'age' => ['type' => 'integer', 'null' => '', 'default' => '', 'length' => null],
+        'is_active' => ['type' => 'boolean', 'default' => 0]
+    ];
+
+    /**
+     * validate property
+     *
+     * @var array
+     */
+    public $validate = [
+    ];
+}
+
+
 
 class GanacheFormHelperTest extends CakeTestCase
 {
@@ -11,6 +65,8 @@ class GanacheFormHelperTest extends CakeTestCase
         $Controller = new Controller();
         $View = new View($Controller);
         $this->GanacheFormHelper = new GanacheFormHelper($View);
+
+        ClassRegistry::addObject('Contact', new Contact());
     }
     public function testButtonTypesArray()
     {
@@ -254,6 +310,84 @@ class GanacheFormHelperTest extends CakeTestCase
         $result = $this->GanacheFormHelper->inputDefaults();
         $expected = ['label' => ['class' => 'my-custom-class']];
         $this->assertEquals($expected, $result);
+    }
+    public function testErrorWithUndefinedFormType()
+    {
+        $contact = ClassRegistry::getObject('Contact');
+        $contact->validationErrors['name'] = ['Please provide a contact name.'];
+        $this->GanacheFormHelper->create('Contact');
+        $result = $this->GanacheFormHelper->error('name');
+        $expected = [
+            'span' => ['class' => GA_HELP_BLOCK],
+            'Please provide a contact name.',
+            '/span'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testErrorWithNavbarFormType()
+    {
+        $contact = ClassRegistry::getObject('Contact');
+        $contact->validationErrors['name'] = ['Please provide a contact name.'];
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_NAVBAR]);
+        $result = $this->GanacheFormHelper->error('name');
+        $expected = [
+            'span' => ['class' => GA_HELP_BLOCK],
+            'Please provide a contact name.',
+            '/span'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testErrorWithHorizontalFormType()
+    {
+        $contact = ClassRegistry::getObject('Contact');
+        $contact->validationErrors['name'] = ['Please provide a contact name.'];
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_HORIZONTAL]);
+        $result = $this->GanacheFormHelper->error('name');
+        $expected = [
+            'span' => ['class' => GA_HELP_INLINE],
+            'Please provide a contact name.',
+            '/span'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testErrorWithInlineFormType()
+    {
+        $contact = ClassRegistry::getObject('Contact');
+        $contact->validationErrors['name'] = ['Please provide a contact name.'];
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_INLINE]);
+        $result = $this->GanacheFormHelper->error('name');
+        $expected = [
+            'span' => ['class' => GA_HELP_BLOCK],
+            'Please provide a contact name.',
+            '/span'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testErrorWithSearchFormType()
+    {
+        $contact = ClassRegistry::getObject('Contact');
+        $contact->validationErrors['name'] = ['Please provide a contact name.'];
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_SEARCH]);
+        $result = $this->GanacheFormHelper->error('name');
+        $expected = [
+            'span' => ['class' => GA_HELP_BLOCK],
+            'Please provide a contact name.',
+            '/span'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testErrorWithHorizontalAndFieldTypeCheckbox()
+    {
+        $contact = ClassRegistry::getObject('Contact');
+        $contact->validationErrors['is_active'] = ['Please provide a contact name.'];
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_HORIZONTAL]);
+        $result = $this->GanacheFormHelper->error('Contact.is_active');
+        $expected = [
+            'span' => ['class' => GA_HELP_BLOCK],
+            'Please provide a contact name.',
+            '/span'
+        ];
+        $this->assertTags($result, $expected);
     }
 }
 
