@@ -93,9 +93,12 @@ class GanacheFormHelper extends FormHelper
             $options = $this->addClass($options, $this->formTypes[$this->formType]);
         }
 
-        $options['inputDefaults'] = $this->_extractOption('inputDefaults', $options, [
-            'div' => ['class' => GA_CONTROL_GROUP]
-        ]);
+        $inputDefaults = null;
+        if($this->formType === GA_HORIZONTAL) {
+            $inputDefaults = ['div' => ['class' => GA_CONTROL_GROUP]];
+        }
+
+        $options['inputDefaults'] = $this->_extractOption('inputDefaults', $options, $inputDefaults);
 
         if(in_array($this->formType, [GA_NAVBAR, GA_INLINE, GA_SEARCH])) {
             if(isset($options['inputDefaults']['div'])) {
@@ -140,62 +143,81 @@ class GanacheFormHelper extends FormHelper
     public function label($fieldName = null, $text = null, $options = []) {
         $this->setEntity($fieldName);
         $optField = $this->_magicOptions([]);
-        if ($optField['type'] !== 'checkbox') {
+        if ($this->formType === GA_HORIZONTAL && $optField['type'] !== 'checkbox') {
             $options = $this->addClass($options, GA_CONTROL_LABEL);
         }
         return parent::label($fieldName, $text, $options) ;
     }
 	
     /** 
-     * 
      * Create & return an input block (Twitter Boostrap Like).
      * 
-     * New options:
+     * @param string $fieldName Field name.
+     * @param array $options Array of options including extra options.
+     * @return string HTML string representing the form input.
+     * 
+     * Extra options:
+     *  - ga_help - string Help string.
      * 	- prepend: 
      * 		-> string: Add <span class="add-on"> before the input
      * 		-> array: Add elements in array before inputs
      * 	- append: Same as prepend except it add elements after input
-     *        
-    **/
-    public function input($fieldName, $options = array())
+     */
+    public function input($fieldName, $options = [])
     {
-        $prepend = $this->_extractOption('prepend', $options, null) ;
-        unset ($options['prepend']) ;
-        $append = $this->_extractOption('append', $options, null) ;
-        unset ($options['append']) ;
-        $before = $this->_extractOption('before', $options, '') ;
+        $gaHelp = $this->_extractOption('ga_help', $options, null);
+        unset ($options['ga_help']);
+        $prepend = $this->_extractOption('prepend', $options, null);
+        unset ($options['prepend']);
+        $append = $this->_extractOption('append', $options, null);
+        unset ($options['append']);
+        $before = $this->_extractOption('before', $options, '');
         $after = $this->_extractOption('after', $options, '') ;
-        $between = $this->_extractOption('between', $options, '') ;
-        $label = $this->_extractOption('label', $options, false) ;
+        $between = $this->_extractOption('between', $options, '');
+        $label = $this->_extractOption('label', $options, null);
         
         $this->setEntity($fieldName);
-        $options = $this->_parseOptions($options) ;
-        $options['format'] = array('label', 'before', 'input', 'between', 'error', 'after') ;
+        $options = $this->_parseOptions($options);
 
         $beforeClass = '' ;
                 
-        if ($options['type'] == 'checkbox') {
-            $labelStart = '<label class="' . GA_CHECKBOX . '">';
-            $labelEnd = '</label>';
+        if ($options['type'] === 'checkbox') {
+            $text = '';
+            if (strpos($fieldName, '.') !== false) {
+                $fieldElements = explode('.', $fieldName);
+                $text = array_pop($fieldElements);
+            } else {
+                $text = $fieldName;
+            }
+            if (substr($text, -3) === '_id') {
+                $text = substr($text, 0, -3);
+            }
+            $text = __(Inflector::humanize(Inflector::underscore($text)));
 
-            if( $label === false ) {
-                $labelStart = '';
-                $labelEnd = '';
+            // If label is false we want to keep the label around the checkbox to keep the styling but we don't want to
+            // have the label text visible.
+            if ($label === false) {
+                $text = '';
             }
 
-            $before = ($this->formType === GA_HORIZONTAL ? '<div class="' . GA_CONTROLS . '">' : '') . $labelStart . $before ;
+            $labelStart = $this->Html->tag('label', null, ['for' => $this->domId($fieldName), 'class' => GA_CHECKBOX]);
+            $labelEnd = $text . $this->Html->tag('/label');
+
+            // We don't want display the regular label.
+            $options['label'] = false;
+            $before = ($this->formType === GA_HORIZONTAL ? $this->Html->div(GA_CONTROLS) : '') . $labelStart . $before;
             $between = $between . $labelEnd;
-            $options['format'] = array('before', 'input', 'label', 'between', 'error', 'after') ;
-            $after = $after.($this->formType === GA_HORIZONTAL ? '</div>' : '') ;
-        } elseif ($options['type'] == 'radio') {
+            $options['format'] = ['before', 'input', 'label', 'between', 'error', 'after'];
+            $after = $after . ($this->formType === GA_HORIZONTAL ? '</div>' : '');
+        } elseif ($options['type'] === 'radio') {
             $options['legend'] = false ;
-            $before = (($label!=false)?$this->label($fieldName):'') . ($this->formType === GA_HORIZONTAL ? '<div class="' . GA_CONTROLS . '">' : '') . '<label class="' . GA_RADIO . '">' . $before;
-            $between = $between . '</label>' ;
-            $options['format'] = array('before', 'input', 'label', 'between', 'error', 'after') ;
-            $after = $after.($this->formType === GA_HORIZONTAL ? '</div>' : '') ;
+            $before = (($label !== false) ? $this->label($fieldName) :'' ) . ($this->formType === GA_HORIZONTAL ? '<div class="' . GA_CONTROLS . '">' : '') . '<label class="' . GA_RADIO . '">' . $before;
+            $between = $between . '</label>';
+            $options['format'] = ['before', 'input', 'label', 'between', 'error', 'after'];
+            $after = $after . ($this->formType === GA_HORIZONTAL ? '</div>' : '') ;
         } elseif ($this->formType === GA_HORIZONTAL) {
             $beforeClass .= ' ' . GA_CONTROLS;
-        } elseif($this->formType === GA_INLINE && !$this->formType === GA_SEARCH && !$label) {
+        } elseif ($this->formType === GA_INLINE && !$this->formType === GA_SEARCH && !$label) {
             $options['label'] = false ;
         }
 
@@ -217,21 +239,26 @@ class GanacheFormHelper extends FormHelper
             }
             if (is_array($append)) {
                 foreach ($append as $apd) {
-                    $between = $apd . $between ;
+                    $between = $apd . $between;
                 }
             }
         }
         
         if ($beforeClass) {
-            $before = '<div class="'.$beforeClass.'">'.$before ;
-            $after = $after.'</div>' ;
+            $before = '<div class="' . $beforeClass . '">' . $before;
+            $after = $after.'</div>';
         }
-        
-        $options['before'] = $before ; 
-        $options['after'] = $after ;
-        $options['between'] = $between ;
-        
-		return parent::input($fieldName, $options) ;
+
+        // Generate help string
+        if(!empty($gaHelp)) {
+            $after .= $this->Html->tag('span', $gaHelp, ['class' => GA_HELP_BLOCK]);
+        }
+
+        $options['before'] = $before;
+        $options['after'] = $after;
+        $options['between'] = $between;
+
+		return parent::input($fieldName, $options);
 	}
     
     /**
@@ -397,7 +424,6 @@ class GanacheFormHelper extends FormHelper
     }
  */
 
-
     /**
      * 
      * Create a basic bootstrap search form.
@@ -434,7 +460,6 @@ class GanacheFormHelper extends FormHelper
     
         return $output ;
     }
-
 
     /** Special elements to be refactorize a better way later **/
     public function translateInput( $fieldName, $options, $languages = array() ) {

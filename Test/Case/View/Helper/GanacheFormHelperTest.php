@@ -53,6 +53,7 @@ class GanacheFormHelperTest extends CakeTestCase
         $Controller = new Controller();
         $View = new View($Controller);
         $this->GanacheFormHelper = new GanacheFormHelper($View);
+        $this->FormHelper = new FormHelper($View);
 
         ClassRegistry::addObject('Contact', new Contact());
     }
@@ -198,14 +199,14 @@ class GanacheFormHelperTest extends CakeTestCase
     {
         $this->GanacheFormHelper->create('User');
         $result = $this->GanacheFormHelper->inputDefaults();
-        $expected = ['div' => ['class' => GA_CONTROL_GROUP]];
+        $expected = [];
         $this->assertEquals($expected, $result);
     }
     public function testCreateTestInputDefaultsWithNavbarFormType()
     {
         $this->GanacheFormHelper->create('User', ['ga_type' => GA_NAVBAR]);
         $result = $this->GanacheFormHelper->inputDefaults();
-        $expected = ['div' => false];
+        $expected = [];
         $this->assertEquals($expected, $result);
     }
     public function testCreateTestInputDefaultsWithHorizontalFormType()
@@ -219,14 +220,14 @@ class GanacheFormHelperTest extends CakeTestCase
     {
         $this->GanacheFormHelper->create('User', ['ga_type' => GA_SEARCH]);
         $result = $this->GanacheFormHelper->inputDefaults();
-        $expected = ['div' => false];
+        $expected = [];
         $this->assertEquals($expected, $result);
     }
     public function testCreateTestInputDefaultsWithInlineFormType()
     {
         $this->GanacheFormHelper->create('User', ['ga_type' => GA_INLINE]);
         $result = $this->GanacheFormHelper->inputDefaults();
-        $expected = ['div' => false];
+        $expected = [];
         $this->assertEquals($expected, $result);
     }
     public function testCreateTestInputDefaultsWithoutFormTypeAndInputDefaultsWithDiv()
@@ -382,7 +383,7 @@ class GanacheFormHelperTest extends CakeTestCase
         $this->GanacheFormHelper->create('Contact');
         $result = $this->GanacheFormHelper->label('Contact.name');
         $expected = [
-            'label' => ['for' => 'ContactName', 'class' => GA_CONTROL_LABEL],
+            'label' => ['for' => 'ContactName'],
             'Name',
             '/label'
         ];
@@ -397,6 +398,58 @@ class GanacheFormHelperTest extends CakeTestCase
             'Is Active',
             '/label'
         ];
+        $this->assertTags($result, $expected);
+    }
+
+    // @todo testLabelWithOtherFormType... (SL)
+    // Plain regular input without any options.
+    public function testInputWithoutAnyOptions()
+    {
+        $this->GanacheFormHelper->create('Contact');
+        $result = $this->GanacheFormHelper->input('Contact.name');
+        $expected = [
+            'div' => ['class' => 'input text'],
+            'label' => ['for' => 'ContactName'],
+            'Name',
+            '/label',
+            'input' => ['name' => 'data[Contact][name]', 'maxlength' => 255, 'type' => 'text', 'id' => 'ContactName'],
+            '/div'
+        ];
+        $this->assertTags($result, $expected);
+    }
+
+    // Plain regular input without help string.
+    public function testInputWithHelpText()
+    {
+        $this->GanacheFormHelper->create('Contact');
+        $result = $this->GanacheFormHelper->input('Contact.name', ['ga_help' => 'This is a help text.']);
+        $expected = [
+            'div' => ['class' => 'input text'],
+            'label' => ['for' => 'ContactName'],
+            'Name',
+            '/label',
+            'input' => ['name' => 'data[Contact][name]', 'maxlength' => 255, 'type' => 'text', 'id' => 'ContactName'],
+            'span' => ['class' => GA_HELP_BLOCK],
+            'This is a help text.',
+            '/span',
+            '/div'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testInputCheckbox()
+    {
+        $this->GanacheFormHelper->create('Contact');
+        $result = $this->GanacheFormHelper->input('Contact.is_active');
+        $expected = [
+            'div' => ['class' => 'input checkbox'],
+            'label' => ['for' => 'ContactIsActive', 'class' => 'checkbox'],
+            ['input' => ['name' => 'data[Contact][is_active]', 'type' => 'hidden', 'id' => 'ContactIsActive_', 'value' => 0]],
+            ['input' => ['name' => 'data[Contact][is_active]', 'type' => 'checkbox', 'id' => 'ContactIsActive', 'value' => 1]],
+            'Is Active',
+            '/label',
+            '/div'
+        ];
+
         $this->assertTags($result, $expected);
     }
 }
