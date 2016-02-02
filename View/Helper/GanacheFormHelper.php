@@ -182,17 +182,21 @@ class GanacheFormHelper extends FormHelper
         $beforeClass = '' ;
                 
         if ($options['type'] === 'checkbox') {
-            $text = '';
-            if (strpos($fieldName, '.') !== false) {
-                $fieldElements = explode('.', $fieldName);
-                $text = array_pop($fieldElements);
-            } else {
-                $text = $fieldName;
+            if(is_null($label)) {
+                $text = '';
+                if (strpos($fieldName, '.') !== false) {
+                    $fieldElements = explode('.', $fieldName);
+                    $text = array_pop($fieldElements);
+                } else {
+                    $text = $fieldName;
+                }
+                if (substr($text, -3) === '_id') {
+                    $text = substr($text, 0, -3);
+                }
+                $text = __(Inflector::humanize(Inflector::underscore($text)));
+            } elseif(is_string($label)) {
+                $text = $label;
             }
-            if (substr($text, -3) === '_id') {
-                $text = substr($text, 0, -3);
-            }
-            $text = __(Inflector::humanize(Inflector::underscore($text)));
 
             // If label is false we want to keep the label around the checkbox to keep the styling but we don't want to
             // have the label text visible.

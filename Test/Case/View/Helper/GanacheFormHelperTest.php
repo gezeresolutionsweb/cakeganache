@@ -452,5 +452,21 @@ class GanacheFormHelperTest extends CakeTestCase
 
         $this->assertTags($result, $expected);
     }
+    public function testInputCheckboxWithLabelAsString()
+    {
+        $this->GanacheFormHelper->create('Contact');
+        $result = $this->GanacheFormHelper->input('Contact.is_active', ['label' => 'This is the label']);
+        $expected = [
+            'div' => ['class' => 'input checkbox'],
+            'label' => ['for' => 'ContactIsActive', 'class' => 'checkbox'],
+            ['input' => ['name' => 'data[Contact][is_active]', 'type' => 'hidden', 'id' => 'ContactIsActive_', 'value' => 0]],
+            ['input' => ['name' => 'data[Contact][is_active]', 'type' => 'checkbox', 'id' => 'ContactIsActive', 'value' => 1]],
+            'This is the label',
+            '/label',
+            '/div'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
 }
 
