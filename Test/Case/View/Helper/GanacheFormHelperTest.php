@@ -402,6 +402,8 @@ class GanacheFormHelperTest extends CakeTestCase
     }
 
     // @todo testLabelWithOtherFormType... (SL)
+
+
     // Plain regular input without any options.
     public function testInputWithoutAnyOptions()
     {
@@ -414,6 +416,61 @@ class GanacheFormHelperTest extends CakeTestCase
             '/label',
             'input' => ['name' => 'data[Contact][name]', 'maxlength' => 255, 'type' => 'text', 'id' => 'ContactName'],
             '/div'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    // Plain regular input without any options and form type navbar.
+    public function testInputWithoutAnyOptionsFormTypeNavbar()
+    {
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_NAVBAR]);
+        $result = $this->GanacheFormHelper->input('Contact.name');
+        $expected = [
+            'div' => ['class' => 'input text'],
+            'label' => ['for' => 'ContactName'],
+            'Name',
+            '/label',
+            'input' => ['name' => 'data[Contact][name]', 'maxlength' => 255, 'type' => 'text', 'id' => 'ContactName'],
+            '/div'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    // Plain regular input without any options and form type horizontal.
+    public function testInputWithoutAnyOptionsFormTypeHorizontal()
+    {
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_HORIZONTAL]);
+        $result = $this->GanacheFormHelper->input('Contact.name');
+        $expected = [
+            'div' => ['class' => GA_CONTROL_GROUP],
+            'label' => ['for' => 'ContactName', 'class' => GA_CONTROL_LABEL],
+            'Name',
+            '/label',
+            ['div' => ['class' => 'controls']],
+            'input' => ['name' => 'data[Contact][name]', 'maxlength' => 255, 'type' => 'text', 'id' => 'ContactName'],
+            '/div',
+            '/div'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    // Plain regular input without any options and form type search.
+    public function testInputWithoutAnyOptionsFormTypeSearch()
+    {
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_SEARCH]);
+        $result = $this->GanacheFormHelper->input('Contact.name');
+        $expected = [
+            'input' => ['name' => 'data[Contact][name]', 'maxlength' => 255, 'type' => 'text', 'id' => 'ContactName', 'class' => GA_SEARCH_QUERY],
+        ];
+        $this->assertTags($result, $expected);
+    }
+    // Plain regular input without any options and form type inline.
+    public function testInputWithoutAnyOptionsFormTypeInline()
+    {
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_INLINE]);
+        $result = $this->GanacheFormHelper->input('Contact.name');
+        $expected = [
+            'label' => ['for' => 'ContactName'],
+            'Name',
+            '/label',
+            'input' => ['name' => 'data[Contact][name]', 'maxlength' => 255, 'type' => 'text', 'id' => 'ContactName'],
         ];
         $this->assertTags($result, $expected);
     }

@@ -179,7 +179,7 @@ class GanacheFormHelper extends FormHelper
         $this->setEntity($fieldName);
         $options = $this->_parseOptions($options);
 
-        $beforeClass = '' ;
+        $beforeClass = [];
                 
         if ($options['type'] === 'checkbox') {
             $text = '';
@@ -222,13 +222,19 @@ class GanacheFormHelper extends FormHelper
             $options['format'] = ['before', 'input', 'label', 'between', 'error', 'after'];
             $after = $after . ($this->formType === GA_HORIZONTAL ? '</div>' : '') ;
         } elseif ($this->formType === GA_HORIZONTAL) {
-            $beforeClass .= ' ' . GA_CONTROLS;
+            $beforeClass[] = GA_CONTROLS;
+        } elseif ($this->formType === GA_SEARCH) {
+            $options['div'] = false;
+            $options['label'] = false;
+            $options = $this->addClass($options, GA_SEARCH_QUERY);
+        } elseif($this->formType === GA_INLINE) {
+            $options['div'] = false;
         } elseif ($this->formType === GA_INLINE && !$this->formType === GA_SEARCH && !$label) {
             $options['label'] = false ;
         }
 
         if ($prepend) {
-            $beforeClass .= ' ' . GA_INPUT_PREPEND;
+            $beforeClass[] = GA_INPUT_PREPEND;
             if (is_string($prepend)) {
                 $before .= '<span class="' . GA_ADD_ON . '">' . $prepend.'</span>';
             }
@@ -239,7 +245,7 @@ class GanacheFormHelper extends FormHelper
             }
         }
         if ($append) {
-            $beforeClass .= ' ' . GA_INPUT_APPEND;
+            $beforeClass[] = GA_INPUT_APPEND;
             if (is_string($append)) {
                 $between = '<span class="' . GA_ADD_ON . '">' . $append . '</span>' . $between;
             }
@@ -251,7 +257,7 @@ class GanacheFormHelper extends FormHelper
         }
         
         if ($beforeClass) {
-            $before = '<div class="' . $beforeClass . '">' . $before;
+            $between = '<div class="' . implode(' ', $beforeClass) . '">' . $before;
             $after = $after.'</div>';
         }
 
