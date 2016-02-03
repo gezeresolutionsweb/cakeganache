@@ -203,10 +203,8 @@ class GanacheFormHelper extends FormHelper
             }
 
             if(in_array($this->formType, [GA_NAVBAR, GA_SEARCH, GA_INLINE])) {
-                $text = '';
                 $options['div'] = false;
             }
-
 
             $labelStart = $this->Html->tag('label', null, ['for' => $this->domId($fieldName), 'class' => GA_CHECKBOX]);
             $labelEnd = $text . $this->Html->tag('/label');
