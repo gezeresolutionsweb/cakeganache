@@ -404,7 +404,6 @@ class GanacheFormHelperTest extends CakeTestCase
     // @todo testLabelWithOtherFormType... (SL)
 
 
-    // Plain regular input without any options.
     public function testInputWithoutAnyOptions()
     {
         $this->GanacheFormHelper->create('Contact');
@@ -419,22 +418,15 @@ class GanacheFormHelperTest extends CakeTestCase
         ];
         $this->assertTags($result, $expected);
     }
-    // Plain regular input without any options and form type navbar.
     public function testInputWithoutAnyOptionsFormTypeNavbar()
     {
         $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_NAVBAR]);
         $result = $this->GanacheFormHelper->input('Contact.name');
         $expected = [
-            'div' => ['class' => 'input text'],
-            'label' => ['for' => 'ContactName'],
-            'Name',
-            '/label',
             'input' => ['name' => 'data[Contact][name]', 'maxlength' => 255, 'type' => 'text', 'id' => 'ContactName'],
-            '/div'
         ];
         $this->assertTags($result, $expected);
     }
-    // Plain regular input without any options and form type horizontal.
     public function testInputWithoutAnyOptionsFormTypeHorizontal()
     {
         $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_HORIZONTAL]);
@@ -451,7 +443,6 @@ class GanacheFormHelperTest extends CakeTestCase
         ];
         $this->assertTags($result, $expected);
     }
-    // Plain regular input without any options and form type search.
     public function testInputWithoutAnyOptionsFormTypeSearch()
     {
         $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_SEARCH]);
@@ -461,7 +452,6 @@ class GanacheFormHelperTest extends CakeTestCase
         ];
         $this->assertTags($result, $expected);
     }
-    // Plain regular input without any options and form type inline.
     public function testInputWithoutAnyOptionsFormTypeInline()
     {
         $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_INLINE]);
@@ -475,7 +465,6 @@ class GanacheFormHelperTest extends CakeTestCase
         $this->assertTags($result, $expected);
     }
 
-    // Plain regular input without help string.
     public function testInputWithHelpText()
     {
         $this->GanacheFormHelper->create('Contact');
@@ -537,6 +526,34 @@ class GanacheFormHelperTest extends CakeTestCase
             'This is my option',
             '/label',
             '/div'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testInputCheckboxWithNavbarFormType()
+    {
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_NAVBAR]);
+        $result = $this->GanacheFormHelper->input('Contact.is_active');
+        $expected = [
+            'label' => ['for' => 'ContactIsActive', 'class' => 'checkbox'],
+            ['input' => ['name' => 'data[Contact][is_active]', 'type' => 'hidden', 'id' => 'ContactIsActive_', 'value' => 0]],
+            ['input' => ['name' => 'data[Contact][is_active]', 'type' => 'checkbox', 'id' => 'ContactIsActive', 'value' => 1]],
+            'Is Active',
+            '/label',
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testInputCheckboxWithHorizontalFormType()
+    {
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_NAVBAR]);
+        $result = $this->GanacheFormHelper->input('Contact.is_active');
+        $expected = [
+            'label' => ['for' => 'ContactIsActive', 'class' => 'checkbox'],
+            ['input' => ['name' => 'data[Contact][is_active]', 'type' => 'hidden', 'id' => 'ContactIsActive_', 'value' => 0]],
+            ['input' => ['name' => 'data[Contact][is_active]', 'type' => 'checkbox', 'id' => 'ContactIsActive', 'value' => 1]],
+            'Is Active',
+            '/label',
         ];
 
         $this->assertTags($result, $expected);

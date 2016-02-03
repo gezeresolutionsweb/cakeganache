@@ -215,6 +215,12 @@ class GanacheFormHelper extends FormHelper
             $between = $between . $labelEnd;
             $options['format'] = ['before', 'input', 'label', 'between', 'error', 'after'];
             $after = $after . ($this->formType === GA_HORIZONTAL ? '</div>' : '');
+
+
+            if($this->formType === GA_NAVBAR) {
+                $options['div'] = false;
+            }
+
         } elseif ($options['type'] === 'radio') {
             $options['legend'] = false ;
             $before = (($label !== false) ? $this->label($fieldName) :'' ) . ($this->formType === GA_HORIZONTAL ? '<div class="' . GA_CONTROLS . '">' : '') . '<label class="' . GA_RADIO . '">' . $before;
@@ -231,6 +237,13 @@ class GanacheFormHelper extends FormHelper
             $options['div'] = false;
         } elseif ($this->formType === GA_INLINE && !$this->formType === GA_SEARCH && !$label) {
             $options['label'] = false ;
+        } else {
+            // regular text input field.
+            if($this->formType === GA_NAVBAR) {
+                $options['div'] = false;
+                $options['label'] = false;
+            }
+
         }
 
         if ($prepend) {
