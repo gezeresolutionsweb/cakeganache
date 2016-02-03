@@ -374,7 +374,6 @@ class GanacheFormHelper extends FormHelper
     }
     
     /**
-     * 
      * Create & return a Twitter Like submit input.
      * 
      * New options:
@@ -382,8 +381,7 @@ class GanacheFormHelper extends FormHelper
      * 	- bootstrap-size: Twitter bootstrap button size (mini, small, large)
      * 
      * Unusable options: div
-     * 
-    **/    
+    */    
     public function submit($caption = null, $options = array()) {
         if (!isset($options['div'])) {
             $options['div'] = false ;
