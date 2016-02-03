@@ -493,7 +493,7 @@ class GanacheFormHelper extends FormHelper
             return $this->input( $fieldName, $options );
         }
 
-        $html = '<div class="' . GS_CONTROL_GROUP . '">';
+        $html = '<div class="' . GA_CONTROL_GROUP . '">';
 
         // Generate label.
 
