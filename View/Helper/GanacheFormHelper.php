@@ -225,25 +225,23 @@ class GanacheFormHelper extends FormHelper
             $after = $after . ($this->formType === GA_HORIZONTAL ? '</div>' : '') ;
         } else {
             // regular text input field.
-            if($this->formType === GA_INLINE) {
+            switch($this->formType) {
+            case GA_NAVBAR:
                 $options['div'] = false;
-            }
-
-            if($this->formType === GA_SEARCH) {
+                $options['label'] = false;
+                break;
+            case GA_HORIZONTAL:
+                $beforeClass[] = GA_CONTROLS;
+                break;
+            case GA_SEARCH:
                 $options['div'] = false;
                 $options['label'] = false;
                 $options = $this->addClass($options, GA_SEARCH_QUERY);
-            }
-
-            if($this->formType === GA_NAVBAR) {
+                break;
+            case GA_INLINE:
                 $options['div'] = false;
-                $options['label'] = false;
+                break;
             }
-
-            if($this->formType === GA_HORIZONTAL) {
-                $beforeClass[] = GA_CONTROLS;
-            }
-
         }
 
         if ($prepend) {
