@@ -158,10 +158,6 @@ class GanacheFormHelper extends FormHelper
      * 
      * Extra options:
      *  - ga_help - string Help string.
-     * 	- prepend: 
-     * 		-> string: Add <span class="add-on"> before the input
-     * 		-> array: Add elements in array before inputs
-     * 	- append: Same as prepend except it add elements after input
      */
     public function input($fieldName, $options = [])
     {
