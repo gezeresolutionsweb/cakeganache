@@ -538,7 +538,6 @@ class GanacheFormHelperTest extends CakeTestCase
             'label' => ['for' => 'ContactIsActive', 'class' => 'checkbox'],
             ['input' => ['name' => 'data[Contact][is_active]', 'type' => 'hidden', 'id' => 'ContactIsActive_', 'value' => 0]],
             ['input' => ['name' => 'data[Contact][is_active]', 'type' => 'checkbox', 'id' => 'ContactIsActive', 'value' => 1]],
-            'Is Active',
             '/label',
         ];
 
@@ -546,13 +545,43 @@ class GanacheFormHelperTest extends CakeTestCase
     }
     public function testInputCheckboxWithHorizontalFormType()
     {
-        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_NAVBAR]);
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_HORIZONTAL]);
+        $result = $this->GanacheFormHelper->input('Contact.is_active');
+        $expected = [
+            'div' => ['class' => GA_CONTROL_GROUP],
+            ['div' => ['class' => GA_CONTROLS]],
+            'label' => ['for' => 'ContactIsActive', 'class' => 'checkbox'],
+            ['input' => ['name' => 'data[Contact][is_active]', 'type' => 'hidden', 'id' => 'ContactIsActive_', 'value' => 0]],
+            ['input' => ['name' => 'data[Contact][is_active]', 'type' => 'checkbox', 'id' => 'ContactIsActive', 'value' => 1]],
+            'Is Active',
+            '/label',
+            '/div',
+            '/div'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testInputCheckboxWithSearchFormType()
+    {
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_SEARCH]);
         $result = $this->GanacheFormHelper->input('Contact.is_active');
         $expected = [
             'label' => ['for' => 'ContactIsActive', 'class' => 'checkbox'],
             ['input' => ['name' => 'data[Contact][is_active]', 'type' => 'hidden', 'id' => 'ContactIsActive_', 'value' => 0]],
             ['input' => ['name' => 'data[Contact][is_active]', 'type' => 'checkbox', 'id' => 'ContactIsActive', 'value' => 1]],
-            'Is Active',
+            '/label',
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testInputCheckboxWithInlineFormType()
+    {
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_INLINE]);
+        $result = $this->GanacheFormHelper->input('Contact.is_active');
+        $expected = [
+            'label' => ['for' => 'ContactIsActive', 'class' => 'checkbox'],
+            ['input' => ['name' => 'data[Contact][is_active]', 'type' => 'hidden', 'id' => 'ContactIsActive_', 'value' => 0]],
+            ['input' => ['name' => 'data[Contact][is_active]', 'type' => 'checkbox', 'id' => 'ContactIsActive', 'value' => 1]],
             '/label',
         ];
 

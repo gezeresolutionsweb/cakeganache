@@ -206,6 +206,12 @@ class GanacheFormHelper extends FormHelper
                 $text = '';
             }
 
+            if(in_array($this->formType, [GA_NAVBAR, GA_SEARCH, GA_INLINE])) {
+                $text = '';
+                $options['div'] = false;
+            }
+
+
             $labelStart = $this->Html->tag('label', null, ['for' => $this->domId($fieldName), 'class' => GA_CHECKBOX]);
             $labelEnd = $text . $this->Html->tag('/label');
 
@@ -215,12 +221,6 @@ class GanacheFormHelper extends FormHelper
             $between = $between . $labelEnd;
             $options['format'] = ['before', 'input', 'label', 'between', 'error', 'after'];
             $after = $after . ($this->formType === GA_HORIZONTAL ? '</div>' : '');
-
-
-            if($this->formType === GA_NAVBAR) {
-                $options['div'] = false;
-            }
-
         } elseif ($options['type'] === 'radio') {
             $options['legend'] = false ;
             $before = (($label !== false) ? $this->label($fieldName) :'' ) . ($this->formType === GA_HORIZONTAL ? '<div class="' . GA_CONTROLS . '">' : '') . '<label class="' . GA_RADIO . '">' . $before;
