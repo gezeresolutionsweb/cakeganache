@@ -223,21 +223,25 @@ class GanacheFormHelper extends FormHelper
             $between = $between . '</label>';
             $options['format'] = ['before', 'input', 'label', 'between', 'error', 'after'];
             $after = $after . ($this->formType === GA_HORIZONTAL ? '</div>' : '') ;
-        } elseif ($this->formType === GA_HORIZONTAL) {
-            $beforeClass[] = GA_CONTROLS;
-        } elseif ($this->formType === GA_SEARCH) {
-            $options['div'] = false;
-            $options['label'] = false;
-            $options = $this->addClass($options, GA_SEARCH_QUERY);
-        } elseif($this->formType === GA_INLINE) {
-            $options['div'] = false;
-        } elseif ($this->formType === GA_INLINE && !$this->formType === GA_SEARCH && !$label) {
-            $options['label'] = false ;
         } else {
             // regular text input field.
+            if($this->formType === GA_INLINE) {
+                $options['div'] = false;
+            }
+
+            if($this->formType === GA_SEARCH) {
+                $options['div'] = false;
+                $options['label'] = false;
+                $options = $this->addClass($options, GA_SEARCH_QUERY);
+            }
+
             if($this->formType === GA_NAVBAR) {
                 $options['div'] = false;
                 $options['label'] = false;
+            }
+
+            if($this->formType === GA_HORIZONTAL) {
+                $beforeClass[] = GA_CONTROLS;
             }
 
         }
