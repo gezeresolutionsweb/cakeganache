@@ -395,28 +395,33 @@ class GanacheFormHelper extends FormHelper
     }
 	
     /**
-     * 
      * End a form, Twitter Bootstrap like.
      * 
-     * New options:
-     * 	- bootstrap-type: Twitter bootstrap button type (primary, danger, info, etc.)
-     * 	- bootstrap-size: Twitter bootstrap button size (mini, small, large)
-     * 
-    **/
-    public function end ($options = NULL, $secureAttributes = Array()) {
-	if ($options == null) {
-		return parent::end($options, $secureAttributes) ;
-	}
-	if (is_string($options)) {
-		$options = array('label' => $options) ;
-	}
-        if (!$this->formType === GA_INLINE) {
+     * @param string|array $options Label for the submit button as string ou array with label key and other options.
+     * @param array $secureAttributes To add secure attributes.
+     *
+     * Extra options:
+     * 	- ga_type : string Button type GA_PRIMARY|GA_INFO|GA_SUCCESS|GA_WARNING|GA_DANGER|GA_INVERSE|GA_LINK
+     * 	- ga_size : string Button size GA_MINI|GA_SMALL|GA_LARGE
+     */
+    public function end($options = null, $secureAttributes = [])
+    {
+        if ($options === null) {
+            return parent::end($options, $secureAttributes) ;
+        }
+
+        if (is_string($options)) {
+            $options = array('label' => $options) ;
+        }
+
+        if (!in_array($this->formType, [GA_INLINE, GA_SEARCH])) {
             if (!array_key_exists('div', $options)) {
-                $options['div'] = array() ;
+                $options['div'] = [];
             }
             $options['div']['class'] = GA_FORM_ACTIONS;
         }
-		return parent::end($options,$secureAttributes);
+
+        return parent::end($options,$secureAttributes);
     }
     
     /** SPECIAL FORM **/

@@ -1250,5 +1250,234 @@ class GanacheFormHelperTest extends CakeTestCase
         ];
         $this->assertTags($result, $expected);
     }
+
+
+
+
+
+    public function testEndWithoutAnyOptions()
+    {
+        $result = $this->GanacheFormHelper->end();
+        $expected = [
+            '/form'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testEndWithLabelAsString()
+    {
+        $result = $this->GanacheFormHelper->end('Save');
+        $expected = [
+            'div' => ['class' => GA_FORM_ACTIONS],
+            'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit', 'value' => 'Save'],
+            '/div',
+            '/form'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testEndWithLabelAsStringFormInline()
+    {
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_INLINE]);
+        $result = $this->GanacheFormHelper->end('Save');
+        $expected = [
+            'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit', 'value' => 'Save'],
+            '/form'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testEndWithLabelAsStringFormSearch()
+    {
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_SEARCH]);
+        $result = $this->GanacheFormHelper->end('Save');
+        $expected = [
+            'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit', 'value' => 'Save'],
+            '/form'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testEndWithLabelAsStringFormNavbar()
+    {
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_NAVBAR]);
+        $result = $this->GanacheFormHelper->end('Save');
+        $expected = [
+            'div' => ['class' => GA_FORM_ACTIONS],
+            'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit', 'value' => 'Save'],
+            '/div',
+            '/form'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testEndWithLabelAsStringFormhorizontal()
+    {
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_HORIZONTAL]);
+        $result = $this->GanacheFormHelper->end('Save');
+        $expected = [
+            'div' => ['class' => GA_FORM_ACTIONS],
+            'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit', 'value' => 'Save'],
+            '/div',
+            '/form'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testEndWithArrayLabelKeyDefinedAsString()
+    {
+        $result = $this->GanacheFormHelper->end(['label' => 'Save it']);
+        $expected = [
+            'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit', 'value' => 'Save it'],
+            '/form'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testEndWithArrayLabelKeyAsArrayTextKeyDefined()
+    {
+        $result = $this->GanacheFormHelper->end(['label' => ['text' => 'Save it']]);
+        $expected = [
+            'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit', 'value' => 'Save it'],
+            '/form'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testEndWithTypeDefault()
+    {
+        $result = $this->GanacheFormHelper->end(['ga_type' => GA_DEFAULT]);
+        $expected = [
+            'div' => ['class' => GA_FORM_ACTIONS],
+            'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit', 'value' => 'Submit'],
+            '/div',
+            '/form'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testEndWithTypePrimary()
+    {
+        $result = $this->GanacheFormHelper->end(['ga_type' => GA_PRIMARY]);
+        $expected = [
+            'div' => ['class' => GA_FORM_ACTIONS],
+            'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_PRIMARY]), 'type' => 'submit', 'value' => 'Submit'],
+            '/div',
+            '/form'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testEndWithTypeInfo()
+    {
+        $result = $this->GanacheFormHelper->end(['ga_type' => GA_INFO]);
+        $expected = [
+            'div' => ['class' => GA_FORM_ACTIONS],
+            'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_INFO]), 'type' => 'submit', 'value' => 'Submit'],
+            '/div',
+            '/form'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testEndWithTypeSuccess()
+    {
+        $result = $this->GanacheFormHelper->end(['ga_type' => GA_SUCCESS]);
+        $expected = [
+            'div' => ['class' => GA_FORM_ACTIONS],
+            'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_SUCCESS]), 'type' => 'submit', 'value' => 'Submit'],
+            '/div',
+            '/form'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testEndWithTypeWarning()
+    {
+        $result = $this->GanacheFormHelper->end(['ga_type' => GA_WARNING]);
+        $expected = [
+            'div' => ['class' => GA_FORM_ACTIONS],
+            'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_WARNING]), 'type' => 'submit', 'value' => 'Submit'],
+            '/div',
+            '/form'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testEndWithTypeDanger()
+    {
+        $result = $this->GanacheFormHelper->end(['ga_type' => GA_DANGER]);
+        $expected = [
+            'div' => ['class' => GA_FORM_ACTIONS],
+            'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_DANGER]), 'type' => 'submit', 'value' => 'Submit'],
+            '/div',
+            '/form'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testEndWithTypeInverse()
+    {
+        $result = $this->GanacheFormHelper->end(['ga_type' => GA_INVERSE]);
+        $expected = [
+            'div' => ['class' => GA_FORM_ACTIONS],
+            'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_INVERSE]), 'type' => 'submit', 'value' => 'Submit'],
+            '/div',
+            '/form'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testEndWithTypeLink()
+    {
+        $result = $this->GanacheFormHelper->end(['ga_type' => GA_LINK]);
+        $expected = [
+            'div' => ['class' => GA_FORM_ACTIONS],
+            'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_LINK]), 'type' => 'submit', 'value' => 'Submit'],
+            '/div',
+            '/form'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testEndWithInvalidType()
+    {
+        $result = $this->GanacheFormHelper->end(['ga_type' => 'invalid type']);
+        $expected = [
+            'div' => ['class' => GA_FORM_ACTIONS],
+            'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit', 'value' => 'Submit'],
+            '/div',
+            '/form'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testEndWithSizeMini()
+    {
+        $result = $this->GanacheFormHelper->end(['ga_size' => GA_MINI]);
+        $expected = [
+            'div' => ['class' => GA_FORM_ACTIONS],
+            'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_DEFAULT, GA_BTN_MINI]), 'type' => 'submit', 'value' => 'Submit'],
+            '/div',
+            '/form'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testEndWithSizeSmall()
+    {
+        $result = $this->GanacheFormHelper->end(['ga_size' => GA_SMALL]);
+        $expected = [
+            'div' => ['class' => GA_FORM_ACTIONS],
+            'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_DEFAULT, GA_BTN_SMALL]), 'type' => 'submit', 'value' => 'Submit'],
+            '/div',
+            '/form'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testEndWithSizeLarge()
+    {
+        $result = $this->GanacheFormHelper->end(['ga_size' => GA_LARGE]);
+        $expected = [
+            'div' => ['class' => GA_FORM_ACTIONS],
+            'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_DEFAULT, GA_BTN_LARGE]), 'type' => 'submit', 'value' => 'Submit'],
+            '/div',
+            '/form'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testEndWithInvalidSize()
+    {
+        $result = $this->GanacheFormHelper->end(['ga_size' => 'invalid size']);
+        $expected = [
+            'div' => ['class' => GA_FORM_ACTIONS],
+            'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit', 'value' => 'Submit'],
+            '/div',
+            '/form'
+        ];
+        $this->assertTags($result, $expected);
+    }
 }
 
