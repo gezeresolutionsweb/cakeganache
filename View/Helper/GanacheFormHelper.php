@@ -22,6 +22,7 @@ class GanacheFormHelper extends FormHelper
     public $formType = null;
 
     public $buttonTypes = [
+        GA_DEFAULT,
         GA_PRIMARY,
         GA_INFO,
         GA_SUCCESS,
@@ -51,7 +52,7 @@ class GanacheFormHelper extends FormHelper
      * @return The new options with class values (btn, and btn-* according to initial options)
      *
      * Extra options:
-     *   - ga_type: string Type of the button. GA_PRIMARY|GA_INFO|GA_SUCCESS|GA_WARNING|GA_DANGER|GA_INVERSE|GA_LINK
+     *   - ga_type: string Type of the button. GA_DEFAULT|GA_PRIMARY|GA_INFO|GA_SUCCESS|GA_WARNING|GA_DANGER|GA_INVERSE|GA_LINK default: GA_DEFAULT
      *   - ga_size: string Size of the button. GA_MINI|GA_SMALL|GA_LARGE
      */
     public function addButtonClasses($options)
@@ -61,8 +62,12 @@ class GanacheFormHelper extends FormHelper
         if(isset($options['ga_type'])) {
             if(in_array($options['ga_type'], $this->buttonTypes)) {
                 $options = $this->addClass($options, GA_BTN . '-' . $options['ga_type']);
+            } else {
+                $options = $this->addClass($options, GA_BTN_DEFAULT);
             }
             unset($options['ga_type']);
+        } else {
+            $options = $this->addClass($options, GA_BTN_DEFAULT);
         }
 
         if(isset($options['ga_size'])) {

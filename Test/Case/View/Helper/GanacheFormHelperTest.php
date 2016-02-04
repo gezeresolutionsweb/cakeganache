@@ -60,7 +60,7 @@ class GanacheFormHelperTest extends CakeTestCase
     public function testButtonTypesArray()
     {
         $result = $this->GanacheFormHelper->buttonTypes;
-        $expected = [GA_PRIMARY, GA_INFO, GA_SUCCESS, GA_WARNING, GA_DANGER, GA_INVERSE, GA_LINK];
+        $expected = [GA_DEFAULT, GA_PRIMARY, GA_INFO, GA_SUCCESS, GA_WARNING, GA_DANGER, GA_INVERSE, GA_LINK];
         $this->assertEquals($result, $expected);
     }
     public function testButtonSizesArray()
@@ -78,7 +78,13 @@ class GanacheFormHelperTest extends CakeTestCase
     public function testAddButtonClassesWithoutAnyOptions()
     {
         $result = $this->GanacheFormHelper->addButtonClasses([]);
-        $expected = ['class' => GA_BTN];
+        $expected = ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT])];
+        $this->assertEquals($result, $expected);
+    }
+    public function testAddButtonClassesBoostrapTypeDefault()
+    {
+        $result = $this->GanacheFormHelper->addButtonClasses(['ga_type' => GA_DEFAULT]);
+        $expected = ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT])];
         $this->assertEquals($result, $expected);
     }
     public function testAddButtonClassesBoostrapTypePrimary()
@@ -126,31 +132,31 @@ class GanacheFormHelperTest extends CakeTestCase
     public function testAddButtonClassesWithInvalidBoostrapType()
     {
         $result = $this->GanacheFormHelper->addButtonClasses(['ga_type' => 'super-type']);
-        $expected = ['class' => GA_BTN];
+        $expected = ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT])];
         $this->assertEquals($result, $expected);
     }
     public function testAddButtonClassesBoostrapSizeMini()
     {
         $result = $this->GanacheFormHelper->addButtonClasses(['ga_size' => GA_MINI]);
-        $expected = ['class' => implode(' ', [GA_BTN, GA_BTN_MINI])];
+        $expected = ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT,  GA_BTN_MINI])];
         $this->assertEquals($result, $expected);
     }
     public function testAddButtonClassesBoostrapSizeSmall()
     {
         $result = $this->GanacheFormHelper->addButtonClasses(['ga_size' => GA_SMALL]);
-        $expected = ['class' => implode(' ', [GA_BTN, GA_BTN_SMALL])];
+        $expected = ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT, GA_BTN_SMALL])];
         $this->assertEquals($result, $expected);
     }
     public function testAddButtonClassesBoostrapSizeLarge()
     {
         $result = $this->GanacheFormHelper->addButtonClasses(['ga_size' => GA_LARGE]);
-        $expected = ['class' => implode(' ', [GA_BTN, GA_BTN_LARGE])];
+        $expected = ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT, GA_BTN_LARGE])];
         $this->assertEquals($result, $expected);
     }
     public function testAddButtonClassesWithInvalidBoostrapSize()
     {
         $result = $this->GanacheFormHelper->addButtonClasses(['ga_size' => 'super-size']);
-        $expected = ['class' => GA_BTN];
+        $expected = ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT])];
         $this->assertEquals($result, $expected);
     }
     public function testAddButtonClassesWithBoostrapSizeAndBootstrapTypeDefined()
@@ -162,7 +168,13 @@ class GanacheFormHelperTest extends CakeTestCase
     public function testAddButtonClassesWithExtraAttribute()
     {
         $result = $this->GanacheFormHelper->addButtonClasses(['id' => 'my-super-id']);
-        $expected = ['id' => 'my-super-id', 'class' => GA_BTN];
+        $expected = ['id' => 'my-super-id', 'class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT])];
+        $this->assertEquals($result, $expected);
+    }
+    public function testAddButtonClassesWithExtraClass()
+    {
+        $result = $this->GanacheFormHelper->addButtonClasses(['class' => 'my-super-class']);
+        $expected = ['class' => implode(' ', ['my-super-class', GA_BTN, GA_BTN_DEFAULT])];
         $this->assertEquals($result, $expected);
     }
     public function testCreateWithoutAnyOptions()
