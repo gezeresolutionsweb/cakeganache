@@ -60,109 +60,109 @@ class GanacheFormHelperTest extends CakeTestCase
     public function testButtonTypesArray()
     {
         $result = $this->GanacheFormHelper->buttonTypes;
-        $expected = ['primary', 'info', 'success', 'warning', 'danger', 'inverse', 'link'];
+        $expected = [GA_PRIMARY, GA_INFO, GA_SUCCESS, GA_WARNING, GA_DANGER, GA_INVERSE, GA_LINK];
         $this->assertEquals($result, $expected);
     }
     public function testButtonSizesArray()
     {
         $result = $this->GanacheFormHelper->buttonSizes;
-        $expected = ['mini', 'small', 'large'];
+        $expected = [GA_MINI, GA_SMALL, GA_LARGE];
         $this->assertEquals($result, $expected);
     }
     public function testFormTypesArray()
     {
         $result = $this->GanacheFormHelper->formTypes;
-        $expected = ['navbar' => 'navbar-form', 'horizontal' => 'form-horizontal', 'inline' => 'form-inline', 'search' => 'form-search'];
+        $expected = [GA_NAVBAR => GA_NAVBAR_FORM, GA_HORIZONTAL => GA_FORM_HORIZONTAL, GA_INLINE => GA_FORM_INLINE, GA_SEARCH => GA_FORM_SEARCH];
         $this->assertEquals($result, $expected);
     }
     public function testAddButtonClassesWithoutAnyOptions()
     {
         $result = $this->GanacheFormHelper->addButtonClasses([]);
-        $expected = ['class' => 'btn'];
+        $expected = ['class' => GA_BTN];
         $this->assertEquals($result, $expected);
     }
     public function testAddButtonClassesBoostrapTypePrimary()
     {
-        $result = $this->GanacheFormHelper->addButtonClasses(['bootstrap-type' => GA_PRIMARY]);
-        $expected = ['class' => 'btn btn-primary'];
+        $result = $this->GanacheFormHelper->addButtonClasses(['ga_type' => GA_PRIMARY]);
+        $expected = ['class' => implode(' ', [GA_BTN, GA_BTN_PRIMARY])];
         $this->assertEquals($result, $expected);
     }
     public function testAddButtonClassesBoostrapTypeInfo()
     {
-        $result = $this->GanacheFormHelper->addButtonClasses(['bootstrap-type' => GA_INFO]);
-        $expected = ['class' => 'btn btn-info'];
+        $result = $this->GanacheFormHelper->addButtonClasses(['ga_type' => GA_INFO]);
+        $expected = ['class' => implode(' ', [GA_BTN, GA_BTN_INFO])];
         $this->assertEquals($result, $expected);
     }
     public function testAddButtonClassesBoostrapTypeSuccess()
     {
-        $result = $this->GanacheFormHelper->addButtonClasses(['bootstrap-type' => GA_SUCCESS]);
-        $expected = ['class' => 'btn btn-success'];
+        $result = $this->GanacheFormHelper->addButtonClasses(['ga_type' => GA_SUCCESS]);
+        $expected = ['class' => implode(' ', [GA_BTN, GA_BTN_SUCCESS])];
         $this->assertEquals($result, $expected);
     }
     public function testAddButtonClassesBoostrapTypeWarning()
     {
-        $result = $this->GanacheFormHelper->addButtonClasses(['bootstrap-type' => GA_WARNING]);
-        $expected = ['class' => 'btn btn-warning'];
+        $result = $this->GanacheFormHelper->addButtonClasses(['ga_type' => GA_WARNING]);
+        $expected = ['class' => implode(' ', [GA_BTN, GA_BTN_WARNING])];
         $this->assertEquals($result, $expected);
     }
     public function testAddButtonClassesBoostrapTypeDanger()
     {
-        $result = $this->GanacheFormHelper->addButtonClasses(['bootstrap-type' => GA_DANGER]);
-        $expected = ['class' => 'btn btn-danger'];
+        $result = $this->GanacheFormHelper->addButtonClasses(['ga_type' => GA_DANGER]);
+        $expected = ['class' => implode(' ', [GA_BTN, GA_BTN_DANGER])];
         $this->assertEquals($result, $expected);
     }
     public function testAddButtonClassesBoostrapTypeInverse()
     {
-        $result = $this->GanacheFormHelper->addButtonClasses(['bootstrap-type' => GA_INVERSE]);
-        $expected = ['class' => 'btn btn-inverse'];
+        $result = $this->GanacheFormHelper->addButtonClasses(['ga_type' => GA_INVERSE]);
+        $expected = ['class' => implode(' ', [GA_BTN, GA_BTN_INVERSE])];
         $this->assertEquals($result, $expected);
     }
     public function testAddButtonClassesBoostrapTypeLink()
     {
-        $result = $this->GanacheFormHelper->addButtonClasses(['bootstrap-type' => GA_LINK]);
-        $expected = ['class' => 'btn btn-link'];
+        $result = $this->GanacheFormHelper->addButtonClasses(['ga_type' => GA_LINK]);
+        $expected = ['class' => implode(' ', [GA_BTN, GA_BTN_LINK])];
         $this->assertEquals($result, $expected);
     }
     public function testAddButtonClassesWithInvalidBoostrapType()
     {
-        $result = $this->GanacheFormHelper->addButtonClasses(['bootstrap-type' => 'super-type']);
-        $expected = ['class' => 'btn'];
+        $result = $this->GanacheFormHelper->addButtonClasses(['ga_type' => 'super-type']);
+        $expected = ['class' => GA_BTN];
         $this->assertEquals($result, $expected);
     }
     public function testAddButtonClassesBoostrapSizeMini()
     {
-        $result = $this->GanacheFormHelper->addButtonClasses(['bootstrap-size' => GA_MINI]);
-        $expected = ['class' => 'btn btn-mini'];
+        $result = $this->GanacheFormHelper->addButtonClasses(['ga_size' => GA_MINI]);
+        $expected = ['class' => implode(' ', [GA_BTN, GA_BTN_MINI])];
         $this->assertEquals($result, $expected);
     }
     public function testAddButtonClassesBoostrapSizeSmall()
     {
-        $result = $this->GanacheFormHelper->addButtonClasses(['bootstrap-size' => GA_SMALL]);
-        $expected = ['class' => 'btn btn-small'];
+        $result = $this->GanacheFormHelper->addButtonClasses(['ga_size' => GA_SMALL]);
+        $expected = ['class' => implode(' ', [GA_BTN, GA_BTN_SMALL])];
         $this->assertEquals($result, $expected);
     }
     public function testAddButtonClassesBoostrapSizeLarge()
     {
-        $result = $this->GanacheFormHelper->addButtonClasses(['bootstrap-size' => GA_LARGE]);
-        $expected = ['class' => 'btn btn-large'];
+        $result = $this->GanacheFormHelper->addButtonClasses(['ga_size' => GA_LARGE]);
+        $expected = ['class' => implode(' ', [GA_BTN, GA_BTN_LARGE])];
         $this->assertEquals($result, $expected);
     }
     public function testAddButtonClassesWithInvalidBoostrapSize()
     {
-        $result = $this->GanacheFormHelper->addButtonClasses(['bootstrap-size' => 'super-size']);
-        $expected = ['class' => 'btn'];
+        $result = $this->GanacheFormHelper->addButtonClasses(['ga_size' => 'super-size']);
+        $expected = ['class' => GA_BTN];
         $this->assertEquals($result, $expected);
     }
     public function testAddButtonClassesWithBoostrapSizeAndBootstrapTypeDefined()
     {
-        $result = $this->GanacheFormHelper->addButtonClasses(['bootstrap-size' => GA_MINI, 'bootstrap-type' => GA_PRIMARY]);
-        $expected = ['class' => 'btn btn-primary btn-mini'];
+        $result = $this->GanacheFormHelper->addButtonClasses(['ga_size' => GA_MINI, 'ga_type' => GA_PRIMARY]);
+        $expected = ['class' => implode(' ', [GA_BTN, GA_BTN_PRIMARY, GA_BTN_MINI])];
         $this->assertEquals($result, $expected);
     }
     public function testAddButtonClassesWithExtraAttribute()
     {
         $result = $this->GanacheFormHelper->addButtonClasses(['id' => 'my-super-id']);
-        $expected = ['id' => 'my-super-id', 'class' => 'btn'];
+        $expected = ['id' => 'my-super-id', 'class' => GA_BTN];
         $this->assertEquals($result, $expected);
     }
     public function testCreateWithoutAnyOptions()
@@ -784,5 +784,22 @@ class GanacheFormHelperTest extends CakeTestCase
 
 
     // @todo testing with radio input type. We don't use it a lot right now so we push the testing later on (SL)
+
+/*
+    public function testButtonWithoutAnyOptions()
+    {
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_INLINE]);
+        $result = $this->GanacheFormHelper->input('Contact.is_active', ['label' => false]);
+        $expected = [
+            'label' => ['for' => 'ContactIsActive', 'class' => 'checkbox'],
+            ['input' => ['name' => 'data[Contact][is_active]', 'type' => 'hidden', 'id' => 'ContactIsActive_', 'value' => 0]],
+            ['input' => ['name' => 'data[Contact][is_active]', 'type' => 'checkbox', 'id' => 'ContactIsActive', 'value' => 1]],
+            '/label',
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+ */
+
 }
 
