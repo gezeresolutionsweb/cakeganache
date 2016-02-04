@@ -381,18 +381,17 @@ class GanacheFormHelper extends FormHelper
     /**
      * Create & return a Twitter Like submit input.
      * 
-     * New options:
-     * 	- bootstrap-type: Twitter bootstrap button type (primary, danger, info, etc.)
-     * 	- bootstrap-size: Twitter bootstrap button size (mini, small, large)
-     * 
-     * Unusable options: div
-    */    
-    public function submit($caption = null, $options = array()) {
+     * Extra options:
+     * 	- ga_type : string Button type GA_PRIMARY|GA_INFO|GA_SUCCESS|GA_WARNING|GA_DANGER|GA_INVERSE|GA_LINK
+     * 	- ga_size : string Button size GA_MINI|GA_SMALL|GA_LARGE
+     */    
+    public function submit($caption = null, $options = [])
+    {
         if (!isset($options['div'])) {
-            $options['div'] = false ;
+            $options['div'] = false;
         }
-        $options = $this->addButtonClasses($options) ;
-        return parent::submit($caption, $options) ;
+        $options = $this->addButtonClasses($options);
+        return parent::submit($caption, $options);
     }
 	
     /**

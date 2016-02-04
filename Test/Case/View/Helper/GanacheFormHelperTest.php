@@ -1047,5 +1047,145 @@ class GanacheFormHelperTest extends CakeTestCase
 
         $this->assertTags($result, $expected);
     }
+
+
+    // @todo testing with dropdown button. We don't use it a lot right now so we push the testing later on (SL)
+
+    public function testSubmitWithoutAnyOptions()
+    {
+        $result = $this->GanacheFormHelper->submit('Submit', []);
+        $expected = [
+            'input' => ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit', 'value' => 'Submit']
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testSubmitBoostrapTypeDefault()
+    {
+        $result = $this->GanacheFormHelper->submit('Submit', ['ga_type' => GA_DEFAULT]);
+        $expected = [
+            'input' => ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit', 'value' => 'Submit']
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testSubmitBoostrapTypePrimary()
+    {
+        $result = $this->GanacheFormHelper->submit('Submit', ['ga_type' => GA_PRIMARY]);
+        $expected = [
+            'input' => ['class' => implode(' ', [GA_BTN, GA_BTN_PRIMARY]), 'type' => 'submit', 'value' => 'Submit']
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testSubmitBoostrapTypeInfo()
+    {
+        $result = $this->GanacheFormHelper->submit('Submit', ['ga_type' => GA_INFO]);
+        $expected = [
+            'input' => ['class' => implode(' ', [GA_BTN, GA_BTN_INFO]), 'type' => 'submit', 'value' => 'Submit']
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testSubmitBoostrapTypeSuccess()
+    {
+        $result = $this->GanacheFormHelper->submit('Submit', ['ga_type' => GA_SUCCESS]);
+        $expected = [
+            'input' => ['class' => implode(' ', [GA_BTN, GA_BTN_SUCCESS]), 'type' => 'submit', 'value' => 'Submit']
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testSubmitBoostrapTypeWarning()
+    {
+        $result = $this->GanacheFormHelper->submit('Submit', ['ga_type' => GA_WARNING]);
+        $expected = [
+            'input' => ['class' => implode(' ', [GA_BTN, GA_BTN_WARNING]), 'type' => 'submit', 'value' => 'Submit']
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testSubmitBoostrapTypeDanger()
+    {
+        $result = $this->GanacheFormHelper->submit('Submit', ['ga_type' => GA_DANGER]);
+        $expected = [
+            'input' => ['class' => implode(' ', [GA_BTN, GA_BTN_DANGER]), 'type' => 'submit', 'value' => 'Submit']
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testSubmitBoostrapTypeInverse()
+    {
+        $result = $this->GanacheFormHelper->submit('Submit', ['ga_type' => GA_INVERSE]);
+        $expected = [
+            'input' => ['class' => implode(' ', [GA_BTN, GA_BTN_INVERSE]), 'type' => 'submit', 'value' => 'Submit']
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testSubmitBoostrapTypeLink()
+    {
+        $result = $this->GanacheFormHelper->submit('Submit', ['ga_type' => GA_LINK]);
+        $expected = [
+            'input' => ['class' => implode(' ', [GA_BTN, GA_BTN_LINK]), 'type' => 'submit', 'value' => 'Submit']
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testSubmitWithInvalidBoostrapType()
+    {
+        $result = $this->GanacheFormHelper->submit('Submit', ['ga_type' => 'super-type']);
+        $expected = [
+            'input' => ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit', 'value' => 'Submit']
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testSubmitBoostrapSizeMini()
+    {
+        $result = $this->GanacheFormHelper->submit('Submit', ['ga_size' => GA_MINI]);
+        $expected = [
+            'input' => ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT, GA_BTN_MINI]), 'type' => 'submit', 'value' => 'Submit']
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testSubmitBoostrapSizeSmall()
+    {
+        $result = $this->GanacheFormHelper->submit('Submit', ['ga_size' => GA_SMALL]);
+        $expected = [
+            'input' => ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT, GA_BTN_SMALL]), 'type' => 'submit', 'value' => 'Submit']
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testSubmitBoostrapSizeLarge()
+    {
+        $result = $this->GanacheFormHelper->submit('Submit', ['ga_size' => GA_LARGE]);
+        $expected = [
+            'input' => ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT, GA_BTN_LARGE]), 'type' => 'submit', 'value' => 'Submit']
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testSubmitWithInvalidBoostrapSize()
+    {
+        $result = $this->GanacheFormHelper->submit('Submit', ['ga_size' => 'super-size']);
+        $expected = [
+            'input' => ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit', 'value' => 'Submit']
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testSubmitWithBoostrapSizeAndBootstrapTypeDefined()
+    {
+        $result = $this->GanacheFormHelper->submit('Submit', ['ga_size' => GA_MINI, 'ga_type' => GA_PRIMARY]);
+        $expected = [
+            'input' => ['class' => implode(' ', [GA_BTN, GA_BTN_PRIMARY, GA_BTN_MINI]), 'type' => 'submit', 'value' => 'Submit']
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testSubmitWithExtraAttribute()
+    {
+        $result = $this->GanacheFormHelper->submit('Submit', ['id' => 'my-super-id']);
+        $expected = [
+            'input' => ['id' => 'my-super-id', 'class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit', 'value' => 'Submit']
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testSubmitWithExtraClass()
+    {
+        $result = $this->GanacheFormHelper->submit('Submit', ['class' => 'my-super-class']);
+        $expected = [
+            'input' => ['class' => implode(' ', ['my-super-class', GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit', 'value' => 'Submit']
+        ];
+        $this->assertTags($result, $expected);
+    }
 }
 
