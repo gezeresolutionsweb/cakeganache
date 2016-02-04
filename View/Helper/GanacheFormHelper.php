@@ -51,25 +51,25 @@ class GanacheFormHelper extends FormHelper
      * @return The new options with class values (btn, and btn-* according to initial options)
      *
      * Extra options:
-     *   - bootstrap-type: string Type of the button. GA_PRIMARY|GA_INFO|GA_SUCCESS|GA_WARNING|GA_DANGER|GA_INVERSE|GA_LINK
-     *   - bootstrap-size: string Size of the button. GA_MINI|GA_SMALL|GA_LARGE
+     *   - ga_type: string Type of the button. GA_PRIMARY|GA_INFO|GA_SUCCESS|GA_WARNING|GA_DANGER|GA_INVERSE|GA_LINK
+     *   - ga_size: string Size of the button. GA_MINI|GA_SMALL|GA_LARGE
      */
     public function addButtonClasses($options)
     {
         $options = $this->addClass($options, GA_BTN);
 
-        if(isset($options['bootstrap-type'])) {
-            if(in_array($options['bootstrap-type'], $this->buttonTypes)) {
-                $options = $this->addClass($options, GA_BTN . '-' . $options['bootstrap-type']);
+        if(isset($options['ga_type'])) {
+            if(in_array($options['ga_type'], $this->buttonTypes)) {
+                $options = $this->addClass($options, GA_BTN . '-' . $options['ga_type']);
             }
-            unset($options['bootstrap-type']);
+            unset($options['ga_type']);
         }
 
-        if(isset($options['bootstrap-size'])) {
-            if(in_array($options['bootstrap-size'], $this->buttonSizes)) {
-                $options = $this->addClass($options, GA_BTN . '-' . $options['bootstrap-size']);
+        if(isset($options['ga_size'])) {
+            if(in_array($options['ga_size'], $this->buttonSizes)) {
+                $options = $this->addClass($options, GA_BTN . '-' . $options['ga_size']);
             }
-            unset($options['bootstrap-size']);
+            unset($options['ga_size']);
         }
 
         return $options;
@@ -283,17 +283,16 @@ class GanacheFormHelper extends FormHelper
 	}
     
     /**
-     * 
      * Create & return a Twitter Like button.
      * 
-     * New options:
-     * 	- bootstrap-type: Twitter bootstrap button type (primary, danger, info, etc.)
-     * 	- bootstrap-size: Twitter bootstrap button size (mini, small, large)
-     * 
-    **/
-    public function button($title, $options = array()) {
-        $options = $this->addButtonClasses($options) ;
-        return parent::button($title, $options) ;
+     * Extra options:
+     * 	- ga_type : string Button type GA_PRIMARY|GA_INFO|GA_SUCCESS|GA_WARNING|GA_DANGER|GA_INVERSE|GA_LINK
+     * 	- ga_size : string Button size GA_MINI|GA_SMALL|GA_LARGE
+     */
+    public function button($title, $options = [])
+    {
+        $options = $this->addButtonClasses($options);
+        return parent::button($title, $options);
     }
     
     /**
