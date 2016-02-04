@@ -334,15 +334,17 @@ class GanacheFormHelper extends FormHelper
     /**
      * Create & return a twitter bootstrap dropdown button.
      * 
-     * @param $title The text in the button
-     * @param $menu HTML tags corresponding to menu options (which will be wrapped into <li> tag). To add separator, pass 'divider'.
-     * @param $options Options for button
-     *   wrap: Wrap or not with a btn-group div. Default: true.
-     * 
-    **/
-    public function dropdownButton ($title, $menu = array(), $options = array()) {
-        $wrap = $this->_extractOption( 'wrap', $options, true );
-        unset( $options[ 'wrap' ] );
+     * @param string $title The text in the button
+     * @param array $menu HTML tags corresponding to menu options (which will be wrapped into <li> tag). To add separator, pass 'divider'.
+     * @param array $options Options for button
+     *
+     * Extra options
+     *   - ga_wrap : bool Wrap or not with a btn-group div. true|false Default: true.
+     */
+    public function dropdownButton ($title, $menu = [], $options = [])
+    {
+        $wrap = $this->_extractOption('ga_wrap', $options, true);
+        unset($options['ga_wrap' ]);
 
         $options['type'] = false ;
         $options['data-toggle'] = GA_DROPDOWN;
@@ -350,35 +352,28 @@ class GanacheFormHelper extends FormHelper
 
         $outPut = '';
 
-        if( $wrap ) {
-            $outPut = '<div class="' . GA_BTN_GROUP . '">';
-        }
-        $outPut = $this->button($title.'<span class="' . GA_CARET . '"></span>', $options) ;
-        $outPut .= '<ul class="' . GA_DROPDOWN_MENU . '">' ;
+        $outPut = $this->button($title . $this->Html->tag('span', '', ['class' => GA_CARET]), $options);
+        $outPut .= $this->Html->tag('ul', null, ['class' => GA_DROPDOWN_MENU]);
         foreach ($menu as $action) {
-            if ($action === 'divider') {
-                $outPut .= '<li class="' . GA_DIVIDER . '"></li>' ;
+            if ($action === GA_DIVIDER) {
+                $outPut .= $this->Html->tag('li', '', ['class' => GA_DIVIDER]);
             } else {
-                if( is_array( $action ) ) {
-                    $outPut .= '<li';
-                    if( !empty( $action[ 'class' ] ) ) {
-                        $outPut .= ' class="' . $action[ 'class' ] . '"';
-                    }
-                    $outPut .= '>';
-                    
+                if (is_array($action)) {
                     $title = '';
                     if( !empty( $action[ 'title' ] ) ) {
                         $title = $action[ 'title' ];
                     }
-                    $outPut .= $action[ 'title' ] . '</li>';
+
+                    $outPut .= $this->Html->tag('li', $title, ['class' => (!empty($action['class'])) ? $action['class'] : null]);
                 } else {
-                    $outPut .= '<li>'.$action.'</li>' ;
+                    $outPut .= $this->Html->tag('li', $action);
                 }
             }
         }
-        $outPut .= '</ul>';
-        if( $wrap ) {
-            $outPut .= '</div>';
+        $outPut .= $this->Html->tag('/ul');
+
+        if ($wrap) {
+            $outPut .= $this->Html-tag('div', $outPut, ['class' => GA_BTN_GROUP]);
         }
         return $outPut ;
     }
