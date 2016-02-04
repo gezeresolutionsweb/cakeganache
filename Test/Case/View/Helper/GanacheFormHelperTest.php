@@ -1002,5 +1002,50 @@ class GanacheFormHelperTest extends CakeTestCase
 
         $this->assertTags($result, $expected);
     }
+
+    public function testButtonToolbarWithoutAnyOptions()
+    {
+        $result = $this->GanacheFormHelper->buttonToolbar([]);
+        $expected = [
+            'div' => ['class' => GA_BTN_TOOLBAR],
+            '/div'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testButtonToolbarWithOneButton()
+    {
+        $result = $this->GanacheFormHelper->buttonToolbar([
+            $this->GanacheFormHelper->button('Copy', ['type' => 'button', 'ga_type' => GA_PRIMARY])
+        ]);
+        $expected = [
+            'div' => ['class' => GA_BTN_TOOLBAR],
+            'button' => ['class' => implode(' ', [GA_BTN, GA_BTN_PRIMARY]), 'type' => 'button'],
+            'Copy',
+            '/button',
+            '/div'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testButtonToolbarWithTwoButton()
+    {
+        $result = $this->GanacheFormHelper->buttonToolbar([
+            $this->GanacheFormHelper->button('Copy', ['type' => 'button', 'ga_type' => GA_PRIMARY]),
+            $this->GanacheFormHelper->button('Edit', ['type' => 'button'])
+        ]);
+        $expected = [
+            'div' => ['class' => GA_BTN_TOOLBAR],
+            'button' => ['type' => 'button', 'class' => implode(' ', [GA_BTN, GA_BTN_PRIMARY])],
+            'Copy',
+            '/button',
+            ['button' => ['type' => 'button', 'class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT])]],
+            'Edit',
+            '/button',
+            '/div'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
 }
 

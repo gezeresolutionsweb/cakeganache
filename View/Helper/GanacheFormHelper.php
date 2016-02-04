@@ -307,7 +307,7 @@ class GanacheFormHelper extends FormHelper
      * @param array $options Options for div method
      *
      * Extra options:
-     *  - ga_vertical: bool Vertical button group ? true|false default: false
+     *  - ga_vertical : bool Vertical button group ? true|false default: false
      */
     public function buttonGroup (Array $buttons, $options = [])
     {
@@ -321,14 +321,12 @@ class GanacheFormHelper extends FormHelper
     }
     
     /**
-     * 
      * Create & return a Twitter Like button toolbar.
      * 
-     * @param $buttons The groups in the toolbar
-     * @param $options Options for div method
-     * 
-    **/
-    public function buttonToolbar ($buttonGroups, $options = array()) {
+     * @param array $buttons individual buttons of button groups.
+     * @param array $options Options for div method
+     */
+    public function buttonToolbar ($buttonGroups, $options = []) {
         $options = $this->addClass($options, GA_BTN_TOOLBAR);
         return $this->Html->tag('div', implode('', $buttonGroups), $options) ;
     }
