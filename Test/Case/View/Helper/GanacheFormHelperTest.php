@@ -896,6 +896,69 @@ class GanacheFormHelperTest extends CakeTestCase
 
         $this->assertTags($result, $expected);
     }
+
+
+    public function testButtonWithInvalidBoostrapType()
+    {
+        $result = $this->GanacheFormHelper->button('My label', ['ga_type' => 'super-type']);
+        $expected = [
+            'button' => ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit'],
+            'My label',
+            '/button'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testButtonBoostrapSizeMini()
+    {
+        $result = $this->GanacheFormHelper->button('My label', ['ga_size' => GA_MINI]);
+        $expected = [
+            'button' => ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT, GA_BTN_MINI]), 'type' => 'submit'],
+            'My label',
+            '/button'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testButtonBoostrapSizeSmall()
+    {
+        $result = $this->GanacheFormHelper->button('My label', ['ga_size' => GA_SMALL]);
+        $expected = [
+            'button' => ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT, GA_BTN_SMALL]), 'type' => 'submit'],
+            'My label',
+            '/button'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testButtonBoostrapSizeLarge()
+    {
+        $result = $this->GanacheFormHelper->button('My label', ['ga_size' => GA_LARGE]);
+        $expected = [
+            'button' => ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT, GA_BTN_LARGE]), 'type' => 'submit'],
+            'My label',
+            '/button'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testButtonWithInvalidBoostrapSize()
+    {
+        $result = $this->GanacheFormHelper->button('My label', ['ga_size' => 'super-size']);
+        $expected = [
+            'button' => ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit'],
+            'My label',
+            '/button'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testButtonWithBoostrapSizeAndBootstrapTypeDefined()
+    {
+        $result = $this->GanacheFormHelper->button('My label', ['ga_size' => GA_MINI, 'ga_type' => GA_PRIMARY]);
+        $expected = [
+            'button' => ['class' => implode(' ', [GA_BTN, GA_BTN_PRIMARY, GA_BTN_MINI]), 'type' => 'submit'],
+            'My label',
+            '/button'
+        ];
+        $this->assertTags($result, $expected);
+    }
+
     public function testButtonWithExtraClass()
     {
         $result = $this->GanacheFormHelper->button('My label', ['class' => 'my-custom-class']);
