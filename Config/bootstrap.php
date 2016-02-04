@@ -178,6 +178,7 @@ define('GA_STACK_2X', 'stack-2x'); // @test
 
 // DROPDOWN
 define('GA_BTN_GROUP', 'btn-group');
+define('GA_BTN_GROUP_VERTICAL', 'btn-group-vertical'); // @test
 define('GA_DROPDOWN', 'dropdown');
 define('GA_TOGGLE', 'toggle');
 define('GA_DROPDOWN_TOGGLE', 'dropdown-toggle');
