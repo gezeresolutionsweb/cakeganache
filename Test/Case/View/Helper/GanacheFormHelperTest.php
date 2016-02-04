@@ -940,5 +940,67 @@ class GanacheFormHelperTest extends CakeTestCase
 
         $this->assertTags($result, $expected);
     }
+
+    public function testButtonGroupWithoutAnyOptions()
+    {
+        $result = $this->GanacheFormHelper->buttonGroup([]);
+        $expected = [
+            'div' => ['class' => GA_BTN_GROUP],
+            '/div'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testButtonGroupWithOneButton()
+    {
+        $result = $this->GanacheFormHelper->buttonGroup([$this->GanacheFormHelper->button('Save')]);
+        $expected = [
+            'div' => ['class' => GA_BTN_GROUP],
+            'button' => ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit'],
+            'Save',
+            '/button',
+            '/div'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testButtonGroupWithTwoButtons()
+    {
+        $result = $this->GanacheFormHelper->buttonGroup([
+            $this->GanacheFormHelper->button('Save', ['ga_type' => GA_PRIMARY]),
+            $this->GanacheFormHelper->button('Clear', ['type' => 'reset'])
+        ]);
+        $expected = [
+            'div' => ['class' => GA_BTN_GROUP],
+            'button' => ['class' => implode(' ', [GA_BTN, GA_BTN_PRIMARY]), 'type' => 'submit'],
+            'Save',
+            '/button',
+            ['button' => ['type' => 'reset', 'class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT])]],
+            'Clear',
+            '/button',
+            '/div'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testButtonGroupVertical()
+    {
+        $result = $this->GanacheFormHelper->buttonGroup([
+            $this->GanacheFormHelper->button('Save', ['ga_type' => GA_PRIMARY]),
+            $this->GanacheFormHelper->button('Clear', ['type' => 'reset'])
+        ], ['ga_vertical' => true]);
+        $expected = [
+            'div' => ['class' => implode(' ', [GA_BTN_GROUP, GA_BTN_GROUP_VERTICAL])],
+            'button' => ['class' => implode(' ', [GA_BTN, GA_BTN_PRIMARY]), 'type' => 'submit'],
+            'Save',
+            '/button',
+            ['button' => ['type' => 'reset', 'class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT])]],
+            'Clear',
+            '/button',
+            '/div'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
 }
 
