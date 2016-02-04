@@ -797,21 +797,148 @@ class GanacheFormHelperTest extends CakeTestCase
 
     // @todo testing with radio input type. We don't use it a lot right now so we push the testing later on (SL)
 
-/*
     public function testButtonWithoutAnyOptions()
     {
-        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_INLINE]);
-        $result = $this->GanacheFormHelper->input('Contact.is_active', ['label' => false]);
+        $result = $this->GanacheFormHelper->button('My label');
         $expected = [
-            'label' => ['for' => 'ContactIsActive', 'class' => 'checkbox'],
-            ['input' => ['name' => 'data[Contact][is_active]', 'type' => 'hidden', 'id' => 'ContactIsActive_', 'value' => 0]],
-            ['input' => ['name' => 'data[Contact][is_active]', 'type' => 'checkbox', 'id' => 'ContactIsActive', 'value' => 1]],
-            '/label',
+            'button' => ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit'],
+            'My label',
+            '/button'
         ];
 
         $this->assertTags($result, $expected);
     }
- */
+    public function testButtonTypeDefault()
+    {
+        $result = $this->GanacheFormHelper->button('My label', ['ga_type' => GA_DEFAULT]);
+        $expected = [
+            'button' => ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit'],
+            'My label',
+            '/button'
+        ];
 
+        $this->assertTags($result, $expected);
+    }
+    public function testButtonTypePrimary()
+    {
+        $result = $this->GanacheFormHelper->button('My label', ['ga_type' => GA_PRIMARY]);
+        $expected = [
+            'button' => ['class' => implode(' ', [GA_BTN, GA_BTN_PRIMARY]), 'type' => 'submit'],
+            'My label',
+            '/button'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testButtonTypeInfo()
+    {
+        $result = $this->GanacheFormHelper->button('My label', ['ga_type' => GA_INFO]);
+        $expected = [
+            'button' => ['class' => implode(' ', [GA_BTN, GA_BTN_INFO]), 'type' => 'submit'],
+            'My label',
+            '/button'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testButtonTypeSuccess()
+    {
+        $result = $this->GanacheFormHelper->button('My label', ['ga_type' => GA_SUCCESS]);
+        $expected = [
+            'button' => ['class' => implode(' ', [GA_BTN, GA_BTN_SUCCESS]), 'type' => 'submit'],
+            'My label',
+            '/button'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testButtonTypeWarning()
+    {
+        $result = $this->GanacheFormHelper->button('My label', ['ga_type' => GA_WARNING]);
+        $expected = [
+            'button' => ['class' => implode(' ', [GA_BTN, GA_BTN_WARNING]), 'type' => 'submit'],
+            'My label',
+            '/button'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testButtonTypeDanger()
+    {
+        $result = $this->GanacheFormHelper->button('My label', ['ga_type' => GA_DANGER]);
+        $expected = [
+            'button' => ['class' => implode(' ', [GA_BTN, GA_BTN_DANGER]), 'type' => 'submit'],
+            'My label',
+            '/button'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testButtonTypeInverse()
+    {
+        $result = $this->GanacheFormHelper->button('My label', ['ga_type' => GA_INVERSE]);
+        $expected = [
+            'button' => ['class' => implode(' ', [GA_BTN, GA_BTN_INVERSE]), 'type' => 'submit'],
+            'My label',
+            '/button'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testButtonTypeLink()
+    {
+        $result = $this->GanacheFormHelper->button('My label', ['ga_type' => GA_LINK]);
+        $expected = [
+            'button' => ['class' => implode(' ', [GA_BTN, GA_BTN_LINK]), 'type' => 'submit'],
+            'My label',
+            '/button'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testButtonWithExtraClass()
+    {
+        $result = $this->GanacheFormHelper->button('My label', ['class' => 'my-custom-class']);
+        $expected = [
+            'button' => ['class' => implode(' ', ['my-custom-class', GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit'],
+            'My label',
+            '/button'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testButtonWithExtraAttribute()
+    {
+        $result = $this->GanacheFormHelper->button('My label', ['id' => 'my-custom-id']);
+        $expected = [
+            'button' => ['id' => 'my-custom-id', 'class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit'],
+            'My label',
+            '/button'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testButtonWithTypeButton()
+    {
+        $result = $this->GanacheFormHelper->button('My label', ['type' => 'button']);
+        $expected = [
+            'button' => ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'button'],
+            'My label',
+            '/button'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testButtonWithTypeReset()
+    {
+        $result = $this->GanacheFormHelper->button('My label', ['type' => 'reset']);
+        $expected = [
+            'button' => ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'reset'],
+            'My label',
+            '/button'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
 }
 
