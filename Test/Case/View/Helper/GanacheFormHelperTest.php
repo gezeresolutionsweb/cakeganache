@@ -781,5 +781,8 @@ class GanacheFormHelperTest extends CakeTestCase
 
         $this->assertTags($result, $expected);
     }
+
+
+    // @todo testing with radio input type. We don't use it a lot right now so we push the testing later on (SL)
 }
 
