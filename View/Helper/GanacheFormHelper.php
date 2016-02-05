@@ -164,11 +164,15 @@ class GanacheFormHelper extends FormHelper
      * @param string $fieldName Field name.
      * @param array $options Array of options including extra options.
      * @return string HTML string representing the form input.
+     * @todo Rename extra options append for ga_append.
+     * @todo Rename extra options prepend for ga_prepend.
      * 
      * Extra options:
      *  - ga_help       - string Help string.
      *  - ga_icon       - string Icon string.
      *  - ga_icon_after - bool Append icon to input. true|false Default: false
+     *  - append        - string Append a string to input.
+     *  - prepend       - string Prepend a string to input.
      */
     public function input($fieldName, $options = [])
     {
