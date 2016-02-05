@@ -166,20 +166,22 @@ class GanacheFormHelper extends FormHelper
      * @return string HTML string representing the form input.
      * 
      * Extra options:
-     *  - ga_help - string Help string.
+     *  - ga_help       - string Help string.
+     *  - ga_icon       - string Icon string.
+     *  - ga_icon_after - bool Append icon to input. true|false Default: false
      */
     public function input($fieldName, $options = [])
     {
         $gaHelp = $this->_extractOption('ga_help', $options, null);
-        unset ($options['ga_help']);
+        $gaIcon = $this->_extractOption('ga_icon', $options, null);
+        $gaIconAfter = $this->_extractOption('ga_icon_after', $options, false);
         $prepend = $this->_extractOption('prepend', $options, null);
-        unset ($options['prepend']);
         $append = $this->_extractOption('append', $options, null);
-        unset ($options['append']);
         $before = $this->_extractOption('before', $options, '');
         $after = $this->_extractOption('after', $options, '') ;
         $between = $this->_extractOption('between', $options, '');
         $label = $this->_extractOption('label', $options, null);
+        unset ($options['ga_help'], $options['ga_icon'], $options['ga_icon_after'], $options['prepend'], $options['append']);
         
         $this->setEntity($fieldName);
         $options = $this->_parseOptions($options);
@@ -251,32 +253,41 @@ class GanacheFormHelper extends FormHelper
             }
         }
 
+        if(!empty($gaIcon)) {
+            if($gaIconAfter === true) {
+                $append = $this->Html->icon($gaIcon);
+            } else {
+                $prepend = $this->Html->icon($gaIcon);
+            }
+        }
+
+        $prependContent = $appendContent = '';
         if ($prepend) {
             $beforeClass[] = GA_INPUT_PREPEND;
             if (is_string($prepend)) {
-                $before .= '<span class="' . GA_ADD_ON . '">' . $prepend.'</span>';
+                $prependContent = $this->Html->tag('span', $prepend, ['class' => GA_ADD_ON]);
             }
-            if (is_array($prepend)) {
+/*            if (is_array($prepend)) {
                 foreach ($prepend as $pre) {
                     $before .= $pre ;
                 }
-            }
+            }*/
         }
         if ($append) {
             $beforeClass[] = GA_INPUT_APPEND;
             if (is_string($append)) {
-                $between = '<span class="' . GA_ADD_ON . '">' . $append . '</span>' . $between;
+                $appendContent = $this->Html->tag('span', $append, ['class' => GA_ADD_ON]);
             }
-            if (is_array($append)) {
+/*            if (is_array($append)) {
                 foreach ($append as $apd) {
                     $between = $apd . $between;
                 }
-            }
+            }*/
         }
         
-        if ($beforeClass) {
-            $between = '<div class="' . implode(' ', $beforeClass) . '">' . $before;
-            $after = $after.'</div>';
+        if(!empty($beforeClass)) {
+            $between = $this->Html->tag('div', null, ['class' => implode(' ', $beforeClass)]) . $prependContent . $between;
+            $after = $after . $appendContent . $this->Html->tag('/div');
         }
 
         // Generate help string
