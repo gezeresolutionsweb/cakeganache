@@ -796,6 +796,68 @@ class GanacheFormHelperTest extends CakeTestCase
 
 
     // @todo testing with radio input type. We don't use it a lot right now so we push the testing later on (SL)
+    public function testGenerateButtonTitleWithoutAnyOptions()
+    {
+        $result = $this->GanacheFormHelper->generateButtonTitle('My label');
+        $expected = [
+            'My label',
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    
+    public function testGenerateButtonTitleWithIcon()
+    {
+        $result = $this->GanacheFormHelper->generateButtonTitle('My label', ['ga_icon' => 'home']);
+        $expected = [
+            'i' => ['class' => 'glyphicon glyphicon-home'],
+            '/i',
+            ' ',
+            'My label',
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testGenerateButtonTitleWithIconAfter()
+    {
+        $result = $this->GanacheFormHelper->generateButtonTitle('My label', ['ga_icon' => 'home', 'ga_icon_after' => true]);
+        $expected = [
+            'My label',
+            ' ',
+            'i' => ['class' => 'glyphicon glyphicon-home'],
+            '/i',
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testGenerateButtonTitleWithEmptyTitle()
+    {
+        $result = $this->GanacheFormHelper->generateButtonTitle('');
+        $expected = [
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testGenerateButtonTitleWithEmptyTitleAndIcon()
+    {
+        $result = $this->GanacheFormHelper->generateButtonTitle('', ['ga_icon' => 'home']);
+        $expected = [
+            'i' => ['class' => 'glyphicon glyphicon-home'],
+            '/i'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testGenerateButtonTitleWithEmptyTitleAndIconAfter()
+    {
+        $result = $this->GanacheFormHelper->generateButtonTitle('', ['ga_icon' => 'home', 'ga_icon_after' => true]);
+        $expected = [
+            'i' => ['class' => 'glyphicon glyphicon-home'],
+            '/i'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
 
     public function testButtonWithoutAnyOptions()
     {
@@ -896,7 +958,6 @@ class GanacheFormHelperTest extends CakeTestCase
 
         $this->assertTags($result, $expected);
     }
-
 
     public function testButtonWithInvalidBoostrapType()
     {
@@ -1111,6 +1172,34 @@ class GanacheFormHelperTest extends CakeTestCase
         $this->assertTags($result, $expected);
     }
 
+    public function testButtonWithIcon()
+    {
+        $result = $this->GanacheFormHelper->button('My label', ['ga_icon' => 'home']);
+        $expected = [
+            'button' => ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit'],
+            'i' => ['class' => 'glyphicon glyphicon-home'],
+            '/i',
+            ' ',
+            'My label',
+            '/button'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testButtonWithIconAfter()
+    {
+        $result = $this->GanacheFormHelper->button('My label', ['ga_icon' => 'home', 'ga_icon_after' => true]);
+        $expected = [
+            'button' => ['class' => implode(' ', [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit'],
+            'My label',
+            ' ',
+            'i' => ['class' => 'glyphicon glyphicon-home'],
+            '/i',
+            '/button'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
 
     // @todo testing with dropdown button. We don't use it a lot right now so we push the testing later on (SL)
 
@@ -1322,16 +1411,9 @@ class GanacheFormHelperTest extends CakeTestCase
     {
         $result = $this->GanacheFormHelper->end(['label' => 'Save it']);
         $expected = [
+            'div' => ['class' => GA_FORM_ACTIONS],
             'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit', 'value' => 'Save it'],
-            '/form'
-        ];
-        $this->assertTags($result, $expected);
-    }
-    public function testEndWithArrayLabelKeyAsArrayTextKeyDefined()
-    {
-        $result = $this->GanacheFormHelper->end(['label' => ['text' => 'Save it']]);
-        $expected = [
-            'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit', 'value' => 'Save it'],
+            '/div',
             '/form'
         ];
         $this->assertTags($result, $expected);

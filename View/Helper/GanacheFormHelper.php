@@ -18,6 +18,10 @@ App::import('Helper', 'Form') ;
 
 class GanacheFormHelper extends FormHelper
 {
+    public $helpers = [
+        'Html' => ['className' => 'CakeGanache.GanacheHtml']
+    ];
+
     // Current form type create.
     public $formType = null;
 
@@ -287,15 +291,51 @@ class GanacheFormHelper extends FormHelper
 		return parent::input($fieldName, $options);
 	}
     
+
+    /**
+     * Generate the button title.
+     *
+     * This will take into count if there is an icon to add before
+     * or after the title.
+     *
+     * @param string $title button title.
+     * @param string $options button options array.
+     * @return string Button title including the icon if there is one setted.
+     */
+    public function generateButtonTitle($title, $options = [])
+    {
+        $icon = $this->_extractOption('ga_icon', $options, null);
+        $iconAfter = $this->_extractOption('ga_icon_after', $options, false);
+
+        if(!empty($icon)) {
+            if(empty($title)) {
+                $title = $this->Html->icon($icon);
+            } else {
+                $items = [$this->Html->icon($icon), $title];
+                if($iconAfter) {
+                    $items = [$title, $this->Html->icon($icon)];
+                }
+                $title = implode(' ', $items);
+            }
+        }
+
+        return $title;
+    }
+
     /**
      * Create & return a Twitter Like button.
      * 
      * Extra options:
-     * 	- ga_type : string Button type GA_PRIMARY|GA_INFO|GA_SUCCESS|GA_WARNING|GA_DANGER|GA_INVERSE|GA_LINK
-     * 	- ga_size : string Button size GA_MINI|GA_SMALL|GA_LARGE
+     * 	- ga_type       : string Button type GA_PRIMARY|GA_INFO|GA_SUCCESS|GA_WARNING|GA_DANGER|GA_INVERSE|GA_LINK
+     * 	- ga_size       : string Button size GA_MINI|GA_SMALL|GA_LARGE
+     * 	- ga_icon       : string Icon name.
+     * 	- ga_icon_after : bool true|false Default: false
      */
     public function button($title, $options = [])
     {
+        $title = $this->generateButtonTitle($title, $options);
+        unset($options['ga_icon'], $options['ga_icon_after']);
+
         $options = $this->addButtonClasses($options);
         return parent::button($title, $options);
     }
@@ -378,20 +418,29 @@ class GanacheFormHelper extends FormHelper
         return $outPut ;
     }
     
-    /**
+    /*
      * Create & return a Twitter Like submit input.
-     * 
+     *
+     * @param string $title Button title.
+     * @param array $options Button options.
+     * @return string HTML submit button.
+     *
      * Extra options:
      * 	- ga_type : string Button type GA_PRIMARY|GA_INFO|GA_SUCCESS|GA_WARNING|GA_DANGER|GA_INVERSE|GA_LINK
      * 	- ga_size : string Button size GA_MINI|GA_SMALL|GA_LARGE
+     * 	- ga_icon       : string Icon name.
+     * 	- ga_icon_after : bool true|false Default: false
      */    
-    public function submit($caption = null, $options = [])
+    public function submit($title = null, $options = [])
     {
+        $title = $this->generateButtonTitle($title, $options);
+        unset($options['ga_icon'], $options['ga_icon_after']);
+
         if (!isset($options['div'])) {
             $options['div'] = false;
         }
         $options = $this->addButtonClasses($options);
-        return parent::submit($caption, $options);
+        return parent::submit($title, $options);
     }
 	
     /**
@@ -401,17 +450,17 @@ class GanacheFormHelper extends FormHelper
      * @param array $secureAttributes To add secure attributes.
      *
      * Extra options:
-     * 	- ga_type : string Button type GA_PRIMARY|GA_INFO|GA_SUCCESS|GA_WARNING|GA_DANGER|GA_INVERSE|GA_LINK
-     * 	- ga_size : string Button size GA_MINI|GA_SMALL|GA_LARGE
+     * 	- ga_type       : string Button type GA_PRIMARY|GA_INFO|GA_SUCCESS|GA_WARNING|GA_DANGER|GA_INVERSE|GA_LINK
+     * 	- ga_size       : string Button size GA_MINI|GA_SMALL|GA_LARGE
      */
     public function end($options = null, $secureAttributes = [])
     {
         if ($options === null) {
-            return parent::end($options, $secureAttributes) ;
+            return parent::end($options, $secureAttributes);
         }
 
         if (is_string($options)) {
-            $options = array('label' => $options) ;
+            $options = ['label' => $options];
         }
 
         if (!in_array($this->formType, [GA_INLINE, GA_SEARCH])) {
