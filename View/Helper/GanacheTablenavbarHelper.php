@@ -18,20 +18,20 @@ App::import('CakeGanache.Helper', 'GanacheHtml');
 App::import('CakeGanache.Helper', 'GanacheForm');
 App::import('Routing', 'Router');
 
-class GanacheTablenavbarHelper extends AppHelper {
-    public $helpers = array(
-        'Html' => array( 'className' => 'CakeGanache.GanacheHtml', 'prefix' => 'fa', 'iconPrefix' => ' fa-' ),
+class GanacheTablenavbarHelper extends AppHelper
+{
+    public $helpers = [
+        'Html' => ['className' => 'CakeGanache.GanacheHtml', 'prefix' => 'fa', 'iconPrefix' => ' fa-'],
         'Form' => 'CakeGanache.GanacheForm',
-    );
+    ];
 
     /**
-     * 
      * Extract options from $options, returning $default if $key is not found.
-     * 
      */
-    protected function _extractOption ($key, $options, $default = null) {
+    protected function _extractOption($key, $options, $default = null)
+    {
         if (isset($options[$key])) {
-            return $options[$key] ;
+            return $options[$key];
         }
         return $default ;
     }
@@ -58,68 +58,69 @@ class GanacheTablenavbarHelper extends AppHelper {
      *  - showClearFiltersButton: true, false
      *  - responsive: false, true
      */
-    public function show($options = array()) {
+    public function show($options = [])
+    {
         // Extract options.
-        $actions = $this->_extractOption( 'actions', $options, array() );
-        $buttonFilterTitle = $this->_extractOption( 'buttonFilterTitle', $options, '' );
-        $buttonClearFiltersTitle = $this->_extractOption( 'buttonClearFiltersTitle', $options, '' );
-        $filters = $this->_extractOption( 'filters', $options, array() );
-        $search = $this->_extractOption( 'search', $options, false );
-        $searchAction = $this->_extractOption( 'searchAction', $options, array(
+        $actions = $this->_extractOption('actions', $options, []);
+        $buttonFilterTitle = $this->_extractOption('buttonFilterTitle', $options, '');
+        $buttonClearFiltersTitle = $this->_extractOption('buttonClearFiltersTitle', $options, '');
+        $filters = $this->_extractOption('filters', $options, []);
+        $search = $this->_extractOption('search', $options, false);
+        $searchAction = $this->_extractOption('searchAction', $options, [
             'plugin' => $this->request->plugin,
             'controller' => $this->request->controller,
             'action' => $this->request->action
-        ) );
+        ]);
 
-        $searchFormModel = $this->_extractOption( 'searchFormModel', $options, 'Filter' );
-        $searchFormOptions = $this->_extractOption( 'searchFormOptions', $options, array() );
-        $searchPlaceholder = $this->_extractOption( 'searchPlaceholder', $options, '' );
-        $showSearchField = $this->_extractOption( 'showSearchField', $options, true );
-        $searchFieldPrepend = $this->_extractOption( 'searchFieldPrepend', $options, $this->Html->icon( 'search' ) );
-        $searchFieldname = $this->_extractOption( 'searchFieldname', $options, $searchFormModel . '.search' );
-        $showFilterButton = $this->_extractOption( 'showFilterButton', $options, true );
-        $showClearFilterButton = $this->_extractOption( 'showClearFilterButton', $options, true );
-        $responsive = $this->_extractOption( 'responsive', $options, false );
+        $searchFormModel = $this->_extractOption('searchFormModel', $options, 'Filter');
+        $searchFormOptions = $this->_extractOption('searchFormOptions', $options, []);
+        $searchPlaceholder = $this->_extractOption('searchPlaceholder', $options, '');
+        $showSearchField = $this->_extractOption('showSearchField', $options, true);
+        $searchFieldPrepend = $this->_extractOption('searchFieldPrepend', $options, $this->Html->icon('search'));
+        $searchFieldname = $this->_extractOption('searchFieldname', $options, $searchFormModel . '.search');
+        $showFilterButton = $this->_extractOption('showFilterButton', $options, true);
+        $showClearFilterButton = $this->_extractOption('showClearFilterButton', $options, true);
+        $responsive = $this->_extractOption('responsive', $options, false);
 
-        $formOptions = array(
+        $formOptions = [
             'class' => GA_FORM_INLINE,
             'type' => 'get',
-        );
+        ];
 
-        if( $search === true ) {
+        if ($search === true) {
             $form = $this->Form->create($searchFormModel, array_merge($formOptions, $searchFormOptions));
 
             // Treat filters if any.
-            foreach($filters as $fieldname => $options) {
-                if(is_int($fieldname)) {
-                    if(is_array($options)) {
+            foreach ($filters as $fieldname => $options) {
+                if (is_int($fieldname)) {
+                    if (is_array($options)) {
                         $fieldname = 'field' . $fieldname;
                     } else {
                         $fieldname = $options;
-                        $options = array();
+                        $options = [];
                     }
                 }
 
                 // If no model name defined
-                if(mb_strpos('.', $fieldname) === false) {
+                if (mb_strpos('.', $fieldname) === false) {
                     $fieldname = $searchFormModel . '.' . $fieldname;
                 }
 
                 $form .= $this->_generateFilterInput($fieldname, $options);
             }
 
-            if( $showSearchField === true ) {
-                $form .= $this->Form->input( $searchFieldname, array(
+            if ($showSearchField === true) {
+                $form .= $this->Form->input($searchFieldname, [
                     'type' => 'text',
                     'placeholder' => $searchPlaceholder,
                     'label' => false,
                     'action' => $searchAction,
                     'div' => false,
                     'prepend' => $searchFieldPrepend
-                ) );
+                ]);
             }
 
-            if( $showFilterButton === true ) {
+            if ($showFilterButton === true) {
                 $form .= PHP_EOL;
                 $form .= $this->Form->button('', [
                     'ga_type' => GA_PRIMARY,
@@ -129,7 +130,7 @@ class GanacheTablenavbarHelper extends AppHelper {
                 ]);
             }
 
-            if( $showClearFilterButton === true ) {
+            if ($showClearFilterButton === true) {
                 $form .= PHP_EOL;
                 $form .= $this->Form->button('', [
                     'ga_icon' => 'times',
@@ -145,36 +146,38 @@ class GanacheTablenavbarHelper extends AppHelper {
 
         // Treat actions if some.
         $actionContainer = '';
-        if( !empty( $actions ) ) {
+        if (!empty($actions)) {
             $allAction = '';
-            foreach( $actions as $action ) {
+            foreach ($actions as $action) {
                 $allAction .= $action;
             }
-            $buttonToolbar = $this->Html->tag( 'div', $allAction, array( 'class' => GA_BTN_TOOLBAR ) );
-            $actionContainer = $this->Html->tag( 'div', $buttonToolbar, array( 'class' => GA_PULL_RIGHT . ' ' . GA_TABLENAVBAR_ACTIONS ) );
+            $buttonToolbar = $this->Html->tag('div', $allAction, ['class' => GA_BTN_TOOLBAR]);
+            $actionContainer = $this->Html->tag('div', $buttonToolbar, ['class' => implode(' ', [GA_PULL_RIGHT, GA_TABLENAVBAR_ACTIONS])]);
         }
 
         $inner = $actionContainer . $form;
 
-        $inner = $this->Html->tag( 'div', $inner, array( 'class' => GA_NAVBAR_INNER ) );
+        $inner = $this->Html->tag('div', $inner, ['class' => GA_NAVBAR_INNER]);
 
-        return $this->Html->tag( 'div', $inner, array( 'class' => GA_NAVBAR . ' ' . GA_TABLENAVBAR, 'data-provide' => GA_TABLENAVBAR ) );
+        return $this->Html->tag('div', $inner, ['class' => implode(' ', [GA_NAVBAR, GA_TABLENAVBAR]), 'data-provide' => GA_TABLENAVBAR]);
     }
 
-    private function _generateFilterInput($fieldname, $options = array()) {
-        $defaultOptions = array(
+    private function _generateFilterInput($fieldname, $options = [])
+    {
+        $defaultOptions = [
             'div' => false,
             'label' => false,
-        );
+        ];
 
-        $options = array_merge( $defaultOptions, $options );
+        $options = array_merge($defaultOptions, $options);
 
 
-        if(!empty($options['type']) && $options['type'] === GA_SELECTPICKER) {
-            $options += array('class' => GA_SELECTPICKER . ' ' . GA_SHOW_TICK);
+        if (!empty($options['type']) && $options['type'] === GA_SELECTPICKER) {
+            $options += ['class' => implode(' ', [GA_SELECTPICKER, GA_SHOW_TICK])];
             $options['type'] = 'select';
         }
 
-        return $this->Form->input( $fieldname, $options );
+        return $this->Form->input($fieldname, $options);
     }
 }
+
