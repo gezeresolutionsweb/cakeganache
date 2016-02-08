@@ -94,7 +94,8 @@ class GanacheFormHelper extends FormHelper
      * Extra options:
      *  - ga_type : string Form type GA_NAVBAR|GA_HORIZONTAL|GA_INLINE|GA_SEARCH
      */
-    public function create($model = null, $options = []) {
+    public function create($model = null, $options = [])
+    {
         $this->formType = $this->_extractOption('ga_type', $options, null);
 		unset($options['ga_type']);
 
@@ -129,7 +130,8 @@ class GanacheFormHelper extends FormHelper
      * @param array $options Array of options to passed to parent::error().
      * @return string HTML string of the error message for the field.
      */
-    public function error($field, $text = null, $options = []) {
+    public function error($field, $text = null, $options = [])
+    {
         $this->setEntity($field);
         $optField = $this->_magicOptions([]);
         $options['wrap'] = $this->_extractOption('wrap', $options, 'span');
@@ -149,7 +151,8 @@ class GanacheFormHelper extends FormHelper
      * @param array $options Array of options for the label.
      * @return string HTML string of the label.
      */
-    public function label($fieldName = null, $text = null, $options = []) {
+    public function label($fieldName = null, $text = null, $options = [])
+    {
         $this->setEntity($fieldName);
         $optField = $this->_magicOptions([]);
         if ($this->formType === GA_HORIZONTAL && $optField['type'] !== 'checkbox') {
@@ -381,7 +384,8 @@ class GanacheFormHelper extends FormHelper
      * @param array $buttons individual buttons of button groups.
      * @param array $options Options for div method
      */
-    public function buttonToolbar ($buttonGroups, $options = []) {
+    public function buttonToolbar ($buttonGroups, $options = [])
+    {
         $options = $this->addClass($options, GA_BTN_TOOLBAR);
         return $this->Html->tag('div', implode('', $buttonGroups), $options) ;
     }
@@ -508,7 +512,6 @@ class GanacheFormHelper extends FormHelper
  */
 
     /**
-     * 
      * Create a basic bootstrap search form.
      * 
      * @param $model The model of the form
@@ -518,62 +521,59 @@ class GanacheFormHelper extends FormHelper
      * 	- label: The input label (default false)
      * 	- placeholder: The input placeholder (default "Search... ")
      * 	- button: The search button text (default: "Search")
-     *     
-    **/
-    public function searchForm ($model = null, $options = array()) {
-        
-        $label = $this->_extractOption('label', $options, false) ;
-        unset($options['label']) ;
-        $placeholder = $this->_extractOption('placeholder', $options, 'Search... ') ;
-        unset($options['placeholder']) ;
-        $button = $this->_extractOption('button', $options, 'Search') ;
-        unset($options['button']) ;
+     */
+    public function searchForm ($model = null, $options = [])
+    {
+        $label = $this->_extractOption('label', $options, false);
+        unset($options['label']);
+        $placeholder = $this->_extractOption('placeholder', $options, 'Search... ');
+        unset($options['placeholder']);
+        $button = $this->_extractOption('button', $options, 'Search');
+        unset($options['button']);
         
         $output = '' ;
         
-        $output .= $this->create($model, array_merge(array('search' => true, 'inline' => (bool)$label), $options)) ;
-        $output .= $this->input('search', array(
+        $output .= $this->create($model, array_merge(['search' => true, 'inline' => (bool)$label], $options));
+        $output .= $this->input('search', [
             'label' => $label,
             'placeholder' => $placeholder,
-            'append' => array(
-                $this->button($button, array('style' => 'vertical-align: middle'))
-            )
-        )) ;
+            'append' => [
+                $this->button($button, ['style' => 'vertical-align: middle'])
+            ]
+        ]);
         $output .= $this->end() ;
     
         return $output ;
     }
 
     /** Special elements to be refactorize a better way later **/
-    public function translateInput( $fieldName, $options, $languages = array() ) {
-        $options = $this->_parseOptions( $options );
+    public function translateInput( $fieldName, $options, $languages = [])
+    {
+        $options = $this->_parseOptions($options);
 
         // If no translations passed, not require to do translations so we return standard input.
-        if( empty( $languages ) ) {
-            return $this->input( $fieldName, $options );
+        if (empty($languages)) {
+            return $this->input($fieldName, $options);
         }
 
         $html = '<div class="' . GA_CONTROL_GROUP . '">';
 
         // Generate label.
-
         $html .= $this->_getLabel( $fieldName, $options );
 
-
         $html .= '<div class="' . GA_CONTROLS . '">';
-
 
         $html .= '<div role="tabpanel">';
         $html .= '<ul class="' . GA_NAV . ' ' . GA_TABS . '" role="tablist">';
         $isFirst = true;
-        foreach( $languages as $language ) {
+        foreach($languages as $language) {
             $classActive = '';
-            if( $isFirst === true ) {
+            if($isFirst === true) {
                 $isFirst = false;
                 $classActive = ' class="' . GA_ACTIVE . '"';
             }
 
-            $this->setEntity( 'tab' . $fieldName . '.' . $language );
+            $this->setEntity('tab' . $fieldName . '.' . $language);
             $aria = $this->domId(); // Inflector to slugify;
             $href = '#' . $aria;
             $html .= '<li role="presentation"' . $classActive . '><a href="' . $href . '" aria-controls="' . $aria . '" role="tab" data-toggle="tab">' . $language . '</a></li>';
@@ -582,17 +582,17 @@ class GanacheFormHelper extends FormHelper
 
         $html .= '<div class="' . GA_TAB_CONTENT . '">';
         $isFirst = true;
-        foreach( $languages as $language ) {
+        foreach($languages as $language) {
             $classActive = '';
-            if( $isFirst === true ) {
+            if($isFirst === true) {
                 $isFirst = false;
                 $classActive = ' active';
             }
-            $this->setEntity( 'tab' . $fieldName . '.' . $language );
+            $this->setEntity('tab' . $fieldName . '.' . $language);
             $aria = $this->domId(); // Inflector to slugify;
             $html .= '<div role="tabpanel" class="' . GA_TAB_PANE . $classActive . '" id="' . $aria . '">';
-            $options[ 'label' ] = false;
-            $html .= $this->input( $fieldName . '.' . $language, $options );
+            $options['label'] = false;
+            $html .= $this->input($fieldName . '.' . $language, $options);
             $html .= '</div> <!-- .tab-pane -->';
         }
         $html .= '</div> <!-- .tab-content -->';
@@ -603,11 +603,7 @@ class GanacheFormHelper extends FormHelper
         $html .= '</div> <!-- .controls -->';
         $html .= '</div> <!-- .control-group -->';
 
-
         return $html;
-
-
-
     }
 
     /**
@@ -615,16 +611,15 @@ class GanacheFormHelper extends FormHelper
      * This function come from the old BootstrapHelper use in Energy plugin in EnergyNoramlization add and edit.
      */
     public function inputWithLocalModificationField($args) {
-        $defaultValues = array(
+        $defaultValues = [
             'fieldname' => '',
             'label' => '',
             'adjustedFieldname' => '',
             'helptext' => ''
-        );
+        ];
         $args = array_merge($defaultValues, $args);
 
         // Verify everything is there
-        
         if (!isset($args['fieldname']) && empty($args['fieldname'])) {
             throw new InvalidArgumentException(__d('cakeganache', 'Fieldname argument is mandatory !'));
         }
@@ -651,15 +646,16 @@ class GanacheFormHelper extends FormHelper
         if (isset($args['class']) && !empty($args['class'])) {
             $class = $args['class'] . ' ' . GA_INPUT_BLOCK_LEVEL;
         }
-        return $this->input($args['fieldname'], array(
-            'label' => array(
+
+        return $this->input($args['fieldname'], [
+            'label' => [
                 'text' => $args['label']
-            ) ,
+            ],
             'class' => $class,
             'before' => '',
             'type' => $type,
             'between' => '<div class="' . GA_CONTROLS . '"><div class="' . GA_ROW_FLUID . '"><div class="' . GA_3 . '">',
-            'after' => '</div><div class="' . GA_3 . '">' . $this->input($args['adjustedFieldname'], array(
+            'after' => '</div><div class="' . GA_3 . '">' . $this->input($args['adjustedFieldname'], [
                 'class' => $class,
                 'div' => false,
                 'type' => $type,
@@ -667,8 +663,8 @@ class GanacheFormHelper extends FormHelper
                 'placeholder' => __d('cakeganache', 'Adjusted value') ,
                 'between' => '',
                 'after' => '</div></div>'
-            )) . '</div>' . $helptext
-        ));
+            ]) . '</div>' . $helptext
+        ]);
     }
 }
 
