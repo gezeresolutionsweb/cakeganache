@@ -136,7 +136,7 @@ class GanacheFormHelper extends FormHelper
         $optField = $this->_magicOptions([]);
         $options['wrap'] = $this->_extractOption('wrap', $options, 'span');
         $errorClass = GA_HELP_BLOCK;
-        if($this->formType === GA_HORIZONTAL && $optField['type'] !== 'checkbox') {
+        if($this->formType === GA_INLINE) {
             $errorClass = GA_HELP_INLINE;
         }
         $options = $this->addClass($options, $errorClass);
@@ -247,6 +247,7 @@ class GanacheFormHelper extends FormHelper
                 $options['label'] = false;
                 break;
             case GA_HORIZONTAL:
+                $options['format'] = ['before', 'label', 'between', 'input', 'error', 'after'];
                 $beforeClass[] = GA_CONTROLS;
                 break;
             case GA_SEARCH:

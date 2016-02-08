@@ -345,7 +345,7 @@ class GanacheFormHelperTest extends CakeTestCase
         $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_HORIZONTAL]);
         $result = $this->GanacheFormHelper->error('name');
         $expected = [
-            'span' => ['class' => GA_HELP_INLINE],
+            'span' => ['class' => GA_HELP_BLOCK],
             'Please provide a contact name.',
             '/span'
         ];
@@ -358,7 +358,7 @@ class GanacheFormHelperTest extends CakeTestCase
         $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_INLINE]);
         $result = $this->GanacheFormHelper->error('name');
         $expected = [
-            'span' => ['class' => GA_HELP_BLOCK],
+            'span' => ['class' => GA_HELP_INLINE],
             'Please provide a contact name.',
             '/span'
         ];
