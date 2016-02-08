@@ -14,15 +14,17 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-App::import('Helper', 'Html') ;
+App::import('Helper', 'Html');
 
-class GanacheHtmlHelper extends HtmlHelper {
+class GanacheHtmlHelper extends HtmlHelper
+{
     /**
      * Library icon prefix use by icon().
      */
     protected $prefix = 'glyphicon';
 
-    public function __construct(View $View, $settings = array()) {
+    public function __construct(View $View, $settings = [])
+    {
         if( isset( $settings[ 'prefix' ] ) ) {
             $this->prefix = $settings[ 'prefix' ];
             unset( $settings[ 'prefix' ] );
@@ -32,28 +34,28 @@ class GanacheHtmlHelper extends HtmlHelper {
     }
 
 
-    private function _extractOption ($key, $options, $default = null) {
+    private function _extractOption ($key, $options, $default = null)
+    {
         if (isset($options[$key])) {
-            return $options[$key] ;
+            return $options[$key];
         }
         return $default ;
     }
 
     /**
-     * 
      * Check type values in $options, returning null if no option is found or if
      * option found is equal to $default or if otion is not in $avail.
-     * 
-     **/
-    private function _extractType ($options, $key = 'type', $default = GA_INFO, $avail = array(GA_INFO, GA_SUCCESS, GA_WARNING, GA_ERROR)) {
-            $type = $this->_extractOption($key, $options, $default) ;
-            if ($type == $default) {
-                return null ;
+     */
+    private function _extractType ($options, $key = 'type', $default = GA_INFO, $avail = [GA_INFO, GA_SUCCESS, GA_WARNING, GA_ERROR])
+    {
+            $type = $this->_extractOption($key, $options, $default);
+            if ($type === $default) {
+                return null;
             }
             if (!in_array($type, $avail)) {
-                return null ;
+                return null;
             }
-            return $type ;
+            return $type;
         }
 
     /**
@@ -260,7 +262,8 @@ class GanacheHtmlHelper extends HtmlHelper {
      *
      * @todo This function is almost the same as label(). Generalization.
      */
-    public function badge ($text, $options = []) {
+    public function badge ($text, $options = [])
+    {
         $types = [GA_DEFAULT, GA_SUCCESS, GA_WARNING, GA_INFO, GA_IMPORTANT, GA_INVERSE];
 
         $type = GA_DEFAULT;
@@ -299,7 +302,8 @@ class GanacheHtmlHelper extends HtmlHelper {
      * Extra options:
      * 	- ga_separator : string Crumb separator character.
      */
-    public function getCrumbList($options = [], $startText = null) {
+    public function getCrumbList($options = [], $startText = null)
+    {
         $separator = '/';
         if(!empty($options['ga_separator'])) {
             $separator = $options['ga_separator'];
@@ -307,9 +311,9 @@ class GanacheHtmlHelper extends HtmlHelper {
         }
         $options['separator'] = $this->tag('span', $separator, ['class' => GA_DIVIDER]);
 
-        $options = $this->addClass($options, GA_BREADCRUMB) ;
+        $options = $this->addClass($options, GA_BREADCRUMB);
 
-        return parent::getCrumbList ($options, $startText) ;
+        return parent::getCrumbList ($options, $startText);
     }
 
     /**
@@ -348,11 +352,11 @@ class GanacheHtmlHelper extends HtmlHelper {
             $options = $this->addClass($options, GA_ALERT_BLOCK);
         }
 
-        $options = $this->addClass($options, GA_ALERT . '-' . $type) ;
+        $options = $this->addClass($options, GA_ALERT . '-' . $type);
 
         $class = '';
         if(!empty($options['class'])) {
-            $class = $options['class'] ;
+            $class = $options['class'];
             unset($options['class']);
         }
 
@@ -380,7 +384,8 @@ class GanacheHtmlHelper extends HtmlHelper {
      * @todo Should we verify that we are not busting 100%.
      * @todo Should we recompute the percentage to attribute ?
      */
-    public function progress($widths, $options = []) {
+    public function progress($widths, $options = [])
+    {
         $types = [GA_INFO, GA_SUCCESS, GA_WARNING, GA_DANGER];
 
         $type = GA_INFO;
@@ -714,7 +719,8 @@ class GanacheHtmlHelper extends HtmlHelper {
      * - ga_bordered           : bool Get a bordered table. (Default: false)
      * - ga_hover              : bool Get a hovered table. (Default: false)
      */
-    public function tableOpen($options = []) {
+    public function tableOpen($options = [])
+    {
         $tableClasses = [GA_TABLE];
 
         if(isset($options['ga_condensed'])) {
@@ -760,20 +766,25 @@ class GanacheHtmlHelper extends HtmlHelper {
      *    
      * @return string HTML string of closing table HTML tag.
      */
-    public function tableClose() {
+    public function tableClose()
+    {
         return $this->tag('/table') . PHP_EOL;
     }
 
-    public function tableHeaderOpen() {
+    public function tableHeaderOpen()
+    {
     }
 
-    public function tableHeaderClose() {
+    public function tableHeaderClose()
+    {
     }
 
-    public function tableBodyOpen() {
+    public function tableBodyOpen()
+    {
     }
 
-    public function tableBodyClose() {
+    public function tableBodyClose()
+    {
     }
 }
 
