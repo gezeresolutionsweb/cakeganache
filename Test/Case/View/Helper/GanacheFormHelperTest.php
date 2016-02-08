@@ -494,6 +494,25 @@ class GanacheFormHelperTest extends CakeTestCase
         ];
         $this->assertTags($result, $expected);
     }
+    public function testInputWithHelpTextFormTypeHorizontal()
+    {
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_HORIZONTAL]);
+        $result = $this->GanacheFormHelper->input('Contact.name', ['ga_help' => 'This is a help text.']);
+        $expected = [
+            'div' => ['class' => GA_CONTROL_GROUP],
+            'label' => ['for' => 'ContactName', 'class' => GA_CONTROL_LABEL],
+            'Name',
+            '/label',
+            ['div' => ['class' => GA_CONTROLS]],
+            'input' => ['name' => 'data[Contact][name]', 'maxlength' => 255, 'type' => 'text', 'id' => 'ContactName'],
+            'span' => ['class' => GA_HELP_BLOCK],
+            'This is a help text.',
+            '/span',
+            '/div',
+            '/div'
+        ];
+        $this->assertTags($result, $expected);
+    }
     public function testInputWithPrepend()
     {
         $this->GanacheFormHelper->create('Contact');

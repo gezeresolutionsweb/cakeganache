@@ -268,6 +268,11 @@ class GanacheFormHelper extends FormHelper
             }
         }
 
+        // Generate help string
+        if(!empty($gaHelp)) {
+            $after .= $this->Html->tag('span', $gaHelp, ['class' => GA_HELP_BLOCK]);
+        }
+
         $prependContent = $appendContent = '';
         if ($prepend) {
             $beforeClass[] = GA_INPUT_PREPEND;
@@ -297,10 +302,6 @@ class GanacheFormHelper extends FormHelper
             $after = $after . $appendContent . $this->Html->tag('/div');
         }
 
-        // Generate help string
-        if(!empty($gaHelp)) {
-            $after .= $this->Html->tag('span', $gaHelp, ['class' => GA_HELP_BLOCK]);
-        }
 
         $options['before'] = $before;
         $options['after'] = $after;
