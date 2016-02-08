@@ -16,10 +16,12 @@
 
 App::import('Helper', 'Paginator');
 
-class GanachePaginatorHelper extends PaginatorHelper {
+class GanachePaginatorHelper extends PaginatorHelper
+{
     public $uses = ['Html'];
 
-    private function _extractOption ($key, $options, $default = null) {
+    private function _extractOption ($key, $options, $default = null)
+    {
         if (isset($options[$key])) {
             return $options[$key] ;
         }
@@ -27,75 +29,66 @@ class GanachePaginatorHelper extends PaginatorHelper {
     }
     
     /**
-     * 
      * Get link to the first pagination page.
      * 
      * @param $title The link text
      * @param $options Options for link
      * @param $disabledtitle Title when link is disabled
      * @param $disabledOptions Options for link when it's disabled
-     * 
-    **/
-    public function first ($title = '<<', $options = array(), $disabledTitle = null, $disabledOptions = array()) {
-        $options = array_merge(array('tag' => 'li'), $options) ;
-        $disabledOptions = array_merge(array('tag' => 'li', 'class' => GA_DISABLED, 'disabledTag' => 'a'),
-            $disabledOptions) ;
-        return parent::first($title, $options, $disabledTitle, $disabledOptions) ;        
+     */
+    public function first($title = '<<', $options = [], $disabledTitle = null, $disabledOptions = [])
+    {
+        $options = array_merge(['tag' => 'li'], $options);
+        $disabledOptions = array_merge(['tag' => 'li', 'class' => GA_DISABLED, 'disabledTag' => 'a'], $disabledOptions);
+        return parent::first($title, $options, $disabledTitle, $disabledOptions);
     }
     
     /**
-     * 
      * Get link to the previous pagination page.
      * 
      * @param $title The link text
      * @param $options Options for link
      * @param $disabledtitle Title when link is disabled
      * @param $disabledOptions Options for link when it's disabled
-     * 
-    **/
-    public function prev ($title = '<', $options = array(), $disabledTitle = null, $disabledOptions = array()) {
-        $options = array_merge(array('tag' => 'li'), $options) ;
-        $disabledOptions = array_merge(array('tag' => 'li', 'class' => GA_DISABLED, 'disabledTag' => 'a'),
-            $disabledOptions) ;
+     */
+    public function prev($title = '<', $options = [], $disabledTitle = null, $disabledOptions = [])
+    {
+        $options = array_merge(['tag' => 'li'], $options) ;
+        $disabledOptions = array_merge(['tag' => 'li', 'class' => GA_DISABLED, 'disabledTag' => 'a'], $disabledOptions);
         return parent::prev($title, $options, $disabledTitle, $disabledOptions);
     }
     
     /**
-     * 
      * Get link to the next pagination page.
      * 
      * @param $title The link text
      * @param $options Options for link
      * @param $disabledtitle Title when link is disabled
      * @param $disabledOptions Options for link when it's disabled
-     * 
-    **/
-    public function next ($title = '>', $options = array(), $disabledTitle = null, $disabledOptions = array()) {
-        $options = array_merge(array('tag' => 'li'), $options) ;
-        $disabledOptions = array_merge(array('tag' => 'li', 'class' => GA_DISABLED, 'disabledTag' => 'a'),
-            $disabledOptions) ;
+     */
+    public function next($title = '>', $options = [], $disabledTitle = null, $disabledOptions = [])
+    {
+        $options = array_merge(['tag' => 'li'], $options);
+        $disabledOptions = array_merge(['tag' => 'li', 'class' => GA_DISABLED, 'disabledTag' => 'a'], $disabledOptions);
         return parent::next($title, $options, $disabledTitle, $disabledOptions) ;        
     }
     
     /**
-     * 
      * Get link to the last pagination page.
      * 
      * @param $title The link text
      * @param $options Options for link
      * @param $disabledtitle Title when link is disabled
      * @param $disabledOptions Options for link when it's disabled
-     * 
-    **/
-    public function last ($title = '>>', $options = array(), $disabledTitle = null, $disabledOptions = array()) {
-        $options = array_merge(array('tag' => 'li'), $options) ;
-        $disabledOptions = array_merge(array('tag' => 'li', 'class' => GA_DISABLED, 'disabledTag' => 'a'),
-            $disabledOptions) ;
+     */
+    public function last ($title = '>>', $options = [], $disabledTitle = null, $disabledOptions = [])
+    {
+        $options = array_merge(['tag' => 'li'], $options);
+        $disabledOptions = array_merge(['tag' => 'li', 'class' => GA_DISABLED, 'disabledTag' => 'a'], $disabledOptions);
         return parent::last($title, $options, $disabledTitle, $disabledOptions) ;        
     }
     
     /**
-     * 
      * Get pagination link list.
      * 
      * @param $options Options for link element
@@ -103,11 +96,10 @@ class GanachePaginatorHelper extends PaginatorHelper {
      * Extra options:
      *  - alignment left/center/right (default center)
      *  - size mini/small/normal/large (default normal)
-     *       
-    **/
-    public function numbers ($options = array()) {
-    
-        $default = array(
+     */
+    public function numbers ($options = [])
+    {    
+        $default = [
             'tag' => 'li',
             'currentTag' => 'a', 
             'separator' => '', 
@@ -117,20 +109,23 @@ class GanachePaginatorHelper extends PaginatorHelper {
             'alignment' => 'center',
             'before' => '',
             'after' => ''
-        );
-        $options = array_merge($default, $options) ;
+        ];
+
+        $options = array_merge($default, $options);
         
-        $size = $options['size'] ; unset($options['size']) ;
-        $alignment = $options['alignment'] ; unset($options['alignment']) ;
+        $size = $options['size'];
+        unset($options['size']);
+        $alignment = $options['alignment'];
+        unset($options['alignment']);
         
         $class = GA_PAGINATION;
         
         if ($size !== 'normal') {
-            $class .= ' pagination-'.$size ;
+            $class .= ' ' . GA_PAGINATION . '-' . $size;
         }
         
         if ($alignment !== 'left') {
-            $class .= ' pagination-'.$alignment ;
+            $class .= ' ' . GA_PAGINATION . '-' . $alignment;
             if ($alignment === 'center') {
                 $class .= 'ed' ;
             }
@@ -173,9 +168,9 @@ class GanachePaginatorHelper extends PaginatorHelper {
      *       - {:last} Display last button.
      *       - {:ulClose} Display ul close tag. User with {:ulOpen}.
      *       - {:wrapClose} Display wrap close tag. Use with {:wrapOpen}.
-     *
      */
-    public function pagination( $options = array() ) {
+    public function pagination($options = [])
+    {
         $default = [
             'counterOptions' => [],
             'firstTitle' => '<<',
@@ -196,35 +191,37 @@ class GanachePaginatorHelper extends PaginatorHelper {
             'type' => 'list', // plain, list
             'format' => '{:wrapOpen} {:counter} {:ulOpen} {:first} {:prev} {:numbers} {:next} {:last} {:ulClose} {:wrapClose}'
         ];
-        $options = array_merge( $default, $options );
+        $options = array_merge($default, $options);
 
-        if( $options[ 'type' ] === 'plain' ) {
-            $substitutions = array(
+        if($options['type'] === 'plain') {
+            $substitutions = [
                 '{:ulOpen}' => '',
                 '{:ulClose}' => ''
-            );
-            $options[ 'format' ] = str_replace( array_keys( $substitutions ), array_values( $substitutions ), $options[ 'format' ] );
-            $options[ 'numbersOptions' ][ 'tag' ] = '';
-            $options[ 'firstOptions' ][ 'tag' ] = '';
-            $options[ 'prevOptions' ][ 'tag' ] = '';
-            $options[ 'nextOptions' ][ 'tag' ] = '';
-            $options[ 'lastOptions' ][ 'tag' ] = '';
+            ];
+            $options['format'] = str_replace(array_keys($substitutions), array_values($substitutions), $options['format']);
+            $options['numbersOptions']['tag'] = '';
+            $options['firstOptions']['tag'] = '';
+            $options['prevOptions']['tag'] = '';
+            $options['nextOptions']['tag'] = '';
+            $options['lastOptions']['tag'] = '';
         }
 
-        extract( $options );
+        extract($options);
 
-        $map = array(
-            '{:wrapOpen}' => $options[ 'wrapOpen' ],
-            '{:counter}' => parent::counter( $counterOptions ),
-            '{:ulOpen}' => $this->Html->tag( 'ul' ),
-            '{:first}' => $this->first( $firstTitle, $firstOptions ),
-            '{:prev}' => $this->prev( $prevTitle, $prevOptions, $prevDisabledTitle, $prevDisabledOptions ),
-            '{:numbers}' => $this->numbers( $numbersOptions ),
-            '{:next}' => $this->next( $nextTitle, $nextOptions, $nextDisabledTitle, $nextDisabledOptions ),
-            '{:last}' => $this->last( $lastTitle, $lastOptions ),
-            '{:ulClose}' => $this->Html->useTag( 'tagend', 'ul' ),
-            '{:wrapClose}' => $options[ 'wrapClose' ]
-        );
-        return str_replace( array_keys( $map ), array_values( $map ), $options[ 'format' ] );
+        $map = [
+            '{:wrapOpen}' => $options['wrapOpen'],
+            '{:counter}' => parent::counter($counterOptions),
+            '{:ulOpen}' => $this->Html->tag('ul'),
+            '{:first}' => $this->first($firstTitle, $firstOptions),
+            '{:prev}' => $this->prev($prevTitle, $prevOptions, $prevDisabledTitle, $prevDisabledOptions),
+            '{:numbers}' => $this->numbers($numbersOptions),
+            '{:next}' => $this->next($nextTitle, $nextOptions, $nextDisabledTitle, $nextDisabledOptions),
+            '{:last}' => $this->last($lastTitle, $lastOptions),
+            '{:ulClose}' => $this->Html->useTag('tagend', 'ul'),
+            '{:wrapClose}' => $options['wrapClose']
+        ];
+
+        return str_replace(array_keys($map), array_values($map), $options['format']);
     }
 }
+
