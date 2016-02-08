@@ -121,26 +121,27 @@ class GanacheTablenavbarHelper extends AppHelper {
 
             if( $showFilterButton === true ) {
                 $form .= PHP_EOL;
-                $form .= $this->Form->button( $this->Html->icon( 'filter' ), array(
-                    'bootstrap-type' => 'primary',
+                $form .= $this->Form->button('', [
+                    'ga_type' => GA_PRIMARY,
+                    'ga_icon' => 'filter',
                     'title' => $buttonFilterTitle,
                     'data-toggle' => GA_TABLENAVBAR_SEARCH_BTN
-                ) );
+                ]);
             }
 
             if( $showClearFilterButton === true ) {
                 $form .= PHP_EOL;
-                $form .= $this->Form->button( $this->Html->icon( 'times' ), array(
+                $form .= $this->Form->button('', [
+                    'ga_icon' => 'times',
                     'title' => $buttonClearFiltersTitle,
                     'data-toggle' => GA_TABLENAVBAR_CLEAR_BTN
-                ) );
+                ]);
             }
 
             $form .= $this->Form->end();
         } else {
             $form = '';
         }
-
 
         // Treat actions if some.
         $actionContainer = '';
