@@ -533,6 +533,28 @@ class GanacheFormHelperTest extends CakeTestCase
 
         $this->assertTags($result, $expected);
     }
+    public function testInputWithPrependFormTypeHorizontal()
+    {
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_HORIZONTAL]);
+        $result = $this->GanacheFormHelper->input('Contact.name', ['prepend' => 'name']);
+        $expected = [
+            'div' => ['class' => GA_CONTROL_GROUP],
+            'label' => ['for' => 'ContactName', 'class' => GA_CONTROL_LABEL],
+            'Name',
+            '/label',
+            ['div' => ['class' => GA_CONTROLS]],
+            ['div' => ['class' => GA_INPUT_PREPEND]],
+            ['span' => ['class' => GA_ADD_ON]],
+            'name',
+            '/span',
+            'input' => ['name' => 'data[Contact][name]', 'maxlength' => 255, 'type' => 'text', 'id' => 'ContactName'],
+            '/div',
+            '/div',
+            '/div'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
     public function testInputWithAppend()
     {
         $this->GanacheFormHelper->create('Contact');
@@ -547,6 +569,28 @@ class GanacheFormHelperTest extends CakeTestCase
             ['span' => ['class' => GA_ADD_ON]],
             'name',
             '/span',
+            '/div',
+            '/div'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testInputWithAppendFormTypeHorizontal()
+    {
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_HORIZONTAL]);
+        $result = $this->GanacheFormHelper->input('Contact.name', ['append' => 'name']);
+        $expected = [
+            'div' => ['class' => GA_CONTROL_GROUP],
+            'label' => ['for' => 'ContactName', 'class' => GA_CONTROL_LABEL],
+            'Name',
+            '/label',
+            ['div' => ['class' => GA_CONTROLS]],
+            ['div' => ['class' => GA_INPUT_APPEND]],
+            'input' => ['name' => 'data[Contact][name]', 'maxlength' => 255, 'type' => 'text', 'id' => 'ContactName'],
+            ['span' => ['class' => GA_ADD_ON]],
+            'name',
+            '/span',
+            '/div',
             '/div',
             '/div'
         ];
@@ -576,6 +620,31 @@ class GanacheFormHelperTest extends CakeTestCase
 
         $this->assertTags($result, $expected);
     }
+    public function testInputWithAppendAndPrependFormTypeHorizontal()
+    {
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_HORIZONTAL]);
+        $result = $this->GanacheFormHelper->input('Contact.name', ['append' => 'name', 'prepend' => 'namep']);
+        $expected = [
+            'div' => ['class' => GA_CONTROL_GROUP],
+            'label' => ['for' => 'ContactName', 'class' => GA_CONTROL_LABEL],
+            'Name',
+            '/label',
+            ['div' => ['class' => GA_CONTROLS]],
+            ['div' => ['class' => implode(' ', [GA_INPUT_PREPEND, GA_INPUT_APPEND])]],
+            ['span' => ['class' => GA_ADD_ON]],
+            'namep',
+            '/span',
+            'input' => ['name' => 'data[Contact][name]', 'maxlength' => 255, 'type' => 'text', 'id' => 'ContactName'],
+            ['span' => ['class' => GA_ADD_ON]],
+            'name',
+            '/span',
+            '/div',
+            '/div',
+            '/div'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
     public function testInputWithIcon()
     {
         $this->GanacheFormHelper->create('Contact');
@@ -597,6 +666,29 @@ class GanacheFormHelperTest extends CakeTestCase
 
         $this->assertTags($result, $expected);
     }
+    public function testInputWithIconFormTypeHorizontal()
+    {
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_HORIZONTAL]);
+        $result = $this->GanacheFormHelper->input('Contact.name', ['ga_icon' => 'home']);
+        $expected = [
+            'div' => ['class' => GA_CONTROL_GROUP],
+            'label' => ['for' => 'ContactName', 'class' => GA_CONTROL_LABEL],
+            'Name',
+            '/label',
+            ['div' => ['class' => GA_CONTROLS]],
+            ['div' => ['class' => GA_INPUT_PREPEND]],
+            ['span' => ['class' => GA_ADD_ON]],
+            'i' => ['class' => 'glyphicon glyphicon-home'],
+            '/i',
+            '/span',
+            'input' => ['name' => 'data[Contact][name]', 'maxlength' => 255, 'type' => 'text', 'id' => 'ContactName'],
+            '/div',
+            '/div',
+            '/div'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
     public function testInputWithIconAfter()
     {
         $this->GanacheFormHelper->create('Contact');
@@ -612,6 +704,29 @@ class GanacheFormHelperTest extends CakeTestCase
             'i' => ['class' => 'glyphicon glyphicon-home'],
             '/i',
             '/span',
+            '/div',
+            '/div'
+        ];
+
+        $this->assertTags($result, $expected);
+    }
+    public function testInputWithIconAfterFormTypeHorizontal()
+    {
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_HORIZONTAL]);
+        $result = $this->GanacheFormHelper->input('Contact.name', ['ga_icon' => 'home', 'ga_icon_after' => true]);
+        $expected = [
+            'div' => ['class' => GA_CONTROL_GROUP],
+            'label' => ['for' => 'ContactName', 'class' => GA_CONTROL_LABEL],
+            'Name',
+            '/label',
+            ['div' => ['class' => GA_CONTROLS]],
+            ['div' => ['class' => GA_INPUT_APPEND]],
+            'input' => ['name' => 'data[Contact][name]', 'maxlength' => 255, 'type' => 'text', 'id' => 'ContactName'],
+            ['span' => ['class' => GA_ADD_ON]],
+            'i' => ['class' => 'glyphicon glyphicon-home'],
+            '/i',
+            '/span',
+            '/div',
             '/div',
             '/div'
         ];

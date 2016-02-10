@@ -248,7 +248,6 @@ class GanacheFormHelper extends FormHelper
                 break;
             case GA_HORIZONTAL:
                 $options['format'] = ['before', 'label', 'between', 'input', 'error', 'after'];
-                $beforeClass[] = GA_CONTROLS;
                 break;
             case GA_SEARCH:
                 $options['div'] = false;
@@ -275,8 +274,9 @@ class GanacheFormHelper extends FormHelper
         }
 
         $prependContent = $appendContent = '';
+        $divAppendPrependClasses = [];
         if ($prepend) {
-            $beforeClass[] = GA_INPUT_PREPEND;
+            $divAppendPrependClasses[] = GA_INPUT_PREPEND;
             if (is_string($prepend)) {
                 $prependContent = $this->Html->tag('span', $prepend, ['class' => GA_ADD_ON]);
             }
@@ -287,7 +287,7 @@ class GanacheFormHelper extends FormHelper
             }*/
         }
         if ($append) {
-            $beforeClass[] = GA_INPUT_APPEND;
+            $divAppendPrependClasses[] = GA_INPUT_APPEND;
             if (is_string($append)) {
                 $appendContent = $this->Html->tag('span', $append, ['class' => GA_ADD_ON]);
             }
@@ -297,12 +297,21 @@ class GanacheFormHelper extends FormHelper
                 }
             }*/
         }
-        
-        if(!empty($beforeClass)) {
-            $between = $this->Html->tag('div', null, ['class' => implode(' ', $beforeClass)]) . $prependContent . $between;
-            $after = $after . $appendContent . $this->Html->tag('/div');
-        }
 
+        if(!empty($append) || !empty($prepend)) {
+            if($this->formType === GA_HORIZONTAL) {
+                $between = $this->Html->tag('div', null, ['class' => GA_CONTROLS]) . $this->Html->tag('div', null, ['class' => implode(' ', $divAppendPrependClasses)]) . $prependContent . $between;
+                $after = $after . $appendContent . $this->Html->tag('/div') . $this->Html->tag('/div');
+            } else {
+                $between = $this->Html->tag('div', null, ['class' => implode(' ', $divAppendPrependClasses)]) . $prependContent . $between;
+                $after = $after . $appendContent . $this->Html->tag('/div');
+            }
+        } else {
+            if($this->formType === GA_HORIZONTAL && !in_array($options['type'], ['checkbox'])) {
+                $between = $this->Html->tag('div', null, ['class' => GA_CONTROLS]) . $between;
+                $after = $after . $this->Html->tag('/div');
+            }
+        }
 
         $options['before'] = $before;
         $options['after'] = $after;
