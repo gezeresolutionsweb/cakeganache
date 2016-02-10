@@ -1640,8 +1640,10 @@ class GanacheFormHelperTest extends CakeTestCase
         $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_HORIZONTAL]);
         $result = $this->GanacheFormHelper->end('Save');
         $expected = [
-            'div' => ['class' => GA_FORM_ACTIONS],
+            'div' => ['class' => GA_CONTROL_GROUP],
+            ['div' => ['class' => GA_CONTROLS]],
             'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit', 'value' => 'Save'],
+            '/div',
             '/div',
             '/form'
         ];
@@ -1653,6 +1655,20 @@ class GanacheFormHelperTest extends CakeTestCase
         $expected = [
             'div' => ['class' => GA_FORM_ACTIONS],
             'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit', 'value' => 'Save it'],
+            '/div',
+            '/form'
+        ];
+        $this->assertTags($result, $expected);
+    }
+    public function testEndWithArrayLabelKeyDefinedAsStringFormHorizontal()
+    {
+        $this->GanacheFormHelper->create('Contact', ['ga_type' => GA_HORIZONTAL]);
+        $result = $this->GanacheFormHelper->end(['label' => 'Save it']);
+        $expected = [
+            'div' => ['class' => GA_CONTROL_GROUP],
+            ['div' => ['class' => GA_CONTROLS]],
+            'input' => ['class' => implode(' ',  [GA_BTN, GA_BTN_DEFAULT]), 'type' => 'submit', 'value' => 'Save it'],
+            '/div',
             '/div',
             '/form'
         ];

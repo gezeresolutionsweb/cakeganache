@@ -493,11 +493,29 @@ class GanacheFormHelper extends FormHelper
             $options = ['label' => $options];
         }
 
-        if (!in_array($this->formType, [GA_INLINE, GA_SEARCH])) {
+        if (!in_array($this->formType, [GA_INLINE, GA_SEARCH, GA_HORIZONTAL])) {
             if (!array_key_exists('div', $options)) {
                 $options['div'] = [];
             }
             $options['div']['class'] = GA_FORM_ACTIONS;
+        }
+
+        if($this->formType === GA_HORIZONTAL) {
+            if (!array_key_exists('div', $options)) {
+                $options['div'] = [];
+            }
+            $options['div']['class'] = GA_CONTROL_GROUP;
+            $before = $this->Html->tag('div', null, ['class' => GA_CONTROLS]);
+            if(!empty($options['before'])) {
+                $before = $options['before'] . $before;
+            }
+            $options['before'] = $before;
+
+            $after = $this->Html->tag('/div');
+            if(!empty($options['after'])) {
+                $after = $after . $options['after'];
+            }
+            $options['after'] = $after;
         }
 
         return parent::end($options,$secureAttributes);
