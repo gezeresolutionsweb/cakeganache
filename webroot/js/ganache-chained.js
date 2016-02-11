@@ -37,16 +37,38 @@
         var id = $(this.options.parent).val();
         
         if(id === 0 || id === '' || id === '0') {
-            $(this.element + ' option:first').attr('selected', 'selected');
-            $(this.element).trigger('change');
+            var firstOptionsText = '';
+            if($(this.element).size() === 1 && parseInt($(this.element + ' option:first').val()) === 0) {
+                firstOptionsText = $(this.element + ' option:first').text();
+            }
+            $(this.element).empty();
+            if(firstOptionsText !== '') {
+                $(this.element).append($('<option>', {value : 0}).text(firstOptionsText));
+                $(this.element + ' option:first').attr('selected', 'selected');
+            }
+
             $(this.element).attr('disabled', 'disabled');
+            $(this.element).trigger('change');
         } else {
             $.post(this.options.url, {id: id}, $.proxy(this.loaded, this));
+           $(this.element).attr('disabled', null);
         }
     };
 
     Chained.prototype.loaded = function(data) {
-        $(this.element).replaceWith(data);
+        var firstOptionsText = '';
+        if($(this.element).size() === 1 && parseInt($(this.element + ' option:first').val()) === 0) {
+            firstOptionsText = $(this.element + ' option:first').text();
+        }
+
+        $(this.element).empty(); 
+        var mThis = this;
+        if(firstOptionsText !== '') {
+            $(this.element).append($('<option>', {value : 0}).text(firstOptionsText));
+        }
+        $.each(data.options, function(key, value) {
+          $(mThis.element).append($('<option>', {value : key}).text(value)); 
+        });
     };
 
     // CHAINED PLUGIN DEFINITION
