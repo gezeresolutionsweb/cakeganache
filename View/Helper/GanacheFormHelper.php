@@ -443,7 +443,7 @@ class GanacheFormHelper extends FormHelper
         $outPut .= $this->Html->tag('/ul');
 
         if ($wrap) {
-            $outPut .= $this->Html-tag('div', $outPut, ['class' => GA_BTN_GROUP]);
+            $outPut .= $this->Html->tag('div', $outPut, ['class' => GA_BTN_GROUP]);
         }
         return $outPut ;
     }
