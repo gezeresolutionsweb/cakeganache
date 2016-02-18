@@ -771,11 +771,11 @@ class GanacheHtmlHelper extends HtmlHelper
         return $this->tag('/table') . PHP_EOL;
     }
 
-    public function tableHeaderOpen()
+    public function tableHeadOpen()
     {
     }
 
-    public function tableHeaderClose()
+    public function tableHeadClose()
     {
     }
 
