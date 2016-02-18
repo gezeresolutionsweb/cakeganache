@@ -773,18 +773,22 @@ class GanacheHtmlHelper extends HtmlHelper
 
     public function tableHeadOpen()
     {
+        return $this->tag('thead', null) . PHP_EOL;
     }
 
     public function tableHeadClose()
     {
+        return $this->tag('/thead') . PHP_EOL;
     }
 
     public function tableBodyOpen()
     {
+        return $this->tag('tbody') . PHP_EOL;
     }
 
     public function tableBodyClose()
     {
+        return $this->tag('/tbody') . PHP_EOL;
     }
 }
 
