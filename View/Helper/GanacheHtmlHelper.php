@@ -826,5 +826,91 @@ class GanacheHtmlHelper extends HtmlHelper
     {
         return $this->tbodyClose();
     }
+
+    /**
+     * Wrapper function to create a simple table really quickly.
+     *
+     * @param array $data Array of data we want to iterate over.
+     * @param array $options Array of options.
+     * @return string HTML string of a full simple table.
+     *
+     * Extra options
+     * - ga_options  : array Table options. @see GanacheHtmlHelper::tableOpen().
+     * - ga_headers  : array Headers. @see HtmlHelper::tableHeaders()
+     * - ga_cells    : array Cells. @see HtmlHelper::tableCells()
+     * - ga_actions  : array Cells actions pattern to be generated for each row.
+     */
+    /*
+    public function table(array $data, array $options = []) {
+        $isSimpleData = $this->isSimpleData($data);
+
+        $defaultOptions = [
+            'ga_options' => [],
+            'ga_headers' => [],
+            'ga_cells' => [],
+        ];
+
+        $options = array_merge($defaultOptions, $options);
+
+        // Parse tokens.
+        if(!empty($options['ga_headers'])) {
+            foreach($options['ga_headers'] as $k => $v) {
+                $options['ga_headers'][$k] = $this->replaceTokens($v, $data);
+            }
+        }
+
+        if(!empty($options['ga_cells'])) {
+            foreach($options['ga_cells'] as $k => $v) {
+                $options['ga_cells'][$k] = $this->replaceTokens($v, $data);
+            }
+        }
+
+        // @todo Treat ga_actions here.
+
+        $table = $this->tableOpen($options['ga_options']);
+
+        if($options['ga_headers']) {
+        $table .= $this->theadOpen();
+            $table .= $this->tableHeaders($options['ga_headers']);
+            $table .= $this->theadClose();
+        }
+
+        $table .= $this->tbodyOpen();
+        if($isSimpleData) {
+            $table .= $this->tableCells($options['ga_cells']);
+        } else {
+            // Must pars cells for specific data.
+        }
+        $table .= $this->tbodyClose();
+        $table .= $this->tableClose();
+    }
+     */
+
+    /*
+    public function replaceTokens($string, $data)
+    {
+        preg_match_all('/\{.*\}/', $string, $matches);
+
+        if($this->isSimpleData($data)) {
+            $string = str_replace('}', '', $string);
+            $string = str_replace('{', '{n}.', $string);
+            $value = Hash::extract($data, $string);
+        } else {
+        }
+    }
+     */
+
+    /**
+     * Returns is the array only contain indexed keys.
+     *
+     * @param array $data Array of data.
+     * @return bool Is the array only contain indexed keys.
+     */
+    /*
+    public function isSimpleData(array $data)
+    {
+        return (count(array_keys($data)) === count(array_filter(array_keys($data), 'is_numeric')));
+    }
+     */
 }
 
