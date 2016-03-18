@@ -771,24 +771,60 @@ class GanacheHtmlHelper extends HtmlHelper
         return $this->tag('/table') . PHP_EOL;
     }
 
-    public function tableHeadOpen()
+    public function theadOpen()
     {
         return $this->tag('thead', null) . PHP_EOL;
     }
 
-    public function tableHeadClose()
+    public function theadClose()
     {
         return $this->tag('/thead') . PHP_EOL;
     }
 
-    public function tableBodyOpen()
+    public function tbodyOpen()
     {
         return $this->tag('tbody') . PHP_EOL;
     }
 
-    public function tableBodyClose()
+    public function tbodyClose()
     {
         return $this->tag('/tbody') . PHP_EOL;
+    }
+
+    /**
+     * @deprecated
+     * @see GanacheHtmlHelper::theadOpen()
+     */
+    public function tableHeadOpen()
+    {
+        return $this->theadOpen();
+    }
+
+    /**
+     * @deprecated
+     * @see GanacheHtmlHelper::theadClose()
+     */
+    public function tableHeadClose()
+    {
+        return $this->theadClose();
+    }
+
+    /**
+     * @deprecated
+     * @see GanacheHtmlHelper::tbodyOpen()
+     */
+    public function tableBodyOpen()
+    {
+        return $this->tbodyOpen();
+    }
+
+    /**
+     * @deprecated
+     * @see GanacheHtmlHelper::tbodyClose()
+     */
+    public function tableBodyClose()
+    {
+        return $this->tbodyClose();
     }
 }
 
