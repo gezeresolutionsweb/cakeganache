@@ -791,42 +791,6 @@ class GanacheHtmlHelper extends HtmlHelper
     }
 
     /**
-     * @deprecated
-     * @see GanacheHtmlHelper::theadOpen()
-     */
-    public function tableHeadOpen()
-    {
-        return $this->theadOpen();
-    }
-
-    /**
-     * @deprecated
-     * @see GanacheHtmlHelper::theadClose()
-     */
-    public function tableHeadClose()
-    {
-        return $this->theadClose();
-    }
-
-    /**
-     * @deprecated
-     * @see GanacheHtmlHelper::tbodyOpen()
-     */
-    public function tableBodyOpen()
-    {
-        return $this->tbodyOpen();
-    }
-
-    /**
-     * @deprecated
-     * @see GanacheHtmlHelper::tbodyClose()
-     */
-    public function tableBodyClose()
-    {
-        return $this->tbodyClose();
-    }
-
-    /**
      * Wrapper function to create a simple table really quickly.
      *
      * @param array $data Array of data we want to iterate over.
