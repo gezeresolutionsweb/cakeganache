@@ -648,14 +648,13 @@ class GanacheHtmlHelper extends HtmlHelper
         return parent::div($class , null, $options) . PHP_EOL;
     }
     /**
-     * Close div elements
+     * Close div element
      *
-     * @param int $nb Number of div you want to close
      * @return string End tags div
      */
-    public function close($nb = 1)
+    public function close()
     {
-        return str_repeat($this->tag('/div', null) . PHP_EOL, $nb);
+        return $this->tag('/div', null) . PHP_EOL;
     }
 
     /**

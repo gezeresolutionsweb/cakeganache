@@ -859,16 +859,10 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $expected = '<div class="row-fluid">' . PHP_EOL;
         $this->assertEquals($result, $expected);
     }
-    public function testCloseWithoutOptions()
+    public function testClose()
     {
         $result = $this->GanacheHtmlHelper->close();
         $expected = '</div>' . PHP_EOL;
-        $this->assertEquals($result, $expected);
-    }
-    public function testCloseWithTwo()
-    {
-        $result = $this->GanacheHtmlHelper->close(2);
-        $expected = '</div>' . PHP_EOL . '</div>' . PHP_EOL;
         $this->assertEquals($result, $expected);
     }
     public function testHeaderWithOptions()
