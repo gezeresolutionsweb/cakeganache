@@ -913,7 +913,7 @@ class GanacheHtmlHelper extends HtmlHelper
      */
 
     public function well($content = null, $options = []) {
-        return $this->div(GA_WELL, $content, $options);
+        return $this->div(GA_WELL, $content, $options) . PHP_EOL;
     }
 }
 
