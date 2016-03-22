@@ -911,5 +911,9 @@ class GanacheHtmlHelper extends HtmlHelper
         return (count(array_keys($data)) === count(array_filter(array_keys($data), 'is_numeric')));
     }
      */
+
+    public function well($content = null, $options = []) {
+        return $this->div(GA_WELL, $content, $options);
+    }
 }
 
