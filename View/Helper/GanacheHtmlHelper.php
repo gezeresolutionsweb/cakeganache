@@ -790,6 +790,16 @@ class GanacheHtmlHelper extends HtmlHelper
         return $this->tag('/tbody') . PHP_EOL;
     }
 
+    public function tfootOpen()
+    {
+        return $this->tag('tfoot', null) . PHP_EOL;
+    }
+
+    public function tfootClose()
+    {
+        return $this->tag('/tfoot') . PHP_EOL;
+    }
+
     /**
      * Wrapper function to create a simple table really quickly.
      *
