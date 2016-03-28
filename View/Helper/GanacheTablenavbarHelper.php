@@ -56,7 +56,7 @@ class GanacheTablenavbarHelper extends AppHelper
      *  - searchFieldname: Search field name.
      *  - showSearchField: true, false
      *  - showFilterButton: true, false
-     *  - showClearFiltersButton: true, false
+     *  - showClearFilterButton: true, false
      *  - responsive: false, true
      */
     public function show($options = [])
