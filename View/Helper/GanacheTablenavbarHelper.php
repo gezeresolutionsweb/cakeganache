@@ -44,6 +44,7 @@ class GanacheTablenavbarHelper extends AppHelper
      * Extra options:
      *  - actions: Actions buttons.
      *  - buttonFilterTitle: Button filter title.
+     *  - buttonFilterIcon: Button filter icon.
      *  - buttonClearFiltersTitle: Button clear filters title.
      *  - filters: Filter form input elements.
      *  - search: false, true
@@ -63,6 +64,7 @@ class GanacheTablenavbarHelper extends AppHelper
         // Extract options.
         $actions = $this->_extractOption('actions', $options, []);
         $buttonFilterTitle = $this->_extractOption('buttonFilterTitle', $options, '');
+        $buttonFilterIcon = $this->_extractOption('buttonFilterIcon', $options, 'filter');
         $buttonClearFiltersTitle = $this->_extractOption('buttonClearFiltersTitle', $options, '');
         $filters = $this->_extractOption('filters', $options, []);
         $search = $this->_extractOption('search', $options, false);
@@ -124,7 +126,7 @@ class GanacheTablenavbarHelper extends AppHelper
                 $form .= PHP_EOL;
                 $form .= $this->Form->button('', [
                     'ga_type' => GA_PRIMARY,
-                    'ga_icon' => 'filter',
+                    'ga_icon' => $buttonFilterIcon,
                     'title' => $buttonFilterTitle,
                     'data-toggle' => GA_TABLENAVBAR_SEARCH_BTN
                 ]);
