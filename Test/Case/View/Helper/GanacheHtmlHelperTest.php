@@ -103,6 +103,13 @@ class GanacheHtmlHelperTest extends CakeTestCase
         $this->assertEquals($result, $expected);
     }
 
+    public function testSimpleIconLink()
+    {
+        $result = $this->GanacheHtmlHelper->iconLink('home');
+        $expected = '<a href="#" title="home"><i class="glyphicon glyphicon-home"></i></a>';
+        $this->assertEquals($result, $expected);
+    }
+
     public function testLinkButtonWithoutOptions()
     {
         $result = $this->GanacheHtmlHelper->linkButton('home', '/');

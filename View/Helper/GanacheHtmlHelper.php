@@ -130,6 +130,43 @@ class GanacheHtmlHelper extends HtmlHelper
     }
 
     /**
+     * Create an icon link.
+     *
+     * @access public
+     * @author Sylvain Lévesque <slevesque@gezere.com>
+     * @param string $title The content to be wrapped by <a> tags.
+     * @param string|array $url Cake-relative URL or array of URL parameters, or external URL (starts with http://)
+     * @param array $options Array of options and HTML attributes.
+     * @return string An `<a />` element or bootstraped button link.
+     * @link http://book.cakephp.org/2.0/en/core-libraries/helpers/html.html#HtmlHelper::link
+     *
+     * Extra options
+     * - ga_icon_options : array|string GanacheHtml::icon() icon options.
+     */
+    public function iconLink($icon, $url = '#', $options = [])
+    {
+        $defaults = [
+            'escape' => false
+        ];
+
+        $options = array_merge($defaults, $options);
+
+        // Is title attribute is not define, define it by default.
+        if(!isset($options['title'])) {
+            $options['title'] = $icon;
+        }
+
+        $iconOptions = [];
+        if(isset($options['ga_icon_options'])) {
+            $iconOptions = $options['ga_icon_options'];
+            unset($options['ga_icon_options']);
+        }
+        $icon = $this->icon($icon, $iconOptions);
+        
+        return parent::link($icon, $url, $options);
+    }
+
+    /**
      * Create a bootstrap link button.
      *
      * @access public
