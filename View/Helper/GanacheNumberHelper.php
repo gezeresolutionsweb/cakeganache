@@ -30,7 +30,7 @@ class GanacheNumberHelper extends NumberHelper
      * @param string $thousandsSep Thousands separator sign.
      * @return string Formatted decimal number.
      */
-    public function precision($number, $precision = 2, $decPoint = '.', $thousandsSep = ',')
+    public function precision($number, $precision = 2, $decPoint = '.', $thousandsSep = ' ')
     {
         return number_format($number, $precision, $decPoint, $thousandsSep);
     }
