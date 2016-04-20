@@ -118,7 +118,8 @@ class GanacheTablenavbarHelper extends AppHelper
                     'label' => false,
                     'action' => $searchAction,
                     'div' => false,
-                    'prepend' => $searchFieldPrepend
+                    'prepend' => $searchFieldPrepend,
+                    'class' => GA_2
                 ]);
             }
 
