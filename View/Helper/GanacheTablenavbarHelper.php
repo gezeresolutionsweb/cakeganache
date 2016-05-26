@@ -51,7 +51,7 @@ class GanacheTablenavbarHelper extends AppHelper
      *  - searchAction: Routing::array
      *  - searchFormModel: Search form model name. Default: Filter
      *  - searchFormOptions: Search form options.
-     *  - searchPlaceholder: Search placeholder string.
+     *  - searchPlaceholder: Search placeholder string and title attribute.
      *  - searchFieldPrepend: Search field prepend.
      *  - searchFieldname: Search field name.
      *  - showSearchField: true, false
@@ -115,6 +115,7 @@ class GanacheTablenavbarHelper extends AppHelper
                 $form .= $this->Form->input($searchFieldname, [
                     'type' => 'text',
                     'placeholder' => $searchPlaceholder,
+                    'title' => $searchPlaceholder,
                     'label' => false,
                     'action' => $searchAction,
                     'div' => false,
