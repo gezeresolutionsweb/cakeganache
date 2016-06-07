@@ -69,6 +69,16 @@
         $.each(data.options, function(key, value) {
           $(mThis.element).append($('<option>', {value : key}).text(value)); 
         });
+
+        var mOptions = $(mThis.element).find('option');
+
+        mOptions.sort(function(a,b) {
+            if (a.text > b.text) return 1;
+            if (a.text < b.text) return -1;
+            return 0
+        });
+
+        $(mThis.element).empty().append(mOptions);
     };
 
     // CHAINED PLUGIN DEFINITION
