@@ -79,6 +79,11 @@
         });
 
         $(mThis.element).empty().append(mOptions);
+
+        // There is a weird bug in Chrome for Android where the very last item of the updated select will get selected even if we don't actually set it as selected
+        $(mThis.element).find("option:selected").removeAttr("selected");
+        $(mThis.element).find("option:first").attr('selected', true);
+
     };
 
     // CHAINED PLUGIN DEFINITION
