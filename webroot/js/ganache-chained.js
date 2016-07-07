@@ -68,7 +68,7 @@
         }
         $.each(data.options, function(key, value) {
           // Little trick here to bypass v8 issue that automatically sort integer index and not having the result we expected. (SL)
-          key.replace('cg_', '');
+          key = key.replace('cg_', '');
           $(mThis.element).append($('<option>', {value : key}).text(value)); 
         });
 
