@@ -67,16 +67,12 @@
             $(this.element).append($('<option>', {value : 0}).text(firstOptionsText));
         }
         $.each(data.options, function(key, value) {
+          // Little trick here to bypass v8 issue that automatically sort integer index and not having the result we expected. (SL)
+          key.replace('cg_', '');
           $(mThis.element).append($('<option>', {value : key}).text(value)); 
         });
 
         var mOptions = $(mThis.element).find('option');
-
-        mOptions.sort(function(a,b) {
-            if (a.text > b.text) return 1;
-            if (a.text < b.text) return -1;
-            return 0
-        });
 
         $(mThis.element).empty().append(mOptions);
 
