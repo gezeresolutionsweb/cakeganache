@@ -1,7 +1,7 @@
 {
     "name": "gezeresolutionsweb/cakeganache",
     "type": "cakephp-plugin",
-    "description": "This is a CakePHP 2.x plugin that overload core helpers to support Twitter Bootstrap 2.x + extras.",
+    "description": "This is a CakePHP 2.x plugin that overload core helpers to support Twitter Bootstrap 4.x + extras.",
     "homepage": "https://github.com/gezeresolutionsweb/cakeganache",
     "license": "MIT",
     "keywords": ["framework","cakephp","helpers","bootstrap","plugin","twitter","ganache"],

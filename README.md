@@ -3,9 +3,9 @@ CakeGanache
 
 What about a good cake ganache ?
 
-This is a CakePHP 2.x plugin that overload core helpers to support Twitter Bootstrap 2.x + extras
+This is a CakePHP 2.x plugin that overload core helpers to support Twitter Bootstrap 4.x + extras
 
-* Bootstrap 2.x Helpers
+* Bootstrap 4.x Helpers
   * GanacheHtmlHelper
   * GanacheFormHelper
   * GanacheNavbarHelper
