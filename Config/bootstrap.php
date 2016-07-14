@@ -68,30 +68,6 @@ define('GA_CIRCLE', 'img-circle');
 // GRID
 define('GA_ROW', 'row');
 define('GA_ROW_FLUID', 'row-fluid');
-define('GA_1', 'span1');
-define('GA_2', 'span2');
-define('GA_3', 'span3');
-define('GA_4', 'span4');
-define('GA_5', 'span5');
-define('GA_6', 'span6');
-define('GA_7', 'span7');
-define('GA_8', 'span8');
-define('GA_9', 'span9');
-define('GA_10', 'span10');
-define('GA_11', 'span11');
-define('GA_12', 'span12');
-define('GA_OF1', 'offset1'); // @test
-define('GA_OF2', 'offset2'); // @test
-define('GA_OF3', 'offset3'); // @test
-define('GA_OF4', 'offset4'); // @test
-define('GA_OF5', 'offset5'); // @test
-define('GA_OF6', 'offset6'); // @test
-define('GA_OF7', 'offset7'); // @test
-define('GA_OF8', 'offset8'); // @test
-define('GA_OF9', 'offset9'); // @test
-define('GA_OF10', 'offset10'); // @test
-define('GA_OF11', 'offset11'); // @test
-define('GA_OF12', 'offset12'); // @test
 define('GA_XS1', 'col-xs-1'); // BS3 only @test
 define('GA_XS2', 'col-xs-2'); // BS3 only @test
 define('GA_XS3', 'col-xs-3'); // BS3 only @test
