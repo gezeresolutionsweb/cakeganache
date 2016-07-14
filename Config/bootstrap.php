@@ -14,6 +14,61 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
+// WE WILL REWRITE THE FILE TO COPE WITH THE ORDER OF FILE DEFINITION IN THE BOOTSTRAP 4.0.0 alpha-2 project.
+// It will be easier to follow and not to miss a things.
+/*
+-rw-rw-r-- 1 slevesque slevesque  1351 jui 14 15:23 _alert.scss
+-rw-rw-r-- 1 slevesque slevesque   407 jui 14 15:23 _animation.scss
+-rw-rw-r-- 1 slevesque slevesque   182 jui 14 15:23 bootstrap-flex.scss
+-rw-rw-r-- 1 slevesque slevesque  1166 jui 14 15:23 bootstrap-grid.scss
+-rw-rw-r-- 1 slevesque slevesque   198 jui 14 15:23 bootstrap-reboot.scss
+-rw-rw-r-- 1 slevesque slevesque  1097 jui 14 15:23 bootstrap.scss
+-rw-rw-r-- 1 slevesque slevesque   484 jui 14 15:23 _breadcrumb.scss
+-rw-rw-r-- 1 slevesque slevesque  5282 jui 14 15:23 _button-group.scss
+-rw-rw-r-- 1 slevesque slevesque  3461 jui 14 15:23 _buttons.scss
+-rw-rw-r-- 1 slevesque slevesque  5210 jui 14 15:23 _card.scss
+-rw-rw-r-- 1 slevesque slevesque  4811 jui 14 15:23 _carousel.scss
+-rw-rw-r-- 1 slevesque slevesque   673 jui 14 15:23 _close.scss
+-rw-rw-r-- 1 slevesque slevesque  1101 jui 14 15:23 _code.scss
+-rw-rw-r-- 1 slevesque slevesque  6840 jui 14 15:23 _custom-forms.scss
+-rw-rw-r-- 1 slevesque slevesque  4510 jui 14 15:23 _dropdown.scss
+-rw-rw-r-- 1 slevesque slevesque 11206 jui 14 15:23 _forms.scss
+-rw-rw-r-- 1 slevesque slevesque  1654 jui 14 15:23 _grid.scss
+-rw-rw-r-- 1 slevesque slevesque  1330 jui 14 15:23 _images.scss
+-rw-rw-r-- 1 slevesque slevesque  4451 jui 14 15:23 _input-group.scss
+-rw-rw-r-- 1 slevesque slevesque   445 jui 14 15:23 _jumbotron.scss
+-rw-rw-r-- 1 slevesque slevesque  1465 jui 14 15:23 _labels.scss
+-rw-rw-r-- 1 slevesque slevesque  3457 jui 14 15:23 _list-group.scss
+-rw-rw-r-- 1 slevesque slevesque  1083 jui 14 15:23 _media.scss
+drwxrwxr-x 2 slevesque slevesque  4096 jui 14 16:48 mixins
+-rw-rw-r-- 1 slevesque slevesque  1236 jui 14 15:23 _mixins.scss
+-rw-rw-r-- 1 slevesque slevesque  3373 jui 14 15:23 _modal.scss
+-rw-rw-r-- 1 slevesque slevesque  3986 jui 14 15:23 _navbar.scss
+-rw-rw-r-- 1 slevesque slevesque  2842 jui 14 15:23 _nav.scss
+-rw-rw-r-- 1 slevesque slevesque  7594 jui 14 15:23 _normalize.scss
+-rw-rw-r-- 1 slevesque slevesque   953 jui 14 15:23 _pager.scss
+-rw-rw-r-- 1 slevesque slevesque  1733 jui 14 15:23 _pagination.scss
+-rw-rw-r-- 1 slevesque slevesque  3448 jui 14 15:23 _popover.scss
+-rw-rw-r-- 1 slevesque slevesque  1402 jui 14 15:23 _print.scss
+-rw-rw-r-- 1 slevesque slevesque  3848 jui 14 15:23 _progress.scss
+-rw-rw-r-- 1 slevesque slevesque  8631 jui 14 15:23 _reboot.scss
+-rw-rw-r-- 1 slevesque slevesque   601 jui 14 15:23 _responsive-embed.scss
+-rw-rw-r-- 1 slevesque slevesque  3442 jui 14 15:23 _tables.scss
+-rw-rw-r-- 1 slevesque slevesque  2134 jui 14 15:23 _tooltip.scss
+-rw-rw-r-- 1 slevesque slevesque  2858 jui 14 15:23 _type.scss
+-rw-rw-r-- 1 slevesque slevesque   461 jui 14 15:23 _utilities-background.scss
+-rw-rw-r-- 1 slevesque slevesque   781 jui 14 15:23 _utilities-responsive.scss
+-rw-rw-r-- 1 slevesque slevesque  1885 jui 14 15:23 _utilities.scss
+-rw-rw-r-- 1 slevesque slevesque  1032 jui 14 15:23 _utilities-spacing.scss
+-rw-rw-r-- 1 slevesque slevesque 23190 jui 14 15:23 _variables.scss
+*/
+
+
+
+
+
+
+
 // COMMON DISPLAYS
 define('GA_BLOCK', 'block');
 define('GA_INLINE', 'inline');
@@ -32,7 +87,7 @@ define('GA_XLARGE', 'xlarge');
 define('GA_XXLARGE', 'xxlarge');
 
 // COMMON STATES
-define('GA_DEFAULT', 'default'); // Bs3
+define('GA_DEFAULT', 'default');
 define('GA_PRIMARY' , 'primary');
 define('GA_ERROR' , 'error');
 define('GA_SUCCESS' , 'success');
@@ -336,7 +391,7 @@ define('GA_NAVBAR_STATIC_TOP', 'navbar-static-top');
 define('GA_COLLAPSE', 'collapse');
 define('GA_NAV_COLLAPSE', 'nav-collapse');
 define('GA_NAVBAR_INVERSE', 'navbar-inverse');
-define('GA_BTN_NAVBAR', 'btn-navbar'); // Bs3
+define('GA_BTN_NAVBAR', 'btn-navbar');
 
 // BREADCRUMBS
 define('GA_BREADCRUMB', 'breadcrumb');
@@ -381,7 +436,7 @@ define('GA_LABEL_IMPORTANT', 'label-important');
 define('GA_LABEL_INFO', 'label-info');
 define('GA_LABEL_INVERSE', 'label-inverse');
 define('GA_BADGE', 'badge');
-define('GA_BADGE_DEFAULT', 'badge-default'); // Bs3
+define('GA_BADGE_DEFAULT', 'badge-default');
 define('GA_BADGE_SUCCESS', 'badge-success');
 define('GA_BADGE_WARNING', 'badge-warning');
 define('GA_BADGE_IMPORTANT', 'badge-important');
