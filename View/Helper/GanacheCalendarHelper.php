@@ -25,13 +25,13 @@ class GanacheCalendarHelper extends AppHelper
     {
         $html = '<thead>';
         $html .= '<tr>';
-        $html .= '<td>' . __d('cakeganache', 'Monday') . '</td>';
-        $html .= '<td>' . __d('cakeganache', 'Tuesday') . '</td>';
-        $html .= '<td>' . __d('cakeganache', 'Wednesday') . '</td>';
-        $html .= '<td>' . __d('cakeganache', 'Thursday') . '</td>';
-        $html .= '<td>' . __d('cakeganache', 'Friday') . '</td>';
-        $html .= '<td>' . __d('cakeganache', 'Saturday') . '</td>';
-        $html .= '<td>' . __d('cakeganache', 'Sunday') . '</td>';
+        $html .= '<td>' . __d('cake_ganache', 'Monday') . '</td>';
+        $html .= '<td>' . __d('cake_ganache', 'Tuesday') . '</td>';
+        $html .= '<td>' . __d('cake_ganache', 'Wednesday') . '</td>';
+        $html .= '<td>' . __d('cake_ganache', 'Thursday') . '</td>';
+        $html .= '<td>' . __d('cake_ganache', 'Friday') . '</td>';
+        $html .= '<td>' . __d('cake_ganache', 'Saturday') . '</td>';
+        $html .= '<td>' . __d('cake_ganache', 'Sunday') . '</td>';
         $html .= '</tr>';
         $html .= '</thead>';
 
